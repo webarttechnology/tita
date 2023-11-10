@@ -3,10 +3,10 @@
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\admin\Auth\LoginController;
+use App\Http\Controllers\admin\Auth\RegisterController;
+use App\Http\Controllers\admin\Auth\ForgotPasswordController;
+use App\Http\Controllers\admin\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
