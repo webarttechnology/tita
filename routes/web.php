@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +27,9 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 Route::prefix('admin')->group(function () {
     //Home Page ->middleware(['auth'])
-    Route::get('/', [LoginController::class, 'loginPage'])->name('login');
-    Route::get('register', [LoginController::class, 'registerPage'])->name('registerPage');
-    
+ 
+
+    Route::get('dashboard', [DashboardController::class, 'loginPage'])->name('dashboard');
   
     //About Page 
 
