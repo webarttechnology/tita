@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,26 @@ Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
 Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_download');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+
+
+Route::prefix('admin')->group(function () {
+    //Home Page ->middleware(['auth'])
+    Route::get('/', [LoginController::class, 'loginPage'])->name('login');
+    Route::get('register', [LoginController::class, 'registerPage'])->name('registerPage');
+    
+  
+    //About Page 
+
+    //Client Routes
+    Route::get('/client-details', [ClientDetailsController::class, 'clientDetails'])->name('clientDetails');
+    Route::get('/client-details/add', [ClientDetailsController::class, 'add'])->name('clientDetails_add');
+    Route::get('/client-details/view/{id}', [ClientDetailsController::class, 'view'])->name('clientDetails_view');
+    Route::post('/client-details/store', [ClientDetailsController::class, 'store'])->name('clientDetails_store');
+    Route::get('/client-details/edit/{id}', [ClientDetailsController::class, 'edit'])->name('clientDetails_edit');
+    Route::put('/client-details/update/{id}', [ClientDetailsController::class, 'update'])->name('clientDetails_update');
+    Route::get('/client-details/delete/{id}', [ClientDetailsController::class, 'delete'])->name('clientDetails_delete');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
