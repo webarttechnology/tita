@@ -3,6 +3,10 @@
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,22 +31,35 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 Route::prefix('admin')->group(function () {
     //Home Page ->middleware(['auth'])
+
+
+    // Authentication Routes
+    Route::get('/', [LoginController::class, 'showLoginForm']);
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    // Registration Routes
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register']);
+
+    // Password Reset Routes
+    Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
  
 
     Route::get('dashboard', [DashboardController::class, 'loginPage'])->name('dashboard');
   
     //About Page 
 
-    //Client Routes
-    Route::get('/client-details', [ClientDetailsController::class, 'clientDetails'])->name('clientDetails');
-    Route::get('/client-details/add', [ClientDetailsController::class, 'add'])->name('clientDetails_add');
-    Route::get('/client-details/view/{id}', [ClientDetailsController::class, 'view'])->name('clientDetails_view');
-    Route::post('/client-details/store', [ClientDetailsController::class, 'store'])->name('clientDetails_store');
-    Route::get('/client-details/edit/{id}', [ClientDetailsController::class, 'edit'])->name('clientDetails_edit');
-    Route::put('/client-details/update/{id}', [ClientDetailsController::class, 'update'])->name('clientDetails_update');
-    Route::get('/client-details/delete/{id}', [ClientDetailsController::class, 'delete'])->name('clientDetails_delete');
+    Route::get('/blog', [ClientDetailsController::class, 'clientDetails'])->name('admin.blog');
+    Route::get('/blog/add', [ClientDetailsController::class, 'add'])->name('blog_add');
+    Route::get('/blog/view/{id}', [ClientDetailsController::class, 'view'])->name('blog_view');
+    Route::post('/blog/store', [ClientDetailsController::class, 'store'])->name('blog_store');
+    Route::get('/blog/edit/{id}', [ClientDetailsController::class, 'edit'])->name('blog_edit');
+    Route::put('/blog/update/{id}', [ClientDetailsController::class, 'update'])->name('blog_update');
+    Route::get('/blog/delete/{id}', [ClientDetailsController::class, 'delete'])->name('blog_delete');
+
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
