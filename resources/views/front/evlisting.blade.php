@@ -1,5 +1,5 @@
-<!--- header -->
-<?php include "header.php" ?>
+@extends('front.layouts.app')
+@section('content')
 
 <!-- ======== Tanmoy ======== -->
 
@@ -385,5 +385,4 @@
 
 <!-- ======== Tanmoy END ======== -->
 
-<!--- footer -->
-<?php include "footer.php" ?>
+@endsection

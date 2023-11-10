@@ -1,5 +1,5 @@
-<!-- Header -->
-<?php include "header.php" ?>
+@extends('front.layouts.app')
+@section('content')
 
 <section class="bookingsec">
     <div class="innerhdng">
@@ -47,5 +47,4 @@
     </div>
 </section>
 
-<!--- footer -->
-<?php include "footer.php" ?>
+@endsection

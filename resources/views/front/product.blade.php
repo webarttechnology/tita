@@ -1,5 +1,5 @@
-<!--- header -->
-<?php include "header.php" ?>
+@extends('front.layouts.app')
+@section('content')
 
 <!-- Product Details -->
 <section class="prdctsec">
@@ -227,4 +227,4 @@
 
 
 <!--- footer -->
-<?php include "footer.php" ?>
+@endsection

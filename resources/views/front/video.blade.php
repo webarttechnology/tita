@@ -1,5 +1,5 @@
-<!-- Header -->
-<?php include "header.php" ?>
+@extends('front.layouts.app')
+@section('content')
 
 <!-- --------------Inner Banner Blog Details------------- -->
 
@@ -95,4 +95,4 @@
 
 
 <!--- footer -->
-<?php include "footer.php" ?>
+@endsection

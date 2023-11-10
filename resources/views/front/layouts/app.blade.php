@@ -46,25 +46,25 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about-us.php">About Us</a>
+                        <a class="nav-link" href="{{route('about_us')}}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="evlisting.php">EV listing</a>
+                        <a class="nav-link" href="{{route('ev_listing')}}">EV listing</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="product.php">CNG KIT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="booking.php">Booking</a>
+                        <a class="nav-link" href="{{route('booking')}}">Booking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="video.php">Video</a>
+                        <a class="nav-link" href="{{route('video')}}">Video</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pdf-download.php">PDF</a>
+                        <a class="nav-link" href="{{route('pdf_download')}}">PDF</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.php">Blog</a>
+                        <a class="nav-link" href="{{route('blog')}}">Blog</a>
                     </li>
                 </ul>
 
