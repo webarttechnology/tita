@@ -1,0 +1,620 @@
+/* responsive */
+@media screen and (min-width: 1200px) {
+  nav .container-fluid {
+    max-width: 1325px !important;
+  }
+
+  .sec1 .container {
+    max-width: 1205px !important;
+  }
+
+  .sec2 .container {
+    max-width: 1285px !important;
+  }
+
+  .sec3 .container {
+    max-width: 1280px !important;
+  }
+
+  .cngbestkit .container-fluid {
+    max-width: 1280px !important;
+  }
+
+  .knldge .container-fluid {
+    max-width: 1280px !important;
+  }
+
+  .blog .container-fluid {
+    max-width: 1240px !important;
+  }
+
+  .footersec .container-fluid {
+    max-width: 1260px !important;
+  }
+
+  .bookingsec .container-fluid {
+    max-width: 1290px !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {}
+
+@media screen and (max-width: 991px) {
+  .footersec .ftrservice {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 575px) {}
+
+@media screen and (max-width: 420px) {}
+
+@media screen and (max-width: 767px) {}
+
+
+
+
+@media screen and (max-width: 600px) {
+
+  /*Taanmoy css */
+  .navbar {
+    padding: 16px 0 !important;
+  }
+
+  .banners h2 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .banners h2 .spans {
+    background-color: var(--color-primary);
+    font-size: 26px;
+    line-height: 1.3;
+    padding: 6px;
+  }
+
+  .banners .bg-img1 {
+    padding-top: 100px;
+  }
+
+  .banners .btns {
+    margin: 40px 0 20px 0;
+  }
+
+  .swiper-pagination {
+    display: none;
+  }
+
+  .banners .bottom-part h5 {
+    font-size: 20px;
+  }
+
+  .banners .bottom-part p {
+    line-height: 1.3;
+  }
+
+  .sec1 {
+    text-align: center;
+  }
+
+  .sec1 h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-top: 10px;
+  }
+
+  .sec3 h2 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+
+  .sec3 h3 {
+    font-size: 40px;
+  }
+
+  .sec2 {
+    text-align: center;
+  }
+
+  .sec2 h2 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .sec2 h2 .spans {
+    width: 100%;
+  }
+
+  .cngbestkit {
+    padding: 20px 0;
+  }
+
+  .cngbestkit .sec-title h2 {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+
+  .cngbestkit .ctntext {
+    padding: 18px;
+  }
+
+  .cngbestkit .ctntext h4 {
+    font-size: 30px;
+  }
+
+  .cngbestkit .ctntext p {
+    font-size: 16px;
+  }
+
+  .cngbestkit .contentbox .ctnimg {
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .Benefits .sec-title h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+
+  .electric-car {
+    padding-top: 20px;
+  }
+
+  .electric-car .sec-title h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+
+  }
+
+  .electric-car .cars {
+    margin-top: 20px;
+    padding: 20px 0;
+  }
+
+  .electric-car .cars .car-card img {
+    width: 100%;
+  }
+
+  .electric-car .cars .car-card {
+
+    margin-bottom: 30px;
+  }
+
+  .electric-car .cars .car-card img {
+    margin-top: 0;
+  }
+
+  .coolest-features .sec-title h2 {
+
+    font-size: 36px;
+  }
+
+  .coolest-features .fea {
+    text-align: center;
+    border: 4px solid var(--color-primary);
+    padding: 30px 20px;
+    border-radius: 10px;
+    filter: drop-shadow(-5.26px 10.786px 16px rgba(177, 8, 8, 0.41));
+    margin: 0 0 30px 0;
+  }
+
+  .coolest-features .fea h3 {
+    font-size: 26px;
+  }
+
+  .appreciate-driving {
+    padding: 50px 0;
+  }
+
+  .appreciate-driving .drivtext h4 {
+    font-size: 36px;
+  }
+
+  .appreciate-driving .view-text {
+    padding: 0 0 50px 0;
+  }
+
+  .trusted-brands .sec-title h2 {
+
+    font-size: 36px;
+  }
+
+  .trusted-brands .sec-title h2 {
+    font-size: 36px;
+  }
+
+  .categbx h4 {
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+    margin-bottom: 23px;
+    margin-top: 20px;
+  }
+
+  .algnmnt {
+    margin-bottom: 0;
+  }
+
+  .blog {
+    padding: 50px 0;
+  }
+
+  .blog .content {
+    text-align: center;
+  }
+
+  .blog .blogbtn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .blog .hdng h1 {
+    font-size: 36px;
+
+  }
+
+  .blog .blogbx img {
+    width: 100%;
+  }
+
+  .blog .blogbtn {
+
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .contactus .px-0 {
+    padding-right: calc(var(--bs-gutter-x) * .5) !important;
+    padding-left: calc(var(--bs-gutter-x) * .5) !important;
+  }
+
+  .contactus .cntct-form .cntct-hdng h2 {
+    font-size: 36px;
+  }
+
+  .knldge .hdng h1 {
+    font-size: 36px;
+  }
+
+  .contactus .cntct-form {
+    background-color: var(--color-primary);
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+  }
+
+  .contactus .cform {
+    margin-top: 0px;
+  }
+
+  .form-control {
+    padding: 14px;
+  }
+
+  .contactus .email-sbcrb input[type="email"]::placeholder {
+    font-size: 16px;
+  }
+
+  .contactus .address iframe {
+    width: 100%;
+    height: 300px;
+  }
+
+  .contactus .bg-img1 {
+    background-size: 100%;
+    background-position: center;
+    background-position: 0 60px;
+  }
+
+  .policy {
+    display: flex;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .contactus .email-sbcrb input[type="submit"] {
+    font-size: 16px;
+  }
+
+  .footersec .ftrservice {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .footersec .ftr-address ul li,
+  .ftrservice ul li {
+    padding-bottom: 10px;
+  }
+
+  /*About Page*/
+
+  .breadcrumb-bg {
+    padding: 50px 0 50px;
+  }
+
+  .aboutsec .about-text h2 {
+    text-align: center;
+    font-family: var(--font-family-clashgrotesk);
+    font-size: 36px;
+    color: var(--color-secondary);
+    font-weight: 600;
+    padding: 10px 0;
+  }
+
+  .aboutsec .about-text p {
+    text-align: center;
+  }
+
+  .what .card {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .breadcrumb-content .title {
+    font-size: 30px;
+  }
+
+
+  nav[aria-label="breadcrumb"] {
+    padding: 10px 0 !important;
+  }
+
+  .breadcrumb-content .breadcrumb-item+.breadcrumb-item {
+    padding-left: 10px;
+    font-size: 16px;
+  }
+
+  /*EV Listing Page*/
+  .carlisting .carlistbanner h1 span {
+    font-size: 40px;
+  }
+
+  .carlisting .carlistbanner h1 {
+    font-size: 36px;
+  }
+
+  .carlisting .carlistbanner {
+    height: 430px;
+    padding: 50px 0 50px 0;
+  }
+
+  .mySwiper2 .progress {
+    display: none;
+  }
+
+
+  .carlisting .mySwiper2 {
+    height: 500px;
+    margin-bottom: -112px !important;
+  }
+
+
+  .carlisting .mySwiper2 .choice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .mySwiper2 .caritem-bottom .choice ul {
+    padding-left: 0;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
+  .viewcar .viewcarimg {
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .viewcar .viewcarimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .keytitle h2 {
+    text-align: center;
+    font-size: 36px;
+  }
+
+  .key-fetures .btnbox a {
+    font-size: 24px;
+  }
+
+  .key-fetures ul {
+    padding-left: 0;
+    padding: 0 20px;
+  }
+
+
+  /*CNG Kit Page*/
+  .card-slider img {
+    width: 100%;
+  }
+
+  .prdctsec .innerhdng h1 {
+    font-size: 36px;
+  }
+
+  .prdctsec .innerhdng {
+    padding: 50px 0 200px 0;
+  }
+
+
+  .card-slider h5 {
+    font-size: 20px;
+  }
+
+  .prdctsec .prdcthdng h3 {
+    text-align: center;
+  }
+
+  .prdctsec .card {
+    margin-left: 0;
+  }
+
+  .prdctdtls-hdng h2 {
+    font-size: 36px;
+    text-align: center;
+
+  }
+
+  .prdctdtls .card .qute-button a {
+    padding: 4px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    border: 2px solid #c90000;
+  }
+
+  .prdctdtls .enquerybtn a {
+    font-size: 23px;
+  }
+
+  .prdctdtls .card .title-hdng {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .prdctdtls .card {
+    padding: 20px;
+    margin: 16px 16px;
+    height: auto;
+  }
+
+  .prdctdtls .card .title-img .imgs {
+    width: 100%;
+  }
+
+  .prdctdtls .title-img img {
+    width: 100%;
+  }
+
+  .prdctdtls .card .qute-button {
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .prdctdtls .card .title-hdng h4 {
+    font-size: 20px;
+  }
+
+  .prdctsec .prdcttitle2 ul {
+    border-right: none;
+  }
+
+  .cntnt p {
+    padding: 0 16px;
+  }
+
+  .prdctsec .card .cardhdng h3 {
+    font-size: 20px;
+  }
+
+  .cntnthdng h3 {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  /*Booking Page*/
+  .bookingsec .innerhdng {
+    padding: 50px 0;
+  }
+
+  .bookingsec .innerhdng h1 {
+    font-size: 36px;
+  }
+
+  .bookdate .cards {
+    border-radius: 16px;
+    padding: 24px 0;
+    position: relative;
+    top: -42px;
+  }
+
+  .bookmaps iframe {
+    height: 300px;
+  }
+
+  .bookbtn a {
+    font-size: 18px;
+  }
+
+  .bookbtn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bookbtn a span img {
+    width: 20px;
+  }
+
+  .bookmaps iframe {
+    border-radius: 10px;
+  }
+
+  /*Video Page */
+  .vid {
+    margin-bottom: 20px;
+  }
+
+  .video-popup.show-video {
+    width: 100%;
+  }
+
+  .video-popup.show-video .iframe-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+
+  .video-popup.show-video .iframe-wrapper iframe {
+    width: 100%;
+  }
+
+  .iframe-wrapper .close-video {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -28px;
+    right: 4px;
+  }
+
+  .blogsec .card {
+    position: relative;
+    height: auto;
+    width: 100%;
+    padding: 20px 0;
+    border: none;
+  }
+
+  .blog_details .blog_left {
+    width: 100%;
+  }
+
+  .blog_details h1 {
+    text-align: center;
+    font-size: 36px;
+  }
+
+  .blog_details .iconspb {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /*Footer */
+  .footersec {
+    text-align: center;
+  }
+
+  .blogsec .blog-date {
+    position: static;
+    margin-top: 10px;
+  }
+
+  /*Tanmoy CSS END*/
+}

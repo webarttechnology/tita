@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('ClashGrotesk-Medium.eot');
+    src: url('ClashGrotesk-Medium.eot?#iefix') format('embedded-opentype'),
+        url('ClashGrotesk-Medium.woff2') format('woff2'),
+        url('ClashGrotesk-Medium.woff') format('woff'),
+        url('ClashGrotesk-Medium.ttf') format('truetype'),
+        url('ClashGrotesk-Medium.svg#ClashGrotesk-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('ClashGrotesk-Extralight.eot');
+    src: url('ClashGrotesk-Extralight.eot?#iefix') format('embedded-opentype'),
+        url('ClashGrotesk-Extralight.woff2') format('woff2'),
+        url('ClashGrotesk-Extralight.woff') format('woff'),
+        url('ClashGrotesk-Extralight.ttf') format('truetype'),
+        url('ClashGrotesk-Extralight.svg#ClashGrotesk-Extralight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('ClashGrotesk-Regular.eot');
+    src: url('ClashGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ClashGrotesk-Regular.woff2') format('woff2'),
+        url('ClashGrotesk-Regular.woff') format('woff'),
+        url('ClashGrotesk-Regular.ttf') format('truetype'),
+        url('ClashGrotesk-Regular.svg#ClashGrotesk-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('ClashGrotesk-Bold.eot');
+    src: url('ClashGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ClashGrotesk-Bold.woff2') format('woff2'),
+        url('ClashGrotesk-Bold.woff') format('woff'),
+        url('ClashGrotesk-Bold.ttf') format('truetype'),
+        url('ClashGrotesk-Bold.svg#ClashGrotesk-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('ClashGrotesk-Light.eot');
+    src: url('ClashGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+        url('ClashGrotesk-Light.woff2') format('woff2'),
+        url('ClashGrotesk-Light.woff') format('woff'),
+        url('ClashGrotesk-Light.ttf') format('truetype'),
+        url('ClashGrotesk-Light.svg#ClashGrotesk-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('ClashGrotesk-Semibold.eot');
+    src: url('ClashGrotesk-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('ClashGrotesk-Semibold.woff2') format('woff2'),
+        url('ClashGrotesk-Semibold.woff') format('woff'),
+        url('ClashGrotesk-Semibold.ttf') format('truetype'),
+        url('ClashGrotesk-Semibold.svg#ClashGrotesk-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
