@@ -1,5 +1,5 @@
-<!-- Header -->
-<?php include "header.php" ?>
+@extends('front.layouts.app')
+@section('content')
 
 <!-------- Blog Details Start --------------->
 <section class="breadcrumb-area breadcrumb-bg">
@@ -64,5 +64,4 @@
 
 <!-------- Blog Details End --------------->
 
-<!--- footer -->
-<?php include "footer.php" ?>
+@endsection
