@@ -76,7 +76,7 @@
 										<button type="submit" class="btn btn-primary btn-block mb-4">Sign In</button>
 										
 										<p class="sign-upp">Don't have an account yet ?
-											<a class="text-blue" href="{{ route('register') }}">Sign Up</a>
+											<a class="text-blue" href="{{ route('admin.register') }}">Sign Up</a>
 										</p>
 									</div>
 								</div>

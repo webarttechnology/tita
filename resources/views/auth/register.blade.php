@@ -40,7 +40,7 @@
           <div class="card-body p-5">
             <h4 class="text-dark mb-5">Sign Up</h4>
 
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('admin.register') }}" method="POST">
               @csrf
               <div class="row">
                 <div class="form-group col-md-12 mb-4">
@@ -89,7 +89,7 @@
                   <button type="submit" class="btn btn-primary btn-block mb-4">Sign Up</button>
 
                   <p class="sign-upp">Already have an account?
-                    <a class="text-blue" href="{{route('login')}}">Sign in</a>
+                    <a class="text-blue" href="{{route('admin.login')}}">Sign in</a>
                   </p>
                 </div>
               </div>

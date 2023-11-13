@@ -140,14 +140,12 @@
 							<li class="dropdown user-menu">
 								<button class="nav-link ec-drop" data-bs-toggle="dropdown"
 									aria-expanded="false">
-									<a class="dropdown-item" href="{{ route('logout') }}"
-										onclick="event.preventDefault();
-													  document.getElementById('logout-form').submit();">
+									<a class="dropdown-item" href="{{ route('admin.logout') }}">
 										 {{ __('Logout') }}
 									 </a>
-									 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+									 {{-- <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>
+                                    </form> --}}
 								</button>
 								
 							</li>

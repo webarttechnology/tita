@@ -8,6 +8,9 @@ use App\Http\Controllers\admin\Auth\RegisterController;
 use App\Http\Controllers\admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\admin\Auth\ResetPasswordController;
 
+//
+use App\Http\Controllers\admin\AuthManageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,34 +35,20 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::prefix('admin')->group(function () {
     //Home Page ->middleware(['auth'])
 
+    Route::get('/', function () {
+        return redirect()->route('admin.login');
+    });
 
-    // Authentication Routes
-    Route::get('/', [LoginController::class, 'showLoginForm']);
-    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [LoginController::class, 'login']);
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::controller(AuthManageController::class)->group(function () {
+        Route::get('login', 'login')->name('admin.login');
+        Route::post('login-action', 'login_action');
+    });
 
-    // Registration Routes
-    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [RegisterController::class, 'register']);
-
-    // Password Reset Routes
-    Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-    Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-    Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-    Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
- 
-
-    Route::get('dashboard', [DashboardController::class, 'loginPage'])->name('dashboard');
-  
-    //About Page 
-
-    Route::get('/blog', [ClientDetailsController::class, 'clientDetails'])->name('admin.blog');
-    Route::get('/blog/add', [ClientDetailsController::class, 'add'])->name('blog_add');
-    Route::get('/blog/view/{id}', [ClientDetailsController::class, 'view'])->name('blog_view');
-    Route::post('/blog/store', [ClientDetailsController::class, 'store'])->name('blog_store');
-    Route::get('/blog/edit/{id}', [ClientDetailsController::class, 'edit'])->name('blog_edit');
-    Route::put('/blog/update/{id}', [ClientDetailsController::class, 'update'])->name('blog_update');
-    Route::get('/blog/delete/{id}', [ClientDetailsController::class, 'delete'])->name('blog_delete');
-
+    // Admin MIddleware
+    Route::middleware(['admin.auth'])->group(function () {
+        Route::controller(AuthManageController::class)->group(function () {
+            Route::get('dashboard', 'dashboard');
+            Route::get('logout', 'logout')->name('admin.logout');
+        });
+    });
 });
