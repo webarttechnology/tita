@@ -24,7 +24,7 @@ class AuthManageController extends Controller
  
         if (Auth::guard('admin')->attempt($credentials)) {
             // dd(Auth::guard('admin')->user()->id);
-            return redirect('admin/dashboard');
+            return redirect('admin/dashboard')->with('success', 'Successfully Login');
         }else{
             return redirect('admin/login')->with('error', 'Sorry! You have entered wrong Credentials');
         }

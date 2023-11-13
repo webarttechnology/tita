@@ -24929,3 +24929,7 @@ div.dataTables_wrapper div.dataTables_filter {
   border-radius: 15px;
 }
 /*# sourceMappingURL=ekka.css.map */
+
+.simplebar-ec-content-wrapper{
+  overflow: hidden !important;
+}

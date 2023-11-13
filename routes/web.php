@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\Auth\ResetPasswordController;
 
 //
 use App\Http\Controllers\admin\AuthManageController;
+use App\Http\Controllers\admin\VehicleManageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +51,17 @@ Route::prefix('admin')->group(function () {
             Route::get('dashboard', 'dashboard');
             Route::get('logout', 'logout')->name('admin.logout');
         });
+
+        /**
+         * EV Listings
+        */
+
+        Route::prefix('vehicle')->controller(VehicleManageController::class)->group(function () {
+             Route::get('list', 'listing');
+             Route::get('add', 'add');
+             Route::post('add-action', 'add_action');
+             Route::get('delete/{id}', 'delete');
+        });
+
     });
 });

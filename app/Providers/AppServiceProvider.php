@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +22,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        Paginator::useBootstrap();
+
+        /**
+         * check for atleast one field
+        */
+
+        Validator::extend('at_least_one_field', function ($attribute, $value, $parameters, $validator) {
+            return in_array(true, $value);
+        });
     }
 }
