@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Models\PDF;
+use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -34,12 +36,26 @@ class HomeController extends Controller
 
     public function pdfDownload()
     {
-        return view('front.pdf-download');
+        $pdfs = PDF::get();
+        return view('front.pdf-download', compact('pdfs'));
     }
 
     public function blog()
     {
-        return view('front.blog');
+        $blogs = Blog::get();
+        return view('front.blog', compact('blogs'));
+    }
+
+    public function registration()
+    {
+        return view('front.registration');
+    }
+
+    public function singleBlog($slug)
+    {
+        $singleBlog = Blog::where('slug', $slug)->firstOrFail();
+       
+        return view('front.blogdetails', compact('singleBlog'));
     }
 
 }

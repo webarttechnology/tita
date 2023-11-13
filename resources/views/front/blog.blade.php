@@ -26,107 +26,27 @@
 <section class="blogsec py-5">
     <div class="container">
         <div class="row mb-5">
+            @foreach ( $blogs as $blog )
             <div class="col-md-4 mb-3">
                 <a href="blogdetails.php">
                     <div class="blog-main">
                         <div class="blog-img">
-                            <img src="assets/images/blog1.jpg" alt="">
+                            <img src="{{ asset($blog->image) }}" alt="" width="250px">
                         </div>
                         <div class="card">
-                            <h3>Coaching today easy with the digital teacher</h3>
-                            <p>You can buy this Template today and make amazing website..</p>
+                            <h3>{{ $blog->title}}</h3>
+                            <p><?php echo htmlspecialchars_decode(Str::limit($blog->description, 300, $end='..')) ?></p>
                             <div class="btnprt">
-                                <a href="blogdetails.php" class="cmnbtn">Read More</a>
+                                <a href="{{route('single_blog',['slug' => $blog->slug])}}" class="cmnbtn">Read More</a>
                             </div>
                             <div class="blog-date">
-                                <p>19/09/2023</p>
+                                <p>{{ $blog->created_at->format('m.d.Y') }}</p>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 mb-3">
-                <a href="blogdetails.php">
-                    <div class="blog-main">
-                        <div class="blog-img">
-                            <img src="assets/images/blog2.jpg" alt="">
-                        </div>
-                        <div class="card">
-                            <h3>Coaching today easy with the digital teacher</h3>
-                            <p>You can buy this Template today and make amazing website..</p>
-                            <div class="btnprt">
-                                <a href="blogdetails.php" class="cmnbtn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="blogdetails.php">
-                    <div class="blog-main">
-                        <div class="blog-img">
-                            <img src="assets/images/blog3.jpg" alt="">
-                        </div>
-                        <div class="card">
-                            <h3>Coaching today easy with the digital teacher</h3>
-                            <p>You can buy this Template today and make amazing website..</p>
-                            <div class="btnprt">
-                                <a href="blogdetails.php" class="cmnbtn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <a href="blogdetails.php">
-                    <div class="blog-main">
-                        <div class="blog-img">
-                            <img src="assets/images/blog3.jpg" alt="">
-                        </div>
-                        <div class="card">
-                            <h3>Coaching today easy with the digital teacher</h3>
-                            <p>You can buy this Template today and make amazing website..</p>
-                            <div class="btnprt">
-                                <a href="blogdetails.php" class="cmnbtn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="blogdetails.php">
-                    <div class="blog-main">
-                        <div class="blog-img">
-                            <img src="assets/images/blog2.jpg" alt="">
-                        </div>
-                        <div class="card">
-                            <h3>Coaching today easy with the digital teacher</h3>
-                            <p>You can buy this Template today and make amazing website..</p>
-                            <div class="btnprt">
-                                <a href="blogdetails.php" class="cmnbtn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="blogdetails.php">
-                    <div class="blog-main">
-                        <div class="blog-img">
-                            <img src="assets/images/blog1.jpg" alt="">
-                        </div>
-                        <div class="card">
-                            <h3>Coaching today easy with the digital teacher</h3>
-                            <p>You can buy this Template today and make amazing website..</p>
-                            <div class="btnprt">
-                                <a href="blogdetails.php" class="cmnbtn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

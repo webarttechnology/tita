@@ -18,15 +18,24 @@
 
 	<link href="../../../../../cdn.jsdelivr.net/npm/%40mdi/font%404.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
 
+	  <!-- Include TinyMCE library -->
+	   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	  <!-- Include TinyMCE library -->
+
 	<!-- PLUGINS CSS STYLE -->
-	<link href="assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
-	<link href="assets/plugins/simplebar/simplebar.css" rel="stylesheet" />
+	<link href="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/admin/plugins/simplebar/simplebar.css')}}" rel="stylesheet" />
+	<link href='{{asset('assets/admin/plugins/data-tables/datatables.bootstrap5.min.css')}}' rel='stylesheet'>
+	<link href='{{asset('assets/admin/plugins/data-tables/responsive.datatables.min.css')}}' rel='stylesheet'>
 
 	<!-- Ekka CSS -->
-	<link id="ekka-css" rel="stylesheet" href="{{asset('assets/admin/css/ekka.css')}}">
+	<link id="ekka-css" href="{{asset('assets/admin/css/ekka.css')}}" rel="stylesheet" />
 
 	<!-- FAVICON -->
-	<!-- <link href="assets/img/favicon.png" rel="shortcut icon" /> -->
+	 <link href="{{asset('assets/admin/img/favicon.png')}}" rel="shortcut icon" /> 
+
+  {{-- Toast --}}
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 </head>
 
@@ -42,15 +51,12 @@
 				<div class="ec-brand">
 					<a href="index.html" title="Ekka">
 						<img class="ec-brand-icon" src="{{asset('assets/admin/img/logo/ec-site-logo.png')}}" alt="" />
-						<!-- <span class="ec-brand-name text-truncate">E</span> -->
 					</a>
 				</div>
 
 				<!-- begin sidebar scrollbar -->
 				<div class="ec-navigation" data-simplebar>
-					<!-- sidebar menu -->
 					<ul class="nav sidebar-inner" id="sidebar-menu">
-						<!-- Dashboard -->
 						<li class="active">
 							<a class="sidenav-item-link" href="index.html">
 								<i class="mdi mdi-view-dashboard-outline"></i>
@@ -59,49 +65,71 @@
 							<hr>
 						</li>
 
-						
-
-						<!-- Users -->
+						<!-- Category -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-account-group"></i>
-								<span class="nav-text">Users</span> <b class="caret"></b>
+								<i class="mdi mdi-dns-outline"></i>
+								<span class="nav-text">KnowledgeHub</span>  
+								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+								 </svg>
 							</a>
 							<div class="collapse">
-								<ul class="sub-menu" id="users" data-parent="#sidebar-menu">
-									<li>
-										<a class="sidenav-item-link" href="user-card.html">
-											<span class="nav-text">User Grid</span>
+								<ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.blog')}}">
+											<span class="nav-text">Blog</span>
+										</a>
+									</li>
+
+									
+
+
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.video')}}">
+											<span class="nav-text">Video</span>
 										</a>
 									</li>
 
 									<li class="">
-										<a class="sidenav-item-link" href="user-list.html">
-											<span class="nav-text">User List</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="user-profile.html">
-											<span class="nav-text">Users Profile</span>
+										<a class="sidenav-item-link" href="{{ route ('admin.pdf')}}">
+											<span class="nav-text">PDF</span>
 										</a>
 									</li>
 								</ul>
 							</div>
-							<hr>
 						</li>
 
-				
-
-						<!-- Other Pages -->
+						<!-- Products -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-image-filter-none"></i>
-								<span class="nav-text">Other Pages</span> <b class="caret"></b>
+								<i class="mdi mdi-palette-advanced"></i>
+								<span class="nav-text">Products</span> 
+								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+								 </svg>
 							</a>
 							<div class="collapse">
-								<ul class="sub-menu" id="otherpages" data-parent="#sidebar-menu">
-									<li class="has-sub">
-										<a href="404.html">404 Page</a>
+								<ul class="sub-menu" id="products" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="product-add.html">
+											<span class="nav-text">Add Product</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="product-list.html">
+											<span class="nav-text">List Product</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="product-grid.html">
+											<span class="nav-text">Grid Product</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="product-detail.html">
+											<span class="nav-text">Product Detail</span>
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -113,77 +141,46 @@
 
 		<!--  PAGE WRAPPER -->
 		<div class="ec-page-wrapper">
+		<!-- Header -->
+		<header class="ec-main-header" id="header">
+			<nav class="navbar navbar-static-top navbar-expand-lg">
+				<div class="search-form d-lg-inline-block">
+					<div class="input-group">
+						<input type="text" name="query" id="search-input" class="form-control"
+							placeholder="search.." autofocus autocomplete="off" />
+						<button type="button" name="search" id="search-btn" class="btn btn-flat">
+							<i class="mdi mdi-magnify"></i>
+						</button>
+					</div>
+					<div id="search-results-container">
+						<ul id="search-results"></ul>
+					</div>
+				</div>
 
-			<!-- Header -->
-			<header class="ec-main-header" id="header">
-				<nav class="navbar navbar-static-top navbar-expand-lg">
-					<!-- Sidebar toggle button -->
-					<button id="sidebar-toggler" class="sidebar-toggle"></button>
-					<!-- search form -->
-					<div class="search-form d-lg-inline-block">
-						<div class="input-group">
-							<input type="text" name="query" id="search-input" class="form-control"
-								placeholder="search.." autofocus autocomplete="off" />
-							<button type="button" name="search" id="search-btn" class="btn btn-flat">
-								<i class="mdi mdi-magnify"></i>
+				<div class="navbar-right">
+					<ul class="nav navbar-nav">
+						<li class="dropdown user-menu">
+							<button class="nav-link ec-drop" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<a class="dropdown-item" href="{{ route('admin.logout') }}">
+									 {{ __('Logout') }}
+								 </a>
 							</button>
-						</div>
-						<div id="search-results-container">
-							<ul id="search-results"></ul>
-						</div>
-					</div>
+							
+						</li>
+					
+						<li class="right-sidebar-in right-sidebar-2-menu">
+							<i class="mdi mdi-settings-outline mdi-spin"></i>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 
-					<!-- navbar right -->
-					<div class="navbar-right">
-						<ul class="nav navbar-nav">
-							<!-- User Account -->
-							<li class="dropdown user-menu">
-								<button class="nav-link ec-drop" data-bs-toggle="dropdown"
-									aria-expanded="false">
-									<a class="dropdown-item" href="{{ route('admin.logout') }}">
-										 {{ __('Logout') }}
-									 </a>
-									 {{-- <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form> --}}
-								</button>
-								
-							</li>
-						
-							<li class="right-sidebar-in right-sidebar-2-menu">
-								<i class="mdi mdi-settings-outline mdi-spin"></i>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</header>
+			<!-- CONTENT WRAPPER -->
+			@yield('content')
 
-
-
-
-
-
-
-
-            @yield('content')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- Footer -->
+			<!-- Footer -->
 			<footer class="footer mt-auto">
 				<div class="copyright bg-white">
 					<p>
@@ -197,30 +194,92 @@
 	</div> <!-- End Wrapper -->
 
 	<!-- Common Javascript -->
-	<script src=" {{asset('assets/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
-	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-	<script src="{{asset('assets/plugins/simplebar/simplebar.min.js')}}"></script>
-	<script src="{{asset('assets/plugins/jquery-zoom/jquery.zoom.min.js')}}"></script>
-	<script src="{{asset('assets/plugins/slick/slick.min.js')}}"></script>
-
-	<!-- Chart -->
-	<script src="{{asset('assets/plugins/charts/Chart.min.js')}}"></script>
-	<script src="{{asset('assets/js/chart.js')}}"></script>
-
-	<!-- Google map chart -->
-	<script src="{{asset('assets/plugins/charts/google-map-loader.js')}}"></script>
-	<script src="{{asset('assets/plugins/charts/google-map.js')}}"></script>
-
-	<!-- Date Range Picker -->
-	<script src="{{asset('assets/plugins/daterangepicker/moment.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
-	<script src="{{asset('assets/js/date-range.js')}}"></script>
-
-	<!-- Option Switcher -->
-	<script src="{{asset('assets/plugins/options-sidebar/optionswitcher.js')}}"></script>
+	<script src=" {{asset('assets/admin/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
+	<script src="{{asset('assets/admin/js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{asset('assets/admin/plugins/simplebar/simplebar.min.js')}}"></script>
+	<script src="{{asset('assets/admin/plugins/jquery-zoom/jquery.zoom.min.js')}}"></script>
+	<script src="{{asset('assets/admin/plugins/slick/slick.min.js')}}"></script>
 
 	<!-- Ekka Custom -->
-	<script src="{{asset('assets/js/ekka.js')}}"></script>
+	<script src="{{asset('assets/admin/js/ekka.js')}}"></script>
+
+	 {{-- Toast --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+	<!-- Datatables -->
+	<script src='{{asset('assets/admin/plugins/data-tables/jquery.datatables.min.js')}}'></script>
+	<script src='{{asset('assets/admin/plugins/data-tables/datatables.bootstrap5.min.js')}}'></script>
+	<script src='{{asset('assets/admin/plugins/data-tables/datatables.responsive.min.js')}}'></script>
+
+
+	{{-- Editor jS --}}
+	<script>
+		tinymce.init({
+		  selector: 'textarea#file-picker',
+		  plugins: 'image code',
+		  toolbar: 'undo redo | link image | code',
+		  image_title: true,
+		  automatic_uploads: true,
+		  file_picker_types: 'image',
+		  file_picker_callback: function (cb, value, meta) {
+			var input = document.createElement('input');
+			input.setAttribute('type', 'file');
+			input.setAttribute('accept', 'image/*');
+	
+			input.onchange = function () {
+			  var file = this.files[0];
+	
+			  var reader = new FileReader();
+			  reader.onload = function () {
+				var id = 'blobid' + (new Date()).getTime();
+				var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+				var base64 = reader.result.split(',')[1];
+				var blobInfo = blobCache.create(id, file, base64);
+				blobCache.add(blobInfo);
+				cb(blobInfo.blobUri(), { title: file.name });
+			  };
+			  reader.readAsDataURL(file);
+			};
+			input.click();
+		  },
+		  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+		});
+	  </script>
+	{{-- Editor jS --}}
+
+
+	{{-- Toastr --}}
+	<script>
+		toastr.options = {
+		"closeButton": true,
+		"progressBar": true
+	}
+
+	@if(Session::has('message'))
+		toastr.success("{{ session('message') }}");
+	@endif
+
+	@if(Session::has('error'))
+		toastr.error("{{ session('error') }}");
+	@endif
+
+	@if(Session::has('info'))
+		toastr.info("{{ session('info') }}");
+	@endif
+
+	@if(Session::has('warning'))
+		toastr.warning("{{ session('warning') }}");
+	@endif
+
+	@if ($errors->any())
+		@foreach ($errors->all() as $error)
+			toastr.error("{{ $error }}");
+		@endforeach
+	@endif
+	</script>
+
 </body>
 
 
