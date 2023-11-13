@@ -6,6 +6,7 @@ use App\Models\PDF;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\{Vehicle};
 
 class HomeController extends Controller
 {
@@ -31,7 +32,8 @@ class HomeController extends Controller
 
     public function evlisting()
     {
-        return view('front.evlisting');
+        $vehicles = Vehicle::with('gallery')->orderBy('id', 'desc')->paginate(12);
+        return view('front.evlisting', compact('vehicles'));
     }
 
     public function pdfDownload()
