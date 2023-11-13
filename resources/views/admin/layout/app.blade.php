@@ -20,12 +20,18 @@
         integrity="sha512-nRzny9w0V2Y1/APe+iEhKAwGAc+K8QYCw4vJek3zXhdn92HtKt226zHs9id8eUq+uYJKaH2gPyuLcaG/dE5c7A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+	  <!-- Include TinyMCE library -->
+	   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	  <!-- Include TinyMCE library -->
+
 	<!-- PLUGINS CSS STYLE -->
-	<link href="assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
-	<link href="assets/plugins/simplebar/simplebar.css" rel="stylesheet" />
+	<link href="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/admin/plugins/simplebar/simplebar.css')}}" rel="stylesheet" />
+	<link href='{{asset('assets/admin/plugins/data-tables/datatables.bootstrap5.min.css')}}' rel='stylesheet'>
+	<link href='{{asset('assets/admin/plugins/data-tables/responsive.datatables.min.css')}}' rel='stylesheet'>
 
 	<!-- Ekka CSS -->
-	<link id="ekka-css" rel="stylesheet" href="{{asset('assets/admin/css/ekka.css')}}">
+	<link id="ekka-css" href="{{asset('assets/admin/css/ekka.css')}}" rel="stylesheet" />
 
 	<!-- FAVICON -->
 	<link href="{{ asset('assets/admin/img/favicon.png') }}" rel="shortcut icon" />
@@ -62,15 +68,12 @@
 				<div class="ec-brand">
 					<a href="{{ url('admin/dashboard') }}" title="Ekka">
 						<img class="ec-brand-icon" src="{{asset('assets/admin/img/logo/ec-site-logo.png')}}" alt="" />
-						<!-- <span class="ec-brand-name text-truncate">E</span> -->
 					</a>
 				</div>
 
 				<!-- begin sidebar scrollbar -->
 				<div class="ec-navigation" data-simplebar>
-					<!-- sidebar menu -->
 					<ul class="nav sidebar-inner" id="sidebar-menu">
-						<!-- Dashboard -->
 						<li class="active">
 							<a class="sidenav-item-link" href="{{ url('admin/dashboard') }}">
 								<i class="mdi mdi-view-dashboard-outline"></i>
@@ -83,30 +86,36 @@
 						<!-- Users -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-account-group"></i>
-								<span class="nav-text">Users</span> <b class="caret"></b>
+								<i class="mdi mdi-dns-outline"></i>
+								<span class="nav-text">KnowledgeHub</span>  
+								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+								 </svg>
 							</a>
 							<div class="collapse">
-								<ul class="sub-menu" id="users" data-parent="#sidebar-menu">
-									<li>
-										<a class="sidenav-item-link" href="user-card.html">
-											<span class="nav-text">User Grid</span>
+								<ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.blog')}}">
+											<span class="nav-text">Blog</span>
+										</a>
+									</li>
+
+									
+
+
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.video')}}">
+											<span class="nav-text">Video</span>
 										</a>
 									</li>
 
 									<li class="">
-										<a class="sidenav-item-link" href="user-list.html">
-											<span class="nav-text">User List</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="user-profile.html">
-											<span class="nav-text">Users Profile</span>
+										<a class="sidenav-item-link" href="{{ route ('admin.pdf')}}">
+											<span class="nav-text">PDF</span>
 										</a>
 									</li>
 								</ul>
 							</div>
-							<hr>
 						</li>
 
 						<!-- Other Pages -->
@@ -115,6 +124,39 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">Vehicals</span> <b class="caret"></b>
 							</a>
+						<!-- Products -->
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-palette-advanced"></i>
+								<span class="nav-text">Products</span> 
+								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+								 </svg>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="products" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="product-add.html">
+											<span class="nav-text">Add Product</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="product-list.html">
+											<span class="nav-text">List Product</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="product-grid.html">
+											<span class="nav-text">Grid Product</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="product-detail.html">
+											<span class="nav-text">Product Detail</span>
+										</a>
+									</li>
+								</ul>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -123,52 +165,44 @@
 
 		<!--  PAGE WRAPPER -->
 		<div class="ec-page-wrapper">
+		<!-- Header -->
+		<header class="ec-main-header" id="header">
+			<nav class="navbar navbar-static-top navbar-expand-lg">
+				<div class="search-form d-lg-inline-block">
+					<div class="input-group">
+						<input type="text" name="query" id="search-input" class="form-control"
+							placeholder="search.." autofocus autocomplete="off" />
+						<button type="button" name="search" id="search-btn" class="btn btn-flat">
+							<i class="mdi mdi-magnify"></i>
+						</button>
+					</div>
+					<div id="search-results-container">
+						<ul id="search-results"></ul>
+					</div>
+				</div>
 
-			<!-- Header -->
-			<header class="ec-main-header" id="header">
-				<nav class="navbar navbar-static-top navbar-expand-lg">
-					<!-- Sidebar toggle button -->
-					<button id="sidebar-toggler" class="sidebar-toggle"></button>
-					<!-- search form -->
-					<div class="search-form d-lg-inline-block">
-						<div class="input-group">
-							<input type="text" name="query" id="search-input" class="form-control"
-								placeholder="search.." autofocus autocomplete="off" />
-							<button type="button" name="search" id="search-btn" class="btn btn-flat">
-								<i class="mdi mdi-magnify"></i>
+				<div class="navbar-right">
+					<ul class="nav navbar-nav">
+						<li class="dropdown user-menu">
+							<button class="nav-link ec-drop" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<a class="dropdown-item" href="{{ route('admin.logout') }}">
+									 {{ __('Logout') }}
+								 </a>
 							</button>
-						</div>
-						<div id="search-results-container">
-							<ul id="search-results"></ul>
-						</div>
-					</div>
+							
+						</li>
+					
+						<li class="right-sidebar-in right-sidebar-2-menu">
+							<i class="mdi mdi-settings-outline mdi-spin"></i>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 
-					<!-- navbar right -->
-					<div class="navbar-right">
-						<ul class="nav navbar-nav">
-							<!-- User Account -->
-							<li class="dropdown user-menu">
-								<button class="nav-link ec-drop" data-bs-toggle="dropdown"
-									aria-expanded="false">
-									<a class="dropdown-item" href="{{ route('admin.logout') }}">
-										 {{ __('Logout') }}
-									 </a>
-									 {{-- <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form> --}}
-								</button>
-								
-							</li>
-						
-							<li class="right-sidebar-in right-sidebar-2-menu">
-								<i class="mdi mdi-settings-outline mdi-spin"></i>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</header>
-
-            @yield('content')
+			<!-- CONTENT WRAPPER -->
+			@yield('content')
 
             <!-- Footer -->
 			<footer class="footer mt-auto">
@@ -226,6 +260,8 @@
 
 	@if(Session::has('success'))
 		toastr.success("{{ session('success') }}");
+	@if(Session::has('message'))
+		toastr.success("{{ session('message') }}");
 	@endif
 
 	@if(Session::has('error'))

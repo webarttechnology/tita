@@ -24,87 +24,19 @@
 <section class="pdf-download-sec">
     <div class="container-fluid">
         <div class="row">
+            @foreach ($pdfs as $pdf)
             <div class="col-md-3 mb-3">
                 <div class="pdf-card">
                     <div class="pdf-thumb">
                         <img src="./assets/images/PDF_icon.png" alt="">
                     </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
+                    <h3>{{ $pdf->title}}</h3>
+                    <a download="{{$pdf->title}}.pdf" href="{{ asset($pdf->pdf) }}" class="btn btn-theme" download>Download <i
                             class="bi bi-file-earmark-arrow-down"></i></a>
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="pdf-card">
-                    <div class="pdf-thumb">
-                        <img src="./assets/images/PDF_icon.png" alt="">
-                    </div>
-                    <h3>Car Model PDF</h3>
-                    <a href="./assets/pdf/sample.pdf" class="btn btn-theme" download>Download <i
-                            class="bi bi-file-earmark-arrow-down"></i></a>
-                </div>
-            </div>
-        </div>
+            @endforeach
+       </div>
     </div>
 </section>
 <!-- ======== Tanmoy END ======== -->

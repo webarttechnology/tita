@@ -1,7 +1,5 @@
-@extends('front.layouts.app')
-@section('content')
-
-<!-- ======== Tanmoy ======== -->
+<!-- Header -->
+<?php include "header.php" ?>
 
 <section class="carlisting listpage">
     <div class="carlistbanner">
@@ -127,4 +125,6 @@
 <!-- car listing END -->
 <!-- ======== Tanmoy END ======== -->
 
-@endsection
+
+<!--- footer -->
+<?php include "footer.php" ?>

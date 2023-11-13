@@ -17978,6 +17978,7 @@ a.badge-purple:focus, a.badge-purple.focus {
   border-radius: 15px;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.03);
           box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.03);
+          
 }
 .card .card-header h2, .card .card-header .h2 {
   color: #56606e;
@@ -21221,6 +21222,8 @@ div.copied {
   margin-right: auto;
   overflow: hidden;
   max-width: 130px;
+  color: black;
+  font-size: 15px;  
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -21849,6 +21852,7 @@ div.copied {
 /* Sidebar Light */
 .ec-sidebar-light .ec-left-sidebar {
   background-color: #ffffff;
+  /* width: 255px; */
 }
 .ec-sidebar-light .sidebar {
   border-right: 1px solid #f3f3f3;
@@ -24592,6 +24596,25 @@ div.dataTables_wrapper div.dataTables_filter {
           flex: 0 0 auto;
   width: 50%;
 }
+
+
+/* Admin Menu arrow */
+.arrow {
+  margin-left: 10px;
+  margin-right: 10px;
+  float: right;
+  rotate: 180deg;
+}
+
+.selected-display {
+  margin-left: 20px;
+}
+
+svg {
+  transition: all 0.3s;
+}
+/* Admin Menu arrow */
+
 
 /*===== WIDGETS =====*/
 .profile-content .profile-left-spacing {

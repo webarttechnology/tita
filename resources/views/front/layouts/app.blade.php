@@ -64,6 +64,9 @@
                         <a class="nav-link" href="{{route('pdf_download')}}">PDF</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('registration')}}">Registration</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('blog')}}">Blog</a>
                     </li>
                 </ul>
