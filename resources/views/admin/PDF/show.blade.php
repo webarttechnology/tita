@@ -32,7 +32,7 @@
                                         
                                         <tr>
                                             <td>{{ $pdf->title}}</td>
-                                            <td><a download="{{$pdf->title}}.pdf" href="{{ asset($pdf->pdf) }}">Download </a></td>
+                                            <td><a download="{{$pdf->title}}.pdf" href="{{ asset('uploads/pdf/' . $pdf->pdf) }}">Download </a></td>
                                             
                                             <td>
                                                 <div class="btn-group mb-1">

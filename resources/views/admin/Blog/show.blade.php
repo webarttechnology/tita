@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>{{ $blog->category}}</td>
                                             <td>{{ $blog->title}}</td>
-                                            <td><img src="{{ asset($blog->image) }}" alt="Your Image" width="100px"></td>
+                                            <td><img src="{{ asset('uploads/blog/'. $blog->image) }}" alt="Your Image" width="100px"></td>
                                             <td><?php echo htmlspecialchars_decode(Str::limit($blog->description, 200, $end='..')) ?></td>
                                             <td>{{ $blog->created_at->format('F j, Y') }}</td>
                                             <td>

@@ -259,7 +259,7 @@
 	}
 
 	@if(Session::has('success'))
-		toastr.success("{{ session('success') }}");
+		toastr.success("{{ session('success') }}");@endif
 	@if(Session::has('message'))
 		toastr.success("{{ session('message') }}");
 	@endif
