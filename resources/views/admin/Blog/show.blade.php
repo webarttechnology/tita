@@ -31,8 +31,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $data as $blog )
-                                        
+                                        @foreach ( $data as $blog )                                        
                                         <tr>
                                             <td>{{ $blog->category}}</td>
                                             <td>{{ $blog->title}}</td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Models\PDF;
 use App\Models\Blog;
+use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class HomeController extends Controller
 
     public function video()
     {
-        return view('front.video');
+        $videos = Video::get();
+        return view('front.video', compact('videos'));
     }
 
     public function booking()

@@ -27,56 +27,14 @@
         <div class="vid-slider">
             <div class="vid-wrapper">
                 <div class="row">
+                    @foreach ( $videos as $video )
                     <div class="col-md-4">
                         <div class="vid item">
-                            <iframe src="https://www.youtube.com/embed/9xwazD5SyVg" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h2 class="vid-head">VIDEO NAME</h2>
+                            <iframe width="560" height="315" src="{{$video->video_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <h2 class="vid-head">{{ $video->title}}</h2>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="vid item">
-                            <iframe src="https://www.youtube.com/embed/MtN1YnoL46Q" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h2 class="vid-head">VIDEO NAME</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="vid item">
-                            <iframe src="https://www.youtube.com/embed/MtN1YnoL46Q" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h2 class="vid-head">VIDEO NAME</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-md-4">
-                        <div class="vid item">
-                            <iframe src="https://www.youtube.com/embed/9xwazD5SyVg" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h2 class="vid-head">VIDEO NAME</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="vid item">
-                            <iframe src="https://www.youtube.com/embed/MtN1YnoL46Q" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h2 class="vid-head">VIDEO NAME</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="vid item">
-                            <iframe src="https://www.youtube.com/embed/MtN1YnoL46Q" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <h2 class="vid-head">VIDEO NAME</h2>
-                        </div>
-                    </div>
+                    </div> 
+                    @endforeach              
                 </div>
             </div>
         </div>
