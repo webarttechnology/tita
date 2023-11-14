@@ -12,6 +12,7 @@ class InstallerAvailableLocation extends Model
     protected $table = "installer_available_locations";
     protected $fillable = [
         'installer_id',
+        'installer_location_id',
         'zip'
     ];
 

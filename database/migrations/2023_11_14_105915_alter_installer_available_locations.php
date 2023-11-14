@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('installer_available_locations', function (Blueprint $table) {
-            $table->id();
-            $table->text('installer_location_id');
-            $table->text('zip');
-            $table->timestamps();
+        //
+        Schema::table('installer_available_locations', function (Blueprint $table) {
+            $table->text('location_id')->nullable()->after('zip');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('installer_available_locations');
+        //
     }
 };
