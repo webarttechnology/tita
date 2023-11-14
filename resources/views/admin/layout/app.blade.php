@@ -184,12 +184,9 @@
 				<div class="navbar-right">
 					<ul class="nav navbar-nav">
 						<li class="dropdown user-menu">
-							<button class="nav-link ec-drop" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<a class="dropdown-item" href="{{ route('admin.logout') }}">
-									 {{ __('Logout') }}
-								 </a>
-							</button>
+							<a class="nav-link" href="{{ route('admin.logout') }}">
+									{{ __('Logout') }}
+								</a>
 							
 						</li>
 					
