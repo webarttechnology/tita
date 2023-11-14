@@ -91,6 +91,13 @@
 							</a>
                         </li>
 						
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ url('installer/location') }}">
+								<i class="mdi mdi-account"></i>
+								<span class="nav-text">Location</span> <b class="caret"></b>
+							</a>
+                        </li>
+						
 					</ul>
 				</div>
 			</div>

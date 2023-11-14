@@ -21708,7 +21708,7 @@ div.copied {
 /* Sidebar Collapse */
 @media (min-width: 768px) {
   .sidebar-collapse .ec-left-sidebar {
-    margin-left: -15.6rem;
+    /* margin-left: -15.6rem; */
     -webkit-transition: margin-left 0.3s ease-in-out;
     transition: margin-left 0.3s ease-in-out;
   }
@@ -21760,7 +21760,7 @@ div.copied {
 }
 
 .sidebar-collapse.ec-header-fixed .ec-page-wrapper .ec-main-header {
-  padding-left: 0;
+  /* padding-left: 0; */
   -webkit-transition: padding-left 0.3s ease-in-out;
   transition: padding-left 0.3s ease-in-out;
 }

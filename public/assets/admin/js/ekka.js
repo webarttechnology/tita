@@ -102,18 +102,18 @@ $(document).ready(function () {
         $(this)
           .addClass("sidebar-offcanvas-toggle")
           .removeClass("sidebar-toggle");
-        if (window.isCollapsed === false) {
-          body.addClass("sidebar-collapse");
-          window.isCollapsed = true;
-          window.isMinified = false;
-        } else {
-          body.removeClass("sidebar-collapse");
-          body.addClass("sidebar-collapse-out");
-          setTimeout(function () {
-            body.removeClass("sidebar-collapse-out");
-          }, 300);
-          window.isCollapsed = false;
-        }
+        // if (window.isCollapsed === false) {
+        //   body.addClass("sidebar-collapse");
+        //   window.isCollapsed = true;
+        //   window.isMinified = false;
+        // } else {
+        //   body.removeClass("sidebar-collapse");
+        //   body.addClass("sidebar-collapse-out");
+        //   setTimeout(function () {
+        //     body.removeClass("sidebar-collapse-out");
+        //   }, 300);
+        //   window.isCollapsed = false;
+        // }
       }
 
       if (

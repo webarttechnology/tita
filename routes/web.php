@@ -13,6 +13,7 @@ use App\Http\Controllers\front\InstallerController;
 
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
+use App\Http\Controllers\installer\InstallerLocationManageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,11 @@ Route::prefix('installer')->group(function () {
               Route::get('my-account', 'account');
               Route::post('edit/profile', 'profile_edit');
               Route::post('change/password', 'change_password');
+        });
+
+        Route::controller(InstallerLocationManageController::class)->group(function () {
+              Route::get('location', 'location');
+              Route::post('location-save/{type}', 'location_save');
         });
     });
 });
