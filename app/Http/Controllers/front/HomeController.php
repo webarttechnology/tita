@@ -37,6 +37,11 @@ class HomeController extends Controller
         $vehicles = Vehicle::with('gallery')->orderBy('id', 'desc')->paginate(12);
         return view('front.evlisting', compact('vehicles'));
     }
+    
+    public function evlisting_details($id){
+          $vehicle = Vehicle::with('gallery', 'color', 'feature')->whereId($id)->first();
+          return view('front.ev_details', compact('vehicle'));
+    }
 
     public function pdfDownload()
     {

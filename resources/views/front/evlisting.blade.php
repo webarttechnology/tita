@@ -16,109 +16,30 @@
 <section class="carList">
     <div class="container">
         <div class="row">
+
+         @foreach($vehicles as $vehicle)
             <div class="col-sm-6 col-md-3">
                 <div class="viewcarimg">
-                    <a href="#">
-                        <img src="./assets/images/viewcar1.png" alt="" class="img-fluid">
-                        <h4>BMW iX <span>2023</span></h4>
-                        <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
+                    <a href="{{ url('ev-listing/details', $vehicle->id) }}">
+                        <img src="{{ asset('uploads/vehicle_gallery/'.$vehicle->gallery[0]->img) }}" alt="" class="img-fluid">
+                        <h4>{{ $vehicle->name }} <span>{{ $vehicle->year_of_launch }}</span></h4>
+                        <p>{{ $vehicle->distance }} <span class="dividing">|</span> <span class="bold">{{ $vehicle->range }}</span> </p>
                         <div class="btnbox btn-red"> 
                             Enquiry Now <i class="bi bi-chevron-double-right"></i>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar2.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar3.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar4.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar1.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar2.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar3.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="viewcarimg">
-                <a href="#">
-                    <img src="./assets/images/viewcar4.png" alt="" class="img-fluid">
-                    <h4>BMW iX <span>2023</span></h4>
-                    <p>324 miles <span class="dividing">|</span> <span class="bold">CCS Connector</span> </p>
-                    <div class="btnbox btn-red"> 
-                            Enquiry Now <i class="bi bi-chevron-double-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
+         @endforeach
+
 
             <div class="col-12">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                    <li>{{ $vehicles->links() }}</li>
+                    {{-- <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
                     <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
                     <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li> --}}
                 </ul>
             </div>
         </div>

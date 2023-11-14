@@ -80,14 +80,15 @@ class VehicleManageController extends Controller
          * Add Features 
         */
 
-        if($request->features != null){
               foreach($request->features as $feature){
-                VehicleFeature::create([
-                    'vehicle_id' => $vehicle->id,
-                    'feature' => $feature,
-                ]);
+                if($feature != null){
+                    VehicleFeature::create([
+                        'vehicle_id' => $vehicle->id,
+                        'feature' => $feature,
+                    ]);
+                }
               }
-        }
+       
 
         return redirect('admin/vehicle/list')->with('success', 'Vehicle Added Successfully');
     }
