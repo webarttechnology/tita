@@ -25,37 +25,45 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-6">
-                <form action="">
+                <form action="{{ route ('installer_registration')}}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-12">
-                            <div class="">
-                                <input type="text" placeholder="Name" class="form-control shadow-none">
-                            </div>
+                            <input type="text" placeholder="Name" class="form-control shadow-none" name="name">
+                                <div class="validation-error">
+                                    @error('name')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>    
                         </div>
                         <div class="col-12">
-                            <div class="">
-                                <input type="email" placeholder="Email" class="form-control shadow-none">
-                            </div>
+                            <input type="email" placeholder="Email" class="form-control shadow-none" name="email">
+                                <div class="validation-error">
+                                    @error('email')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
                         </div>
                         <div class="col-12">
-                            <div class="">
-                                <input type="text" placeholder="Phone No." class="form-control shadow-none">
-                            </div>
+                            <input type="number" placeholder="Phone No." class="form-control shadow-none" name="number">
+                                <div class="validation-error">
+                                    @error('number')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
                         </div>
                         <div class="col-12">
-                            <div class="">
-                                <input type="password" placeholder="Password" class="form-control shadow-none">
-                            </div>
+                             <input type="password" placeholder="Password" class="form-control shadow-none" name="password">
+                                <div class="validation-error">
+                                    @error('password')
+                                    <p>{{ $message }}</p>
+                                @enderror
+                                </div>
+                            
                         </div>
+                       
                         <div class="col-12">
-                            <div class="">
-                                <input type="password" placeholder="Confirm passwords" class="form-control shadow-none">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="">
-                            <input type="button" value="Submit" class="submitBtn">
-                            </div>
+                            <input type="submit" value="Submit" class="submitBtn">
                         </div>
                     </div>
                 </form>

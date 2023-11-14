@@ -2264,7 +2264,9 @@ transform: scale(1.03);
 }
 
 
-
+.validation-error{
+  color: red;
+}
 
 
 

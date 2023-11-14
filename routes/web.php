@@ -1,12 +1,17 @@
 <?php
 
-use App\Http\Controllers\front\HomeController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\PDFController;
 use App\Http\Controllers\admin\AuthManageController;
 use App\Http\Controllers\admin\VehicleManageController;
+
+
+
+use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\InstallerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +33,7 @@ Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_d
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'singleBlog'])->name('single_blog');
 Route::get('/registration', [HomeController::class, 'registration'])->name('registration');
+Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
