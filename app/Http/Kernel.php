@@ -67,5 +67,8 @@ class Kernel extends HttpKernel
 
         // admin middleware
         'admin.auth' => \App\Http\Middleware\AdminAuthManageMiddleware::class,
+
+        // installer middleware
+        'installer.auth' => \App\Http\Middleware\InstallerAuthManageMiddleware::class,
     ];
 }

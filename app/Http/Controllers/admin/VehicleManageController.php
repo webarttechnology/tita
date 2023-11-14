@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\admin\ImageUploadHelpController;
 use App\Models\{Vehicle, ChooseColor, VehicleColor, VehicleGallery, VehicleFeature};
 
 class VehicleManageController extends Controller

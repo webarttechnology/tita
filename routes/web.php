@@ -8,10 +8,11 @@ use App\Http\Controllers\admin\PDFController;
 use App\Http\Controllers\admin\AuthManageController;
 use App\Http\Controllers\admin\VehicleManageController;
 
-
-
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\InstallerController;
+
+use App\Http\Controllers\installer\InstallerAuthManageController;
+use App\Http\Controllers\installer\InstallerAccountManageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
 
+
+/**
+ * Admin Section
+*/
 
 Route::prefix('admin')->group(function () {
     //Home Page ->middleware(['auth'])
@@ -100,4 +105,37 @@ Route::prefix('admin')->group(function () {
 
     });
 
+});
+
+
+/**
+ * Installer section
+*/
+
+Route::prefix('installer')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('installer.login');
+    });
+
+    Route::controller(InstallerAuthManageController::class)->group(function () {
+        Route::get('login', 'login')->name('installer.login');
+        Route::post('login-action', 'login_action');
+    });
+
+    /**
+     * Installer Middleware
+    */
+
+    Route::middleware(['installer.auth'])->group(function () {
+        Route::controller(InstallerAuthManageController::class)->group(function () {
+            Route::get('dashboard', 'dashboard');
+            Route::get('logout', 'logout')->name('installer.logout');
+        });
+
+        Route::controller(InstallerAccountManageController::class)->group(function () {
+              Route::get('my-account', 'account');
+              Route::post('edit/profile', 'profile_edit');
+              Route::post('change/password', 'change_password');
+        });
+    });
 });

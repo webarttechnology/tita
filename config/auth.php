@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'installer' => [
+            'driver' => 'session',
+            'provider' => 'installers',
+        ],
     ],
 
     /*
@@ -71,6 +75,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'installers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Installer::class,
         ],
 
         // 'users' => [
@@ -107,6 +115,12 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'installers' => [
+            'provider' => 'installers',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
