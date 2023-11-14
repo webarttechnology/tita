@@ -20104,6 +20104,7 @@ div.copied {
   padding-left: 0;
   background-color: #f7f7f7;
   border-radius: 15px;
+  margin-left: 25px;
 }
 @media (min-width: 1500px) {
   .navbar .search-form {
@@ -20576,7 +20577,7 @@ div.copied {
 
 /* light Header */
 .ec-header-light .navbar {
-  background-color: #ffffff;
+  background-color: #1a283e;
 }
 .ec-header-light .navbar .sidebar-toggle {
   border-color: #f3f3f3;
@@ -21222,7 +21223,7 @@ div.copied {
   margin-right: auto;
   overflow: hidden;
   max-width: 130px;
-  color: black;
+  color: white;
   font-size: 15px;  
   text-overflow: ellipsis;
   white-space: nowrap;
