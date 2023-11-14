@@ -58,12 +58,16 @@
                                     @error('password')
                                     <p>{{ $message }}</p>
                                 @enderror
-                                </div>
-                            
+                                </div>                            
                         </div>
                        
                         <div class="col-12">
                             <input type="submit" value="Submit" class="submitBtn">
+                        </div>
+                        <div>
+                            @if(Session::has('message'))
+                                <p style="color: green">{{ Session::get('message') }}</p>
+                            @endif
                         </div>
                     </div>
                 </form>
