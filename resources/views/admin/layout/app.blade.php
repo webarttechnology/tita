@@ -56,6 +56,7 @@
 
 	<!-- font-awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 </head>
 
 <body class="ec-header-fixed ec-sidebar-fixed ec-sidebar-light ec-header-light" id="body">
@@ -167,12 +168,7 @@
 								<span class="nav-text">Registration Installer</span> <b class="caret"></b>
 							</a>
 						</li>
-						<li class="has-sub">
-							<a class="sidenav-item-link" href="{{ route('admin.contact_us') }}">
-								<i class="mdi mdi-image-filter-none"></i>
-								<span class="nav-text">Contact Information</span> <b class="caret"></b>
-							</a>
-						</li>
+					
 					</ul>
 				</div>
 			</div>

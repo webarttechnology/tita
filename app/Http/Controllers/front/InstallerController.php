@@ -102,5 +102,10 @@ class InstallerController extends Controller
         
         return redirect()->back()->with('message', 'Your Message Sent Successfully!!!');
     }
+
+    public function details($id)
+    {
+        return Installer::with('reports')->where('id', $id)->first();
+    }
     
 }

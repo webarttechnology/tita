@@ -35,9 +35,10 @@
                                                 <td>{{ $installers->email}}</td>
                                                 <td>{{ $installers->phone_number}}</td>
                                                 <td>
-                                                    @foreach ($installers->reports as $report)
+                                                    <a class="btn btn-primary text-white my-1 mx-1 details-view"  data-id="{{$installers->id}}">View</a>
+                                                    {{-- @foreach ($installers->reports as $report)
                                                         {{ $report->message }}
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </td>
                                                 <td class="status-column" data-installer-id="{{ $installers->id }}" data-approvel-status="{{ $installers->approvel_by_admin }}">
                                                     {{ $installers->approvel_by_admin}}
@@ -61,6 +62,40 @@
                                             @endforeach
                                     </tbody>
                                 </table>
+
+                            <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <div class="modal-body">
+                                        <div clss="row">
+                                            <div class="col-md-12 mb-3">
+                                                <strong> Name:</strong>
+                                                <span id="name"></span>
+                                            </div>
+                                            <div class="col-md-12 mb-3">
+                                                <strong>Email:</strong> 
+                                                <span id="email"></span>
+                                            </div>
+                                            <div class="col-md-12 mb-3">
+                                                <strong>Message:</strong> 
+                                                <span id="message"></span>
+                                            </div>                                                           
+                                        </div>
+                                    </div>
+                                  </div>
+                            </div>
+
+                                <!-- The modal HTML structure -->
+                                @foreach ($data as $installers)
+                                <div id="myModal-{{ $installers->id }}" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <p>Some text in the Modal..</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -75,7 +110,10 @@
 
 
     <script>
-       $(document).ready(function () {
+       $(document).ready(function () 
+       {
+
+        // {{-- Click on approve and reject button --}}
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $('.approve, .reject').on('click', function (e) {
@@ -111,8 +149,60 @@
                 },
             });
         });
+        // {{-- Click on approve and reject button --}}
     });
 
     </script>
+
+
+<!-- ... (your HTML code) ... -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var buttons = document.querySelectorAll('.details-view');
+    
+        // Attach click event listeners to each button
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var modalId = this.getAttribute('data-id');    
+                var modal = document.getElementById('myModal-' + modalId);
+                modal.style.display = 'block';
+            });
+        });
+    
+        // Get all elements with the class 'modal'
+        var modals = document.querySelectorAll('.modal');
+    
+        // Attach click event listeners to each modal's close button
+        modals.forEach(function(modal) {
+            var closeButton = modal.querySelector('.close');
+    
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    // Close the modal when the close button is clicked
+                    modal.style.display = 'none';
+                });
+            }
+    
+            // Attach click event listener to close the modal when clicking outside of it
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    });
+    </script>
+    
+    <!-- ... (rest of your HTML code) ... -->
+    
+
+    
+
+
+
+
+
+
 
 

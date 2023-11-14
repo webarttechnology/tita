@@ -82,24 +82,44 @@
                             <div class="mb-3">
                                 <label>Name</label>
                                 <input type="text" class="form-control" placeholder="Name" name="name" value="{{old('name')}}">
+                                <div class="validation-error">
+                                    @error('name')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div> 
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label>Email</label>
                                 <input type="email" class="form-control" placeholder="Enter Email" name="email" value="{{old('email')}}">
+                                <div class="validation-error">
+                                    @error('email')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12 justify-content-center align-items-center">
                             <div class="mb-3">
                                 <label>Contact Number</label>
                                 <input type="tel" class="form-control" placeholder="Contact Number" name="number" value="{{old('number')}}">
+                                <div class="validation-error">
+                                    @error('number')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 text">
                                 <label>Send Message</label>
                                 <textarea name="message" value="{{old('message')}}" id="" class="form-control area"></textarea>
+                                <div class="validation-error">
+                                        @error('message')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>     
                             </div>
                         </div>
                         <div class="col-md-12 text-center">
@@ -109,6 +129,11 @@
                                 </div>
                             </div>
                         </div>
+                        <center>
+                            @if(Session::has('message'))
+                                <p style="color: green">{{ Session::get('message') }}</p>
+                            @endif
+                        </center>
                     </div>
                 </div>
             </form>
