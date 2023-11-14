@@ -161,45 +161,29 @@
         </div>
         <div class="row">
 
-            <div class="col-md-6">
+            @foreach($vehicle->feature as $key => $feature)
+            @if(($key+1)%2 == 0)
+            <div class="col-md-6" style="height: 42px !important">
                 <ul>
                     <li>
-                        <p>Power Steering</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Anti Lock Braking System</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Driver Airbag</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Alloy Wheels</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Engine Start Stop Button</p> <i class="bi bi-check"></i>
+                        <p>{{ $feature->feature }}</p> <i class="bi bi-check"></i>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6">
+            @else
+            <div class="col-md-6" style="height: 42px !important">
                 <ul>
                     <li>
-                        <p>Power Windows Front</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Air Conditioner</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Passenger Airbag</p> <i class="bi bi-check"></i>
-                    </li>
-                    <li>
-                        <p>Multi-function Steering Wheel</p> <i class="bi bi-check"></i>
+                        <p>{{ $feature->feature }}</p> <i class="bi bi-check"></i>
                     </li>
                 </ul>
             </div>
+            @endif
+            @endforeach      
 
 
-            <div class="col-md-12">
-                <div class="btnbox">
+            <div class="col-md-12 mt-5">
+                <div class="btnbox" >
                     <a href="#">Enquiry Now <img src="./assets/images/fast-forward-red.png" alt=""></a>
                 </div>
             </div>

@@ -64,29 +64,34 @@ Route::prefix('admin')->group(function () {
              Route::get('delete/{id}', 'delete');
         });
 
+        /**
+         * Blog section
+        */
+
+        Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
+        Route::get('/blog/add', [BlogController::class, 'add'])->name('blog_add');
+        Route::post('/blog/store', [BlogController::class, 'store'])->name('blog_store');
+        Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog_edit');
+        Route::put('/blog/update/{id}', [BlogController::class, 'update'])->name('blog_update');
+        Route::get('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog_delete');   
+    
+    
+        //Video Tutorials Routes 
+        Route::get('/video', [VideoController::class, 'index'])->name('admin.video');
+        Route::get('/video/add', [VideoController::class, 'add'])->name('video_add');
+        Route::post('/video/store', [VideoController::class, 'store'])->name('video_store');
+        Route::get('/video/edit/{id}', [VideoController::class, 'edit'])->name('video_edit');
+        Route::put('/video/update/{id}', [VideoController::class, 'update'])->name('video_update');
+        Route::get('/video/delete/{id}', [VideoController::class, 'delete'])->name('video_delete');
+    
+        //PDF Routes 
+        Route::get('/pdf', [PDFController::class, 'index'])->name('admin.pdf');
+        Route::get('/pdf/add', [PDFController::class, 'add'])->name('pdf_add');
+        Route::post('/pdf/store', [PDFController::class, 'store'])->name('pdf_store');
+        Route::get('/pdf/edit/{id}', [PDFController::class, 'edit'])->name('pdf_edit');
+        Route::put('/pdf/update/{id}', [PDFController::class, 'update'])->name('pdf_update');
+        Route::get('/pdf/delete/{id}', [PDFController::class, 'delete'])->name('pdf_delete');
+
     });
 
-    Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
-    Route::get('/blog/add', [BlogController::class, 'add'])->name('blog_add');
-    Route::post('/blog/store', [BlogController::class, 'store'])->name('blog_store');
-    Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog_edit');
-    Route::put('/blog/update/{id}', [BlogController::class, 'update'])->name('blog_update');
-    Route::get('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog_delete');   
-
-
-    //Video Tutorials Routes 
-    Route::get('/video', [VideoController::class, 'index'])->name('admin.video');
-    Route::get('/video/add', [VideoController::class, 'add'])->name('video_add');
-    Route::post('/video/store', [VideoController::class, 'store'])->name('video_store');
-    Route::get('/video/edit/{id}', [VideoController::class, 'edit'])->name('video_edit');
-    Route::put('/video/update/{id}', [VideoController::class, 'update'])->name('video_update');
-    Route::get('/video/delete/{id}', [VideoController::class, 'delete'])->name('video_delete');
-
-    //PDF Routes 
-    Route::get('/pdf', [PDFController::class, 'index'])->name('admin.pdf');
-    Route::get('/pdf/add', [PDFController::class, 'add'])->name('pdf_add');
-    Route::post('/pdf/store', [PDFController::class, 'store'])->name('pdf_store');
-    Route::get('/pdf/edit/{id}', [PDFController::class, 'edit'])->name('pdf_edit');
-    Route::put('/pdf/update/{id}', [PDFController::class, 'update'])->name('pdf_update');
-    Route::get('/pdf/delete/{id}', [PDFController::class, 'delete'])->name('pdf_delete');
 });

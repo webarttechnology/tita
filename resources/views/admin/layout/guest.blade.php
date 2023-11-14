@@ -19,6 +19,10 @@
 		
 		<!-- Ekka CSS -->
 		<link id="ekka-css" rel="stylesheet" href="{{asset('assets/admin/css/ekka.css')}}">
+
+		{{-- Toast --}}
+	    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 		
 		<!-- FAVICON -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
