@@ -98,6 +98,10 @@ Route::prefix('admin')->group(function () {
         Route::put('/pdf/update/{id}', [PDFController::class, 'update'])->name('pdf_update');
         Route::get('/pdf/delete/{id}', [PDFController::class, 'delete'])->name('pdf_delete');
 
+        //Installers Registration 
+        Route::get('/registration-installers', [InstallerController::class, 'show'])->name('admin.registration.installers');
+        Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
+
     });
 
 });

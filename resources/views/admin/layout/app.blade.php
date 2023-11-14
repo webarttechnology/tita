@@ -7,6 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Ekka - Admin Dashboard eCommerce HTML Template.">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 	<title>Tita - Admin Dashboard</title>
 
@@ -124,6 +126,7 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">Vehicals</span> <b class="caret"></b>
 							</a>
+						</li>
 						<!-- Products -->
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="javascript:void(0)">
@@ -157,6 +160,12 @@
 									</li>
 								</ul>
 							</div>
+						</li>
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ route('admin.registration.installers') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Registration Installer</span> <b class="caret"></b>
+							</a>
 						</li>
 					</ul>
 				</div>
