@@ -7,6 +7,8 @@ use App\Models\Blog;
 use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\ContactEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\{Vehicle};
 
 class HomeController extends Controller
@@ -70,6 +72,28 @@ class HomeController extends Controller
     public function contactUs()
     {
         return view('front.contact');
+    }
+
+    public function emailSend(Request $request)
+    {     
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'number' => 'required|numeric|digits:10',
+            'message' => 'required',
+        ], [
+            
+        ]);
+
+        $senderName = $request->name;
+        $phoneNumber = $request->number;
+        $senderEmail = $request->email;
+        $senderMessage = $request->message;
+
+        $email = new ContactEmail($senderName, $phoneNumber, $senderEmail, $senderMessage);
+        Mail::to('teethi.dhar@webart.technology')->send($email);
+
+        return redirect()->back()->with('message', 'Email Sent Successfully!!!');
     }
 
 }

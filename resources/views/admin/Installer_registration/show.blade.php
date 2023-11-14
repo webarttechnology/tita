@@ -23,6 +23,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
+                                            <th>Message</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -33,6 +34,11 @@
                                                 <td>{{ $installers->name}}</td>
                                                 <td>{{ $installers->email}}</td>
                                                 <td>{{ $installers->phone_number}}</td>
+                                                <td>
+                                                    @foreach ($installers->reports as $report)
+                                                        {{ $report->message }}
+                                                    @endforeach
+                                                </td>
                                                 <td class="status-column" data-installer-id="{{ $installers->id }}" data-approvel-status="{{ $installers->approvel_by_admin }}">
                                                     {{ $installers->approvel_by_admin}}
                                                 </td>

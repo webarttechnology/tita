@@ -4,8 +4,8 @@ namespace App\Http\Controllers\front;
 
 use Illuminate\Http\Request;
 use App\Models\Installer;
-
 use App\Mail\MyEmail;
+use App\Models\Report;
 use App\Http\Requests\EmailRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
@@ -14,8 +14,6 @@ class InstallerController extends Controller
 {
     public function registration(Request $request)
     {
-        //dd($request-> all());
-
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -41,7 +39,7 @@ class InstallerController extends Controller
 
     public function show(Request $request)
     {
-        $data = Installer::all();
+        $data = Installer::with('reports')->get();
         return view('admin.Installer_registration.show' , compact('data'));
     }
 
@@ -75,8 +73,34 @@ class InstallerController extends Controller
         $email = new MyEmail($emailSubject, $emailMessage);
         Mail::to('teethi.dhar@webart.technology')->send($email);
     
-        return response()->json(['success' => true, 'status' => $installer->approvel_by_admin, 'message' => 'Email sent successfully!']);
-    
+        return response()->json(['success' => true, 'status' => $installer->approvel_by_admin, 'message' => 'Email sent successfully!']);    
    
     }
+
+    public function installerReport()
+    {
+        $data = Installer::where('approvel_by_admin', 'unapproved')->get();        
+        return view('front.report', ['data' => $data]);
+    }
+
+
+    public function reportStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'installer_id' => 'required',
+            'message' => 'required|string',
+        ], [
+            'name.required' => 'Name is required.',
+        ]);
+
+        Report::create([
+            'name' => $request->name,
+            'installer_id' => $request->installer_id,
+            'message' => $request->message,
+        ]);
+        
+        return redirect()->back()->with('message', 'Your Message Sent Successfully!!!');
+    }
+    
 }
