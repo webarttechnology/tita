@@ -61,7 +61,7 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <img src="assets/images/register.jpg" alt="" class="w-100">
+                <img src="{{asset('assets/images/register.jpg')}}" alt="" class="w-100">
             </div>
         </div>
             

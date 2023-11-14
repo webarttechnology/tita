@@ -73,6 +73,10 @@ $(document).ready(function () {
     $('ul.navbar-nav a').filter(function() {
         return this.href == url;
     }).parent().addClass('actives');
+
+
+
+    
 });
 
 

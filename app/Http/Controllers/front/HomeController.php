@@ -67,4 +67,9 @@ class HomeController extends Controller
         return view('front.blogdetails', compact('singleBlog'));
     }
 
+    public function contactUs()
+    {
+        return view('front.contact');
+    }
+
 }

@@ -40,42 +40,49 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link actives" aria-current="page" href="index.php">Home</a>
-                    </li>
+                <nav>
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link actives" aria-current="page" href="index.php">Home</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('about_us')}}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('ev_listing')}}">EV listing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="product.php">CNG KIT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('booking')}}">Booking</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('video')}}">Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('pdf_download')}}">PDF</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('registration')}}">Registration</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('blog')}}">Blog</a>
-                    </li>
-                </ul>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('about_us')}}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('ev_listing')}}">EV listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="product.php">CNG KIT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('booking')}}">Booking</a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="{{route('video')}}">Video</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('pdf_download')}}">PDF</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('registration')}}">Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('blog')}}">Blog</a>
+                            {{-- <ul>
+                                <li><a href="#">Themes</a></li>
+                                <li><a href="#">Plugins</a></li>
+                                <li><a href="#">Tutorials</a></li>
+                            </ul>   --}}
+                        </li>
+                        
+                    </ul>
+                </nav>
                 <div class="icons">
-                    <a href="#"><i class="bi bi-search text-dark me-5 h5"></i></a>
+                    {{-- <a href="#"><i class="bi bi-search text-dark me-5 h5"></i></a> --}}
                     <a href="#" class="text-dark text-decoration-none btns1 me-4"><i
                             class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025</a>
-                    <a href="#" class="btn btn-dark btns2 rounded-0">Let's talk</a>
+                    <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
                 </div>
             </div>
         </div>

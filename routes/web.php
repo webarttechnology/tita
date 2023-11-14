@@ -28,7 +28,7 @@ Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_d
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'singleBlog'])->name('single_blog');
 Route::get('/registration', [HomeController::class, 'registration'])->name('registration');
-
+Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
