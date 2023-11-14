@@ -166,7 +166,7 @@
                                                 <label for="slug" class="col-12 col-form-label">Range</label>
                                                 <div class="col-12">
                                                     <input id="range" name="range" class="form-control here set-slug"
-                                                        type="text" value="{{ old('range') }}">
+                                                        type="number" value="{{ old('range') }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
