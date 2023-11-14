@@ -74,41 +74,44 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                <form action="{{ route ('email_Send')}}" method="post">
+                    @csrf
                 <div class="cform">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" class="form-control" placeholder="Name" name="name" value="{{old('name')}}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Enter Email">
+                                <input type="email" class="form-control" placeholder="Enter Email" name="email" value="{{old('email')}}">
                             </div>
                         </div>
                         <div class="col-md-12 justify-content-center align-items-center">
                             <div class="mb-3">
                                 <label>Contact Number</label>
-                                <input type="tel" class="form-control" placeholder="Contact Number">
+                                <input type="tel" class="form-control" placeholder="Contact Number" name="number" value="{{old('number')}}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 text">
                                 <label>Send Message</label>
-                                <textarea name="" id="" class="form-control area"></textarea>
+                                <textarea name="message" value="{{old('message')}}" id="" class="form-control area"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12 text-center">
                             <div class="mt-3">
                                 <div class="apntbtn">
-                                    <a href="#" class="sbmtbtn">Submit</a>
+                                    <button type="submit" class="sbmtbtn">Submit</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
             <div class="col-md-6">
                 <div class="bookmaps">

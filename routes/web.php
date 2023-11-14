@@ -37,10 +37,11 @@ Route::get('/blog/{slug}', [HomeController::class, 'singleBlog'])->name('single_
 Route::get('/registration', [HomeController::class, 'registration'])->name('registration');
 Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
-
+Route::post('/email-send', [HomeController::class, 'emailSend'])->name('email_Send');
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
-
+Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
+Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
 
 /**
  * Admin Section
@@ -103,6 +104,17 @@ Route::prefix('admin')->group(function () {
         Route::get('/pdf/edit/{id}', [PDFController::class, 'edit'])->name('pdf_edit');
         Route::put('/pdf/update/{id}', [PDFController::class, 'update'])->name('pdf_update');
         Route::get('/pdf/delete/{id}', [PDFController::class, 'delete'])->name('pdf_delete');
+
+        //Installers Registration 
+        Route::get('/registration-installers', [InstallerController::class, 'show'])->name('admin.registration.installers');
+        Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
+
+        //Contact-Us Routes 
+        // Route::get('/contact-us', [PDFController::class, 'index'])->name('admin.contact_us');
+        // Route::get('/contact-us/add', [PDFController::class, 'add'])->name('contact_us_add');
+        // Route::post('/contact-us/store', [PDFController::class, 'store'])->name('contact_us_store');
+
+
 
     });
 
