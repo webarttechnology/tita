@@ -7,7 +7,7 @@
         <div class="content">
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Admin Approval</h1>
+                    <h1>Admin Report Approval</h1>
                 </div>               
             </div>
             <div class="row">
@@ -34,10 +34,7 @@
                                                 <td>{{ $installers->email}}</td>
                                                 <td>{{ $installers->phone_number}}</td>
                                                 <td>
-                                                    {{-- <a class="btn btn-primary text-white my-1 mx-1 details-view"  data-id="{{$installers->id}}">View</a> --}}
-                                                    <button type="button" class="btn btn-primary details-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{$installers->id}}">
-                                                        View
-                                                      </button>
+                                                    <button type="button" class="btn btn-primary details-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{$installers->id}}">View</button>
 
                                                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">

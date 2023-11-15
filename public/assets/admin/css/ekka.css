@@ -19132,7 +19132,7 @@ code {
 .form-group .form-control, .input-group .form-control {
   font-size: 15px;
   padding: 0.5rem 1.06rem;
-  border-color: #f3f3f3;
+  border-color: black;
 }
 .form-group .form-control.input-lg, .input-group .form-control.input-lg {
   font-size: 1.06rem;
@@ -21038,6 +21038,7 @@ div.copied {
   content: "";
   left: 5px;
   top: 0;
+  color: red;
   width: 5px;
   height: 100%;
   border-radius: 5px;
@@ -21228,7 +21229,7 @@ div.copied {
   margin-right: auto;
   overflow: hidden;
   max-width: 130px;
-  color: #442f2f;
+  color: #fff !important;
   font-size: 15px;  
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -21319,7 +21320,7 @@ div.copied {
 @media (min-width: 768px) {
   .sidebar-minified .ec-left-sidebar .nav > li > a > .caret,
 .sidebar-minified .ec-left-sidebar .nav > li > a > span {
-    opacity: 0;
+    /* opacity: 0; */
   }
 }
 .sidebar-minified .ec-left-sidebar .nav > li > a > .caret {
@@ -21402,13 +21403,13 @@ div.copied {
   }
 }
 .sidebar-minified .ec-left-sidebar:hover .nav > li > a > .caret,
-.sidebar-minified .ec-left-sidebar:hover .nav > li > a > span {
+ .sidebar-minified .ec-left-sidebar:hover .nav > li > a > span {
   opacity: 1;
   -webkit-transition: opacity 0.3s ease-in;
   transition: opacity 0.3s ease-in;
   -webkit-transition-delay: 0.15s;
           transition-delay: 0.15s;
-}
+} 
 @media (prefers-reduced-motion: reduce) {
   .sidebar-minified .ec-left-sidebar:hover .nav > li > a > .caret,
 .sidebar-minified .ec-left-sidebar:hover .nav > li > a > span {
@@ -21518,7 +21519,7 @@ div.copied {
 /* Sidebar Fixed With Minified Layout Container */
 @media (min-width: 768px) {
   .ec-sidebar-fixed.sidebar-minified .ec-page-wrapper {
-    padding-left: 4.69rem;
+    /* padding-left: 4.69rem; */
     -webkit-transition: padding-left 0.3s ease-in-out;
     transition: padding-left 0.3s ease-in-out;
   }
@@ -21531,7 +21532,7 @@ div.copied {
 }
 @media (min-width: 768px) {
   .ec-sidebar-fixed.sidebar-minified.ec-header-fixed .ec-page-wrapper .ec-main-header {
-    padding-left: 4.69rem;
+    /* padding-left: 4.69rem; */
     -webkit-transition: padding-left 0.3s ease-in-out;
     transition: padding-left 0.3s ease-in-out;
   }
@@ -21855,10 +21856,11 @@ div.copied {
   background-color: #212a39;
 }
 
+
 /* Sidebar Light */
 .ec-sidebar-light .ec-left-sidebar {
-  background-color: #ffffff;
-  /* width: 255px; */
+  background-color: #1a283e;
+  width: 255px;
 }
 .ec-sidebar-light .sidebar {
   border-right: 1px solid #f3f3f3;
@@ -24962,3 +24964,8 @@ svg {
 .simplebar-ec-content-wrapper{
   overflow: hidden !important;
 }
+
+
+
+
+

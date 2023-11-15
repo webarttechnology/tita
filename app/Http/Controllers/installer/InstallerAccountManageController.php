@@ -7,14 +7,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\admin\ImageUploadHelpController;
 use Illuminate\Support\Facades\Hash;
-use App\Models\{Installer};
+use App\Models\{Installer, InstallerLocation};
 
 class InstallerAccountManageController extends Controller
 {
     //
 
     public function account(){
-           return view('installer.account.index');
+
+        $location = InstallerLocation::where('installer_id', Auth::guard('installer')->user()->id)->first();            
+           return view('installer.account.index', compact('location'));
     }
 
     /**

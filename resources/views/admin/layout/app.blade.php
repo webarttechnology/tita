@@ -59,7 +59,7 @@
 	
 </head>
 
-<body class="ec-header-fixed ec-sidebar-fixed ec-sidebar-light ec-header-light" id="body">
+<body class="ec-header-fixed ec-sidebar-fixed  ec-header-light" id="body">
 
 	<!--  WRAPPER  -->
 	<div class="wrapper">
@@ -102,10 +102,6 @@
 											<span class="nav-text">Blog</span>
 										</a>
 									</li>
-
-									
-
-
 									<li class="">
 										<a class="sidenav-item-link" href="{{ route ('admin.video')}}">
 											<span class="nav-text">Video</span>
@@ -167,12 +163,14 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">Registration Installer</span> <b class="caret"></b>
 							</a>
-						</li>
-					
+						</li>					
 					</ul>
 				</div>
 			</div>
 		</div>
+
+
+		
 
 		<!--  PAGE WRAPPER -->
 		<div class="ec-page-wrapper">

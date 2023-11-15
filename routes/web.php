@@ -155,6 +155,7 @@ Route::prefix('installer')->group(function () {
         Route::controller(InstallerLocationManageController::class)->group(function () {
               Route::get('location', 'location');
               Route::post('location-save/{type}', 'location_save');
+              Route::post('zip-save', 'zip_save');
         });
     });
 });
