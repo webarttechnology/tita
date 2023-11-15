@@ -8,15 +8,19 @@
             <div class="tab-pane fade show active" id="settings" role="tabpanel"
                 aria-labelledby="settings-tab">
                 <div class="tab-pane-content mt-5">
+                    @if($location == null) 
                     <form action="{{ url('installer/location-save', 'save') }}" method="post" enctype="multipart/form-data">
+                    @else
+                    <form action="{{ url('installer/location-save', 'update') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        
 
                         <div class="row mb-2">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="lastName">Address (Line 1) *</label>
                                     <input type="text" class="form-control" id="address_line_1"
-                                        name="address_line_1">
+                                        name="address_line_1" value="@if($location!= null) {{ ($location->address_line_1) }} @endif">
                                 </div>
                             </div>
                         </div>
@@ -26,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="lastName">Address (Line 2)</label>
                                     <input type="text" class="form-control" id="address_line_2"
-                                        name="address_line_2">
+                                        name="address_line_2" value="@if($location!= null) {{ ($location->address_line_2) }} @endif">
                                 </div>
                             </div>
                         </div>
@@ -36,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="lastName">Country *</label>
                                     <input type="text" class="form-control" id="country"
-                                        name="country">
+                                        name="country" value="@if($location!= null) {{ ($location->country) }} @endif">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +50,17 @@
                                 <div class="form-group">
                                     <label for="lastName">State *</label>
                                     <input type="text" class="form-control" id="state"
-                                        name="state">
+                                        name="state" value="@if($location!= null) {{ ($location->state) }} @endif">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="lastName">City *</label>
+                                    <input type="text" class="form-control" id="city"
+                                        name="city" value="@if($location!= null) {{ ($location->city) }} @endif">
                                 </div>
                             </div>
                         </div>
@@ -56,15 +70,33 @@
                                 <div class="form-group">
                                     <label for="lastName">Zip *</label>
                                     <input type="text" class="form-control" id="zip"
-                                        name="zip">
+                                        name="zip" value="@if($location!= null) {{ ($location->zip) }} @endif">
                                 </div>
                             </div>
                         </div>
                         
+                        <!-- existing zips -->
+                        <h3>Available Zips</h3>
+
+                        @foreach($location->availableLocation as $aval)
                         <div class="row mb-2">
                             <div class="col-lg-10">
                                 <div class="form-group">
-                                    <label for="lastName">Available Zips</label>
+                                    <input type="text" class="form-control" id="zip"
+                                        name="existing_zips[]" value="{{ $aval->zip }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="button" class="btn btn-danger m-2"><i class="fa fa-trash"></i></button>
+                           </div>
+                        </div>
+                        @endforeach
+
+                        <!-- Add New -->
+                        <div class="row mb-2">
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <label for="lastName">Add Available Zips</label>
                                     <input type="text" class="form-control" id="zip"
                                         name="available_zips[]">
                                 </div>
@@ -84,6 +116,7 @@
                                 Profile</button>
                         </div>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>
