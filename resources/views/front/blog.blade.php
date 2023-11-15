@@ -31,7 +31,7 @@
                 <a href="blogdetails.php">
                     <div class="blog-main">
                         <div class="blog-img">
-                            <img src="{{ asset($blog->image) }}" alt="" width="250px">
+                            <img src="{{ asset( 'uploads/blog/'. $blog->image) }}" alt="" width="250px">
                         </div>
                         <div class="card">
                             <h3>{{ $blog->title}}</h3>

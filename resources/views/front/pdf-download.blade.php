@@ -31,7 +31,7 @@
                         <img src="./assets/images/PDF_icon.png" alt="">
                     </div>
                     <h3>{{ $pdf->title}}</h3>
-                    <a download="{{$pdf->title}}.pdf" href="{{ asset($pdf->pdf) }}" class="btn btn-theme" download>Download <i
+                    <a download="{{$pdf->title}}.pdf" href="{{ asset( 'uploads/pdf/'. $pdf->pdf) }}" class="btn btn-theme" download>Download <i
                             class="bi bi-file-earmark-arrow-down"></i></a>
                 </div>
             </div>
