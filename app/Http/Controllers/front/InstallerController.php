@@ -90,6 +90,7 @@ class InstallerController extends Controller
             'name' => 'required|string|max:255',
             'installer_id' => 'required',
             'message' => 'required|string',
+            'email' => 'required|email',
         ], [
             'name.required' => 'Name is required.',
         ]);
@@ -98,6 +99,7 @@ class InstallerController extends Controller
             'name' => $request->name,
             'installer_id' => $request->installer_id,
             'message' => $request->message,
+            'email' => $request->email,
         ]);
         
         return redirect()->back()->with('message', 'Your Message Sent Successfully!!!');

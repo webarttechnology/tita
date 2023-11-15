@@ -52,14 +52,12 @@
                                                                     <thead>
                                                                       <tr>
                                                                         <th scope="col">Name</th>
-                                                                        <th scope="col">Email</th>
                                                                         <th scope="col">Message</th>
                                                                       </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                       <tr>
                                                                         <td id="name"></td>
-                                                                        <td id="email"></td>
                                                                         <td id="message"></td>
                                                                       </tr>
                                                                     </tbody>
@@ -71,11 +69,6 @@
                                                           </div>
                                                         </div>
                                                       </div>
-
-
-                                                    {{-- @foreach ($installers->reports as $report)
-                                                        {{ $report->message }}
-                                                    @endforeach --}}
                                                 </td>
                                                 <td class="status-column" data-installer-id="{{ $installers->id }}" data-approvel-status="{{ $installers->approvel_by_admin }}">
                                                     {{ $installers->approvel_by_admin}}
@@ -165,19 +158,17 @@
                 dataType: 'json',
                 success: function (details) 
                 {
-                    console.log(details);
-                    $('#name').text(details.name);
-                    $('#email').text(details.email);
-                    // $('#message').text(details.reports.message);
-
-                    // Assuming reports is an array
                     if (details.reports.length > 0) {
-                        // Assuming you want to display the message of the first report
+                        $('#name').text(details.reports[0].name);
+                    } else {
+                        $('#name').text('No email available.');
+                    }
+
+                    if (details.reports.length > 0) {
                         $('#message').text(details.reports[0].message);
                     } else {
                         $('#message').text('No reports available.');
-                    }
-                  
+                    }                  
                 },
                 error: function (error) {
                     console.error('Ajax request failed: ', error);

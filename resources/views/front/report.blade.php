@@ -32,9 +32,18 @@
                     @csrf
                     <div class="row">
                         <div class="col-12">
-                                <input type="text" placeholder="Name" class="form-control shadow-none" name="name">
+                            <input type="text" placeholder="Name" class="form-control shadow-none" name="name">
                                 <div class="validation-error">
                                     @error('name')
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div> 
+                        </div>
+
+                        <div class="col-12">
+                            <input type="email" placeholder="Email" class="form-control shadow-none" name="email">
+                                <div class="validation-error">
+                                    @error('email')
                                         <p>{{ $message }}</p>
                                     @enderror
                                 </div> 

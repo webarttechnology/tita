@@ -17609,8 +17609,8 @@ a.badge-purple:focus, a.badge-purple.focus {
 }
 .btn.btn-secondary {
   color: #ffffff;
-  background-color: #8a909d;
-  border-color: #8a909d;
+  background-color: #134bc4;
+  border-color: #134bc4;
 }
 .btn.btn-secondary:hover, .btn.btn-outline-secondary:hover {
   color: #ffffff;
@@ -20018,6 +20018,8 @@ div.copied {
 
 .modal .modal-content {
   border-radius: 30px;
+  margin-top: 10rem;
+  width: 666px;
 }
 
 #modal-add-member .modal-header .btn-close-icon,
