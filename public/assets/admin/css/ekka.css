@@ -23696,7 +23696,7 @@ input[type=radio] {
 }
 .nav-tabs.nav-style-border .nav-item .nav-link {
   padding: 0 0 20px 0;
-  color: #8a909d;
+  color: black;
   position: relative;
   cursor: pointer;
 }
