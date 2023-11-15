@@ -92,7 +92,7 @@ class InstallerLocationManageController extends Controller
     {
         $request->validate([
             'card_holder_name' => 'required|string',
-            'card_number' => 'required|numeric',
+            'card_number' => 'required|numeric|digits:16',
             'cvv' => 'required|numeric',
             'expiry_month' => 'required',
             'expiry_year' => 'required',

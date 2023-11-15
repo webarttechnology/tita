@@ -280,7 +280,7 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Card Number *</label>
-                                                    <input type="text" class="form-control" id="card_number" name="card_number" value="@if ($bank_details != null) {{ $bank_details->card_number }} @endif" >
+                                                    <input type="text" minlength="16" maxlength="16" class="form-control" id="card_number" name="card_number" value="@if ($bank_details != null){{ $bank_details->card_number }}@endif" >
                                                 </div>
                                             </div>
                                         </div>
@@ -288,7 +288,7 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Cvv *</label>
-                                                    <input type="text" class="form-control" id="cvv" name="cvv" value="@if ($bank_details != null) {{ $bank_details->cvv }} @endif" >
+                                                    <input maxlength="4" minlength="3" type="text" class="form-control" id="cvv" name="cvv" value="@if ($bank_details != null){{ $bank_details->cvv }}@endif" >
                                                 </div>
                                             </div>
                                         </div>
@@ -296,7 +296,21 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Expiry Month *</label>
-                                                    <input type="text" class="form-control" id="expiry_month" name="expiry_month" value="@if ($bank_details != null) {{ $bank_details->expiry_month }} @endif">
+                                                    <select class="form-control" id="expiry_month" name="expiry_month">
+                                                        <option value="01" {{ $bank_details != null && $bank_details->expiry_month == '01' ? 'selected' : '' }}  >January</option>
+                                                        <option value="02" {{ $bank_details != null && $bank_details->expiry_month == '02' ? 'selected' : '' }} >February</option>
+                                                        <option value="03" {{ $bank_details != null && $bank_details->expiry_month == '03' ? 'selected' : '' }} >March</option>
+                                                        <option value="04" {{ $bank_details != null && $bank_details->expiry_month == '04' ? 'selected' : '' }} >April</option>
+                                                        <option value="05" {{ $bank_details != null && $bank_details->expiry_month == '05' ? 'selected' : '' }} >May</option>
+                                                        <option value="06" {{ $bank_details != null && $bank_details->expiry_month == '06' ? 'selected' : '' }} >June</option>
+                                                        <option value="07" {{ $bank_details != null && $bank_details->expiry_month == '07' ? 'selected' : '' }} >July</option>
+                                                        <option value="08" {{ $bank_details != null && $bank_details->expiry_month == '08' ? 'selected' : '' }} >August</option>
+                                                        <option value="09" {{ $bank_details != null && $bank_details->expiry_month == '09' ? 'selected' : '' }} >September</option>
+                                                        <option value="10" {{ $bank_details != null && $bank_details->expiry_month == '10' ? 'selected' : '' }} >October</option>
+                                                        <option value="11" {{ $bank_details != null && $bank_details->expiry_month == '11' ? 'selected' : '' }} >November</option>
+                                                        <option value="12" {{ $bank_details != null && $bank_details->expiry_month == '12' ? 'selected' : '' }} >December</option>
+                                                    </select>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -304,7 +318,20 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Expiry Year *</label>
-                                                    <input type="text" class="form-control" id="expiry_year" name="expiry_year" value="@if ($bank_details != null) {{ $bank_details->expiry_year }} @endif">
+                                                    <select class="form-control" id="expiry_year" name="expiry_year">
+                                                        @php
+                                                        $currentYear = date("Y");
+                                                        
+                                                        for ($year = $currentYear; $year <= $currentYear + 10; $year++) {
+                                                            if( !empty($bank_details) && $bank_details->expiry_year == $year )
+                                                            {
+                                                                echo "<option selected value=\"$year\">$year</option>";
+                                                            } else {
+                                                                echo "<option value=\"$year\">$year</option>";
+                                                            }
+                                                        }
+                                                        @endphp
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
