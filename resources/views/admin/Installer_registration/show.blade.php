@@ -8,8 +8,7 @@
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                 <div>
                     <h1>Admin Approval</h1>
-                </div>
-               
+                </div>               
             </div>
             <div class="row">
                 <div class="col-12">
@@ -35,7 +34,45 @@
                                                 <td>{{ $installers->email}}</td>
                                                 <td>{{ $installers->phone_number}}</td>
                                                 <td>
-                                                    <a class="btn btn-primary text-white my-1 mx-1 details-view"  data-id="{{$installers->id}}">View</a>
+                                                    {{-- <a class="btn btn-primary text-white my-1 mx-1 details-view"  data-id="{{$installers->id}}">View</a> --}}
+                                                    <button type="button" class="btn btn-primary details-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{$installers->id}}">
+                                                        View
+                                                      </button>
+
+                                                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <table class="table">
+                                                                    <thead>
+                                                                      <tr>
+                                                                        <th scope="col">Name</th>
+                                                                        <th scope="col">Email</th>
+                                                                        <th scope="col">Message</th>
+                                                                      </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td id="name"></td>
+                                                                        <td id="email"></td>
+                                                                        <td id="message"></td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+
+
                                                     {{-- @foreach ($installers->reports as $report)
                                                         {{ $report->message }}
                                                     @endforeach --}}
@@ -62,40 +99,6 @@
                                             @endforeach
                                     </tbody>
                                 </table>
-
-                            <div id="myModal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <div class="modal-body">
-                                        <div clss="row">
-                                            <div class="col-md-12 mb-3">
-                                                <strong> Name:</strong>
-                                                <span id="name"></span>
-                                            </div>
-                                            <div class="col-md-12 mb-3">
-                                                <strong>Email:</strong> 
-                                                <span id="email"></span>
-                                            </div>
-                                            <div class="col-md-12 mb-3">
-                                                <strong>Message:</strong> 
-                                                <span id="message"></span>
-                                            </div>                                                           
-                                        </div>
-                                    </div>
-                                  </div>
-                            </div>
-
-                                <!-- The modal HTML structure -->
-                                @foreach ($data as $installers)
-                                <div id="myModal-{{ $installers->id }}" class="modal">
-                                    <div class="modal-content">
-                                        <span class="close">&times;</span>
-                                        <p>Some text in the Modal..</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                                
-                                
                             </div>
                         </div>
                     </div>
@@ -150,51 +153,44 @@
             });
         });
         // {{-- Click on approve and reject button --}}
-    });
 
-    </script>
+        $(".details-view").on('click', function(){
+            var id = $(this).data('id');
 
+            //alert(id);
 
-<!-- ... (your HTML code) ... -->
+            $.ajax({
+                url: '{{url('admin/details')}}' + "/" + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (details) 
+                {
+                    console.log(details);
+                    $('#name').text(details.name);
+                    $('#email').text(details.email);
+                    // $('#message').text(details.reports.message);
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var buttons = document.querySelectorAll('.details-view');
-    
-        // Attach click event listeners to each button
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var modalId = this.getAttribute('data-id');    
-                var modal = document.getElementById('myModal-' + modalId);
-                modal.style.display = 'block';
-            });
-        });
-    
-        // Get all elements with the class 'modal'
-        var modals = document.querySelectorAll('.modal');
-    
-        // Attach click event listeners to each modal's close button
-        modals.forEach(function(modal) {
-            var closeButton = modal.querySelector('.close');
-    
-            if (closeButton) {
-                closeButton.addEventListener('click', function() {
-                    // Close the modal when the close button is clicked
-                    modal.style.display = 'none';
-                });
-            }
-    
-            // Attach click event listener to close the modal when clicking outside of it
-            window.addEventListener('click', function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+                    // Assuming reports is an array
+                    if (details.reports.length > 0) {
+                        // Assuming you want to display the message of the first report
+                        $('#message').text(details.reports[0].message);
+                    } else {
+                        $('#message').text('No reports available.');
+                    }
+                  
+                },
+                error: function (error) {
+                    console.error('Ajax request failed: ', error);
                 }
             });
-        });
+        })
+
     });
+
     </script>
-    
-    <!-- ... (rest of your HTML code) ... -->
+
+
+
     
 
     

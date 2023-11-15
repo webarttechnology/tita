@@ -2095,6 +2095,7 @@ progress {
   border-bottom-width: 1px;
   -webkit-box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
           box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+          color: #1e1b1b;
 }
 .table > tbody {
   vertical-align: inherit;
@@ -17598,8 +17599,8 @@ a.badge-purple:focus, a.badge-purple.focus {
 }
 .btn.btn-primary {
   color: #ffffff;
-  background-color: #88aaf3;
-  border-color: #88aaf3;
+  background-color: #3160c4;
+  border-color: #244da4;
 }
 .btn.btn-primary:hover, .btn.btn-outline-primary:hover {
   color: #ffffff;
@@ -18039,6 +18040,8 @@ a.badge-purple:focus, a.badge-purple.focus {
 }
 .card-default .card-body {
   padding: 24px;
+  border: 2px solid #6d6464;
+  border-radius: 15px;
 }
 .card-default .card-body p {
   line-height: 1.5;
@@ -24046,7 +24049,7 @@ div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTable
 
 thead th,
 tbody tr td:first-child {
-  color: #56606e;
+  color: #000000;
   font-weight: 500;
 }
 
