@@ -156,6 +156,7 @@ Route::prefix('installer')->group(function () {
               Route::get('location', 'location');
               Route::post('location-save/{type}', 'location_save');
               Route::post('zip-save', 'zip_save');
+              Route::post('bank-save/{type}', 'bank_save');
         });
     });
 });

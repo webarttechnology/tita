@@ -66,11 +66,16 @@
                                         data-bs-target="#zipCollector" type="button" role="tab"
                                         aria-controls="settings" aria-selected="false">Zip</button>
                                 </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="settings-tab" data-bs-toggle="tab"
+                                        data-bs-target="#bankDetails" type="button" role="tab"
+                                        aria-controls="settings" aria-selected="false">Bank Details</button>
+                                </li>
                             </ul>
                             <div class="tab-content px-3 px-xl-5" id="myTabContent">
 
-                                <div class="tab-pane fade show active" id="settings" role="tabpanel"
-                                    aria-labelledby="settings-tab">
+                                <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                     <div class="tab-pane-content mt-5">
                                         <form action="{{ url('installer/edit/profile') }}" method="post" enctype="multipart/form-data">
                                             @csrf
@@ -116,8 +121,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="changePass" role="tabpanel"
-                                    aria-labelledby="settings-tab">
+                                <div class="tab-pane fade" id="changePass" role="tabpanel" aria-labelledby="settings-tab">
                                     <div class="tab-pane-content mt-5">
                                         <form action="{{ url('installer/change/password') }}" method="post">
                                             @csrf
@@ -231,7 +235,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn btn-primary mb-2 btn-pill">Update</button>
+                                                <button type="submit" class="btn btn-primary mb-2 btn-pill">Submit</button>
                                             </div>
                                         </form>
                                     </div>
@@ -245,7 +249,7 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label for="Zip">Zip *</label>
-                                                    <input type="text" class="form-control" id="zip_collector" name="zip">
+                                                    <input type="text" class="form-control" id="zip_collector" name="zip" value='{{$zip_string}}' >
                                                 </div>
                                             </div>
                                         </div>
@@ -256,7 +260,60 @@
                                     </div>
                                 </div>
 
-
+                                <div class="tab-pane fade" id="bankDetails" role="tabpanel" aria-labelledby="location-tab">
+                                    <div class="tab-pane-content mt-5">
+                                            @if ($bank_details == null)
+                                                <form action="{{ url('installer/bank-save', 'save') }}" method="post">
+                                                    @else
+                                                <form action="{{ url('installer/bank-save', 'update') }}"method="post">
+                                            @endif
+                                        @csrf
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="Zip">Card Holder Name *</label>
+                                                    <input type="text" class="form-control" id="card_holder_name" name="card_holder_name" value="@if ($bank_details != null) {{ $bank_details->card_holder_name }} @endif" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Card Number *</label>
+                                                    <input type="text" class="form-control" id="card_number" name="card_number" value="@if ($bank_details != null) {{ $bank_details->card_number }} @endif" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Cvv *</label>
+                                                    <input type="text" class="form-control" id="cvv" name="cvv" value="@if ($bank_details != null) {{ $bank_details->cvv }} @endif" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Expiry Month *</label>
+                                                    <input type="text" class="form-control" id="expiry_month" name="expiry_month" value="@if ($bank_details != null) {{ $bank_details->expiry_month }} @endif">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Expiry Year *</label>
+                                                    <input type="text" class="form-control" id="expiry_year" name="expiry_year" value="@if ($bank_details != null) {{ $bank_details->expiry_year }} @endif">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-5">
+                                            <button type="submit" class="btn btn-primary mb-2 btn-pill"> Save</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

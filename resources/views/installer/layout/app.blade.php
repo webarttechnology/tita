@@ -20,9 +20,9 @@
         integrity="sha512-nRzny9w0V2Y1/APe+iEhKAwGAc+K8QYCw4vJek3zXhdn92HtKt226zHs9id8eUq+uYJKaH2gPyuLcaG/dE5c7A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-	  <!-- Include TinyMCE library -->
-	   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-	  <!-- Include TinyMCE library -->
+	<!-- Include TinyMCE library -->
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<!-- Include TinyMCE library -->
 
 	<!-- PLUGINS CSS STYLE -->
 	<link href="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
@@ -40,7 +40,6 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 	<!-- Include Select2 CSS and JS files -->
-	
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -90,14 +89,6 @@
 								<span class="nav-text">My Account</span> <b class="caret"></b>
 							</a>
                         </li>
-						
-						<li class="has-sub">
-							<a class="sidenav-item-link" href="{{ url('installer/location') }}">
-								<i class="mdi mdi-account"></i>
-								<span class="nav-text">Location</span> <b class="caret"></b>
-							</a>
-                        </li>
-						
 					</ul>
 				</div>
 			</div>
@@ -126,8 +117,7 @@
 						<li class="dropdown user-menu">
 							<a class="nav-link" href="{{ route('installer.logout') }}">
 									{{ __('Logout') }}
-								</a>
-							
+							</a>							
 						</li>
 					
 						<li class="right-sidebar-in right-sidebar-2-menu">
@@ -151,8 +141,8 @@
 				</div>
 			</footer>
 
-		</div> <!-- End Page Wrapper -->
-	</div> <!-- End Wrapper -->
+		</div> 
+	</div> 
 
 	<!-- Common Javascript -->
 	<script src="{{asset('assets/admin/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
@@ -160,19 +150,6 @@
 	<script src="{{asset('assets/admin/plugins/simplebar/simplebar.min.js')}}"></script>
 	<script src="{{asset('assets/admin/plugins/jquery-zoom/jquery.zoom.min.js')}}"></script>
 	<script src="{{asset('assets/admin/plugins/slick/slick.min.js')}}"></script>
-
-	<!-- Chart -->
-	<script src="{{asset('assets/admin/plugins/charts/Chart.min.js')}}"></script>
-	<script src="{{asset('assets/admin/js/chart.js')}}"></script>
-
-	<!-- Google map chart -->
-	<script src="{{asset('assets/admin/plugins/charts/google-map-loader.js')}}"></script>
-	<script src="{{asset('assets/admin/plugins/charts/google-map.js')}}"></script>
-
-	<!-- Date Range Picker -->
-	<script src="{{asset('assets/admin/plugins/daterangepicker/moment.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.js')}}"></script>
-	<script src="{{asset('assets/admin/js/date-range.js')}}"></script>
 
 	<!-- Option Switcher -->
 	<script src="{{asset('assets/admin/plugins/options-sidebar/optionswitcher.js')}}"></script>
@@ -188,6 +165,7 @@
 	<!-- select2 -->
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+	<!-- Multi-select -->
 	<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
@@ -244,7 +222,9 @@
     }
 </script>
 
-@yield('custom_js')
+	<!-- Multi-select -->
+     @yield('custom_js')
+	<!-- Multi-select -->
 </body>
 
 
