@@ -108,6 +108,7 @@ Route::prefix('admin')->group(function () {
         //Installers Registration 
         Route::get('/registration-installers', [InstallerController::class, 'show'])->name('admin.registration.installers');
         Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
+        Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
 
         //Contact-Us Routes 
         // Route::get('/contact-us', [PDFController::class, 'index'])->name('admin.contact_us');
