@@ -124,40 +124,8 @@
 								<span class="nav-text">Vehicals</span> <b class="caret"></b>
 							</a>
 						</li>
-						<!-- Products -->
-						<li class="has-sub">
-							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-palette-advanced"></i>
-								<span class="nav-text">Products</span> 
-								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
-								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-								 </svg>
-							</a>
-							<div class="collapse">
-								<ul class="sub-menu" id="products" data-parent="#sidebar-menu">
-									<li class="">
-										<a class="sidenav-item-link" href="product-add.html">
-											<span class="nav-text">Add Product</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="product-list.html">
-											<span class="nav-text">List Product</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="product-grid.html">
-											<span class="nav-text">Grid Product</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="product-detail.html">
-											<span class="nav-text">Product Detail</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
+						
+						
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="{{ route('admin.registration.installers') }}">
 								<i class="mdi mdi-image-filter-none"></i>

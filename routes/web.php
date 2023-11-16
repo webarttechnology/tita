@@ -75,6 +75,9 @@ Route::prefix('admin')->group(function () {
              Route::get('add', 'add');
              Route::post('add-action', 'add_action');
              Route::get('delete/{id}', 'delete');
+             Route::get('edit/{id}', 'edit');
+             Route::post('edit-action/{id}', 'edit_action');
+             Route::get('delete/features/{id}', 'delete_features');
         });
 
         /**
