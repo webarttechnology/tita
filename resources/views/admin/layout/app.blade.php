@@ -163,6 +163,12 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">Registration Installer</span> <b class="caret"></b>
 							</a>
+						</li>
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ route('admin.user') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">User</span> <b class="caret"></b>
+							</a>
 						</li>					
 					</ul>
 				</div>

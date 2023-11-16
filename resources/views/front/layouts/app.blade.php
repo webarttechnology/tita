@@ -53,9 +53,20 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('booking')}}">Booking</a>
                         </li>                       
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('registration')}}">Registration</a>
-                        </li>    
+                       
+                        <div class="btn-group nav-item">
+                            <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                                Registration
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{route('user_Registration')}}">User</a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{route('registration')}}">Installer</a>
+                                </li>                             
+                            </ul>
+                          </div>   
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('installer_Report')}}">Report</a>
                         </li>                  
@@ -73,9 +84,9 @@
                 </nav>
                 <div class="icons">
                     {{-- <a href="#"><i class="bi bi-search text-dark me-5 h5"></i></a> --}}
-                    <a class="text-dark text-decoration-none btns1 me-4">
+                    {{-- <a class="text-dark text-decoration-none btns1 me-4">
                         <i class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025
-                    </a>
+                    </a> --}}
                     <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
                 </div>
             </div>
@@ -108,6 +119,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('booking')}}">Booking</a>
                     </li>
+                    <div class="btn-group nav-item">
+                        <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                            Registration
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                            <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('user_Registration')}}">User Registration</a></li>                             
+                        </ul>
+                      </div> 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('installer_Report')}}">Report</a>
                     </li>

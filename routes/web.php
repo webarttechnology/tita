@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\PDFController;
+use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AuthManageController;
 use App\Http\Controllers\admin\VehicleManageController;
 
+use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\InstallerController;
 
@@ -44,10 +46,10 @@ Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_detail
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
 Route::get('/installer/test', [InstallerController::class, 'testForm'])->name('test_Form');
+Route::get('/user/registration', [UserController::class, 'userRegistration'])->name('user_Registration');
+Route::post('/user/registration/store', [UserController::class, 'userRegistrationStore'])->name('user_Registration_Store');
 
-/**
- * Admin Section
-*/
+/**Admin Section*/
 
 Route::prefix('admin')->group(function () {
     //Home Page ->middleware(['auth'])
@@ -111,6 +113,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/registration-installers', [InstallerController::class, 'show'])->name('admin.registration.installers');
         Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
+
+        //Installers Registration 
+        Route::get('/user', [AdminUserController::class, 'index'])->name('admin.user');
+        Route::get('/user/add', [AdminUserController::class, 'add'])->name('user_add');
+        Route::post('user/store', [AdminUserController::class, 'store'])->name('user_store');
+        Route::get('/user/edit/{id}', [AdminUserController::class, 'edit'])->name('user_edit');
+        Route::put('/user/update/{id}', [AdminUserController::class, 'update'])->name('user_update');
+        Route::get('/user/delete/{id}', [AdminUserController::class, 'delete'])->name('user_delete');
         
     });
 
