@@ -26,15 +26,11 @@
 
 <body class="body">
 
-
     <!--- header -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img class="" src="{{ asset('assets/images/I.png') }}"
-                    alt="logo.png" /></a>
-            <!-- <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button> -->
+            <a class="navbar-brand" href="{{route('/')}}"><img class="" src="{{ asset('assets/images/I.png') }}"   alt="logo.png" />
+            </a>           
             <button class="navbar-toggler navbar-light" data-bs-toggle="offcanvas" href="#offcanvasExample"
                 role="button" aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon"></span>
@@ -43,9 +39,8 @@
                 <nav>
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link actives" aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link actives" aria-current="page" href="{{route('/')}}">Home</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('about_us')}}">About Us</a>
                         </li>
@@ -53,35 +48,34 @@
                             <a class="nav-link" href="{{route('ev_listing')}}">EV listing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="product.php">CNG KIT</a>
+                            <a class="nav-link" href="{{route('products')}}">CNG KIT</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('booking')}}">Booking</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{route('video')}}">Video</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('pdf_download')}}">PDF</a>
-                        </li> --}}
+                        </li>                       
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('registration')}}">Registration</a>
-                        </li>
+                        </li>    
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('blog')}}">Blog</a>
-                            {{-- <ul>
-                                <li><a href="#">Themes</a></li>
-                                <li><a href="#">Plugins</a></li>
-                                <li><a href="#">Tutorials</a></li>
-                            </ul>   --}}
-                        </li>
-                        
+                            <a class="nav-link" href="{{route('installer_Report')}}">Report</a>
+                        </li>                  
+                        <div class="btn-group nav-item">
+                            <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                                Blog
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('blog')}}">Blogs</a></li>
+                              <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('video')}}">Video</a></li>
+                              <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('pdf_download')}}">PDF</a></li>
+                            </ul>
+                        </div>                        
                     </ul>
                 </nav>
                 <div class="icons">
                     {{-- <a href="#"><i class="bi bi-search text-dark me-5 h5"></i></a> --}}
-                    <a href="#" class="text-dark text-decoration-none btns1 me-4"><i
-                            class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025</a>
+                    <a class="text-dark text-decoration-none btns1 me-4">
+                        <i class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025
+                    </a>
                     <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
                 </div>
             </div>
@@ -100,48 +94,51 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link actives" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link actives" aria-current="page" href="{{route('/')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about-us.php">About Us</a>
+                        <a class="nav-link" href="{{route('about_us')}}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="evlisting.php">EV listing</a>
+                        <a class="nav-link" href="{{route('ev_listing')}}">EV listing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product.php">CNG KIT</a>
+                        <a class="nav-link" href="{{route('products')}}">CNG KIT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="booking.php">Booking</a>
+                        <a class="nav-link" href="{{route('booking')}}">Booking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="video.php">Video</a>
+                        <a class="nav-link" href="{{route('installer_Report')}}">Report</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pdf-download.php">PDF</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.php">Blog</a>
-                    </li>
+                   
+                    <div class="btn-group nav-item">
+                        <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                            <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('blog')}}">Blogs</a></li>
+                          <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('video')}}">Video</a></li>
+                          <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('pdf_download')}}">PDF</a></li>
+                        </ul>
+                      </div>
                 </ul>
-                <div class="icons">
+                <div class="icons">                   
                     <div class="mt-3">
-                        <a href="#"><i class="bi bi-search text-dark me-5 h5"></i></a>
-                    </div>
-                    <div class="mt-3">
-                        <a href="#" class="text-dark text-decoration-none btns1 me-2"><i
-                                class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025</a>
-                    </div>
-                    <div class="mt-3">
-                        <a href="#" class="btn btn-dark btns2 rounded-0">Let's talk</a>
+                        <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+ <!--- header -->
 
+  <!--- Main Content -->
     @yield('content')
+<!--- Main Content -->
 
+
+<!--- Footer -->
     <footer class="footersec">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -174,12 +171,12 @@
                             <h4>Services</h4>
                         </div>
                         <ul>
-                            <li><a href="#">New Product</a></li>
-                            <li><a href="#">Ecommerce Development</a></li>
-                            <li><a href="#">Bespoke website</a></li>
-                            <li><a href="#">App Strategy</a></li>
-                            <li><a href="#">Smartwatches</a></li>
-                            <li><a href="#">Hire a Professional</a></li>
+                            <li><a href="{{route('/')}}">Home</a></li>
+                            <li><a href="{{route('about_us')}}">About Us</a></li>
+                            <li><a href="{{route('ev_listing')}}">EV listing</a></li>
+                            <li><a href="product.php">CNG KIT</a></li>
+                            <li><a href="{{route('booking')}}">Booking</a></li>
+                            <li><a href="{{route('installer_Report')}}">Report</a></li>
                         </ul>
                     </div>
                 </div>
@@ -189,12 +186,12 @@
                             <h4>Quick Links</h4>
                         </div>
                         <ul>
-                            <li><a href="#">Headphones</a></li>
-                            <li><a href="#">Wireless Headphones</a></li>
-                            <li><a href="#">Wired Headphones</a></li>
-                            <li><a href="#">Smartwatches</a></li>
-                            <li><a href="#">Airdopes</a></li>
-                            <li><a href="#">Wired Earphones</a></li>
+                            <li><a href="{{route('/')}}">Home</a></li>
+                            <li><a href="{{route('about_us')}}">About Us</a></li>
+                            <li><a href="{{route('ev_listing')}}">EV listing</a></li>
+                            <li><a href="product.php">CNG KIT</a></li>
+                            <li><a href="{{route('booking')}}">Booking</a></li>
+                            <li><a href="{{route('installer_Report')}}">Report</a></li>
                         </ul>
                     </div>
                 </div>
@@ -207,7 +204,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="ftrlogo">
-                        <a href="#"><img src="{{ asset('assets/images/ftr-logo.png') }}" alt=""></a>
+                        <a><img src="{{ asset('assets/images/ftr-logo.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -333,17 +330,6 @@
 
         });
     </script>
-
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
-    -->
 </body>
 
 </html>
