@@ -26,7 +26,7 @@ use App\Http\Controllers\installer\InstallerLocationManageController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about_us');
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
@@ -42,6 +42,7 @@ Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listin
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
+Route::get('/installer/test', [InstallerController::class, 'testForm'])->name('test_Form');
 
 /**
  * Admin Section
@@ -109,7 +110,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/registration-installers', [InstallerController::class, 'show'])->name('admin.registration.installers');
         Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
-
+        
     });
 
 });
@@ -145,11 +146,11 @@ Route::prefix('installer')->group(function () {
         });
         
         Route::controller(InstallerLocationManageController::class)->group(function () {
-                Route::get('my-account', 'location');
-              Route::get('location', 'location');
-              Route::post('location-save/{type}', 'location_save');
-              Route::post('zip-save', 'zip_save');
-              Route::post('bank-save/{type}', 'bank_save');
+            Route::get('my-account', 'location');
+            Route::get('location', 'location');
+            Route::post('location-save/{type}', 'location_save');
+            Route::post('zip-save', 'zip_save');
+            Route::post('bank-save/{type}', 'bank_save');
         });
     });
 });

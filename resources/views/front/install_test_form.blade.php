@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-content">
-                    <h2 class="title">Register</h2>
+                    <h2 class="title">Test Form</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('/')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Register</li>
+                            <li class="breadcrumb-item active" aria-current="page">Test Form</li>
                         </ol>
                     </nav>
                 </div>
@@ -19,7 +19,7 @@
     </div>
 </section>
 
-<!-- ======== Tanmoy ======== -->
+
 <!-- register  -->
 <section class="registerSec">
     <div class="container">
@@ -44,22 +44,6 @@
                                     @enderror
                                 </div>
                         </div>
-                        <div class="col-12">
-                            <input type="number" placeholder="Phone No." class="form-control shadow-none" name="number" value="{{old('number')}}">
-                                <div class="validation-error">
-                                    @error('number')
-                                        <p>{{ $message }}</p>
-                                    @enderror
-                                </div>
-                        </div>
-                        <div class="col-12">
-                             <input type="password" placeholder="Password" class="form-control shadow-none" name="password">
-                                <div class="validation-error">
-                                    @error('password')
-                                    <p>{{ $message }}</p>
-                                @enderror
-                                </div>                            
-                        </div>
                        
                         <div class="col-12">
                             <input type="submit" value="Submit" class="submitBtn">
@@ -79,8 +63,5 @@
             
         </div>
 </section>
-<!-- register END -->
-<!-- ======== Tanmoy END ======== -->
-
 
 @endsection

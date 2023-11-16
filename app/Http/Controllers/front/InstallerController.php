@@ -109,5 +109,10 @@ class InstallerController extends Controller
     {
         return Installer::with('reports')->where('id', $id)->first();
     }
+
+    public function testForm()
+    {
+        return view('front.install_test_form');
+    }
     
 }

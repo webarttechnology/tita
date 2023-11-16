@@ -71,7 +71,7 @@
                                                     {{ $installers->approvel_by_admin}}
                                                 </td>
                                                 <td>
-                                                    @if($installers->approvel_by_admin == 'unapproved')
+                                                    @if($installers->approvel_by_admin == 'inprogress')
                                                         <div class="btn-group mb-1">
                                                             <button type="button" class="btn btn-outline-success">Info</button>
                                                             <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
