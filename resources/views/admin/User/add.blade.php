@@ -36,11 +36,13 @@
                     </div>
                     <div class="col-md-12">
                       <label class="form-label">Password:</label>
-                      <input type="password" class="form-control slug-title" name="password" value="{{old('password')}}">
+                      <span> <input type="checkbox" id="showPassword"></span>                
+                      <input type="password" class="form-control slug-title" id="password"  name="password">                      
                     </div>
                     <div class="col-md-12">
                       <label class="form-label">Confirmed Password:</label>
-                      <input type="password" class="form-control slug-title" name="password_confirmation" value="{{old('password_confirmation')}}">
+                      <span> <input type="checkbox" id="showConfirmedPassword"></span>                
+                      <input type="password" class="form-control slug-title" id="password_confirmation" name="password_confirmation">
                     </div>
                     <div class="col-md-12">
                       <label class="form-label">Image:</label>
@@ -61,3 +63,33 @@
   </div>
 </div>
 @stop
+
+@section('custom_js')
+<script>
+     $(document).ready(function() {
+        $('#showPassword').change(function() {
+            var passwordField = $('#password');
+            var fieldType = passwordField.attr('type');
+
+            // Toggle password visibility
+            if (fieldType === 'password') {
+                passwordField.attr('type', 'text');
+            } else {
+                passwordField.attr('type', 'password');
+            }
+        });
+
+        $('#showConfirmedPassword').change(function() {
+            var passwordField2 = $('#password_confirmation');
+            var fieldType2 = passwordField2.attr('type');
+
+            // Toggle password visibility
+            if (fieldType2 === 'password') {
+                passwordField2.attr('type', 'text');
+            } else {
+                passwordField2.attr('type', 'password');
+            }
+        });
+    });
+</script>
+@endsection

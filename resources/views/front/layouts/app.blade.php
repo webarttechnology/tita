@@ -87,7 +87,9 @@
                     {{-- <a class="text-dark text-decoration-none btns1 me-4">
                         <i class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025
                     </a> --}}
+                   
                     <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
+                    <a href="{{ route('user_Login') }}" class="btn btn-dark btns2 rounded-0">Login</a>
                 </div>
             </div>
         </div>

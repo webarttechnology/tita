@@ -58,7 +58,7 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="settings-tab" data-bs-toggle="tab"
                                         data-bs-target="#locationUpdate" type="button" role="tab"
-                                        aria-controls="settings" aria-selected="false">Location</button>
+                                        aria-controls="settings" aria-selected="false">Location</button>                                        
                                 </li>
 
                                 <li class="nav-item" role="presentation">

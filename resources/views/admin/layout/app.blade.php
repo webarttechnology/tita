@@ -317,6 +317,7 @@
 </script>
 </body>
 
-
-<!-- Mirrored from maraviyainfotech.com/projects/ekka/ekka-v35/ekka-admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Oct 2023 10:30:32 GMT -->
+<!-- Multi-select -->
+@yield('custom_js')
+<!-- Multi-select -->
 </html>

@@ -62,7 +62,7 @@ class AdminUserController extends Controller
 
           if ($request->hasFile('image')) {
 
-            $imagePath = ImageUploadHelpController::moveImage("edit", $request->file('image'), "blog", $data->image);
+            $imagePath = ImageUploadHelpController::moveImage("edit", $request->file('image'), "user", $data->image);
     
             $data->update([
                 'name' => $request->name,
@@ -86,6 +86,6 @@ class AdminUserController extends Controller
     {
         $data = User::find($id);
         $data->delete();
-        return redirect()->route('admin.blog')->with('message','Data Deleted Successfully!!!');
+        return redirect()->route('admin.user')->with('message','Data Deleted Successfully!!!');
     }
 }

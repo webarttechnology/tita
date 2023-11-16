@@ -37,7 +37,7 @@ Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_download');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'singleBlog'])->name('single_blog');
-Route::get('/registration', [HomeController::class, 'registration'])->name('registration');
+Route::get('/installer/registration', [HomeController::class, 'registration'])->name('registration');
 Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 Route::post('/email-send', [HomeController::class, 'emailSend'])->name('email_Send');
@@ -48,6 +48,8 @@ Route::post('/report-store', [InstallerController::class, 'reportStore'])->name(
 Route::get('/installer/test', [InstallerController::class, 'testForm'])->name('test_Form');
 Route::get('/user/registration', [UserController::class, 'userRegistration'])->name('user_Registration');
 Route::post('/user/registration/store', [UserController::class, 'userRegistrationStore'])->name('user_Registration_Store');
+Route::get('/login', [HomeController::class, 'userLogin'])->name('user_Login');
+Route::post('/sing-in', [HomeController::class, 'login'])->name('user_Sing_In');
 
 /**Admin Section*/
 

@@ -21,7 +21,7 @@ class InstallerController extends Controller
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9])[\S]+$/'],
         ], [
             'password.regex' => 'The password must be at least 8 characters long and include at least one uppercase letter and one special character.',
-            'number.digits' => 'Number should be at least 12 digits.',
+            'number.digits' => 'Number should be at least 10 digits.',
         ]);
 
         Installer::create([
@@ -33,7 +33,7 @@ class InstallerController extends Controller
             'approvel_by_admin' => "inprogress",
         ]);
 
-        return redirect()->back()->with('message', 'Your Data Saved Successfully!!!');
+        return redirect()->back()->with('message', 'Registration Successfully!!!');
         
     }
 
