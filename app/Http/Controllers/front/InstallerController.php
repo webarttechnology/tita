@@ -30,7 +30,7 @@ class InstallerController extends Controller
             'phone_number' => $request->number,
             'password' => bcrypt($request->password),
             'status' =>"active",
-            'approvel_by_admin' => "unapproved",
+            'approvel_by_admin' => "inprogress",
         ]);
 
         return redirect()->back()->with('message', 'Your Data Saved Successfully!!!');

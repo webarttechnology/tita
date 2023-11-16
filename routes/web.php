@@ -110,13 +110,6 @@ Route::prefix('admin')->group(function () {
         Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
 
-        //Contact-Us Routes 
-        // Route::get('/contact-us', [PDFController::class, 'index'])->name('admin.contact_us');
-        // Route::get('/contact-us/add', [PDFController::class, 'add'])->name('contact_us_add');
-        // Route::post('/contact-us/store', [PDFController::class, 'store'])->name('contact_us_store');
-
-
-
     });
 
 });
@@ -147,12 +140,12 @@ Route::prefix('installer')->group(function () {
         });
 
         Route::controller(InstallerAccountManageController::class)->group(function () {
-              Route::get('my-account', 'account');
-              Route::post('edit/profile', 'profile_edit');
-              Route::post('change/password', 'change_password');
+            Route::post('edit/profile', 'profile_edit');
+            Route::post('change/password', 'change_password');
         });
-
+        
         Route::controller(InstallerLocationManageController::class)->group(function () {
+                Route::get('my-account', 'location');
               Route::get('location', 'location');
               Route::post('location-save/{type}', 'location_save');
               Route::post('zip-save', 'zip_save');
