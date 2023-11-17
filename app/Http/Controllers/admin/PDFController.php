@@ -30,7 +30,7 @@ class PDFController extends Controller
             'title' => $request->heading,          
         ]) ;
 
-        return redirect()->route('admin.pdf')->with('message', 'Data Added Successfully!!!');
+        return redirect()->route('admin.pdf')->with('success', 'Data Added Successfully!!!');
     }
 
     public function edit($id)
@@ -57,7 +57,7 @@ class PDFController extends Controller
                 ]);
             }
             
-            return redirect()->route('admin.pdf')->with('message', 'Data Updated Successfully!!!');
+            return redirect()->route('admin.pdf')->with('success', 'Data Updated Successfully!!!');
     }
 
     public function delete($id)
@@ -65,6 +65,6 @@ class PDFController extends Controller
         $data = PDF::find($id);
          $data->delete();
 
-        return redirect()->route('admin.pdf')->with('message','Data Deleted Successfully!!!');
+        return redirect()->route('admin.pdf')->with('success','Data Deleted Successfully!!!');
     }
 }

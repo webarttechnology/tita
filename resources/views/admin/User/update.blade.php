@@ -7,7 +7,7 @@
   <div class="content">
     <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
       <div>
-        <h1>Update Product</h1>
+        <h1>Update Details</h1>
       </div>
       <div>
         <a href="{{route ('admin.user')}}" class="btn btn-primary"> View All</a>

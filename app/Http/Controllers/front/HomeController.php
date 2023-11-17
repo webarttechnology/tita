@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Mail\ContactEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\{Vehicle};
-use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -99,27 +99,9 @@ class HomeController extends Controller
         $email = new ContactEmail($senderName, $phoneNumber, $senderEmail, $senderMessage);
         Mail::to('teethi.dhar@webart.technology')->send($email);
 
-        return redirect()->back()->with('message', 'Email Sent Successfully!!!');
+        return redirect()->back()->with('success', 'Email Sent Successfully!!!');
     }
 
-    public function userLogin()
-    {
-        return view('front.login');
-    }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
-        $cradentials = $request->only('email', 'password');
-        if(Auth::attempt($cradentials))
-        {
-            return redirect()->intended('/')->with('You Have Successfully Login!!');
-        }
-        return redirect()->intended('login')->with('Invalid Details!!');
-    }
+    
 
 }

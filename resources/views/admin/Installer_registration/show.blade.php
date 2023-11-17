@@ -7,7 +7,7 @@
         <div class="content">
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Admin Report Approval</h1>
+                    <h1>Installers</h1>
                 </div>               
             </div>
             <div class="row">

@@ -38,7 +38,6 @@ Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_d
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'singleBlog'])->name('single_blog');
 Route::get('/installer/registration', [HomeController::class, 'registration'])->name('registration');
-Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 Route::post('/email-send', [HomeController::class, 'emailSend'])->name('email_Send');
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
@@ -46,10 +45,16 @@ Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_detail
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
 Route::get('/installer/test', [InstallerController::class, 'testForm'])->name('test_Form');
+Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
 Route::get('/user/registration', [UserController::class, 'userRegistration'])->name('user_Registration');
 Route::post('/user/registration/store', [UserController::class, 'userRegistrationStore'])->name('user_Registration_Store');
-Route::get('/login', [HomeController::class, 'userLogin'])->name('user_Login');
-Route::post('/sing-in', [HomeController::class, 'login'])->name('user_Sing_In');
+Route::get('/login', [UserController::class, 'userLogin'])->name('user_Login');
+Route::post('/sing-in', [UserController::class, 'login'])->name('user_Sing_In');
+Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout');
+Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
+Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
+Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
+
 
 /**Admin Section*/
 

@@ -41,8 +41,7 @@
 	{{-- Toast --}}
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-	<!-- Include Select2 CSS and JS files -->
-	
+	<!-- Include Select2 CSS and JS files -->	
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -52,7 +51,6 @@
 	<!-- sweetalert -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
-
 
 	<!-- font-awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -161,7 +159,7 @@
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="{{ route('admin.registration.installers') }}">
 								<i class="mdi mdi-image-filter-none"></i>
-								<span class="nav-text">Registration Installer</span> <b class="caret"></b>
+								<span class="nav-text">Installer</span> <b class="caret"></b>
 							</a>
 						</li>
 						<li class="has-sub">
@@ -259,6 +257,7 @@
 	{{-- Toast --}}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 	<!-- select2 -->
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -270,29 +269,27 @@
 		"progressBar": true
 	}
 
-	@if(Session::has('success'))
-		toastr.success("{{ session('success') }}");@endif
-	@if(Session::has('message'))
-		toastr.success("{{ session('message') }}");
-	@endif
+		@if(Session::has('success'))
+			toastr.success("{{ session('success') }}");
+		@endif
 
-	@if(Session::has('error'))
-		toastr.error("{{ session('error') }}");
-	@endif
+		@if(Session::has('error'))
+			toastr.error("{{ session('error') }}");
+		@endif
 
-	@if(Session::has('info'))
-		toastr.info("{{ session('info') }}");
-	@endif
+		@if(Session::has('info'))
+			toastr.info("{{ session('info') }}");
+		@endif
 
-	@if(Session::has('warning'))
-		toastr.warning("{{ session('warning') }}");
-	@endif
+		@if(Session::has('warning'))
+			toastr.warning("{{ session('warning') }}");
+		@endif
 
-	@if ($errors->any())
-		@foreach ($errors->all() as $error)
-			toastr.error("{{ $error }}");
-		@endforeach
-	@endif
+		@if ($errors->any())
+			@foreach ($errors->all() as $error)
+				toastr.error("{{ $error }}");
+			@endforeach
+		@endif
 	</script>
 
 <!-- warning alert -->

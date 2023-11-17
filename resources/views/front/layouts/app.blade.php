@@ -22,6 +22,7 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <!-- Responsive -->
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body class="body">
@@ -89,7 +90,18 @@
                     </a> --}}
                    
                     <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
-                    <a href="{{ route('user_Login') }}" class="btn btn-dark btns2 rounded-0">Login</a>
+                    @if($authLink == 'login')
+                      <a href="{{ route('user_Login') }}"><img src="{{ asset('assets/images/login.png') }}" width="30px"></a>
+                    @else 
+                    <a href="{{ route('user_Details') }}"><img src="{{ asset('assets/images/log-in.png') }}" width="30px"></a>
+                        <a href="{{ route('user_logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                             <img src="{{ asset('assets/images/shutdown.png') }}" width="30px">
+                        </a>
+
+                        <form id="logout-form" action="{{ route('user_logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -233,18 +245,60 @@
     </footer>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        <!-- Optional JavaScript; choose one of the two! -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+        <!-- custom -->
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+        {{-- Toast --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    {{-- Toast --}}
+    <script>
+        toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+
+        @if(Session::has('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+        
+        @if(Session::has('message'))
+            toastr.success("{{ session('message') }}");
+        @endif
+
+        @if(Session::has('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(Session::has('info'))
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(Session::has('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
     </script>
-    <!-- custom -->
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
 
     <script>
         var swiper = new Swiper(".mySwiper1", {
@@ -314,7 +368,6 @@
                     slidesPerView: 1,
                     spaceBetween: 50,
                 },
-
             },
             pagination: {
                 el: ".swiper-pagination",
@@ -346,9 +399,7 @@
                         $(iframe_video).attr('src', '');
                     }
                 });
-
             });
-
         });
     </script>
 </body>

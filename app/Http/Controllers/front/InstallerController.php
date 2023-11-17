@@ -33,7 +33,7 @@ class InstallerController extends Controller
             'approvel_by_admin' => "inprogress",
         ]);
 
-        return redirect()->back()->with('message', 'Registration Successfully!!!');
+        return redirect()->back()->with('success', 'Registration Successfully!!!');
         
     }
 
@@ -102,7 +102,7 @@ class InstallerController extends Controller
             'email' => $request->email,
         ]);
         
-        return redirect()->back()->with('message', 'Your Message Sent Successfully!!!');
+        return redirect()->back()->with('success', 'Your Message Sent Successfully!!!');
     }
 
     public function details($id)
