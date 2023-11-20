@@ -2407,6 +2407,73 @@ transform: scale(1.03);
     box-shadow: 0px 6px 18px 1px #bdb5b5;
   }
 
+  /*Tanmoy CSS */
+.request,
+.installer {
+padding: 50px 0;
+}
+
+.request h2,
+.installer h2 {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.request .form,
+.installer .form {
+padding: 30px;
+background-color: #fff;
+border-radius: 20px;
+border: 1px solid var(--color-primary);
+}
+.request .form .form-control,
+.installer .form .form-control{
+padding: 16px ;
+}
+.request .form .form-select,
+.installer .form .form-select{
+padding: 16px !important ;
+}
+
+.request .form .form-select:focus,
+.installer .form .form-select:focus {
+color: #292122;
+background-color: #fff;
+border-color: #fe8695;
+outline: 0;
+box-shadow: 0 0 0 0.25rem rgb(253 13 24 / 25%);
+}
+
+.installer p strong {
+color: var(--color-primary);
+}
+button.btn-theme {
+background-color: var(--color-primary);
+font-family: var(--fnt-family-primary);
+font-size: 16px;
+color: var(--color-light);
+transition: 0.3s;
+}
+
+button.btn-theme:hover {
+background-color: #940a03;
+}
+/*Tanmoy CSS END */
+
+
+.model-heading{
+  text-align: right;
+  font-weight: bold;
+  color: #000;
+  font-size: 25px;
+}
+
+.model-content{
+  text-align: left;
+  font-weight: bold;
+  color: #000;
+}
+
 
 
 

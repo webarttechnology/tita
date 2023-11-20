@@ -40,25 +40,19 @@
                                                         <div class="modal-dialog">
                                                           <div class="modal-content">
                                                             <div class="modal-header">
-                                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                              <h5 class="modal-title" id="exampleModalLabel">Reports</h5>
                                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-
-                                                                <table class="table">
-                                                                    <thead>
-                                                                      <tr>
-                                                                        <th scope="col">Name</th>
-                                                                        <th scope="col">Message</th>
-                                                                      </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                      <tr>
-                                                                        <td id="name"></td>
-                                                                        <td id="message"></td>
-                                                                      </tr>
-                                                                    </tbody>
-                                                                  </table>
+                                                                <span><strong>Contact Name:</strong><span id="contact_name"></span></span>
+                                                                <p class="model-heading">Company Name: <span class="model-content" id="company_name"></span></p>
+                                                                <p class="model-heading">Phone Number:</p><span class="model-content" id="phone_number"></span>
+                                                                <p class="model-heading">Email:</p><span class="model-content" id="email"></span>
+                                                                <p class="model-heading">Address:</p><span class="model-content" id="address"></span>
+                                                                <p class="model-heading">Company Block:</p><span class="model-content" id="company_block"></span>
+                                                                <p class="model-heading">City:</p><span class="model-content" id="company_city"></span>
+                                                                <p class="model-heading">State:</p><span class="model-content" id="company_state"></span>
+                                                                <p class="model-heading">Additional Details: </p><span class="model-content" id="additional_details"></span>                                                      
                                                             </div>
                                                             <div class="modal-footer">
                                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -156,16 +150,84 @@
                 success: function (details) 
                 {
                     if (details.reports.length > 0) {
-                        $('#name').text(details.reports[0].name);
+                        $('#company_name').text(details.reports[0].company_name);
                     } else {
-                        $('#name').text('No email available.');
+                        $('#company_name').text('Not available.');
                     }
 
                     if (details.reports.length > 0) {
-                        $('#message').text(details.reports[0].message);
+                        $('#contact_name').text(details.reports[0].contact_name);
                     } else {
-                        $('#message').text('No reports available.');
-                    }                  
+                        $('#contact_name').text('Not available.');
+                    }
+
+                    if (details.reports.length > 0) {
+                        $('#phone_number').text(details.reports[0].phone_number);
+                    } else {
+                        $('#phone_number').text('Not available.');
+                    }   
+                    
+                    if (details.reports.length > 0) {
+                        $('#email').text(details.reports[0].email);
+                    } else {
+                        $('#email').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#address').text(details.reports[0].address);
+                    } else {
+                        $('#address').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#vehical_type').text(details.reports[0].vehical_type);
+                    } else {
+                        $('#vehical_type').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#make').text(details.reports[0].make);
+                    } else {
+                        $('#make').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#model').text(details.reports[0].model);
+                    } else {
+                        $('#model').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#year').text(details.reports[0].year);
+                    } else {
+                        $('#year').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#company_street_no').text(details.reports[0].company_street_no);
+                    } else {
+                        $('#company_street_no').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#company_block').text(details.reports[0].company_block);
+                    } else {
+                        $('#company_block').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#company_street_name').text(details.reports[0].company_street_name);
+                    } else {
+                        $('#company_street_name').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#company_city').text(details.reports[0].company_city);
+                    } else {
+                        $('#company_city').text('Not available.');
+                    }  
+                    if (details.reports.length > 0) {
+                        $('#company_state').text(details.reports[0].company_state);
+                    } else {
+                        $('#company_state').text('Not available.');
+                    }  
+                    
+                    if (details.reports.length > 0) {
+                        $('#additional_details').text(details.reports[0].additional_details);
+                    } else {
+                        $('#additional_details').text('Not available.');
+                    }  
                 },
                 error: function (error) {
                     console.error('Ajax request failed: ', error);

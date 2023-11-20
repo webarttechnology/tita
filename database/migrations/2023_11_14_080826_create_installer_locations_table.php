@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('installer_locations', function (Blueprint $table) {
             $table->id();
             $table->text('installer_id');
-            $table->text('address_line_1');
-            $table->text('address_line_2')->nullable();
-            $table->text('country');
-            $table->text('state');
+            $table->text('street_no');
+            $table->text('plot')->nullable();
+            $table->text('street_name');
             $table->text('city');
+            $table->text('state');
             $table->text('zip');
             $table->timestamps();
         });

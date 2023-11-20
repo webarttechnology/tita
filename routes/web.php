@@ -77,9 +77,6 @@ Route::prefix('admin')->group(function () {
             Route::get('logout', 'logout')->name('admin.logout');
         });
 
-        /**
-         * EV Listings
-        */
 
         Route::prefix('vehicle')->controller(VehicleManageController::class)->group(function () {
              Route::get('list', 'listing');
@@ -88,9 +85,6 @@ Route::prefix('admin')->group(function () {
              Route::get('delete/{id}', 'delete');
         });
 
-        /**
-         * Blog section
-        */
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
         Route::get('/blog/add', [BlogController::class, 'add'])->name('blog_add');

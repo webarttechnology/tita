@@ -18048,7 +18048,14 @@ a.badge-purple:focus, a.badge-purple.focus {
 }
 .card-default .card-body p {
   line-height: 1.5;
-  color: #777777;
+  text-align: left;
+  font-weight: bold;
+  color: #000;
+  font-size: 25px;
+}
+
+.modal-body span{
+  text-align: right;
 }
 .card-default .card-footer {
   border-top: 1px solid #f3f3f3;

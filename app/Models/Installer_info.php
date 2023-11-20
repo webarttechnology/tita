@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InstallerLocation extends Model
+class Installer_info extends Model
 {
     use HasFactory;
 
-    protected $table = "installer_locations";
     protected $fillable = [
         'installer_id',
-        'street_no',
-        'plot',
-        'street_name',
-        'state',
-        'city',
-        'zip',
+        'national_identification_no',
+        'residental_address',
+        'ocupation',
+        'passport_photo',
+        'national_id_card',
+        'drivers_license',
+        'company_name',
+        'cac_registration',
     ];
 
     public function installer()

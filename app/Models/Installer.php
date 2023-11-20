@@ -13,7 +13,6 @@ class Installer extends Authenticatable
 
     protected $table = "installers";
     protected $fillable = ['name', 'email', 'phone_number', 'password', 'profile_img', 'status', 'approvel_by_admin'];
-
     function reports()
     {
         return $this->hasMany(Report::class);
