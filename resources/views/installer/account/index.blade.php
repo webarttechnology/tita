@@ -58,7 +58,7 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="settings-tab" data-bs-toggle="tab"
                                         data-bs-target="#locationUpdate" type="button" role="tab"
-                                        aria-controls="settings" aria-selected="false">Location</button>
+                                        aria-controls="settings" aria-selected="false">Location</button>                                        
                                 </li>
 
                                 <li class="nav-item" role="presentation">
@@ -79,7 +79,7 @@
                                     <div class="tab-pane-content mt-5">
                                         <form action="{{ url('installer/edit/profile') }}" method="post" enctype="multipart/form-data">
                                             @csrf
-                                            <div class="form-group row mb-6">
+                                            {{-- <div class="form-group row mb-6">
                                                 <label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">User Image</label>
                                                 <div class="col-sm-8 col-lg-10">
                                                     <div class="custom-file mb-1">
@@ -87,7 +87,7 @@
                                                         <label class="custom-file-label" for="coverImage">Choose file...</label>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="row mb-2">
                                                 <div class="col-lg-12">
@@ -174,8 +174,8 @@
                                             <div class="row mb-2">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label for="lastName">Address *</label>
-                                                        <input type="text" class="form-control" id="address_line_1" name="address_line_1"  value="@if ($location != null) {{ $location->address_line_1 }} @endif">
+                                                        <label for="lastName">Street No *</label>
+                                                        <input type="text" class="form-control" id="street_no" name="street_no"  value="@if ($location != null) {{ $location->street_no }} @endif">
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,10 +183,8 @@
                                             <div class="row mb-2">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label for="lastName">Address (Line 2)</label>
-                                                        <input type="text" class="form-control" id="address_line_2"
-                                                            name="address_line_2"
-                                                            value="@if ($location != null) {{ $location->address_line_2 }} @endif">
+                                                        <label for="lastName">Block or Plot</label>
+                                                        <input type="text" class="form-control" id="plot"name="plot" value="@if ($location != null) {{ $location->plot }} @endif">
                                                     </div>
                                                 </div>
                                             </div>
@@ -194,10 +192,8 @@
                                             <div class="row mb-2">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label for="lastName">Country *</label>
-                                                        <input type="text" class="form-control" id="country"
-                                                            name="country"
-                                                            value="@if ($location != null) {{ $location->country }} @endif">
+                                                        <label for="lastName">Street Name *</label>
+                                                        <input type="text" class="form-control" id="street_name" name="street_name"  value="@if ($location != null) {{ $location->street_name }} @endif">
                                                     </div>
                                                 </div>
                                             </div>
@@ -217,9 +213,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <label for="lastName">City *</label>
-                                                        <input type="text" class="form-control" id="city"
-                                                            name="city"
-                                                            value="@if ($location != null) {{ $location->city }} @endif">
+                                                        <input type="text" class="form-control" id="city"  name="city"  value="@if ($location != null) {{ $location->city }} @endif">
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,8 +222,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <label for="lastName">Zip *</label>
-                                                        <input type="text" class="form-control" id="zip" name="zip"
-                                                            value="@if ($location != null) {{ $location->zip }} @endif">
+                                                        <input type="text" class="form-control" id="zip" name="zip" value="@if ($location != null) {{ $location->zip }} @endif">
                                                     </div>
                                                 </div>
                                             </div>

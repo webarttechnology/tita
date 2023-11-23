@@ -11,6 +11,7 @@ use App\Mail\ContactEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\{Vehicle};
 
+
 class HomeController extends Controller
 {
     public function index()
@@ -32,6 +33,11 @@ class HomeController extends Controller
     public function aboutUs()
     {
         return view('front.about-us');
+    }
+
+    public function products()
+    {
+        return view('front.product');
     }
 
     public function evlisting()
@@ -93,7 +99,9 @@ class HomeController extends Controller
         $email = new ContactEmail($senderName, $phoneNumber, $senderEmail, $senderMessage);
         Mail::to('teethi.dhar@webart.technology')->send($email);
 
-        return redirect()->back()->with('message', 'Email Sent Successfully!!!');
+        return redirect()->back()->with('success', 'Email Sent Successfully!!!');
     }
+
+    
 
 }

@@ -12,15 +12,16 @@ class InstallerLocation extends Model
     protected $table = "installer_locations";
     protected $fillable = [
         'installer_id',
-        'address_line_1',
-        'address_line_2',
-        'country',
+        'street_no',
+        'plot',
+        'street_name',
         'state',
         'city',
         'zip',
     ];
 
-    public function availableLocation(){
-        return $this->hasMany(InstallerAvailableLocation::class);
+    public function installer()
+    {
+        return $this->belongsTo(Installer::class);
     }
 }

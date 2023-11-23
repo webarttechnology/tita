@@ -18048,7 +18048,14 @@ a.badge-purple:focus, a.badge-purple.focus {
 }
 .card-default .card-body p {
   line-height: 1.5;
-  color: #777777;
+  text-align: left;
+  font-weight: bold;
+  color: #000;
+  font-size: 25px;
+}
+
+.modal-body span{
+  text-align: right;
 }
 .card-default .card-footer {
   border-top: 1px solid #f3f3f3;
@@ -19741,6 +19748,7 @@ code {
   font-weight: 300;
   text-align: center;
   font-size: 14px;
+  color: black;
 }
 
 /* Body */
@@ -24968,7 +24976,31 @@ svg {
   overflow: hidden !important;
 }
 
+/* Toaster CSS */
+.toast-success {
+  background-color: #0ae93e; 
+  color: #fff; 
+  font-weight: bold;
+}
 
+.toast-error {
+  background-color: #d81327; 
+  color: #fff; 
+  font-weight: bold;
+}
+
+.toast-info {
+  background-color: #17a2b8; 
+  color: #fff; 
+  font-weight: bold;
+}
+
+.toast-warning {
+  background-color: #ffc107;
+  color: #212529;
+  font-weight: bold; 
+}
+/* Toaster CSS */
 
 
 

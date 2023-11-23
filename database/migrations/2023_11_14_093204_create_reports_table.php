@@ -13,9 +13,22 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
             $table->string('installer_id')->nullable();
-            $table->string('message')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('contact_name')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('vehical_type')->nullable();
+            $table->string('make')->nullable();
+            $table->string('model')->nullable();
+            $table->string('year')->nullable();
+            $table->string('company_street_no')->nullable();
+            $table->string('company_block')->nullable();
+            $table->string('company_street_name')->nullable();
+            $table->string('company_city')->nullable();
+            $table->string('company_state')->nullable();
+            $table->string('additional_details')->nullable();
             $table->timestamps();
         });
     }

@@ -41,7 +41,7 @@ class BlogController extends Controller
             'updated_at' => now(),
         ]) ;
 
-        return redirect()->route('admin.blog')->with('message', 'Data Added Successfully!!!');
+        return redirect()->route('admin.blog')->with('success', 'Data Added Successfully!!!');
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class BlogController extends Controller
                     'updated_at' => now(),
                 ]);
             }
-            return redirect()->route('admin.blog')->with('message', 'Data Updated Successfully!!!');
+            return redirect()->route('admin.blog')->with('success', 'Data Updated Successfully!!!');
     }
 
     public function delete($id)
@@ -91,6 +91,6 @@ class BlogController extends Controller
         $data = Blog::find($id);
          $data->delete();
 
-        return redirect()->route('admin.blog')->with('message','Data Deleted Successfully!!!');
+        return redirect()->route('admin.blog')->with('success','Data Deleted Successfully!!!');
     }
 }

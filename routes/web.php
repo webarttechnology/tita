@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\PDFController;
+use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AuthManageController;
 use App\Http\Controllers\admin\VehicleManageController;
 
+use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\InstallerController;
 
@@ -26,26 +28,35 @@ use App\Http\Controllers\installer\InstallerLocationManageController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about_us');
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
+Route::get('/cng-kit', [HomeController::class, 'products'])->name('products');
 Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_download');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'singleBlog'])->name('single_blog');
-Route::get('/registration', [HomeController::class, 'registration'])->name('registration');
-Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
+Route::get('/installer/registration', [HomeController::class, 'registration'])->name('registration');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 Route::post('/email-send', [HomeController::class, 'emailSend'])->name('email_Send');
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
+Route::get('/installer/test', [InstallerController::class, 'testForm'])->name('test_Form');
+Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
+Route::get('/user/registration', [UserController::class, 'userRegistration'])->name('user_Registration');
+Route::post('/user/registration/store', [UserController::class, 'userRegistrationStore'])->name('user_Registration_Store');
+Route::get('/login', [UserController::class, 'userLogin'])->name('user_Login');
+Route::post('/sing-in', [UserController::class, 'login'])->name('user_Sing_In');
+Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout');
+Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
+Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
+Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
 
-/**
- * Admin Section
-*/
+
+/**Admin Section*/
 
 Route::prefix('admin')->group(function () {
     //Home Page ->middleware(['auth'])
@@ -66,9 +77,6 @@ Route::prefix('admin')->group(function () {
             Route::get('logout', 'logout')->name('admin.logout');
         });
 
-        /**
-         * EV Listings
-        */
 
         Route::prefix('vehicle')->controller(VehicleManageController::class)->group(function () {
              Route::get('list', 'listing');
@@ -80,9 +88,6 @@ Route::prefix('admin')->group(function () {
              Route::get('delete/features/{id}', 'delete_features');
         });
 
-        /**
-         * Blog section
-        */
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
         Route::get('/blog/add', [BlogController::class, 'add'])->name('blog_add');
@@ -113,6 +118,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
 
+        //Installers Registration 
+        Route::get('/user', [AdminUserController::class, 'index'])->name('admin.user');
+        Route::get('/user/add', [AdminUserController::class, 'add'])->name('user_add');
+        Route::post('user/store', [AdminUserController::class, 'store'])->name('user_store');
+        Route::get('/user/edit/{id}', [AdminUserController::class, 'edit'])->name('user_edit');
+        Route::put('/user/update/{id}', [AdminUserController::class, 'update'])->name('user_update');
+        Route::get('/user/delete/{id}', [AdminUserController::class, 'delete'])->name('user_delete');
+        
     });
 
 });
@@ -148,11 +161,11 @@ Route::prefix('installer')->group(function () {
         });
         
         Route::controller(InstallerLocationManageController::class)->group(function () {
-                Route::get('my-account', 'location');
-              Route::get('location', 'location');
-              Route::post('location-save/{type}', 'location_save');
-              Route::post('zip-save', 'zip_save');
-              Route::post('bank-save/{type}', 'bank_save');
+            Route::get('my-account', 'location');
+            Route::get('location', 'location');
+            Route::post('location-save/{type}', 'location_save');
+            Route::post('zip-save', 'zip_save');
+            Route::post('bank-save/{type}', 'bank_save');
         });
     });
 });

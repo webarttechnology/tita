@@ -66,13 +66,13 @@ a {
 /* menue */
 nav {
   background-color: var(--color-light);
-  padding-top: 35px !important;
-  padding-bottom: 35px !important;
+  padding-top: 20px !important;
+  padding-bottom: 16px !important;
 }
 
 nav .navbar-nav .nav-item .nav-link {
   font-family: var(--fnt-family-secondary);
-  font-size: 19px;
+  font-size: 16px;
   line-height: 18px;
   color: var(--color-secondary);
   font-weight: 500;
@@ -124,6 +124,10 @@ nav .icons .btns2 {
   color: var(--color-light);
   font-weight: 600;
   padding: 10px 20px;
+}
+
+.icons{
+  margin-left: 8rem;
 }
 
 /* banners */
@@ -1969,7 +1973,7 @@ text-decoration: none;
 .blogsec .blog-img img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .blogsec .card h3 {
@@ -2269,8 +2273,206 @@ transform: scale(1.03);
   color: red;
 }
 
+/* Toaster CSS */
+.toast-success {
+  background-color: #0a0ee9; 
+  color: #fff; 
+  font-weight: bold;
+}
+
+.toast-error {
+  background-color: #d81327; 
+  color: #fff; 
+  font-weight: bold;
+}
+
+.toast-info {
+  background-color: #17a2b8; 
+  color: #fff; 
+  font-weight: bold;
+}
+
+.toast-warning {
+  background-color: #ffc107;
+  color: #212529;
+  font-weight: bold; 
+}
+/* Toaster CSS */
 
 
+
+.user-header h3{
+  color: var(--color-primary);
+  font-family: var(--fnt-family-secondary);
+  font-size: 40px;
+  }
+   .user nav{
+    background-color: transparent !important;
+  }
+  .user-menu li{
+    list-style: none;
+    padding-left: 57px;
+  }
+  .user-menu a{
+    color: #000000 !important;
+  }
+  .user-menu li a:hover{
+    color: var(--color-primary);
+  }
+  .mail h6{
+    font-weight: 600;
+  }
+  .number h6{
+    font-weight: 600;
+  }
+  .user{
+    padding: 50px 0;
+  }
+  .user-profile{
+    width: 136px;
+  }
+  .user-profile h5{
+    font-size: 17px;
+    text-align: center;
+      font-weight: 600;
+      font-family: var(--fnt-family-primary);
+  }
+  .user-profile img{
+    width: 100%;
+    object-fit: cover;
+    margin-left: 22px;
+  }
+  .user-form .form-control{
+    line-height: 0;
+     border-radius: 10px !important;
+  }
+  .user .form-label{
+    font-size: 17px;
+      font-weight: 500;
+      font-family: var(--fnt-family-primary);
+  }
+  .user .form-group label{
+    font-size: 17px;
+      font-weight: 500;
+      font-family: var(--fnt-family-primary);
+  }
+  .user .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--color-primary);
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    font-weight: 600;
+      font-size: 16px;
+      font-family: var(--fnt-family-primary);
+  }
+  .user .nav-link {
+    font-weight: 600;
+      font-size: 19px;
+    color: #000;
+  }
+    .user .btn-primary {
+      color: #fff;
+      background-color:var(--color-primary);
+      border-color: var(--color-primary);
+  }
+  .user .btn-primary:hover{
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-secondary);
+  }
+  /* .user-form .form-control {
+    border-radius: 12px !important;
+  } */
+  .user-content{
+    background: #fff;
+      padding: 21px 38px;
+      width: 100%;
+      
+      box-shadow: 0px 7px 7px 1px #bdb5b5;
+      border-radius: 10px;
+  }
+  .user-deatils h5{
+    font-size: 18px;
+      padding-top: 22px;
+  }
+  button.color{
+    color:var(--color-primary) !important ;
+  }
+  .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    background-color: transparent;
+    border-color: var(--color-primary);
+  }
+  .profile-content-right{
+    background-color:transparent;
+    border-radius: 10px;
+    box-shadow: 0px 6px 18px 1px #bdb5b5;
+  }
+
+  /*Tanmoy CSS */
+.request,
+.installer {
+padding: 50px 0;
+}
+
+.request h2,
+.installer h2 {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.request .form,
+.installer .form {
+padding: 30px;
+background-color: #fff;
+border-radius: 20px;
+border: 1px solid var(--color-primary);
+}
+.request .form .form-control,
+.installer .form .form-control{
+padding: 16px ;
+}
+.request .form .form-select,
+.installer .form .form-select{
+padding: 16px !important ;
+}
+
+.request .form .form-select:focus,
+.installer .form .form-select:focus {
+color: #292122;
+background-color: #fff;
+border-color: #fe8695;
+outline: 0;
+box-shadow: 0 0 0 0.25rem rgb(253 13 24 / 25%);
+}
+
+.installer p strong {
+color: var(--color-primary);
+}
+button.btn-theme {
+background-color: var(--color-primary);
+font-family: var(--fnt-family-primary);
+font-size: 16px;
+color: var(--color-light);
+transition: 0.3s;
+}
+
+button.btn-theme:hover {
+background-color: #940a03;
+}
+/*Tanmoy CSS END */
+
+
+.model-heading{
+  text-align: right;
+  font-weight: bold;
+  color: #000;
+  font-size: 25px;
+}
+
+.model-content{
+  text-align: left;
+  font-weight: bold;
+  color: #000;
+}
 
 
 

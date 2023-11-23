@@ -27,34 +27,35 @@ class InstallerLocationManageController extends Controller
     public function location_save(Request $request, $type)
     {
         $request->validate([
-            'address_line_1' => 'required',
-            'country' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'zip' => 'required',
+            'street_no' => 'required|string',
+            'plot' => 'required|string',
+            'street_name' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip' => 'required|string|max:10',
         ]);
 
         if ($type == "save") 
         {
              InstallerLocation::create([
                 'installer_id' => Auth::guard('installer')->user()->id,
-                'address_line_1' => $request->address_line_1,
-                'address_line_2' => $request->address_line_2,
-                'country' => $request->country,
-                'state' => $request->state,
+                'street_no' => $request->street_no,
+                'plot' => $request->plot,
+                'street_name' => $request->street_name,
                 'city' => $request->city,
+                'state' => $request->state,
                 'zip' => $request->zip,
             ]);           
         }
         else 
         {
             $location_id = (InstallerLocation::where('installer_id', Auth::guard('installer')->user()->id)->first())->id;
-            $location = InstallerLocation::where('installer_id', Auth::guard('installer')->user()->id)->update([
-                'address_line_1' => $request->address_line_1,
-                'address_line_2' => $request->address_line_2,
-                'country' => $request->country,
-                'state' => $request->state,
+             InstallerLocation::where('installer_id', Auth::guard('installer')->user()->id)->update([
+                'street_no' => $request->street_no,
+                'plot' => $request->plot,
+                'street_name' => $request->street_name,
                 'city' => $request->city,
+                'state' => $request->state,
                 'zip' => $request->zip,
             ]);
         }
