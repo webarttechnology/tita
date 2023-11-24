@@ -48,7 +48,7 @@
                     <div class="col-md-12">
                       <label class="form-label">Image:</label>
                       <input class="form-control" type="file" name="image">
-                      <img src="{{ asset('uploads/user/'. $data->image) }}" alt="Your Image" width="100px">
+                      <img src="{{ asset($data->image) }}" alt="Your Image" width="100px">
                     </div>
     
                     <div class="col-md-12">

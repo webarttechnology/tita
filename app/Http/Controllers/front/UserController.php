@@ -22,7 +22,7 @@ class UserController extends Controller
         [
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:users',
-            'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9])[\S]+$/'],
+            'password' => ['required', 'string', 'min:8'],
             'number' => 'required|numeric|digits:10',
             'image' => 'required|image',
         ],

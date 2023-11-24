@@ -35,7 +35,7 @@
                                             <td>{{ $users->name}}</td>
                                             <td>{{ $users->email}}</td>
                                             <td>{{ $users->phone_number}}</td>
-                                            <td><img src="{{ asset('uploads/user/'. $users->image) }}" alt="Your Image" width="100px"></td>
+                                            <td><img src="{{ asset($users->image) }}" alt="Your Image" width="100px"></td>
                                            
                                             <td>
                                                 <div class="btn-group mb-1">
@@ -48,7 +48,7 @@
                                                         <span class="sr-only">Info</span>
                                                     </button>
 
-                                                    <div class="dropdown-menu">
+                                                    <div class="dropdown-menu dropdown-custom-button">
                                                         <a class="dropdown-item" href="{{ url ('admin/user/edit/'.$users->id)}}">Edit</a>
                                                         <a class="dropdown-item" href="{{ url ('admin/user/delete/'.$users->id)}}" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
                                                     </div>

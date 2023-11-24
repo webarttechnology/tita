@@ -5,11 +5,13 @@ namespace App\Http\Controllers\front;
 use Illuminate\Http\Request;
 use App\Models\Installer;
 use App\Mail\MyEmail;
-use App\Models\Report;
+use App\Models\Quote;
+use App\Rules\PhoneNumber;
 use App\Models\Installer_info;
 use App\Models\InstallerLocation;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Models\Report;
 
 class InstallerController extends Controller
 {
@@ -20,7 +22,7 @@ class InstallerController extends Controller
             'f_name' => 'required|string|max:255',
             'l_name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:installers,email,' . ($request->id ?? 'NULL') . ',id',
-            'number' => 'required|numeric|digits:10',
+            'number' => ['required', new PhoneNumber],
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9])[\S]+$/'],
             'passport_photo' => 'image|mimes:jpeg,png,jpg',
             'national_id_card' => 'image|mimes:jpeg,png,jpg',
@@ -42,16 +44,16 @@ class InstallerController extends Controller
         ]);
 
         $passport_photo = $request->passport_photo;
-        $passport_photo_Path = 'images/User/' . time() . '_' . $passport_photo->getClientOriginalName();
-        $passport_photo->move('images/User', $passport_photo_Path);
+        $passport_photo_Path = 'images/Installer/' . time() . '_' . $passport_photo->getClientOriginalName();
+        $passport_photo->move('images/Installer', $passport_photo_Path);
     
         $national_id_card_photo = $request->national_id_card;
-        $national_id_card_photo_Path = 'images/User/' . time() . '_' . $national_id_card_photo->getClientOriginalName();
-        $national_id_card_photo->move('images/User', $national_id_card_photo_Path);
+        $national_id_card_photo_Path = 'images/Installer/' . time() . '_' . $national_id_card_photo->getClientOriginalName();
+        $national_id_card_photo->move('images/Installer', $national_id_card_photo_Path);
     
         $drivers_license_photo = $request->drivers_license;
-        $drivers_license_photo_Path = 'images/User/' . time() . '_' . $drivers_license_photo->getClientOriginalName();
-        $drivers_license_photo->move('images/User', $drivers_license_photo_Path);
+        $drivers_license_photo_Path = 'images/Installer/' . time() . '_' . $drivers_license_photo->getClientOriginalName();
+        $drivers_license_photo->move('images/Installer', $drivers_license_photo_Path);
     
         $installerData = [
             'name' => $request->f_name . ' ' . $request->m_name . ' ' . $request->l_name,
@@ -147,13 +149,18 @@ class InstallerController extends Controller
         return view('front.report', ['data' => $data]);
     }
 
+    public function quote()
+    {
+        return view('front.quote');
+    }
 
     public function reportStore(Request $request)
     {
         $request->validate([
+            'installer_id' => 'required',
             'company_name' => 'required|string|max:255',
             'contact_name' => 'required',
-            'phone_number' => 'required|numeric|digits:10',
+            'phone_number' => ['required', new PhoneNumber],
             'email' => 'required|email',
             'address' => 'required|string',
             'vehical_type' => 'required',
@@ -192,6 +199,49 @@ class InstallerController extends Controller
         return redirect()->back()->with('success', 'Your Message Sent Successfully!!!');
     }
 
+    public function quoteStore(Request $request)
+    {
+        $request->validate([
+            'company_name' => 'required|string|max:255',
+            'contact_name' => 'required',
+            'phone_number' => ['required', new PhoneNumber],
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'vehical_type' => 'required',
+            'make' => 'required',
+            'model' => 'required',
+            'year' => 'required',
+            'company_street_no' => 'required',
+            'company_block' => 'required|string',
+            'company_street_name' => 'required',
+            'company_city' => 'required|string',
+            'company_state' => 'required',
+            'additional_details' => 'required',
+        ], [
+            'name.required' => 'Name is required.',
+        ]);
+
+        Quote::create([
+            'company_name' => $request->company_name,
+            'contact_name' => $request->contact_name,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'address' => $request->address,
+            'vehical_type' => $request->vehical_type,
+            'make' => $request->make,
+            'model' => $request->model,
+            'year' => $request->year,
+            'company_street_no' => $request->company_street_no,
+            'company_block' => $request->company_block,
+            'company_street_name' => $request->company_street_name,
+            'company_city' => $request->company_city,
+            'company_state' => $request->company_state,
+            'additional_details' => $request->additional_details,
+        ]);
+        
+        return redirect()->back()->with('success', 'Your Message Sent Successfully!!!');
+    }
+
     public function details($id)
     {
         return Installer::with('reports')->where('id', $id)->first();
@@ -200,6 +250,12 @@ class InstallerController extends Controller
     public function testForm()
     {
         return view('front.install_test_form');
+    }
+
+
+    public function installerDetails($id)
+    {
+        return Installer::with('info')->where('id', $id)->first();
     }
     
 }

@@ -46,7 +46,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 	<!-- tagify for tags -->
-	<link href="tagify.css" rel="stylesheet">
+	{{-- <link href="tagify.css" rel="stylesheet"> --}}
 
 	<!-- sweetalert -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
@@ -167,6 +167,12 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">User</span> <b class="caret"></b>
 							</a>
+						</li>	
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ route('admin.quote') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Quote</span> <b class="caret"></b>
+							</a>
 						</li>					
 					</ul>
 				</div>
@@ -234,18 +240,6 @@
 	<script src="{{asset('assets/admin/plugins/jquery-zoom/jquery.zoom.min.js')}}"></script>
 	<script src="{{asset('assets/admin/plugins/slick/slick.min.js')}}"></script>
 
-	<!-- Chart -->
-	<script src="{{asset('assets/admin/plugins/charts/Chart.min.js')}}"></script>
-	<script src="{{asset('assets/admin/js/chart.js')}}"></script>
-
-	<!-- Google map chart -->
-	<script src="{{asset('assets/admin/plugins/charts/google-map-loader.js')}}"></script>
-	<script src="{{asset('assets/admin/plugins/charts/google-map.js')}}"></script>
-
-	<!-- Date Range Picker -->
-	<script src="{{asset('assets/admin/plugins/daterangepicker/moment.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.js')}}"></script>
-	<script src="{{asset('assets/admin/js/date-range.js')}}"></script>
 
 	<!-- Option Switcher -->
 	<script src="{{asset('assets/admin/plugins/options-sidebar/optionswitcher.js')}}"></script>

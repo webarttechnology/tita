@@ -8,7 +8,7 @@ use App\Http\Controllers\admin\PDFController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AuthManageController;
 use App\Http\Controllers\admin\VehicleManageController;
-
+use App\Http\Controllers\admin\AdminQuoteController;
 use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\InstallerController;
@@ -16,6 +16,7 @@ use App\Http\Controllers\front\InstallerController;
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
 use App\Http\Controllers\installer\InstallerLocationManageController;
+use App\Http\Controllers\QuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listin
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
+Route::get('/quote', [InstallerController::class, 'quote'])->name('quote');
+Route::post('/quote-store', [InstallerController::class, 'quoteStore'])->name('quote_Store');
 Route::get('/installer/test', [InstallerController::class, 'testForm'])->name('test_Form');
 Route::post('/installer-registration', [InstallerController::class, 'registration'])->name('installer_registration');
 Route::get('/user/registration', [UserController::class, 'userRegistration'])->name('user_Registration');
@@ -54,6 +57,8 @@ Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout')
 Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
 Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
 Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
+
+
 
 
 /**Admin Section*/
@@ -91,8 +96,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/blog/store', [BlogController::class, 'store'])->name('blog_store');
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog_edit');
         Route::put('/blog/update/{id}', [BlogController::class, 'update'])->name('blog_update');
-        Route::get('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog_delete');   
-    
+        Route::get('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog_delete');       
     
         //Video Tutorials Routes 
         Route::get('/video', [VideoController::class, 'index'])->name('admin.video');
@@ -114,6 +118,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/registration-installers', [InstallerController::class, 'show'])->name('admin.registration.installers');
         Route::post('/installer/approve', [InstallerController::class, 'approve'])->name('admin.registration.approve');
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
+        Route::get('installer/details/{id}', [InstallerController::class, 'installerDetails'])->name('installer_details');
+        Route::get('quote/details/{id}', [AdminQuoteController::class, 'quote_details'])->name('quote_details');
 
         //Installers Registration 
         Route::get('/user', [AdminUserController::class, 'index'])->name('admin.user');
@@ -122,6 +128,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/user/edit/{id}', [AdminUserController::class, 'edit'])->name('user_edit');
         Route::put('/user/update/{id}', [AdminUserController::class, 'update'])->name('user_update');
         Route::get('/user/delete/{id}', [AdminUserController::class, 'delete'])->name('user_delete');
+
+        //PDF Routes 
+        Route::get('/registration-quote', [AdminQuoteController::class, 'show'])->name('admin.quote');
+
         
     });
 

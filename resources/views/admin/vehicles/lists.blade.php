@@ -54,7 +54,7 @@
                                                     <span class="sr-only">Info</span>
                                                 </button>
 
-                                                <div class="dropdown-menu">
+                                                <div class="dropdown-menu dropdown-custom-button">
                                                     <a class="dropdown-item" href="#">Edit</a>
                                                     <a class="dropdown-item" href="javascript:void(0);" onclick="displayAlert('error', 'Are You Sure, You want to Delete This?', '{{ url('admin/vehicle/delete', $vehicle->id) }}')">Delete</a>
                                                 </div>
