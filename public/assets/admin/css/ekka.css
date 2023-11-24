@@ -25002,5 +25002,47 @@ svg {
 }
 /* Toaster CSS */
 
+/* Report View CSS */
+.dataList {
+  width: 100%; 
+  max-width:700px; 
+  margin: 0 auto; 
+  border: #ddd 1px solid; 
+  padding: 0; 
+  border-radius: 30px; 
+  overflow: hidden;
+}
+
+.dataList li { 
+  border-bottom: #ddd 1px solid; 
+  list-style-type: none;
+  display: flex; 
+  justify-content: space-between; 
+  align-content: center;
+}
+
+.dataList label {
+  font-weight:bold; 
+  width:40%;
+  display: inline-block; 
+  color:#fff; 
+  background: #3a6188;
+  padding:15px 25px;
+}
+.dataList span 
+{
+  width: 45%; 
+  display: inline-block;
+  padding:15px 25px;
+}
+/* Report View CSS */
 
 
+.dropdown-custom-button{
+    border:1px solid #34c997;
+}
+
+.dropdown-custom-button a:hover{
+    background-color: #34c997;
+    color:white;
+}

@@ -49,7 +49,7 @@
                                                         <span class="sr-only">Info</span>
                                                     </button>
 
-                                                    <div class="dropdown-menu">
+                                                    <div class="dropdown-menu dropdown-custom-button">
                                                         <a class="dropdown-item" href="{{ url ('admin/blog/edit/'.$blog->id)}}">Edit</a>
                                                         <a class="dropdown-item" href="{{ url ('admin/blog/delete/'.$blog->id)}}" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
                                                     </div>

@@ -80,7 +80,10 @@
                               <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('video')}}">Video</a></li>
                               <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('pdf_download')}}">PDF</a></li>
                             </ul>
-                        </div>                        
+                        </div>  
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('quote')}}">Quote</a>
+                        </li>                      
                     </ul>
                 </nav>
                 <div class="icons">

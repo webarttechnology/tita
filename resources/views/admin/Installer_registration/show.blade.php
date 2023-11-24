@@ -22,7 +22,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Message</th>
+                                            <th>POC</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -39,20 +39,18 @@
                                                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                           <div class="modal-content">
-                                                            <div class="modal-header">
-                                                              <h5 class="modal-title" id="exampleModalLabel">Reports</h5>
+                                                            <div class="modal-header text-center justify-content-end">
                                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <span><strong>Contact Name:</strong><span id="contact_name"></span></span>
-                                                                <p class="model-heading">Company Name: <span class="model-content" id="company_name"></span></p>
-                                                                <p class="model-heading">Phone Number:</p><span class="model-content" id="phone_number"></span>
-                                                                <p class="model-heading">Email:</p><span class="model-content" id="email"></span>
-                                                                <p class="model-heading">Address:</p><span class="model-content" id="address"></span>
-                                                                <p class="model-heading">Company Block:</p><span class="model-content" id="company_block"></span>
-                                                                <p class="model-heading">City:</p><span class="model-content" id="company_city"></span>
-                                                                <p class="model-heading">State:</p><span class="model-content" id="company_state"></span>
-                                                                <p class="model-heading">Additional Details: </p><span class="model-content" id="additional_details"></span>                                                      
+                                                                <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Details</h5>
+                                                               <ul class="dataList">
+                                                                    <li><label for="">Company name</label><span id="company_name"></span></li>
+                                                                    <li><label for="">cac registration</label><span id="cac_registration"></span></li>
+                                                                    <li><label for="">national identification no</label><span id="national_identification_no"></span></li>
+                                                                    <li><label for="">ocupation</label><span id="ocupation"></span></li>
+                                                                    <li><label for="">residental address</label><span id="residental_address"></span></li>
+                                                                </ul>
                                                             </div>
                                                             <div class="modal-footer">
                                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -62,7 +60,19 @@
                                                       </div>
                                                 </td>
                                                 <td class="status-column" data-installer-id="{{ $installers->id }}" data-approvel-status="{{ $installers->approvel_by_admin }}">
-                                                    {{ $installers->approvel_by_admin}}
+                                                    @php
+                                                        switch ($installers->approvel_by_admin) {
+                                                            case 'inprogress':
+                                                                echo 'Pending';
+                                                                break;
+                                                            case 'approve':
+                                                                echo 'Approved';
+                                                                break;
+                                                            default:
+                                                                echo 'Rejected';
+                                                                break;
+                                                        }
+                                                    @endphp
                                                 </td>
                                                 <td>
                                                     @if($installers->approvel_by_admin == 'inprogress')
@@ -72,7 +82,8 @@
                                                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                                                 <span class="sr-only">Info</span>
                                                             </button>                                                       
-                                                            <div class="dropdown-menu">
+                                                            <div class="dropdown-menu dropdown-custom-button">
+                                                                <a class="dropdown-item view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{$installers->id}}">View</a>
                                                                 <a class="dropdown-item approve" href="#" data-action="approved">Approve</a>
                                                                 <a class="dropdown-item reject" href="#" data-action="reject">Reject</a>
                                                             </div>                                                       
@@ -138,10 +149,9 @@
         });
         // {{-- Click on approve and reject button --}}
 
-        $(".details-view").on('click', function(){
+        $(".details-view").on('click', function()
+        {
             var id = $(this).data('id');
-
-            //alert(id);
 
             $.ajax({
                 url: '{{url('admin/details')}}' + "/" + id,
@@ -228,6 +238,57 @@
                     } else {
                         $('#additional_details').text('Not available.');
                     }  
+                },
+                error: function (error) {
+                    console.error('Ajax request failed: ', error);
+                }
+            });
+        })
+
+
+
+        $(".view").on('click', function()
+        {
+            var id = $(this).data('id');
+
+            //alert(id);
+
+            $.ajax({
+                url: '{{url('admin/installer/details')}}' + "/" + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (details) 
+                {
+                    console.log(details.info);
+                    if( details.info.length > 0) {
+                        $('#company_name').text(details.info[0].company_name);
+                    } else {
+                        $('#company_name').text('Not available.');
+                    }
+
+                    if( details.info.length > 0 ) {
+                        $('#cac_registration').text(details.info[0].cac_registration);
+                    } else {
+                        $('#cac_registration').text('Not available.');
+                    }
+
+                    if (details.info.length > 0) {
+                        $('#national_identification_no').text(details.info[0].national_identification_no);
+                    } else {
+                        $('#national_identification_no').text('Not available.');
+                    }   
+                    
+                    if (details.info.length > 0) {
+                        $('#ocupation').text(details.info[0].ocupation);
+                    } else {
+                        $('#ocupation').text('Not available.');
+                    }  
+                    if (details.info.length > 0) {
+                        $('#residental_address').text(details.info[0].residental_address);
+                    } else {
+                        $('#residental_address').text('Not available.');
+                    }  
+                    
                 },
                 error: function (error) {
                     console.error('Ajax request failed: ', error);
