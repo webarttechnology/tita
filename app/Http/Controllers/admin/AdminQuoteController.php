@@ -49,7 +49,6 @@ class AdminQuoteController extends Controller
                    $quote->additional_details,
                    $quote->created_at,
                ];
-
                $i++;
            }
           
@@ -57,20 +56,17 @@ class AdminQuoteController extends Controller
                'Content-Type' => 'text/csv',
                'Content-Disposition' => 'attachment; filename="quotes.csv"',
            ];
-       
-           // Create a callback function to generate the CSV content
+
            $callback = function () use ($data) {
                $file = fopen('php://output', 'w');
        
-               // Loop through the data and write to the CSV file
                foreach ($data as $row) {
                    fputcsv($file, $row);
                }
        
                fclose($file);
            };
-       
-           // Return the response with the headers and callback
+
            return Response::stream($callback, 200, $headers);
      }
 
