@@ -132,7 +132,7 @@ Route::prefix('admin')->group(function () {
         //PDF Routes 
         Route::get('/registration-quote', [AdminQuoteController::class, 'show'])->name('admin.quote');
 
-        
+        Route::get('export', [AdminQuoteController::class, 'export'])->name('export');
     });
 
 });
@@ -173,8 +173,6 @@ Route::prefix('installer')->group(function () {
             Route::post('location-save/{type}', 'location_save')->name('location-save');
             Route::post('zip-save', 'zip_save')->name('zip-save');
             Route::post('bank-save/{type}', 'bank_save')->name('bank-save');
-            Route::get('export', 'export')->name('export');
-        });
-        
+        });        
     });
 });

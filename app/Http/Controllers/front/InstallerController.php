@@ -255,7 +255,7 @@ class InstallerController extends Controller
 
     public function installerDetails($id)
     {
-        return Installer::with('info')->where('id', $id)->first();
+        return Installer::with('info', 'location')->where('id', $id)->first();
     }
     
 }

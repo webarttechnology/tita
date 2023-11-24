@@ -9,8 +9,6 @@
                 <div>
                     <h1>Installers</h1>
                 </div>
-
-                <button class="btn btn-info"> <a href="{{ route('export') }}">Export</a> </button>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -56,27 +54,27 @@
                                                     @endphp
                                                 </td>
                                                 <td>
-                                                    @if ($installers->approvel_by_admin == 'inprogress')
-                                                        <div class="btn-group mb-1">
-                                                            <button type="button"
-                                                                class="btn btn-outline-success">Info</button>
-                                                            <button type="button"
-                                                                class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false" data-display="static">
-                                                                <span class="sr-only">Info</span>
-                                                            </button>
-                                                            <div class="dropdown-menu dropdown-custom-button">
-                                                                <a class="dropdown-item view" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal1"
-                                                                    data-viewid="{{ $installers->id }}">View</a>
-                                                                <a class="dropdown-item approve" href="#"
-                                                                    data-action="approved">Approve</a>
-                                                                <a class="dropdown-item reject" href="#"
-                                                                    data-action="reject">Reject</a>
-                                                            </div>
+                                                    <div class="btn-group mb-1">
+                                                        <button type="button"
+                                                            class="btn btn-outline-success">Info</button>
+                                                        <button type="button"
+                                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                            data-bs-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false" data-display="static">
+                                                            <span class="sr-only">Info</span>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-custom-button">
+                                                            <a class="dropdown-item view" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal1"
+                                                                data-viewid="{{ $installers->id }}">View</a>
+                                                                @if ($installers->approvel_by_admin == 'inprogress')
+                                                                    <a class="dropdown-item approve" href="#"
+                                                                        data-action="approved">Approve</a>
+                                                                    <a class="dropdown-item reject" href="#"
+                                                                        data-action="reject">Reject</a>
+                                                                @endif
                                                         </div>
-                                                    @endif
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -99,28 +97,24 @@
                 <div class="modal-body">
                     <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Proof Of Concept</h5>
                     <ul class="dataList">
-                        <li><label for="">Company name</label><span id="company_name">4561230987</span></li>
-                        <li><label for="">Contact name</label><span
-                                id="contact_name">soxiragaf@mailinator.com</span></li>
-                        <li><label for="">Phone number</label><span id="phone_number">Lorem Ipsum is simply dummy
-                                text of the printing and typesetting industry</span></li>
-                        <li><label for="">Email</label><span id="email">Hunt and Sweet Inc</span></li>
-                        <li><label for="">Address</label><span id="address">Hunt and Sweet Inc</span></li>
-                        <li><label for="">Vehicle Type</label><span id="vehicle_type">Hunt and Sweet Inc</span></li>
-                        <li><label for="">Make</label><span id="make">4561230987</span></li>
-                        <li><label for="">Model</label><span id="model">soxiragaf@mailinator.com</span></li>
-                        <li><label for="">Year</label><span id="year">Lorem Ipsum is simply dummy text of the
-                                printing and typesetting industry</span></li>
-                        <li><label for="">Street no</label><span id="company_street_no">Hunt and Sweet Inc</span>
+                        <li><label for="">Company name</label><span id="company_name"></span></li>
+                        <li><label for="">Contact name</label>
+                            <span id="contact_name"></span></li>
+                        <li><label for="">Phone number</label><span id="phone_number"></span></li>
+                        <li><label for="">Email</label><span id="email"></span></li>
+                        <li><label for="">Address</label><span id="address"></span></li>
+                        <li><label for="">Vehicle Type</label><span id="vehical_type"></span></li>
+                        <li><label for="">Make</label><span id="make"></span></li>
+                        <li><label for="">Model</label><span id="model"></span></li>
+                        <li><label for="">Year</label><span id="year"></span></li>
+                        <li><label for="">Street no</label><span id="company_street_no"></span>
                         </li>
-                        <li><label for="">Block or Plot</label><span id="company_block">Hunt and Sweet Inc</span>
+                        <li><label for="">Block or Plot</label><span id="company_block"></span>
                         </li>
-                        <li><label for="">Street name</label><span id="company_street_name">4561230987</span></li>
-                        <li><label for="">City</label><span id="company_city">soxiragaf@mailinator.com</span></li>
-                        <li><label for="">State</label><span id="company_state">Lorem Ipsum is simply dummy text of
-                                the printing and typesetting industry</span></li>
-                        <li><label for="">Additional Details</label><span id="additional_details">Hunt and Sweet
-                                Inc</span></li>
+                        <li><label for="">Street name</label><span id="company_street_name"></span></li>
+                        <li><label for="">City</label><span id="company_city"></span></li>
+                        <li><label for="">State</label><span id="company_state"></span></li>
+                        <li><label for="">Additional Details</label><span id="additional_details"></span></li>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -140,7 +134,7 @@
                 <div class="modal-body">
                     <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Details</h5>
                     <ul class="dataList">
-                        <li><label for="">Company name</label><span id="company_name"></span></li>
+                        <li><label for="">Company name</label><span id="company_name2"></span></li>
                         <li><label for="">cac
                                 registration</label><span id="cac_registration"></span></li>
                         <li><label for="">national identification
@@ -148,6 +142,15 @@
                         <li><label for="">ocupation</label><span id="ocupation"></span></li>
                         <li><label for="">residental
                                 address</label><span id="residental_address"></span></li>
+
+
+                        <li><label for="">City</label><span id="city"></span></li>
+                        <li><label for="">Plot</label><span id="plot"></span></li>
+                        <li><label for="">State</label><span id="state"></span></li>
+                        <li><label for="">Street Name</label><span id="street_name"></span></li>
+                        <li><label for="">Street No</label><span id="street_no"></span></li>
+                        <li><label for="">Zip</label><span id="zip"></span></li>
+
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -205,8 +208,6 @@
 
         $(".details-view").on('click', function() {
             var id = $(this).data('id');
-
-            alert("details-view");
 
             $.ajax({
                 url: '{{ url('admin/details') }}' + "/" + id,
@@ -301,21 +302,20 @@
             });
         })
 
+
+        // View Installer All Details
         $(".view").on('click', function() {
             var viewid = $(this).data('viewid');
-
-            alert("view");
-
             $.ajax({
                 url: '{{ url('admin/installer/details') }}' + "/" + viewid,
                 type: 'GET',
                 dataType: 'json',
                 success: function(details) {
-                    console.log(details.info);
+                    console.log(details);
                     if (details.info.length > 0) {
-                        $('#company_name').text(details.info[0].company_name);
+                        $('#company_name2').text(details.info[0].company_name);
                     } else {
-                        $('#company_name').text('Not available.');
+                        $('#company_name2').text('Not available.');
                     }
 
                     if (details.info.length > 0) {
@@ -340,6 +340,46 @@
                         $('#residental_address').text(details.info[0].residental_address);
                     } else {
                         $('#residental_address').text('Not available.');
+                    }
+
+
+                    if (details.location.length > 0) {
+                        $('#city').text(details.location[0].city);
+                    } else {
+                        $('#city').text('Not available.');
+                    }
+
+                    if (details.location.length > 0) {
+                        $('#plot').text(details.location[0].plot);
+                    } else {
+                        $('#plot').text('Not available.');
+                    }
+
+
+                    if (details.location.length > 0) {
+                        $('#state').text(details.location[0].state);
+                    } else {
+                        $('#state').text('Not available.');
+                    }
+
+
+                    if (details.location.length > 0) {
+                        $('#street_name').text(details.location[0].street_name);
+                    } else {
+                        $('#street_name').text('Not available.');
+                    }
+
+
+                    if (details.location.length > 0) {
+                        $('#street_no').text(details.location[0].street_no);
+                    } else {
+                        $('#street_no').text('Not available.');
+                    }
+
+                    if (details.location.length > 0) {
+                        $('#zip').text(details.location[0].zip);
+                    } else {
+                        $('#zip').text('Not available.');
                     }
 
                 },
