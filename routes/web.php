@@ -168,11 +168,13 @@ Route::prefix('installer')->group(function () {
         });
         
         Route::controller(InstallerLocationManageController::class)->group(function () {
-            Route::get('my-account', 'location');
-            Route::get('location', 'location');
-            Route::post('location-save/{type}', 'location_save');
-            Route::post('zip-save', 'zip_save');
-            Route::post('bank-save/{type}', 'bank_save');
+            Route::get('my-account', 'location')->name('my-account');
+            Route::get('location', 'location')->name('location');
+            Route::post('location-save/{type}', 'location_save')->name('location-save');
+            Route::post('zip-save', 'zip_save')->name('zip-save');
+            Route::post('bank-save/{type}', 'bank_save')->name('bank-save');
+            Route::get('export', 'export')->name('export');
         });
+        
     });
 });
