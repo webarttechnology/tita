@@ -23,4 +23,9 @@ class Installer extends Authenticatable
     {
         return $this->hasMany(Installer_info::class);
     }
+
+    function location()
+    {
+        return $this->hasMany(InstallerLocation::class);
+    }
 }

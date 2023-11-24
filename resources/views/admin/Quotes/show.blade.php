@@ -8,7 +8,9 @@
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                 <div>
                     <h1>Quotes</h1>
-                </div>               
+                </div>         
+                
+                <button class="btn btn-info"> <a target="_blank" href="{{ route('export') }}">Export</a> </button>
             </div>
             <div class="row">
                 <div class="col-12">

@@ -123,4 +123,6 @@ class InstallerLocationManageController extends Controller
 
         return redirect()->back()->with('success', 'Successfully Saved');
     }
+
+    
 }
