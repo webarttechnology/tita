@@ -41,10 +41,10 @@
                                                     data-approvel-status="{{ $installers->approvel_by_admin }}">
                                                     @php
                                                         switch ($installers->approvel_by_admin) {
-                                                            case 'inprogress':
+                                                            case 'pending':
                                                                 echo 'Pending';
                                                                 break;
-                                                            case 'approve':
+                                                            case 'in_progress':
                                                                 echo 'Approved';
                                                                 break;
                                                             default:
@@ -67,11 +67,16 @@
                                                             <a class="dropdown-item view" data-bs-toggle="modal"
                                                                 data-bs-target="#exampleModal1"
                                                                 data-viewid="{{ $installers->id }}">View</a>
-                                                                @if ($installers->approvel_by_admin == 'inprogress')
+                                                                @if ($installers->approvel_by_admin == 'pending')
                                                                     <a class="dropdown-item approve" href="#"
                                                                         data-action="approved">Approve</a>
                                                                     <a class="dropdown-item reject" href="#"
                                                                         data-action="reject">Reject</a>
+                                                                @endif
+
+                                                                <!-- Send Exam Link -->
+                                                                @if ($installers->approvel_by_admin == 'in_progress')
+                                                                    <a href="{{ url('admin/send/exam/link', $installers->email) }}" class="dropdown-item">Send Exam Link</a>
                                                                 @endif
                                                         </div>
                                                     </div>

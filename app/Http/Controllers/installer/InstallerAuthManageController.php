@@ -22,8 +22,12 @@ class InstallerAuthManageController extends Controller
         ]);
  
         if (Auth::guard('installer')->attempt($credentials)) {
-            // dd(Auth::guard('installer')->user()->id);
-            return redirect('installer/dashboard')->with('success', 'Successfully Login');
+            if(Auth::guard('installer')->user()->approvel_by_admin != "pending"){
+                // dd(Auth::guard('installer')->user()->id);
+                return redirect('installer/dashboard')->with('success', 'Successfully Login');
+            }else{
+                return redirect('installer/login')->with('error', 'Sorry! You are not approved yet, please contact Administrator');
+            }
         }else{
             return redirect('installer/login')->with('error', 'Sorry! You have entered wrong Credentials');
         }

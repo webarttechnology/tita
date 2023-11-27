@@ -11,6 +11,7 @@ use App\Models\Installer_info;
 use App\Models\InstallerLocation;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Report;
 
 class InstallerController extends Controller
@@ -61,7 +62,7 @@ class InstallerController extends Controller
             'phone_number' => $request->number,
             'password' => bcrypt($request->password),
             'status' => "active",
-            'approvel_by_admin' => "inprogress",
+            'approvel_by_admin' => "pending",
         ];
     
         // Check if installer already exists
@@ -122,13 +123,12 @@ class InstallerController extends Controller
         $emailMessage = '';
     
         if ($request->action == 'approved') {
-            $installer->approvel_by_admin = 'approve';
+            $installer->approvel_by_admin = 'in_progress';
             $emailSubject = 'Installer Approved';
             $emailMessage = 'Your installer request has been approved.';
         } elseif ($request->action == 'reject') {
             $installer->approvel_by_admin = 'reject';
             $installer_id = Installer::find($request->installer_id);
-            $installer_id->delete();
             $emailSubject = 'Installer Rejected';
             $emailMessage = 'Your installer request has been rejected.';
         } else {
@@ -258,4 +258,27 @@ class InstallerController extends Controller
         return Installer::with('info', 'location')->where('id', $id)->first();
     }
     
+    /**
+     * Send Exam Links 
+    */
+
+    public function send_link($email){
+        $subject = "Exam Link";
+        $link_id = Str::random(40);
+
+        Installer::where('email', $email)->update([
+            'exam_link_id' => $link_id,
+        ]);
+
+        Mail::send('admin.mail.exam_link', ['code' => $link_id], function($message) use ($email, $subject) {
+            $message->to($email)
+                    ->subject($subject);
+        });
+
+        return redirect()->back()->with('success', 'Mail Send');
+    }
+
+    public function exam_page($code){
+            dd($code);
+    }
 }

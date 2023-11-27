@@ -11,7 +11,7 @@
                     </p>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-primary"> Add New</a>
+                    <a href="{{ url('admin/exam/add') }}" class="btn btn-primary"> Add New</a>
                 </div>
             </div>
             <div class="row">
@@ -60,9 +60,9 @@
 
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item"
-                                                                href="#">Edit</a>
+                                                                href="{{ url('admin/exam/edit', $test->id) }}">Edit</a>
                                                             <a class="dropdown-item" href="javascript:void(0);"
-                                                                onclick="displayAlert('error', 'Are You Sure, You want to Delete This?', ''">Delete</a>
+                                                                onclick="displayAlert('error', 'Are You Sure, You want to Delete This?', '{{ url('admin/exam/delete', $test->id) }}')">Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>

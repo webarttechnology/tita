@@ -58,7 +58,7 @@ Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout')
 Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
 Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
 Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
-
+Route::get('provide/exam/{code}', [InstallerController::class, 'exam_page']);
 
 
 
@@ -102,6 +102,10 @@ Route::prefix('admin')->group(function () {
         ->group(function () {
                 Route::get('list', 'list');
                 Route::get('add', 'add');
+                Route::post('add/action', 'store');
+                Route::get('delete/{id}', 'delete');
+                Route::get('edit/{id}', 'edit');
+                Route::post('edit/action/{id}', 'update');
         });
 
 
@@ -134,6 +138,7 @@ Route::prefix('admin')->group(function () {
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
         Route::get('installer/details/{id}', [InstallerController::class, 'installerDetails'])->name('installer_details');
         Route::get('quote/details/{id}', [AdminQuoteController::class, 'quote_details'])->name('quote_details');
+        Route::get('send/exam/link/{email}', [InstallerController::class, 'send_link']);
 
         //Installers Registration 
         Route::get('/user', [AdminUserController::class, 'index'])->name('admin.user');
