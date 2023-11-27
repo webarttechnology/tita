@@ -17,6 +17,7 @@ use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
 use App\Http\Controllers\installer\InstallerLocationManageController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\admin\TestManageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,16 @@ Route::prefix('admin')->group(function () {
              Route::get('edit/{id}', 'edit');
              Route::post('edit-action/{id}', 'edit_action');
              Route::get('delete/features/{id}', 'delete_features');
+        });
+
+        /**
+         * Online test
+        */
+
+        Route::prefix('exam')->controller(TestManageController::class)
+        ->group(function () {
+                Route::get('list', 'list');
+                Route::get('add', 'add');
         });
 
 

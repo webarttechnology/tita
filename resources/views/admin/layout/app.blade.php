@@ -141,7 +141,15 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">Quote</span> <b class="caret"></b>
 							</a>
-						</li>					
+						</li>
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ url('admin/exam/list') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Questions</span> <b class="caret"></b>
+							</a>
+						</li>
+
 					</ul>
 				</div>
 			</div>
