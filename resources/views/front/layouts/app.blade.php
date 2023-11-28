@@ -81,9 +81,9 @@
                               <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('pdf_download')}}">PDF</a></li>
                             </ul>
                         </div>  
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{route('quote')}}">Quote</a>
-                        </li>                      
+                        </li>                       --}}
                     </ul>
                 </nav>
                 <div class="icons">
@@ -92,7 +92,7 @@
                         <i class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025
                     </a> --}}
                    
-                    <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
+                    <a href="{{route('quote')}}" class="btn btn-dark btns2 rounded-0">Request a Quote</a>
                     @if($authLink == 'login')
                       <a href="{{ route('user_Login') }}"><img src="{{ asset('assets/images/login.png') }}" width="30px"></a>
                     @else 
@@ -405,6 +405,8 @@
             });
         });
     </script>
+
+    @yield('custom_js')
 </body>
 
 </html>

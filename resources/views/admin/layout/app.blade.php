@@ -55,6 +55,8 @@
 	<!-- font-awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+	<!-- ckeditor -->
+	<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 </head>
 
 <body class="ec-header-fixed ec-sidebar-fixed  ec-header-light" id="body">
@@ -146,7 +148,7 @@
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="{{ url('admin/exam/list') }}">
 								<i class="mdi mdi-image-filter-none"></i>
-								<span class="nav-text">Questions</span> <b class="caret"></b>
+								<span class="nav-text">Exam</span> <b class="caret"></b>
 							</a>
 						</li>
 

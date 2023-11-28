@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\AdminQuoteController;
 use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\InstallerController;
+use App\Http\Controllers\front\InstallerTestController;
 
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
@@ -58,7 +59,10 @@ Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout')
 Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
 Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
 Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
-Route::get('provide/exam/{code}', [InstallerController::class, 'exam_page']);
+Route::get('exam/{code?}', [InstallerTestController::class, 'exam_page']);
+Route::post('submit/exam', [InstallerTestController::class, 'submitExam']);
+Route::get('exam/success/page/{code?}/{msg?}', [InstallerTestController::class, 'examSuccess']);
+Route::get('exam/fail/page/{code?}/{msg?}/{attempt?}', [InstallerTestController::class, 'examFail']);
 
 
 
@@ -106,6 +110,8 @@ Route::prefix('admin')->group(function () {
                 Route::get('delete/{id}', 'delete');
                 Route::get('edit/{id}', 'edit');
                 Route::post('edit/action/{id}', 'update');
+                Route::get('instruction', 'test_instruction');
+                Route::post('instruction/save', 'instruction_save');
         });
 
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{TestQuestion};
+use App\Models\{TestQuestion, TestInstruction};
 
 class TestManageController extends Controller
 {
@@ -114,4 +114,31 @@ class TestManageController extends Controller
  
             return redirect('admin/exam/list')->with('success', 'Question Successfully Updated');
         }
+
+        /**
+         * Test instruction
+        */
+
+         public function test_instruction(){
+                $instruction = TestInstruction::first();
+                return view('admin.test.instruction', compact('instruction'));
+         }
+
+         public function instruction_save(Request $request){
+                $request->validate([
+                      'instruction' => 'required' 
+                ]);
+
+                if(TestInstruction::exists()){
+                    TestInstruction::first()->update([
+                        'instruction' => $request->instruction,
+                    ]);
+                }else{
+                    TestInstruction::create([
+                        'instruction' => $request->instruction,
+                    ]);
+                }
+
+                return redirect()->back()->with('success', 'Instruction Saved Successfully');
+         }
 }

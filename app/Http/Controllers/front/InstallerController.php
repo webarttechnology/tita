@@ -278,7 +278,4 @@ class InstallerController extends Controller
         return redirect()->back()->with('success', 'Mail Send');
     }
 
-    public function exam_page($code){
-            dd($code);
-    }
 }
