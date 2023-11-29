@@ -145,7 +145,7 @@ class InstallerController extends Controller
 
     public function installerReport()
     {
-        $data = Installer::where('approvel_by_admin', 'inprogress')->get();        
+        $data = Installer::where('approvel_by_admin', 'pending')->get();        
         return view('front.report', ['data' => $data]);
     }
 

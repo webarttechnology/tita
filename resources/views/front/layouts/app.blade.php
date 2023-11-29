@@ -55,6 +55,7 @@
                             <a class="nav-link" href="{{route('booking')}}">Booking</a>
                         </li>                       
                        
+                        @if(Auth::user())
                         <div class="btn-group nav-item">
                             <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                                 Registration
@@ -67,7 +68,10 @@
                                     <a class="dropdown-item nav-link" href="{{route('registration')}}">Installer</a>
                                 </li>                             
                             </ul>
-                          </div>   
+                          </div>  
+                        @endif
+                        
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('installer_Report')}}">Report</a>
                         </li>                  

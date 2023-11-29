@@ -13,6 +13,7 @@ use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\InstallerController;
 use App\Http\Controllers\front\InstallerTestController;
+use App\Http\Controllers\admin\CngKitManageController;
 
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
@@ -98,6 +99,15 @@ Route::prefix('admin')->group(function () {
              Route::post('edit-action/{id}', 'edit_action');
              Route::get('delete/features/{id}', 'delete_features');
         });
+
+        /**
+         * Cng kit
+        */
+
+        Route::prefix('cng')->controller(CngKitManageController::class)->group(function () {
+            Route::get('list', 'listing');
+            Route::get('add', 'add');
+       });
 
         /**
          * Online test

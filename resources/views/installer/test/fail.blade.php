@@ -37,7 +37,7 @@
                                 <td>{{ $exam->created_at->format('d-m-Y') }}</td>
                                 <td>{{ $exam->total_question }}</td>
                                 <td>{{ $exam->correct_question }}</td>
-                                <td>{{ $exam->percent_obtain }}%</td>
+                                <td>{{ number_format($exam->percent_obtain, 2) }}%</td>
                                 <td>
                                   @if($exam->status == "Fail")
                                        <label class="badge bg-danger">{{ $exam->status }}</label>
