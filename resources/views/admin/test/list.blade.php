@@ -11,7 +11,7 @@
                     </p>
                 </div>
                 <div>
-                    <a href="{{ url('admin/exam/instruction') }}" class="btn btn-primary"> Test Instruction</a>
+                    <a href="{{ url('admin/exam/instruction') }}" class="btn btn-primary"> Settings</a>
                     <a href="{{ url('admin/exam/add') }}" class="btn btn-primary"> Add New</a>
                 </div>
             </div>

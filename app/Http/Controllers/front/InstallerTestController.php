@@ -39,9 +39,10 @@ class InstallerTestController extends Controller
                      * already give tests for 3 times
                     */
 
+                    $instruction = TestInstruction::first();
                     $test_count = count(InstallerTestResult::where('exam_link_id', $code)->get());
 
-                    if($test_count > 2){
+                    if($test_count > ($instruction->attempt_limit - 1)){
                         $msg = 'Your Test Attempt Has been Over';
                         return redirect(url('exam/fail/page', ['code' => $code, 'msg' => $msg, 'attempt' => $test_count]));
                     }else{
@@ -60,7 +61,8 @@ class InstallerTestController extends Controller
         $totalQuestion = count($questions);
         $noOfAttempt = count(InstallerTestResult::where('exam_link_id', $code)->get());
         $timeLimit = (TestInstruction::first())->time_limit;
-        return view('installer.exam', compact('questions', 'code', 'totalQuestion', 'noOfAttempt', 'timeLimit'));
+        $instruction = TestInstruction::first();
+        return view('installer.exam', compact('questions', 'code', 'totalQuestion', 'noOfAttempt', 'timeLimit', 'instruction'));
     }
 
     public function submitExam(Request $request){
@@ -70,6 +72,7 @@ class InstallerTestController extends Controller
         $percent = 0;
         $total_questions = count($request->question_id);
         $inst_details = Installer::where('exam_link_id', $request->exam_code_id)->first();
+        $instruction = TestInstruction::first();
 
         foreach($request->question_id as $qid){
                   if(isset($request->option[$qid])){
@@ -115,12 +118,12 @@ class InstallerTestController extends Controller
         }else{
             $test_count = count(InstallerTestResult::where('exam_link_id', $request->exam_code_id)->get());
 
-            $status = ($test_count > 2) ? 'rejected' : 'in_progress';
+            $status = ($test_count > ($instruction->attempt_limit - 1)) ? 'rejected' : 'in_progress';
             Installer::whereId($inst_details->id)->update([
                 'approvel_by_admin' => $status,
             ]);
 
-            $msg = "Sorry! You have unable to clear the Exam";
+            $msg = "Sorry! You are unable to clear the Exam";
             return redirect(url('exam/fail/page', ['code' => $request->exam_code_id, 'msg' => $msg, 'attempt' => 0]));
         }
     }
@@ -132,6 +135,7 @@ class InstallerTestController extends Controller
 
     public function examFail($code = '', $msg = '', $attempt = ''){
         $examDetails = InstallerTestResult::where('exam_link_id', $code)->get();
-        return view('installer.test.fail', compact('msg', 'code', 'attempt', 'examDetails'));
+        $instruction = TestInstruction::first();
+        return view('installer.test.fail', compact('msg', 'code', 'attempt', 'examDetails', 'instruction'));
     }
 }

@@ -182,7 +182,7 @@
             var action = $(this).data('action');
             var installerId = $(this).closest('tr').find('.status-column').data('installer-id');
             var statusColumn = $(this).closest('tr').find('.status-column');
-console.log(action );
+
             let icon;
             let message;
 

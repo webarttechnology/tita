@@ -5,7 +5,7 @@
   <div class="content">
     <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
       <div>
-        <h1>Test Instruction</h1>
+        <h1>Test Settings</h1>
       </div>
     </div>
 
@@ -27,6 +27,11 @@
                     <div class="col-md-12 mt-2">
                       <label class="form-label">Time Limit: (In Minutes)</label>
                       <input type="text" class="form-control slug-title" name="time_limit" value="{{ ($instruction == null) ? old('time_limit') : $instruction->time_limit}}">                    
+                    </div>
+                    
+                    <div class="col-md-12 mt-2">
+                      <label class="form-label">Attempt Limit:</label>
+                      <input type="number" class="form-control slug-title" name="attempt_limit" value="{{ ($instruction == null) ? 3 : $instruction->attempt_limit}}">                    
                     </div>
                    
                     <div class="col-md-12 mt-2">

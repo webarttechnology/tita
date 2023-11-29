@@ -55,7 +55,7 @@
                         <p class="d-flex justify-content-between"><strong>Total Question:</strong> {{ $totalQuestion }}</p>
                         <p class="d-flex justify-content-between"><strong>Time:</strong> <span class="time-left">1:00 min.</span></p>
                         <p class="d-flex justify-content-between"><strong>No. of Attempt:</strong> {{ ($noOfAttempt) }}</p>
-                        <p class="d-flex justify-content-between"><strong>Attempt Left:</strong> {{ 3 - ($noOfAttempt) }}</p>
+                        <p class="d-flex justify-content-between"><strong>Attempt Left:</strong> {{ ($instruction->attempt_limit) - ($noOfAttempt) }}</p>
                     </div>        
                 </div>
                 

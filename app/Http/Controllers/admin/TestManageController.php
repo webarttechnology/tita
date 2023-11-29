@@ -128,17 +128,20 @@ class TestManageController extends Controller
                 $request->validate([
                       'instruction' => 'required', 
                       'time_limit' => 'required', 
+                      'attempt_limit' => 'required', 
                 ]);
 
                 if(TestInstruction::exists()){
                     TestInstruction::first()->update([
                         'instruction' => $request->instruction,
                         'time_limit' => $request->time_limit,
+                        'attempt_limit' => $request->attempt_limit,
                     ]);
                 }else{
                     TestInstruction::create([
                         'instruction' => $request->instruction,
                         'time_limit' => $request->time_limit,
+                        'attempt_limit' => $request->attempt_limit,
                     ]);
                 }
 

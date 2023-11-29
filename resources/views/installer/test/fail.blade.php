@@ -12,7 +12,7 @@
                     <div class="sidebar__widget" style="height: auto">
                         <h3>{{ $msg }}</h3>
 
-                        @if ($attempt < 3)
+                        @if ($attempt < ($instruction->attempt_limit))
                           <h2><a href="{{ url('exam', $code) }}">Click Here</a> to give your Test Again</h2>
                         @else
                           <h2>Go to <a href="{{ url('/') }}">Home</a></h2>
