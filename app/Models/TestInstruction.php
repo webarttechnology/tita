@@ -11,6 +11,7 @@ class TestInstruction extends Model
 
     protected $table = "test_instructions";
     protected $fillable = [
-        'instruction'
+        'instruction',
+        'time_limit'
     ];
 }

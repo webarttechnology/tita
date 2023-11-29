@@ -60,6 +60,7 @@ Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_
 Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
 Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
 Route::get('exam/{code?}', [InstallerTestController::class, 'exam_page']);
+Route::get('instruction/{code?}', [InstallerTestController::class, 'instruction_page']);
 Route::post('submit/exam', [InstallerTestController::class, 'submitExam']);
 Route::get('exam/success/page/{code?}/{msg?}', [InstallerTestController::class, 'examSuccess']);
 Route::get('exam/fail/page/{code?}/{msg?}/{attempt?}', [InstallerTestController::class, 'examFail']);

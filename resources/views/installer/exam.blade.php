@@ -66,7 +66,7 @@
 
 @section('custom_js')
     <script>
-        var maxTime = 3600;
+        var maxTime = {{ $timeLimit * 60 }};
         var currentTime = 0;
 
         function timer() {

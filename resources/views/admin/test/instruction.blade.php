@@ -23,6 +23,11 @@
                       <label class="form-label">Instruction:</label>
                       <textarea class="form-control slug-title" name="instruction">{{ ($instruction == null) ? old('instruction') : $instruction->instruction}}</textarea>                    
                     </div>
+
+                    <div class="col-md-12 mt-2">
+                      <label class="form-label">Time Limit: (In Minutes)</label>
+                      <input type="text" class="form-control slug-title" name="time_limit" value="{{ ($instruction == null) ? old('time_limit') : $instruction->time_limit}}">                    
+                    </div>
                    
                     <div class="col-md-12 mt-2">
                       <button type="submit" class="btn btn-primary">Save</button>

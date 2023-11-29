@@ -4,7 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Installer, InstallerTestResult, TestQuestion};
+use App\Models\{Installer, InstallerTestResult, TestQuestion, TestInstruction};
 
 class InstallerTestController extends Controller
 {
@@ -13,6 +13,12 @@ class InstallerTestController extends Controller
     /**
      * 
     */
+
+    public function instruction_page($code){
+           $instruction = TestInstruction::first();
+           return view('installer.test.instruction', compact('code', 'instruction'));
+    }
+
     public function exam_page($code=''){
         if($code == ''){
              abort(404);
@@ -53,7 +59,8 @@ class InstallerTestController extends Controller
         $questions = TestQuestion::whereStatus('active')->inRandomOrder()->get();
         $totalQuestion = count($questions);
         $noOfAttempt = count(InstallerTestResult::where('exam_link_id', $code)->get());
-        return view('installer.exam', compact('questions', 'code', 'totalQuestion', 'noOfAttempt'));
+        $timeLimit = (TestInstruction::first())->time_limit;
+        return view('installer.exam', compact('questions', 'code', 'totalQuestion', 'noOfAttempt', 'timeLimit'));
     }
 
     public function submitExam(Request $request){

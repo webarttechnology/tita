@@ -1,1 +1,1 @@
-<a href="{{ url('exam', $code) }}" target="_blank">Click Here</a> to give your test
+<a href="{{ url('instruction', $code) }}" target="_blank">Click Here</a> to give your test
