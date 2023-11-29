@@ -1,169 +1,169 @@
 @extends('admin.layout.app')
-
-
 @section('content')
-    <!-- CONTENT WRAPPER -->
-    <div class="ec-content-wrapper">
-        <div class="content">
-            <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
-                <div>
-                    <h1>Installers</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card card-default">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="responsive-data-table" class="table" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>POC</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $installers)
-                                            <tr>
-                                                <td>{{ $installers->name }}</td>
-                                                <td>{{ $installers->email }}</td>
-                                                <td>{{ $installers->phone_number }}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary details-view"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                        data-id="{{ $installers->id }}">View</button>
-                                                </td>
-                                                <td class="status-column" data-installer-id="{{ $installers->id }}"
-                                                    data-approvel-status="{{ $installers->approvel_by_admin }}">
-                                                    @php
-                                                        switch ($installers->approvel_by_admin) {
-                                                            case 'pending':
-                                                                echo 'Pending';
-                                                                break;
-                                                            case 'in_progress':
-                                                                echo 'Approved';
-                                                                break;
-                                                            default:
-                                                                echo 'Rejected';
-                                                                break;
-                                                        }
-                                                    @endphp
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group mb-1">
-                                                        <button type="button"
-                                                            class="btn btn-outline-success">Info</button>
-                                                        <button type="button"
-                                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                                            data-bs-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false" data-display="static">
-                                                            <span class="sr-only">Info</span>
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-custom-button">
-                                                            <a class="dropdown-item view" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal1"
-                                                                data-viewid="{{ $installers->id }}">View</a>
-                                                                @if ($installers->approvel_by_admin == 'pending')
-                                                                    <a class="dropdown-item approve" href="#"
-                                                                        data-action="approved">Approve</a>
-                                                                    <a class="dropdown-item reject" href="#"
-                                                                        data-action="reject">Reject</a>
-                                                                @endif
 
-                                                                <!-- Send Exam Link -->
-                                                                @if ($installers->approvel_by_admin == 'in_progress')
-                                                                    <a href="{{ url('admin/send/exam/link', $installers->email) }}" class="dropdown-item">Send Exam Link</a>
-                                                                @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+<!-- CONTENT WRAPPER -->
+<div class="ec-content-wrapper">
+    <div class="content">
+        <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+            <div>
+                <h1>Installers</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="responsive-data-table" class="table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>POC</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $installers)
+                                    <tr>
+                                        <td>{{ $installers->name }}</td>
+                                        <td>{{ $installers->email }}</td>
+                                        <td>{{ $installers->phone_number }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary details-view"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                data-id="{{ $installers->id }}">View</button>
+                                        </td>
+                                        <td class="status-column" data-installer-id="{{ $installers->id }}"
+                                            data-approvel-status="{{ $installers->approvel_by_admin }}">
+                                            @php
+                                            switch ($installers->approvel_by_admin) {
+                                            case 'pending':
+                                            echo 'Pending';
+                                            break;
+                                            case 'in_progress':
+                                            echo 'Approved';
+                                            break;
+                                            default:
+                                            echo 'Rejected';
+                                            break;
+                                            }
+                                            @endphp
+                                        </td>
+                                        <td>
+                                            <div class="btn-group mb-1">
+                                                <button type="button" class="btn btn-outline-success">Info</button>
+                                                <button type="button"
+                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                    data-display="static">
+                                                    <span class="sr-only">Info</span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-custom-button">
+                                                    <a class="dropdown-item view" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal1"
+                                                        data-viewid="{{ $installers->id }}">View</a>
+                                                    @if ($installers->approvel_by_admin == 'pending')
+                                                    <a class="dropdown-item approve" href="#"
+                                                        data-action="approved">Approve</a>
+                                                    <a class="dropdown-item reject" href="#"
+                                                        data-action="reject">Reject</a>
+                                                    @endif
+
+                                                    <!-- Send Exam Link -->
+                                                    @if ($installers->approvel_by_admin == 'in_progress')
+                                                    <a href="{{ url('admin/send/exam/link', $installers->email) }}"
+                                                        class="dropdown-item">Send Exam Link</a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center justify-content-end">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Proof Of Concept</h5>
-                    <ul class="dataList">
-                        <li><label for="">Company name</label><span id="company_name"></span></li>
-                        <li><label for="">Contact name</label>
-                            <span id="contact_name"></span></li>
-                        <li><label for="">Phone number</label><span id="phone_number"></span></li>
-                        <li><label for="">Email</label><span id="email"></span></li>
-                        <li><label for="">Address</label><span id="address"></span></li>
-                        <li><label for="">Vehicle Type</label><span id="vehical_type"></span></li>
-                        <li><label for="">Make</label><span id="make"></span></li>
-                        <li><label for="">Model</label><span id="model"></span></li>
-                        <li><label for="">Year</label><span id="year"></span></li>
-                        <li><label for="">Street no</label><span id="company_street_no"></span>
-                        </li>
-                        <li><label for="">Block or Plot</label><span id="company_block"></span>
-                        </li>
-                        <li><label for="">Street name</label><span id="company_street_name"></span></li>
-                        <li><label for="">City</label><span id="company_city"></span></li>
-                        <li><label for="">State</label><span id="company_state"></span></li>
-                        <li><label for="">Additional Details</label><span id="additional_details"></span></li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Proof Of Concept</h5>
+                <ul class="dataList">
+                    <li><label for="">Company name</label><span id="company_name"></span></li>
+                    <li><label for="">Contact name</label>
+                        <span id="contact_name"></span>
+                    </li>
+                    <li><label for="">Phone number</label><span id="phone_number"></span></li>
+                    <li><label for="">Email</label><span id="email"></span></li>
+                    <li><label for="">Address</label><span id="address"></span></li>
+                    <li><label for="">Vehicle Type</label><span id="vehical_type"></span></li>
+                    <li><label for="">Make</label><span id="make"></span></li>
+                    <li><label for="">Model</label><span id="model"></span></li>
+                    <li><label for="">Year</label><span id="year"></span></li>
+                    <li><label for="">Street no</label><span id="company_street_no"></span>
+                    </li>
+                    <li><label for="">Block or Plot</label><span id="company_block"></span>
+                    </li>
+                    <li><label for="">Street name</label><span id="company_street_name"></span></li>
+                    <li><label for="">City</label><span id="company_city"></span></li>
+                    <li><label for="">State</label><span id="company_state"></span></li>
+                    <li><label for="">Additional Details</label><span id="additional_details"></span></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center justify-content-end">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Details</h5>
-                    <ul class="dataList">
-                        <li><label for="">Company name</label><span id="company_name2"></span></li>
-                        <li><label for="">cac
-                                registration</label><span id="cac_registration"></span></li>
-                        <li><label for="">national identification
-                                no</label><span id="national_identification_no"></span></li>
-                        <li><label for="">ocupation</label><span id="ocupation"></span></li>
-                        <li><label for="">residental
-                                address</label><span id="residental_address"></span></li>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Details</h5>
+                <ul class="dataList">
+                    <li><label for="">Company name</label><span id="company_name2"></span></li>
+                    <li><label for="">cac
+                            registration</label><span id="cac_registration"></span></li>
+                    <li><label for="">national identification
+                            no</label><span id="national_identification_no"></span></li>
+                    <li><label for="">ocupation</label><span id="ocupation"></span></li>
+                    <li><label for="">residental
+                            address</label><span id="residental_address"></span></li>
 
 
-                        <li><label for="">City</label><span id="city"></span></li>
-                        <li><label for="">Plot</label><span id="plot"></span></li>
-                        <li><label for="">State</label><span id="state"></span></li>
-                        <li><label for="">Street Name</label><span id="street_name"></span></li>
-                        <li><label for="">Street No</label><span id="street_no"></span></li>
-                        <li><label for="">Zip</label><span id="zip"></span></li>
+                    <li><label for="">City</label><span id="city"></span></li>
+                    <li><label for="">Plot</label><span id="plot"></span></li>
+                    <li><label for="">State</label><span id="state"></span></li>
+                    <li><label for="">Street Name</label><span id="street_name"></span></li>
+                    <li><label for="">Street No</label><span id="street_no"></span></li>
+                    <li><label for="">Zip</label><span id="zip"></span></li>
 
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 @stop
 
 
@@ -182,32 +182,58 @@
             var action = $(this).data('action');
             var installerId = $(this).closest('tr').find('.status-column').data('installer-id');
             var statusColumn = $(this).closest('tr').find('.status-column');
+console.log(action );
+            let icon;
+            let message;
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                }
-            });
+            if(action == 'approved'){
+                icon = 'success';
+                message = 'Are You Sure, You want to Approve the Installer?';
+            }
 
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('admin.registration.approve') }}',
-                data: {
-                    action: action,
-                    installer_id: installerId,
-                },
-                success: function(response) {
-                    if (response.success) {
-                        statusColumn.text(response.status);
-                        window.location.reload();
-                    } else {
-                        console.error('Failed to update status.');
+            if(action == 'reject'){
+                icon = 'error';
+                message = 'Are You Sure, You want to Reject the Installer?';
+            }
+
+        Swal.fire({
+            icon: icon,
+            title: message,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Change',
+            denyButtonText: `Cancel`,
+         }).then((result) => {
+
+            if(result.isConfirmed){
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
                     }
-                },
-                error: function() {
-                    console.error('Error while making the AJAX request.');
-                },
-            });
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('admin.registration.approve') }}',
+                    data: {
+                        action: action,
+                        installer_id: installerId,
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            statusColumn.text(response.status);
+                            window.location.reload();
+                        } else {
+                            console.error('Failed to update status.');
+                        }
+                    },
+                    error: function() {
+                        console.error('Error while making the AJAX request.');
+                    },
+                });
+            }
+         });
         });
         // {{-- Click on approve and reject button --}}
 

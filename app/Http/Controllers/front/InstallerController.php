@@ -137,8 +137,8 @@ class InstallerController extends Controller
     
         $installer->save();
     
-        $email = new MyEmail($emailSubject, $emailMessage);
-        Mail::to('teethi.dhar@webart.technology')->send($email);
+        // $email = new MyEmail($emailSubject, $emailMessage);
+        // Mail::to('teethi.dhar@webart.technology')->send($email);
     
         return response()->json(['success' => true, 'status' => $installer->approvel_by_admin, 'message' => 'Email sent successfully!']);      
     }
