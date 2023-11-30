@@ -35,11 +35,6 @@ class HomeController extends Controller
         return view('front.about-us');
     }
 
-    public function products()
-    {
-        return view('front.product');
-    }
-
     public function evlisting()
     {
         $vehicles = Vehicle::with('gallery')->orderBy('id', 'desc')->paginate(12);

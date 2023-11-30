@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InstallerZip extends Model
+class BookingRequest extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'installer_id',
-        'zip',
-    ];
 
-    function installer()
-    {
-        return $this->belongsTo(Installer::class);
-    }
+    protected $table = "booking_requests";
+    protected $fillable = [
+        'user_id',
+        'date',
+        'time',
+        'zip',
+        'request_send_to_installer',
+        'status'
+    ];
 }

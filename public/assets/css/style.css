@@ -2276,6 +2276,7 @@ transform: scale(1.03);
   color: var(--color-primary);
   margin: 10px 0 0;
   font-weight: 500;
+  word-wrap: break-word;
 }
 .carList .viewcarimg h4 span {
   color: #002777;

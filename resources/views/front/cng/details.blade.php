@@ -5,7 +5,7 @@
 <section class="prdctsec">
     <div class="innerhdng">
         <div class="container">
-            <h1><span class="">Automotive Repair</span> <br />
+            <h1><span class="">{{ $detail->vehicle_name }} Repair</span> <br />
                 Tools & Equipments > CNG Kit</h1>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <!-- Swiper -->
         <div class="swiper mySwiper2" style="top: -95px;margin-bottom: -154px;">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                {{-- <div class="swiper-slide">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5">
@@ -26,17 +26,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="swiper-slide">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5">
-                                <img src="assets/images/Layer 5.png" alt="">
+                                <img src="{{ asset('uploads/cng/'.$detail->image) }}" alt="">
                             </div>
                             <div class="col-md-7 align-self-center pt-5 mt-4">
-                                <h5>Petrol Vehicles <span>Conventional
-                                        CNG Kit, For Automobiles, Car</span></h5>
-                                <h6>Rs 1XXX, <span>Get Latest Price Updates</span></h6>
+                                <h5>{{ $detail->vehicle_type }} Vehicles <span>Conventional
+                                        CNG Kit, For {{ $detail->application }}, Car</span></h5>
+                                <h6>${{ $detail->price }}, <span>Get Latest Price Updates</span></h6>
                             </div>
                         </div>
                     </div>
@@ -80,11 +80,11 @@
                     <div class="col-md-6">
                         <div class="prdcttitle2">
                             <ul class="m-0 p-0">
-                                <li>Regular</li>
-                                <li>Car</li>
-                                <li>Automobiles</li>
-                                <li>Petrol Vehicles</li>
-                                <li>Unitex</li>
+                                <li>{{ $detail->kit_type }}</li>
+                                <li>{{ $detail->vehicle_name }}</li>
+                                <li>{{ $detail->application }}</li>
+                                <li>{{ $detail->vehicle_type }}</li>
+                                <li>{{ $detail->brand }}</li>
                             </ul>
                         </div>
                     </div>
@@ -96,13 +96,10 @@
                         <h3>Book An Appointment</h3>
                     </div>
                     <div class="cntnthdng">
-                        <h3>Lorem Ipsum!</h3>
+                        <h3>{{ $detail->title }}</h3>
                     </div>
                     <div class="cntnt">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book
-                        </p>
+                            {!! $detail->description !!}
                     </div>
                     <div class="bookbtn">
                         <a href="#">Book My Appointment</a>
@@ -126,42 +123,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
+
+            @foreach($detail->product as $key => $prod)
+            @if(($key+1)%2 == 0)
+
+            <div class="col-md-6">
                 <div class="dtls-title">
                     <ul class="m-0 p-0">
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
+                        <li>{{ $prod->features }}</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3">
+            @else
+            <div class="col-md-6">
                 <div class="dtls-title">
                     <ul class="m-0 p-0">
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
+                        <li>{{ $prod->features }}</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="dtls-title">
-                    <ul class="m-0 p-0">
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="dtls-title">
-                    <ul class="m-0 p-0">
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
-                        <li>Lorem Ipsum </li>
-                    </ul>
-                </div>
-            </div>
+            @endif
+            @endforeach
+            
+            
         </div>
         <div class="container">
             <hr>
@@ -174,45 +158,23 @@
             </div>
         </div>
         <div class="row">
+
+            @foreach ($similarProducts as $similar)    
             <div class="col-md-4">
                 <div class="card">
                     <div class="title-hdng">
-                        <h4>Sequential CNG Kit</h4>
+                        <h4>{{ $similar->title }}</h4>
                     </div>
                     <div class="title-img">
-                        <img src="assets/images/titleimg.png" alt="">
+                        <img src="{{ asset('uploads/cng/'.$similar->image) }}" alt="img">
                     </div>
                     <div class="qute-button">
-                        <a href="#">Get Quote <img class="icons" src="assets/images/fast-forward.png" alt=""></a>
+                        <a href="{{ url('cng/details', $similar->slug) }}">Get Quote <img class="icons" src="{{ asset('assets/images/fast-forward.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="title-hdng">
-                        <h4 class="mb-0">Mild Steel Sequential LPG Kit</h4>
-                    </div>
-                    <div class="title-img">
-                        <img class="imgs" src="assets/images/titleimg3.png" alt="">
-                    </div>
-                    <div class="qute-button">
-                        <a href="#">Get Quote <img class="icons" src="assets/images/fast-forward.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="title-hdng">
-                        <h4>LPG CNG Diapharm</h4>
-                    </div>
-                    <div class="title-img">
-                        <img src="assets/images/titleimg2.png" alt="">
-                    </div>
-                    <div class="qute-button">
-                        <a href="#">Get Quote <img class="icons" src="assets/images/fast-forward.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -223,8 +185,6 @@
         </div>
     </div>
 </section>
-
-
 
 <!--- footer -->
 @endsection

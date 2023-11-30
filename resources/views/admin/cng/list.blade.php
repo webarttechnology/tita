@@ -25,9 +25,9 @@
                                             <th>#</th>
                                             <th>Title</th>
                                             <th>Image</th>
-                                            <th>Description</th>
                                             <th>Kit Type</th>
                                             <th>Vehicle Type</th>
+                                            <th>Price</th>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -37,10 +37,10 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $kit->title}}</td>
-                                            <td><img src="{{ asset('uploads/blog/'. $kit->image) }}" alt="Your Image" width="100px"></td>
-                                            <td><?php echo htmlspecialchars_decode(Str::limit($kit->description, 200, $end='..')) ?></td>
+                                            <td><img src="{{ asset('uploads/cng/'. $kit->image) }}" alt="Your Image" width="100px"></td>
                                             <td>{{ $kit->kit_type}}</td>
                                             <td>{{ $kit->vehicle_type}}</td>
+                                            <td>{{ $kit->price}}</td>
                                             <td>{{ $kit->created_at->format('F j, Y') }}</td>
                                             <td>
                                                 <div class="btn-group mb-1">
@@ -54,8 +54,8 @@
                                                     </button>
 
                                                     <div class="dropdown-menu dropdown-custom-button">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="{{ url ('admin/blog/delete/'.$kit->id)}}" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
+                                                        <a class="dropdown-item" href="{{ url ('admin/cng/edit/'.$kit->id)}}">Edit</a>
+                                                        <a class="dropdown-item" href="{{ url ('admin/cng/delete/'.$kit->id)}}" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
                                                     </div>
                                                 </div>
                                             </td>

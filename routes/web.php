@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\VehicleManageController;
 use App\Http\Controllers\admin\AdminQuoteController;
 use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\CngController;
 use App\Http\Controllers\front\InstallerController;
 use App\Http\Controllers\front\InstallerTestController;
 use App\Http\Controllers\admin\CngKitManageController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\installer\InstallerAccountManageController;
 use App\Http\Controllers\installer\InstallerLocationManageController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\admin\TestManageController;
+use App\Http\Controllers\front\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +34,15 @@ use App\Http\Controllers\admin\TestManageController;
 |
 */
 
+/**
+ * Local User --> email: xojageweja@mailinator.com ||||| pass - Xojageweja@mailinator.com
+ * Installer --> 1) email: vetuq@mailinator.com  |||||||| pass - Vetuq@mailinator.com
+*/
+
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about_us');
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
-Route::get('/cng-kit', [HomeController::class, 'products'])->name('products');
 Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_download');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
@@ -67,6 +73,18 @@ Route::get('exam/success/page/{code?}/{msg?}', [InstallerTestController::class, 
 Route::get('exam/fail/page/{code?}/{msg?}/{attempt?}', [InstallerTestController::class, 'examFail']);
 
 
+/**
+ * cng listing
+*/
+
+Route::get('/cng-kit', [CngController::class, 'products'])->name('products');
+Route::get('/cng/details/{slug}', [CngController::class, 'cng_details'])->name('cng.details');
+
+/**
+ * Booking
+*/
+
+Route::get('/booking/action/{date?}/{time?}/{zip?}', [BookingController::class, 'booking']);
 
 /**Admin Section*/
 
@@ -107,6 +125,11 @@ Route::prefix('admin')->group(function () {
         Route::prefix('cng')->controller(CngKitManageController::class)->group(function () {
             Route::get('list', 'listing');
             Route::get('add', 'add');
+            Route::post('add/action', 'add_action');
+            Route::get('delete/{id}', 'delete');
+            Route::get('edit/{id}', 'edit');
+            Route::post('edit/action/{id}', 'update');
+            Route::get('delete/features/{id}', 'delete_features');
        });
 
         /**

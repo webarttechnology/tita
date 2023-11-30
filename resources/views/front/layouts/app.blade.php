@@ -55,7 +55,7 @@
                             <a class="nav-link" href="{{route('booking')}}">Booking</a>
                         </li>                       
                        
-                        @if(Auth::user())
+                        @if(!Auth::user())
                         <div class="btn-group nav-item">
                             <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                                 Registration

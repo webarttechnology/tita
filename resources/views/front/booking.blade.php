@@ -12,14 +12,19 @@
             <div class="cards col-lg-10 mx-auto">
                 <form action="">
                     <div class="row datetime">
-                        <div class="col-md-5 border-end pe-md-5 py-3">
+                        <div class="col-md-3 border-end pe-md-5 py-3">
                             <div class="date">
-                                <input type="date" placeholder="date" class="form-control shadow-none">
+                                <input type="date" placeholder="date" name="date" id="date" min="{{ date('Y-m-d') }}" value="{{ old('date') }}" class="form-control shadow-none">
                             </div>
                         </div>
-                        <div class="col-md-5 ps-md-5 py-3">
+                        <div class="col-md-3 ps-md-5 py-3">
                             <div class="time">
-                                <input type="time" placeholder="time" class="form-control shadow-none">
+                                <input type="time" placeholder="time" name="time" id="time" value="{{ old('time') }}" class="form-control shadow-none">
+                            </div>
+                        </div>
+                        <div class="col-md-3 ps-md-5 py-3">
+                            <div class="zip">
+                                <input type="number" placeholder="Zip" name="zip" id="zip" value="{{ old('zip') }}" class="form-control shadow-none">
                             </div>
                         </div>
                     </div>
@@ -39,7 +44,7 @@
                     </div>
                 </div>
                 <div class="bookbtn">
-                    <a href="#">Submit Booking <span><img src="assets/images/fast-forward-white.png"
+                    <a href="javascript:void(0)" onclick="bookingSubmit()">Submit Booking <span><img src="assets/images/fast-forward-white.png"
                                 class="ms-2"></span></a>
                 </div>
             </div>
@@ -47,4 +52,19 @@
     </div>
 </section>
 
+<script>
+    function bookingSubmit(){
+            let date = $('#date').val();
+            let time = $('#time').val();
+            let zip = $('#zip').val();
+
+            // Check if any of the fields are empty
+            if (date === '' || time === '' || zip === '') {
+                alert('Date, Time & Zip Fields are Required');
+                return;
+            }
+
+            window.location.href = "booking/action/"+date+'/'+time+'/'+zip;
+    }
+</script>
 @endsection
