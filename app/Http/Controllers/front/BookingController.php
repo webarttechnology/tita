@@ -50,5 +50,6 @@ class BookingController extends Controller
             $message->to($to)->subject($subject);
         });
     }
+    
 
 }
