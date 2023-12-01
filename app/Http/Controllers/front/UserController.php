@@ -61,7 +61,7 @@ class UserController extends Controller
         $cradentials = $request->only('email', 'password');
         if(Auth::guard('web')->attempt($cradentials))
         {
-            return redirect()->intended('/')->with('info', 'You Have Successfully Loggged In!!');
+            return redirect()->intended('/')->with('success', 'You Have Successfully Loggged In!!');
         }
         return redirect()->intended('login')->with('warning', 'Invalid Details!!');
     }

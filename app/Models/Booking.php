@@ -3,24 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class BookingRequest extends Model
+class Booking extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
-    protected $table = "booking_requests";
+    protected $table = "bookings";
     protected $fillable = [
         'user_id',
-        'booking_id',
         'cng_kit_id',
-        'cng_kit_amount',
+        'installer_id',
         'date',
         'time',
         'zip',
-        'request_send_to_installer',
-        'status'
     ];
 
     public function user()

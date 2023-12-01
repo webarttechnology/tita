@@ -51,9 +51,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('products')}}">CNG KIT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('booking')}}">Booking</a>
-                        </li>                       
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="">Booking</a>
+                        </li>                        --}}
                        
                         @if(!Auth::user())
                         <div class="btn-group nav-item">
@@ -137,9 +137,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('products')}}">CNG KIT</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('booking')}}">Booking</a>
-                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="">Booking</a>
+                    </li> --}}
                     <div class="btn-group nav-item">
                         <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             Registration
@@ -215,7 +215,7 @@
                             <li><a href="{{route('about_us')}}">About Us</a></li>
                             <li><a href="{{route('ev_listing')}}">EV listing</a></li>
                             <li><a href="product.php">CNG KIT</a></li>
-                            <li><a href="{{route('booking')}}">Booking</a></li>
+                            {{-- <li><a href="{{route('booking')}}">Booking</a></li> --}}
                             <li><a href="{{route('installer_Report')}}">Report</a></li>
                         </ul>
                     </div>
@@ -230,7 +230,7 @@
                             <li><a href="{{route('about_us')}}">About Us</a></li>
                             <li><a href="{{route('ev_listing')}}">EV listing</a></li>
                             <li><a href="product.php">CNG KIT</a></li>
-                            <li><a href="{{route('booking')}}">Booking</a></li>
+                            {{-- <li><a href="{{route('booking')}}">Booking</a></li> --}}
                             <li><a href="{{route('installer_Report')}}">Report</a></li>
                         </ul>
                     </div>

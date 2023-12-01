@@ -22,6 +22,7 @@ use App\Http\Controllers\installer\InstallerLocationManageController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\admin\TestManageController;
 use App\Http\Controllers\front\BookingController;
+use App\Http\Controllers\admin\BookingManageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,6 @@ use App\Http\Controllers\front\BookingController;
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about_us');
-Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
 Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_download');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
@@ -84,7 +84,8 @@ Route::get('/cng/details/{slug}', [CngController::class, 'cng_details'])->name('
  * Booking
 */
 
-Route::get('/booking/action/{date?}/{time?}/{zip?}', [BookingController::class, 'booking']);
+Route::get('/booking/{id}/{price}', [HomeController::class, 'booking'])->name('booking');
+Route::get('/booking/action/{date?}/{time?}/{zip?}/{id?}/{price?}', [BookingController::class, 'booking']);
 
 /**Admin Section*/
 
@@ -148,6 +149,15 @@ Route::prefix('admin')->group(function () {
                 Route::post('instruction/save', 'instruction_save');
         });
 
+
+        /**
+         * Booking
+        */
+
+        Route::controller(BookingManageController::class)->group(function () {
+            Route::get('booking/list', 'admin_booking');
+            Route::get('booking/details/{booking_id}', 'admin_booking_details');
+        });
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
         Route::get('/blog/add', [BlogController::class, 'add'])->name('blog_add');
@@ -224,6 +234,11 @@ Route::prefix('installer')->group(function () {
         Route::controller(InstallerAccountManageController::class)->group(function () {
             Route::post('edit/profile', 'profile_edit');
             Route::post('change/password', 'change_password');
+        });
+
+        Route::controller(BookingManageController::class)->group(function () {
+            Route::get('booking/list', 'installer_booking');
+            Route::get('booking/status/{id}/{status}', 'installer_booking_status');
         });
         
         Route::controller(InstallerLocationManageController::class)->group(function () {

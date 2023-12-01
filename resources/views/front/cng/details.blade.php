@@ -102,7 +102,7 @@
                             {!! $detail->description !!}
                     </div>
                     <div class="bookbtn">
-                        <a href="#">Book My Appointment</a>
+                        <a href="{{route('booking', ['id' => $detail->id, 'price' => $detail->price])}}">Book My Appointment</a>
                     </div>
                 </div>
             </div>

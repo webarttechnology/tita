@@ -89,6 +89,13 @@
 								<span class="nav-text">My Account</span> <b class="caret"></b>
 							</a>
                         </li>
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ url('installer/booking/list') }}">
+								<i class="mdi mdi-briefcase"></i>
+								<span class="nav-text">Booking Request</span> <b class="caret"></b>
+							</a>
+                        </li>
 					</ul>
 				</div>
 			</div>

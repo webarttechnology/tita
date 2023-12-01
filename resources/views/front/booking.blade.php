@@ -13,6 +13,10 @@
                 <form action="">
                     <div class="row datetime">
                         <div class="col-md-3 border-end pe-md-5 py-3">
+
+                            <input type="hidden" id="id" value="{{ $id }}">
+                            <input type="hidden" id="price" value="{{ $price }}">
+
                             <div class="date">
                                 <input type="date" placeholder="date" name="date" id="date" min="{{ date('Y-m-d') }}" value="{{ old('date') }}" class="form-control shadow-none">
                             </div>
@@ -57,6 +61,8 @@
             let date = $('#date').val();
             let time = $('#time').val();
             let zip = $('#zip').val();
+            let id = $('#id').val();
+            let price = $('#price').val();
 
             // Check if any of the fields are empty
             if (date === '' || time === '' || zip === '') {
@@ -64,7 +70,7 @@
                 return;
             }
 
-            window.location.href = "booking/action/"+date+'/'+time+'/'+zip;
+            window.location.href = "{{ url('booking/action') }}"+'/'+date+'/'+time+'/'+zip+'/'+id+'/'+price;
     }
 </script>
 @endsection

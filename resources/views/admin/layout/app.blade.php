@@ -158,6 +158,13 @@
 								<span class="nav-text">Exam</span> <b class="caret"></b>
 							</a>
 						</li>
+						
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ url('admin/booking/list') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Booking Request</span> <b class="caret"></b>
+							</a>
+						</li>
 
 					</ul>
 				</div>
