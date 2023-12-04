@@ -38,6 +38,8 @@ use App\Http\Controllers\admin\BookingManageController;
 /**
  * Local User --> email: xojageweja@mailinator.com ||||| pass - Xojageweja@mailinator.com
  * Installer --> 1) email: vetuq@mailinator.com  |||||||| pass - Vetuq@mailinator.com
+ * 
+ * composer require stripe/stripe-php --> To install stripe
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
@@ -154,9 +156,11 @@ Route::prefix('admin')->group(function () {
          * Booking
         */
 
-        Route::controller(BookingManageController::class)->group(function () {
-            Route::get('booking/list', 'admin_booking');
-            Route::get('booking/details/{booking_id}', 'admin_booking_details');
+        Route::prefix('booking')->controller(BookingManageController::class)->group(function () {
+            Route::get('list', 'admin_booking');
+            Route::get('details/{booking_id}', 'admin_booking_details');
+            Route::post('assign/installer', 'admin_installer_assign');
+            Route::get('status/{booking_id}/{installer_id}/{status}', 'admin_booking_status_change');
         });
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');

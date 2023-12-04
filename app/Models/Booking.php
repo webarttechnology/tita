@@ -14,6 +14,7 @@ class Booking extends Model
         'user_id',
         'cng_kit_id',
         'installer_id',
+        'unique_payment_id',
         'date',
         'time',
         'zip',

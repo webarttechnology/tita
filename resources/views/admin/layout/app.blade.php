@@ -280,14 +280,14 @@
 
 <!-- warning alert -->
 <script>
-    function displayAlert(type, message, url) {
+    function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel') {
         Swal.fire({
             icon: type,
             title: message,
             showDenyButton: true,
             showCancelButton: false,
-            confirmButtonText: 'Delete',
-            denyButtonText: `Cancel`,
+            confirmButtonText: confirmBtnText,
+            denyButtonText: denyBtnText,
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {

@@ -22,7 +22,8 @@ class BookingController extends Controller
                    return redirect()->back()->with('error', 'Date & Time Field is required');
                }
                else{
-                    $installers = InstallerZip::with('installer')->where('zip', $zip)->inRandomOrder()->limit(2)->get();
+                    $installers = InstallerZip::with('installer')
+                    ->where('zip', $zip)->orderBy('id', 'desc')->get();
 
                     if($installers->isEmpty()){
                         return redirect()->back()->with('error', 'Sorry! No Installer found for this zip');

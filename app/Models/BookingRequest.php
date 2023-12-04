@@ -20,6 +20,8 @@ class BookingRequest extends Model
         'time',
         'zip',
         'request_send_to_installer',
+        'unique_payment_id',
+        'payment_link',
         'status'
     ];
 
@@ -31,5 +33,10 @@ class BookingRequest extends Model
     public function cng()
     {
         return $this->belongsTo(CngKit::class, 'cng_kit_id', 'id');
+    }
+
+    public function installer()
+    {
+        return $this->belongsTo(Installer::class, 'request_send_to_installer', 'id');
     }
 }
