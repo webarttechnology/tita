@@ -23,6 +23,7 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\admin\TestManageController;
 use App\Http\Controllers\front\BookingController;
 use App\Http\Controllers\admin\BookingManageController;
+use App\Http\Controllers\payment\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +66,7 @@ Route::post('/user/registration/store', [UserController::class, 'userRegistratio
 Route::get('/login', [UserController::class, 'userLogin'])->name('user_Login');
 Route::post('/sing-in', [UserController::class, 'login'])->name('user_Sing_In');
 Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout');
-Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
+Route::get('/user-details/{page?}', [UserController::class, 'userDetails'])->name('user_Details');
 Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
 Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
 Route::get('exam/{code?}', [InstallerTestController::class, 'exam_page']);
@@ -88,6 +89,12 @@ Route::get('/cng/details/{slug}', [CngController::class, 'cng_details'])->name('
 
 Route::get('/booking/{id}/{price}', [HomeController::class, 'booking'])->name('booking');
 Route::get('/booking/action/{date?}/{time?}/{zip?}/{id?}/{price?}', [BookingController::class, 'booking']);
+Route::get('/booking/confirm/pay/{bookPayId}', [BookingController::class, 'booking_payment']);
+Route::get('/booking/history', [BookingController::class, 'bookingHistory']);
+Route::get('/view/installer/details/{installerId}', [BookingController::class, 'installer_details']);
+
+Route::get('/success', [StripePaymentController::class, 'success'])->name('stripe.success');
+Route::get('/cancel', [StripePaymentController::class, 'cancel'])->name('stripe.cancel');
 
 /**Admin Section*/
 

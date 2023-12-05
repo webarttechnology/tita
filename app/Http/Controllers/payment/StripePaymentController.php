@@ -9,14 +9,14 @@ use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\Redirect;
 use Stripe\Exception\CardException;
 use Illuminate\Support\Facades\Session;
-use App\Models\{Order};
+use App\Models\{Booking};
 use Auth;
 
 class StripePaymentController extends Controller
 {
     //
 
-    public static function StripePay(Request $request, $orderId, $amount){
+    public static function StripePay($orderId, $amount){
         try {
             
             $stripe = new \Stripe\StripeClient('sk_test_51MmXfKSCgMR7q6bkWzyl3Im8Geip19fTgonFzBjR3SMcpsNhCE7tFvgR12g7fJCAd8ppSsFCmeRzRJIjYTNkVmSx009rBYW42x');
@@ -36,7 +36,7 @@ class StripePaymentController extends Controller
                   'cancel_url' => url('cancel'),
                   'line_items' => [['price' => $price -> id, 'quantity' => 1]],
                   'mode' => 'payment',
-                  'success_url' => url('success'). '?order_id=' . $orderId,
+                  'success_url' => url('success'),
                 ]
               );
 
@@ -62,21 +62,20 @@ class StripePaymentController extends Controller
     }
 
     public function cancel(Request $request){
-        return redirect('checkout');
+        return redirect('/')->With('error', 'Payment Failed');
     }
 
     public function success(Request $request){
-        $stripe = new \Stripe\StripeClient('sk_test_51MmXfKSCgMR7q6bkWzyl3Im8Geip19fTgonFzBjR3SMcpsNhCE7tFvgR12g7fJCAd8ppSsFCmeRzRJIjYTNkVmSx009rBYW42x');
-        
         /**
          * Update db if payment done 
         */
 
-        // Order::whereId(Session::get("paymentDetails.orderId"))->update([
-        //     'txn_id' => Session::get("paymentDetails.payment_id.id"),
-        //     'status' => 'success',
-        //     'transaction_details' => json_encode(Session::get("paymentDetails.payment_id")),
-        // ]);
+        Booking::where('unique_payment_id', Session::get("paymentDetails.orderId"))->update([
+            'txn_id' => Session::get("paymentDetails.payment_id.id"),
+            'status' => 'payment_complete',
+            'transaction_details' => json_encode(Session::get("paymentDetails.payment_id")),
+            'unique_payment_id' => null
+        ]);
 
         Session::forget('paymentDetails');
         return Redirect::to('/')->With('success', 'Payment Done');

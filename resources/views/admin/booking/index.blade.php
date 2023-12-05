@@ -24,6 +24,7 @@
                                             <th>Booking Date</th>
                                             <th>Time</th>
                                             <th>Zip</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -36,6 +37,13 @@
                                             <td>{{ $booking->date }}</td>
                                             <td>{{ $booking->time }}</td>
                                             <td>{{ $booking->zip }}</td>
+                                            <td>
+                                                @if($booking->status == "payment_complete")
+                                                    <label class="badge badge-success">PAID</label>
+                                                @else
+                                                    <label class="badge badge-danger">NOT PAID</label>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a class="btn btn-primary btn-sm" href="{{ url('admin/booking/details', $booking->id) }}">Details</a>
                                             </td>

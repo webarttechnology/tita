@@ -32,7 +32,7 @@
                         <h5 class="pb-4">Contact Information</h5>
                         <div class="mail pb-3">
                             <h6>Email Adress</h6>
-                            <p>{{ $user->email}}</p>
+                            <p style="word-wrap: break-word;">{{ $user->email}}</p>
                         </div>
                         <div class="number">
                             <h6>Phone Number</h6>
@@ -47,7 +47,7 @@
                     <ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myProfileTab" role="tablist">
 
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link color" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
+                            <button class="nav-link @if($page == null) color @endif" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
                                 type="button" role="tab" aria-controls="settings" aria-selected="false">Profile</button>
                         </li>
 
@@ -57,10 +57,14 @@
                                 Password</button>
                         </li>
 
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link @if($page != null) color @endif" id="settings-tab" data-bs-toggle="tab" data-bs-target="#bookingHistory"
+                                type="button" role="tab" aria-controls="settings" aria-selected="false">Booking History</button>
+                        </li>
                     </ul>
 
                 <div class="tab-content px-3 px-xl-5" id="myTabContent">
-                    <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    <div class="tab-pane fade @if($page == null) show active @else fade @endif" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                         <div class="tab-pane-content mt-5">
                             <form action="{{route('user_Details_Update', ['id' => $user->id])}}" method="post" enctype="multipart/form-data">
                                 @method('PUT')
@@ -139,6 +143,56 @@
                                 </form>
                             </div>
                         </div>
+
+                        <div class="tab-pane @if($page != null) show active @else fade @endif" id="bookingHistory" role="tabpanel" aria-labelledby="settings-tab">
+                            <div class="tab-pane-content mt-5">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Zip</th>
+                                        <th scope="col">Booking For</th>
+                                        <th scope="col">Installer</th>
+                                        <th scope="col">Payment Status</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                     @foreach($bookings as $key => $booking)   
+                                        <tr>
+                                        <th scope="row">{{ $key + 1 }}</th>
+                                        <td>{{ $booking->date }}</td>
+                                        <td>{{ $booking->time }}</td>
+                                        <td>{{ $booking->zip }}</td>
+                                        <td>{{ $booking->cng->title }}</td>
+                                        <td>
+                                            @if($booking->installer_id != null)
+                                                <a href="javascript:void(0);" onclick="viewInstallerDetails({{ $booking->installer_id }});" class="btn btn-dark btn-sm" 
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
+                                            @else
+                                                 <p>N/A</p>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($booking->status != null)
+                                               <label class="badge bg-success">PAID</label>
+                                            @else
+                                               <label class="badge bg-danger">NOT PAID</label>
+                                            @endif
+                                        </td>
+                                        </tr>
+                                     @endforeach
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="text-end">
+                                {{ $bookings->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,5 +202,56 @@
     </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Installer Details</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="p-2">
+                <p class="fw-bold mb-0"><strong>Name:</strong> <span class="text-primary ms-2" id="installer_name"></span></p>
+                <p class="fw-bold mb-0"><strong>Email:</strong> <span class="text-primary ms-2" id="installer_email"></span></p>
+                <p class="fw-bold mb-0"><strong>Phone:</strong> <span class="text-primary ms-2" id="installer_phone"></span></p>
+            </div>
 
+            {{-- <form>
+                <div class="mb-3">
+                    <label for="installer_name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="installer_name" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="installer_email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="installer_email" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="installer_phone" class="form-label">Phone:</label>
+                    <input type="tel" class="form-control" id="installer_phone" readonly>
+                </div>
+            </form> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function viewInstallerDetails(id){
+           $.ajax({
+                url: '{{url('view/installer/details')}}' + "/" + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (details) 
+                {
+                    $('#installer_name').html(details.name);
+                    $('#installer_email').html(details.email);
+                    $('#installer_phone').html(details.phone_number);
+                },
+                error: function (error) {
+                    console.error('Ajax request failed: ', error);
+                }
+            });
+    }
+  </script>
 @endsection

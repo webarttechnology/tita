@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\{BookingRequest, CngKit, Installer, Booking};
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\payment\StripePaymentController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -78,7 +79,11 @@ class BookingManageController extends Controller
                     /**
                     * Update booking  
                     */
-                    $uniquePayId = Str::random(40);
+
+                    $uniquePayId = Str::random(30);
+                    
+                    $userEmail = BookingRequest::with('user')->where('booking_id', $booking_id)->first();
+                    $this->mailSend($userEmail->user->email, 'Payment Link', 'mail.payment_link', $uniquePayId);
 
                     Booking::whereId($booking_id)->update([
                         'installer_id' => $installer_id,
@@ -93,9 +98,6 @@ class BookingManageController extends Controller
                     $cngDetails = BookingRequest::with('cng')->where('booking_id', $booking_id)
                     ->where('request_send_to_installer', $installer_id)->first();
 
-                    
-                    //$payLink = StripePaymentController::StripePay($request, $uniquePayId, $cngDetails->cng->price)->getTargetUrl();
-
                     /**
                     * Accept the installer
                     */
@@ -103,7 +105,6 @@ class BookingManageController extends Controller
                     BookingRequest::where('booking_id', $booking_id)
                     ->where('request_send_to_installer', $installer_id)->update([
                             'status' => $status,
-                            // 'unique_payment_id' => $uniquePayId,
                     ]);
 
                     /**
@@ -144,5 +145,11 @@ class BookingManageController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Done');
+    }
+
+    public function mailSend($to, $subject, $view, $details){
+        Mail::send($view, ['detail' => $details], function($message) use ($to, $subject) {
+            $message->to($to)->subject($subject);
+        });
     }
 }

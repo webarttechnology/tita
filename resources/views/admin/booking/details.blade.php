@@ -191,7 +191,9 @@
                             <option value="">Select  A Installer</option>
 
                             @foreach ($bookings as $booking)    
-                                <option value="{{ $booking->installer->id }}">{{ $booking->installer->name }}</option>
+                               @if($booking->installer->approvel_by_admin == "approved")
+                                   <option value="{{ $booking->installer->id }}">{{ $booking->installer->name }}</option>
+                               @endif
                             @endforeach
                         </select>
                     </div>

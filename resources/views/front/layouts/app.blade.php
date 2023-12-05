@@ -85,6 +85,14 @@
                               <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('pdf_download')}}">PDF</a></li>
                             </ul>
                         </div>  
+
+
+                        @if(Auth::user())                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('booking/history') }}">Booking History</a>
+                            </li>  
+                        @endif
+
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="{{route('quote')}}">Quote</a>
                         </li>                       --}}

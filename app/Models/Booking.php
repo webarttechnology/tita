@@ -18,6 +18,9 @@ class Booking extends Model
         'date',
         'time',
         'zip',
+        'txn_id',
+        'transaction_details',
+        'status'
     ];
 
     public function user()

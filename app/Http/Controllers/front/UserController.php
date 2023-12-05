@@ -4,7 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\{User, Booking};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -75,10 +75,12 @@ class UserController extends Controller
         return redirect('/')->with('warning', 'You Have Successfully Loggged Out!!');
     }
 
-    public function userDetails()
+    public function userDetails($page = null)
     {
-        $user = User::where('id', Auth::guard('web')->user()->id)->first();     
-        return view('front.user-details', compact('user'));
+        $user = User::where('id', Auth::guard('web')->user()->id)->first(); 
+        $bookings = Booking::with('cng')->where('user_id', $user->id)->orderBy('id', 'desc')->paginate(6);
+
+        return view('front.user-details', compact('user', 'bookings', 'page'));
     }
 
     public function update(Request $request,$id)
