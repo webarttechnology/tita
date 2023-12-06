@@ -7,6 +7,8 @@ use App\Models\{BookingRequest, CngKit, Installer, Booking};
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\payment\StripePaymentController;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Mail\MailManageController;
+use App\Http\Controllers\installer\OtpManageController;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,7 @@ class BookingManageController extends Controller
     }
 
     public function admin_booking_details($booking_id){
-        $bookings = BookingRequest::with('user', 'cng', 'installer')
+        $bookings = BookingRequest::with('user', 'cng', 'installer', 'booking')
                     ->where('booking_id', $booking_id)
                     ->orderBy('id', 'desc')->get();
         $customerDetails = Booking::with('user')->where('id', $booking_id)->first();
@@ -48,7 +50,9 @@ class BookingManageController extends Controller
             * Update booking  
            */
 
+           $uniquePayId = Str::random(30);
            Booking::whereId($request->booking_id)->update([
+                'unique_payment_id' => $uniquePayId,
                 'installer_id' => $request->installer,
            ]);
 
@@ -69,6 +73,9 @@ class BookingManageController extends Controller
            ->where('request_send_to_installer', '!=', $request->installer)->update([
                   'status' => 'rejected'
            ]);
+                    
+            $userEmail = BookingRequest::with('user')->where('booking_id', $request->booking_id)->first();
+            MailManageController::mailSend($userEmail->user->email, 'Payment Link', 'mail.payment_link', $uniquePayId);
 
            return redirect()->back()->with('success', 'Successfully Assigned');
     }
@@ -83,7 +90,7 @@ class BookingManageController extends Controller
                     $uniquePayId = Str::random(30);
                     
                     $userEmail = BookingRequest::with('user')->where('booking_id', $booking_id)->first();
-                    $this->mailSend($userEmail->user->email, 'Payment Link', 'mail.payment_link', $uniquePayId);
+                    MailManageController::mailSend($userEmail->user->email, 'Payment Link', 'mail.payment_link', $uniquePayId);
 
                     Booking::whereId($booking_id)->update([
                         'installer_id' => $installer_id,
@@ -134,7 +141,7 @@ class BookingManageController extends Controller
     */
 
     public function installer_booking(){
-        $bookings = BookingRequest::with('user', 'cng')->where('request_send_to_installer', Auth::guard('installer')->user()->id)
+        $bookings = BookingRequest::with('user', 'cng', 'booking')->where('request_send_to_installer', Auth::guard('installer')->user()->id)
         ->orderBy('id', 'desc')->get();
         return view('installer.booking.index', compact('bookings'));
     }
@@ -146,10 +153,11 @@ class BookingManageController extends Controller
 
         return redirect()->back()->with('success', 'Done');
     }
-
-    public function mailSend($to, $subject, $view, $details){
-        Mail::send($view, ['detail' => $details], function($message) use ($to, $subject) {
-            $message->to($to)->subject($subject);
-        });
+    
+    public function installer_booking_finish($id){
+           $user = BookingRequest::with('user')->where('id', $id)->first();
+           $otp = OtpManageController::otpSet($user->booking_id, 'Booking');
+           MailManageController::mailSend($user->user->email, 'Otp Verification', 'mail.otp_verify', $otp);
+           return redirect('installer/otp/verify/'.$user->booking_id)->with('info', 'Please Verify the Otp provide to user for End the Booking');
     }
 }

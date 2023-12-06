@@ -210,20 +210,20 @@
 
 <!-- warning alert -->
 <script>
-    function displayAlert(type, message, url) {
+    function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel', deniedMSg = 'Your Data is Safe') {
         Swal.fire({
             icon: type,
             title: message,
             showDenyButton: true,
             showCancelButton: false,
-            confirmButtonText: 'Delete',
-            denyButtonText: `Cancel`,
+            confirmButtonText: confirmBtnText,
+            denyButtonText: denyBtnText,
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                     window.location.href = url;
             } else if (result.isDenied) {
-                Swal.fire('Your Data is Safe', '', 'info')
+                Swal.fire(deniedMSg, '', 'info')
             }
         })
     }

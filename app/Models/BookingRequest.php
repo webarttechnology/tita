@@ -35,6 +35,11 @@ class BookingRequest extends Model
         return $this->belongsTo(CngKit::class, 'cng_kit_id', 'id');
     }
 
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class, 'booking_id', 'id');
+    }
+
     public function installer()
     {
         return $this->belongsTo(Installer::class, 'request_send_to_installer', 'id');

@@ -9,7 +9,11 @@
                     <h1>Booking Details</h1>
                 </div>
                 <div>
-                    <a href="javascript:void(0)" onclick="taskModalOpen()" class="btn btn-primary">Assign Installer</a>
+                    @if(!$bookings->isEmpty() && $bookings[0]->booking->status != "completed")
+                       <a href="javascript:void(0)" onclick="taskModalOpen()" class="btn btn-primary">Assign Installer</a>
+                    @elseif($bookings->isEmpty())
+                       <a href="javascript:void(0)" onclick="taskModalOpen()" class="btn btn-primary">Assign Installer</a>
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -131,12 +135,14 @@
                                                 <label class="badge bg-danger">{{ ucfirst($booking->status) }}</label>
                                               @elseif($booking->status == "pending")
                                                 <label class="badge bg-warning">{{ ucfirst($booking->status) }}</label>
+                                              @elseif($booking->status == "completed")
+                                                <label class="badge bg-primary">Completed</label>
                                               @elseif($booking->status == "in_progress")
                                                 <label class="badge bg-info">Accepted</label>
                                               @endif
                                             </td>
                                             <td>
-                                                @if($booking->status == "in_progress")    
+                                                @if($booking->status == "in_progress" || $booking->status == "approved")    
                                                 <div class="btn-group mb-1">
                                                     <button type="button"
                                                         class="btn btn-outline-success">Info</button>
@@ -184,9 +190,11 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="form-label">Installers:</label>
+                        <label class="form-label mb-2">Installers:</label>
                         
                         <input type="hidden" name="booking_id" id="booking_id" value="{{ $booking_id }}">
+                        
+                        @if(count($bookings) > 0)
                         <select class="form-control" name="installer" id="installer">
                             <option value="">Select  A Installer</option>
 
@@ -196,6 +204,9 @@
                                @endif
                             @endforeach
                         </select>
+                        @else
+                               <strong>No Installer Found</strong>
+                        @endif
                     </div>
 
                 </div>

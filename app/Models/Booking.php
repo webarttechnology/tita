@@ -20,12 +20,18 @@ class Booking extends Model
         'zip',
         'txn_id',
         'transaction_details',
+        'verification_otp',
         'status'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function installer()
+    {
+        return $this->belongsTo(Installer::class);
     }
 
     public function cng()

@@ -46,6 +46,9 @@
                                             case 'in_progress':
                                             echo 'Approved';
                                             break;
+                                            case 'approved':
+                                            echo 'Test Clear';
+                                            break;
                                             default:
                                             echo 'Rejected';
                                             break;

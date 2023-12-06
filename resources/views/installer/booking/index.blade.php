@@ -27,6 +27,7 @@
                                             <th>Booking Date</th>
                                             <th>Time</th>
                                             <th>Zip</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -44,6 +45,21 @@
                                             <td>{{ $booking->zip }}</td>
                                             <td>
                                                 @if($booking->status == "pending")
+                                                <a class="badge bg-warning">Pending</a>
+                                                @else
+                                                @if($booking->status == "in_progress" || $booking->status == "Accept")
+                                                    <a class="badge bg-info">Accept</a>
+                                                @elseif($booking->status == "approved")
+                                                    <a class="badge bg-success">Confirm</a>
+                                                @elseif($booking->status == "completed")
+                                                    <a class="badge bg-danger">completed</a>
+                                                @else
+                                                    <a class="badge bg-danger">Reject</a>
+                                                @endif
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($booking->status == "pending")
                                                 <div class="btn-group mb-1">
                                                     <button type="button"
                                                         class="btn btn-outline-success">Action</button>
@@ -59,12 +75,27 @@
                                                             <a class="dropdown-item" onclick="return confirm('Are you sure you want to Reject?')" href="{{ url('installer/booking/status', ['id' => $booking->id, 'status' => 'rejected']) }}">Reject</a>                       
                                                     </div>
                                                 </div>
+                                                @elseif($booking->status == "approved")
+                                                <div class="btn-group mb-1">
+                                                    <button type="button"
+                                                        class="btn btn-outline-success">Action</button>
+                                                    <button type="button"
+                                                        class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false" data-display="static">
+                                                        <span class="sr-only">Action</span>
+                                                    </button>
+
+                                                    <div class="dropdown-menu dropdown-custom-button">
+                                                            <a class="dropdown-item" onclick="displayAlert('warning', 'Are You Sure, You want to Finish the Booking?', 
+                                                            '{{ url('installer/booking/finish', ['id' => $booking->id]) }}', 'Finish Booking', 'Cancel', 'Your Booking Not completed Yet!')" 
+                                                            href="javascript:void(0);">Finish Booking</a>                       
+                                                    </div>
+                                                </div>
+                                                @elseif($booking->status == "completed")
+                                                <p>N/A</p>
                                                 @else
-                                                @if($booking->status == "in_progress" || $booking->status == "Accept")
-                                                    <a class="badge bg-success">Accept</a>
-                                                @else
-                                                    <a class="badge bg-danger">Reject</a>
-                                                @endif
+                                                <p>N/A</p>
                                                 @endif
                                             </td>
                                         </tr>

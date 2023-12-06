@@ -40,6 +40,8 @@
                                             <td>
                                                 @if($booking->status == "payment_complete")
                                                     <label class="badge badge-success">PAID</label>
+                                                @elseif($booking->status == "completed")
+                                                    <label class="badge badge-dark">completed</label>
                                                 @else
                                                     <label class="badge badge-danger">NOT PAID</label>
                                                 @endif

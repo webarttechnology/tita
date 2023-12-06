@@ -19,6 +19,7 @@ use App\Http\Controllers\admin\CngKitManageController;
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
 use App\Http\Controllers\installer\InstallerLocationManageController;
+use App\Http\Controllers\installer\OtpManageController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\admin\TestManageController;
 use App\Http\Controllers\front\BookingController;
@@ -250,6 +251,13 @@ Route::prefix('installer')->group(function () {
         Route::controller(BookingManageController::class)->group(function () {
             Route::get('booking/list', 'installer_booking');
             Route::get('booking/status/{id}/{status}', 'installer_booking_status');
+            Route::get('booking/finish/{id}', 'installer_booking_finish');
+        });
+
+        Route::prefix('otp')->controller(OtpManageController::class)->group(function () {
+            Route::get('verify/{booking_id}', 'verify_page');
+            Route::post('check/action', 'verify_action');
+            Route::get('resend/{booking_id}', 'otp_resend');
         });
         
         Route::controller(InstallerLocationManageController::class)->group(function () {
