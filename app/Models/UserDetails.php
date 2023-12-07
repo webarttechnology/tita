@@ -11,6 +11,7 @@ class UserDetails extends Model
 
     protected $table = "user_details";
     protected $fillable = [
+        'user_id',
         'address',
         'driver_id',
         'proof_of_vehicle',

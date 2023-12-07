@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-6">
-                <form action="{{ route ('installer_registration')}}" method="POST" enctype="multipart/form-data"> 
+                <form action="{{ route('user_Registration_Store')}}" method="POST" enctype="multipart/form-data"> 
                     @csrf
                     <p><strong>Customer Details</strong></p>
                     <div class="row">
@@ -87,7 +87,7 @@
                             <div class="mb-3">
                                 <label for="vehicle_type" class="form-label">Vehicle Type</label>
 
-                                <select name="vehicle_type" class="form-control">
+                                <select name="vehicle_type" id="vehicle_type" class="form-control">
                                     <option value="">Select</option>
                                     <option value="Heavy Duty Trucks">Heavy Duty Trucks</option>
                                     <option value="Mini Truck">Mini Truck</option>
@@ -133,7 +133,7 @@
                                 <input type="text" class="form-control" id="injection_type" name="injection_type" value="{{old('injection_type')}}">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="Zip" class="form-label">VIN number</label>
                                 <input type="number" class="form-control" id="vin_number" name="vin_number" value="{{old('vin_number')}}">
@@ -154,4 +154,15 @@
             
         </div>
 </section>
+
+<!-- Initialize Select2 -->
+
+@endsection
+
+@section('custom_js')
+<script>
+    $(document).ready(function() {
+        $('#vehicle_type').select2();
+    });
+</script>
 @endsection

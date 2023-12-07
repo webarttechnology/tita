@@ -4,7 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{User, Booking};
+use App\Models\{User, Booking, UserDetails};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,23 +24,50 @@ class UserController extends Controller
             'email' => 'required|string|unique:users',
             'password' => ['required', 'string', 'min:8'],
             'number' => 'required|numeric|digits:10',
-            'image' => 'required|image',
+            // 'image' => 'required|image',
         ],
         [
             'password.regex' => 'The password must be at least 8 characters long and include at least one uppercase letter and one special character.',
             'number.digits' => 'Number should be at least 10 digits.',
         ]);
 
-        $image = $request->image;
-        $imagePath = 'images/User/'.time() . '_' . $image->getClientOriginalName();
-        $image->move('images/User',$imagePath);  
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $imagePath = 'images/User/'.time() . '_' . $image->getClientOriginalName();
+            $image->move('images/User',$imagePath);  
+        }else{
+            $imagePath = "";
+        }
 
-        User::create([
+        $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
         'phone_number' => $request->number,
         'image' =>  $imagePath,
+        ]);
+
+        if($request->hasFile('proof_of_vehicle')){
+            $image = $request->proof_of_vehicle;
+            $proof_of_vehicle = 'images/Vehicle/'.time() . '_' . $image->getClientOriginalName();
+            $image->move('images/Vehicle', $proof_of_vehicle); 
+        }else{
+            $proof_of_vehicle = null;
+        }
+
+        UserDetails::create([
+            'user_id' => $user->id,
+            'address' => $request->address,
+            'driver_id' => $request->driver_id,
+            'proof_of_vehicle' => $proof_of_vehicle,
+            'vehicle_type' => $request->vehicle_type,
+            'vehicle_year' => $request->vehicle_year,
+            'vehicle_make' => $request->vehicle_make,
+            'vehicle_model' => $request->vehicle_model,
+            'engine_power' => $request->engine_power,
+            'engine_capacity' => $request->engine_capacity,
+            'injection_type' => $request->injection_type,
+            'vin_number' => $request->vin_number,
         ]);
 
         return redirect()->back()->with('success', 'Data Successfully Registered!!!');
