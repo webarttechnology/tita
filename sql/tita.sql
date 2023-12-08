@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 11:35 AM
+-- Generation Time: Dec 08, 2023 at 12:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -290,6 +290,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `installers` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `inst_code` text DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
@@ -307,21 +308,23 @@ CREATE TABLE `installers` (
 -- Dumping data for table `installers`
 --
 
-INSERT INTO `installers` (`id`, `name`, `email`, `phone_number`, `password`, `profile_img`, `status`, `exam_link_id`, `approvel_by_admin`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Quinn Silas Dunn Walker', 'cilovihex@mailinator.com', '+1 (488) 461-2447', '$2y$12$NcVadKWFUwmuSzrT.KSFi.cf.AMPUFxQSNDNAnVuNd6EDv7K/iAu2', NULL, 'active', NULL, 'rejected', '2023-11-27 02:25:01', '2023-11-27 02:01:45', '2023-11-27 02:25:01'),
-(2, 'Olympia Aspen Gray Griffin', 'rybowareg@mailinator.com', '+1 (151) 541-6713', '$2y$12$YuEeRJVl9AHSL3Znj5f1OeTKZFvqIfUpxlh/1okZWJKLWY8rplZfW', NULL, 'active', '5FC66OQCxJQJySszh0lTyWRskwp6gyI5r6Zd13bZ', 'rejected', NULL, '2023-11-27 02:30:07', '2023-11-28 05:27:33'),
-(3, 'Buckminster Pascale Berry Kirkland', 'tita123test@yopmail.com', '+1 (706) 638-8264', '$2y$12$m8kufrGsQflVxkJGf1SRGOUkNc83Yrym2j0Bzsy7.SAoG7a6W02qq', NULL, 'active', 'nuWlsOhItOmfUPBfXJ3TdJriXjFB8r7fBCr5Wv1g', 'rejected', NULL, '2023-11-27 02:57:24', '2023-11-29 01:27:47'),
-(4, 'Danielle Eleanor Thompson Sykes', 'tita12345test@yopmail.com', '+1 (642) 974-3946', '$2y$12$cLm5v1GVu0MoOzSoDhdL0e1xNkI8jIhM5BBQ6Odxt637NMQiwramC', NULL, 'active', 'ac0L9pwChsPO0FvpNlVeH3aeMk34uQTmrQuHgEVp', 'rejected', NULL, '2023-11-28 22:51:56', '2023-11-29 01:11:52'),
-(5, 'Keane Hedy Ortega Hewitt', 'vetuq@mailinator.com', '+1 (732) 872-1761', '$2y$12$9qVy4eioAxknRdfIF8.5TO7idcQho36rawv6x4Faz8dBiDVsMey6a', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:37:06', '2023-11-30 04:37:33'),
-(6, 'Chiquita Ava Knight Roach', 'Qywuzujyq@mailinator.com', '+1 (331) 296-4871', '$2y$12$vEYWuviHvyceifKZpsrL3OVlNo4P1dmkd/2dWqjAyc7cyabx4S0se', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:49:57', '2023-11-30 04:52:17'),
-(7, 'Mason Noel Vasquez Lowery', 'Kofulo@mailinator.com', '+1 (574) 634-9879', '$2y$12$3CVlKj.qsWmSkVHp1BrHnemJBsZ95Y1mK9g.VfsbT3/GjjNgK6awC', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:50:36', '2023-11-30 04:52:12'),
-(8, 'Castor Meghan Kirkland Montoya', 'Radilivit@mailinator.com', '+1 (635) 841-8123', '$2y$12$2rIp1uCzfro5SmoWc3JyeOrjFOxI9zSwJ1M13JMHoZ0R8qxwc36T6', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:51:21', '2023-11-30 04:52:08'),
-(9, 'Roth Brady Best Bradshaw', 'Tita001test@yopmail.com', '+1 (467) 289-5018', '$2y$12$i8/1Z6GO/ATGf.pzc.d4E.nZFp26xrRFAgAHrEwaJ8VlLX1OO9962', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 22:43:34', '2023-11-30 22:43:34'),
-(10, 'Hyatt Ulric Sexton Lyons', 'Tita002test@yopmail.com', '+1 (934) 205-7115', '$2y$12$Qgkqb0HXIRcAuQZ26pp0Wu2OVZ.hpxCjwT1OvkmZLrZd3itvAeODa', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 22:45:04', '2023-11-30 22:45:04'),
-(11, 'Shoshana Oscar Nieves Haynes', 'Tita003test@yopmail.com', '+1 (283) 169-4094', '$2y$12$jTAir1.1TbC1lgWHU2e3BOqHOCqwsCPi1myJQzFjoc0QJTWXOxbtu', NULL, 'active', NULL, 'approved', NULL, '2023-11-30 22:46:06', '2023-11-30 22:46:06'),
-(12, 'Heather Amethyst Mclaughlin Crane', 'Testinst001@yopmail.com', '+1 (178) 449-7192', '$2y$12$DdHpJVPzioT1Ky2149GsAeyejI.sENvCFu5qvWcKu9VBCp2J7fy9G', NULL, 'active', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', 'approved', NULL, '2023-12-06 03:05:37', '2023-12-06 03:30:07'),
-(13, 'Ruth Unity Dean Velazquez', 'Testinst002@yopmail.com', '+1 (154) 106-3754', '$2y$12$fwwmp6eeisQWcnWDOCbz6OxsIPEhMMxuTnHWspMMDvhlDZK7Q2U8u', NULL, 'active', NULL, 'in_progress', NULL, '2023-12-06 03:10:20', '2023-12-06 03:13:46'),
-(14, 'Reed Octavia Moses Franklin', 'Testinst003@yopmail.com', '+1 (639) 767-4522', '$2y$12$LSvmrxS.a.x0Nilcp57lCuEFlJJI8M.VOTjm08z.oHU91GCGlg0aO', NULL, 'active', NULL, 'in_progress', NULL, '2023-12-06 03:11:26', '2023-12-06 03:14:01');
+INSERT INTO `installers` (`id`, `inst_code`, `name`, `email`, `phone_number`, `password`, `profile_img`, `status`, `exam_link_id`, `approvel_by_admin`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Quinn Silas Dunn Walker', 'cilovihex@mailinator.com', '+1 (488) 461-2447', '$2y$12$NcVadKWFUwmuSzrT.KSFi.cf.AMPUFxQSNDNAnVuNd6EDv7K/iAu2', NULL, 'active', NULL, 'rejected', '2023-11-27 02:25:01', '2023-11-27 02:01:45', '2023-11-27 02:25:01'),
+(2, NULL, 'Olympia Aspen Gray Griffin', 'rybowareg@mailinator.com', '+1 (151) 541-6713', '$2y$12$YuEeRJVl9AHSL3Znj5f1OeTKZFvqIfUpxlh/1okZWJKLWY8rplZfW', NULL, 'active', '5FC66OQCxJQJySszh0lTyWRskwp6gyI5r6Zd13bZ', 'rejected', NULL, '2023-11-27 02:30:07', '2023-11-28 05:27:33'),
+(3, NULL, 'Buckminster Pascale Berry Kirkland', 'tita123test@yopmail.com', '+1 (706) 638-8264', '$2y$12$m8kufrGsQflVxkJGf1SRGOUkNc83Yrym2j0Bzsy7.SAoG7a6W02qq', NULL, 'active', 'nuWlsOhItOmfUPBfXJ3TdJriXjFB8r7fBCr5Wv1g', 'rejected', NULL, '2023-11-27 02:57:24', '2023-11-29 01:27:47'),
+(4, NULL, 'Danielle Eleanor Thompson Sykes', 'tita12345test@yopmail.com', '+1 (642) 974-3946', '$2y$12$cLm5v1GVu0MoOzSoDhdL0e1xNkI8jIhM5BBQ6Odxt637NMQiwramC', NULL, 'active', 'ac0L9pwChsPO0FvpNlVeH3aeMk34uQTmrQuHgEVp', 'rejected', NULL, '2023-11-28 22:51:56', '2023-11-29 01:11:52'),
+(5, NULL, 'Keane Hedy Ortega Hewitt', 'vetuq@mailinator.com', '+1 (732) 872-1761', '$2y$12$9qVy4eioAxknRdfIF8.5TO7idcQho36rawv6x4Faz8dBiDVsMey6a', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:37:06', '2023-11-30 04:37:33'),
+(6, NULL, 'Chiquita Ava Knight Roach', 'Qywuzujyq@mailinator.com', '+1 (331) 296-4871', '$2y$12$vEYWuviHvyceifKZpsrL3OVlNo4P1dmkd/2dWqjAyc7cyabx4S0se', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:49:57', '2023-11-30 04:52:17'),
+(7, NULL, 'Mason Noel Vasquez Lowery', 'Kofulo@mailinator.com', '+1 (574) 634-9879', '$2y$12$3CVlKj.qsWmSkVHp1BrHnemJBsZ95Y1mK9g.VfsbT3/GjjNgK6awC', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:50:36', '2023-11-30 04:52:12'),
+(8, NULL, 'Castor Meghan Kirkland Montoya', 'Radilivit@mailinator.com', '+1 (635) 841-8123', '$2y$12$2rIp1uCzfro5SmoWc3JyeOrjFOxI9zSwJ1M13JMHoZ0R8qxwc36T6', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 04:51:21', '2023-11-30 04:52:08'),
+(9, NULL, 'Roth Brady Best Bradshaw', 'Tita001test@yopmail.com', '+1 (467) 289-5018', '$2y$12$i8/1Z6GO/ATGf.pzc.d4E.nZFp26xrRFAgAHrEwaJ8VlLX1OO9962', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 22:43:34', '2023-11-30 22:43:34'),
+(10, NULL, 'Hyatt Ulric Sexton Lyons', 'Tita002test@yopmail.com', '+1 (934) 205-7115', '$2y$12$Qgkqb0HXIRcAuQZ26pp0Wu2OVZ.hpxCjwT1OvkmZLrZd3itvAeODa', NULL, 'active', NULL, 'in_progress', NULL, '2023-11-30 22:45:04', '2023-11-30 22:45:04'),
+(11, NULL, 'Shoshana Oscar Nieves Haynes', 'Tita003test@yopmail.com', '+1 (283) 169-4094', '$2y$12$jTAir1.1TbC1lgWHU2e3BOqHOCqwsCPi1myJQzFjoc0QJTWXOxbtu', NULL, 'active', NULL, 'approved', NULL, '2023-11-30 22:46:06', '2023-11-30 22:46:06'),
+(12, NULL, 'Heather Amethyst Mclaughlin Crane', 'Testinst001@yopmail.com', '+1 (178) 449-7192', '$2y$12$DdHpJVPzioT1Ky2149GsAeyejI.sENvCFu5qvWcKu9VBCp2J7fy9G', NULL, 'active', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', 'approved', NULL, '2023-12-06 03:05:37', '2023-12-06 03:30:07'),
+(13, NULL, 'Ruth Unity Dean Velazquez', 'Testinst002@yopmail.com', '+1 (154) 106-3754', '$2y$12$fwwmp6eeisQWcnWDOCbz6OxsIPEhMMxuTnHWspMMDvhlDZK7Q2U8u', NULL, 'active', NULL, 'in_progress', NULL, '2023-12-06 03:10:20', '2023-12-06 03:13:46'),
+(14, NULL, 'Reed Octavia Moses Franklin', 'Testinst003@yopmail.com', '+1 (639) 767-4522', '$2y$12$LSvmrxS.a.x0Nilcp57lCuEFlJJI8M.VOTjm08z.oHU91GCGlg0aO', NULL, 'active', 'vSPeIdLdJLk0yitRGeZTj89gTBaYSXFQaooGJcxY', 'in_progress', NULL, '2023-12-06 03:11:26', '2023-12-08 02:42:21'),
+(15, NULL, 'Bert Samuel Stout Fleming', 'Hilysi@mailinator.com', '+1 (857) 188-7941', '$2y$12$pyHzngTuf91u.P3i9bg9x.JoKs8dMdOeyphXHb3RE9lTWVZIgxvWm', NULL, 'active', NULL, 'pending', NULL, '2023-12-07 22:52:00', '2023-12-07 22:52:00'),
+(16, 'INST_00016', 'Briar Perry Spears Forbes', 'xyrydujo@mailinator.com', '+1 (184) 134-3184', '$2y$12$kI0vRdfRkudr1bJXjtvw6O2B4hA4CkiXHEMQ5lhyS5LR/isAocWz6', NULL, 'active', NULL, 'pending', NULL, '2023-12-08 02:40:04', '2023-12-08 02:40:04');
 
 -- --------------------------------------------------------
 
@@ -396,7 +399,9 @@ INSERT INTO `installer_infos` (`id`, `installer_id`, `national_identification_no
 (11, '11', 'Ullam et iusto itaqu', 'At nihil aspernatur', 'Eu assumenda placeat', 'images/Installer/1701404166_Blogs.png', 'images/Installer/1701404166_car2.png', 'images/Installer/1701404166_contact_img.jpg', 'Short Butler Plc', 'Aliquam totam id ex', '2023-11-30 22:46:06', '2023-11-30 22:46:06'),
 (12, '12', 'Eveniet dicta conse', 'Mollit exercitation', 'Soluta soluta exerci', 'images/Installer/1701851737_Blogs.png', 'images/Installer/1701851737_Blogs.png', 'images/Installer/1701851737_car2.png', 'Boyd and Cummings Inc', 'Asperiores harum sim', '2023-12-06 03:05:37', '2023-12-06 03:05:37'),
 (13, '13', 'Sunt nisi laboriosa', 'Dolore voluptate per', 'Possimus illum exe', 'images/Installer/1701852020_AudiLogo.png', 'images/Installer/1701852020_bg4.png', 'images/Installer/1701852020_car1.png', 'Crawford and Dixon Trading', 'Aspernatur labore ve', '2023-12-06 03:10:20', '2023-12-06 03:10:20'),
-(14, '14', 'Earum assumenda labo', 'Unde consequatur des', 'Do proident culpa', 'images/Installer/1701852086_blog3.jpg', 'images/Installer/1701852086_car3.png', 'images/Installer/1701852086_blog3.jpg', 'Estes Frank Plc', 'Nam quia fugiat dol', '2023-12-06 03:11:26', '2023-12-06 03:11:26');
+(14, '14', 'Earum assumenda labo', 'Unde consequatur des', 'Do proident culpa', 'images/Installer/1701852086_blog3.jpg', 'images/Installer/1701852086_car3.png', 'images/Installer/1701852086_blog3.jpg', 'Estes Frank Plc', 'Nam quia fugiat dol', '2023-12-06 03:11:26', '2023-12-06 03:11:26'),
+(15, '15', 'Sunt aute Nam ut ess', 'Qui laborum a non vo', 'Asperiores error ten', 'images/Installer/1702009320_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'images/Installer/1702009320_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702009320_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'House Petty Associates', 'Cum esse id exercit', '2023-12-07 22:52:00', '2023-12-07 22:52:00'),
+(16, '16', 'Quam reiciendis plac', 'Necessitatibus dolor', 'Consequat Beatae iu', 'images/Installer/1702023003_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702023003_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702023003_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'Goodman Contreras Plc', 'Quos doloremque in n', '2023-12-08 02:40:04', '2023-12-08 02:40:04');
 
 -- --------------------------------------------------------
 
@@ -435,7 +440,9 @@ INSERT INTO `installer_locations` (`id`, `installer_id`, `street_no`, `plot`, `s
 (11, '11', 'Aperiam autem tenetu', 'Reprehenderit consec', 'Nadine Salinas', 'Et consectetur venia', 'Dolor nostrum simili', '99289', '2023-11-30 22:46:06', '2023-11-30 22:46:06'),
 (12, '12', 'Laudantium ut incid', 'Eos impedit mollit', 'Zenia Beach', 'Autem aut ducimus a', 'Magna voluptatem ver', '40983', '2023-12-06 03:05:37', '2023-12-06 03:05:37'),
 (13, '13', 'Earum ea cupidatat n', 'Deserunt possimus v', 'McKenzie Mcleod', 'Explicabo Est minus', 'Enim officia volupta', '80504', '2023-12-06 03:10:20', '2023-12-06 03:10:20'),
-(14, '14', 'Necessitatibus et cu', 'Aliquid nobis cupida', 'Nathaniel Webb', 'Veniam aliqua Est', 'Sit consectetur duc', '76105', '2023-12-06 03:11:26', '2023-12-06 03:11:26');
+(14, '14', 'Necessitatibus et cu', 'Aliquid nobis cupida', 'Nathaniel Webb', 'Veniam aliqua Est', 'Sit consectetur duc', '76105', '2023-12-06 03:11:26', '2023-12-06 03:11:26'),
+(15, '15', 'Magnam et exercitati', 'Eos quo ab rerum qu', 'Constance Flores', 'Dolore occaecat sapi', 'Facere voluptatem N', '46920', '2023-12-07 22:52:00', '2023-12-07 22:52:00'),
+(16, '16', 'Corporis ullam qui d', 'Rerum omnis voluptat', 'Graiden Frederick', 'Modi nostrum officii', 'Molestiae dolor face', '69940', '2023-12-08 02:40:04', '2023-12-08 02:40:04');
 
 -- --------------------------------------------------------
 
@@ -569,7 +576,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2023_11_14_052435_alter_installers', 1),
 (19, '2023_11_14_063458_alter_installers', 1),
 (20, '2023_11_14_080826_create_installer_locations_table', 1),
-(21, '2023_11_14_093204_create_reports_table', 1),
 (22, '2023_11_14_101543_create_contact_us_table', 1),
 (23, '2023_11_15_074029_create_installer_zips_table', 1),
 (24, '2023_11_15_103211_create_installer_banks_table', 1),
@@ -597,7 +603,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (46, '2023_12_04_110112_alter_booking_requests', 16),
 (47, '2023_12_04_121613_alter_bookings', 17),
 (48, '2023_12_05_055732_alter_bookings', 18),
-(49, '2023_12_06_045009_alter_bookings', 19);
+(49, '2023_12_06_045009_alter_bookings', 19),
+(50, '2023_12_07_044953_create_user_details_table', 20),
+(51, '2023_12_07_102711_alter_user_details', 21),
+(53, '2023_11_14_093204_create_reports_table', 22),
+(54, '2023_12_08_050133_alter_reports', 22),
+(55, '2023_12_08_075427_alter_installers', 23);
 
 -- --------------------------------------------------------
 
@@ -692,24 +703,24 @@ CREATE TABLE `quotes` (
 CREATE TABLE `reports` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `installer_id` varchar(255) DEFAULT NULL,
-  `company_name` varchar(255) DEFAULT NULL,
-  `contact_name` varchar(255) DEFAULT NULL,
-  `phone_number` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `vehical_type` varchar(255) DEFAULT NULL,
-  `make` varchar(255) DEFAULT NULL,
-  `model` varchar(255) DEFAULT NULL,
-  `year` varchar(255) DEFAULT NULL,
-  `company_street_no` varchar(255) DEFAULT NULL,
-  `company_block` varchar(255) DEFAULT NULL,
-  `company_street_name` varchar(255) DEFAULT NULL,
-  `company_city` varchar(255) DEFAULT NULL,
-  `company_state` varchar(255) DEFAULT NULL,
-  `additional_details` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `inspector_id` text DEFAULT NULL,
+  `workshop_type` text DEFAULT NULL,
+  `workshop_size` text DEFAULT NULL,
+  `risk_management` text DEFAULT NULL,
+  `front_image` text DEFAULT NULL,
+  `application_conformation` text DEFAULT NULL,
+  `work_area` text DEFAULT NULL,
+  `wideshot_street` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`id`, `installer_id`, `created_at`, `updated_at`, `inspector_id`, `workshop_type`, `workshop_size`, `risk_management`, `front_image`, `application_conformation`, `work_area`, `wideshot_street`) VALUES
+(1, '15', '2023-12-08 01:14:10', '2023-12-08 01:14:10', '1234', '+1 (927) 838-5316', 'syli@mailinator.com', 'Quidem earum eiusmod', '081220231702017850_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'not_confirmed', '081220231702017850_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', '081220231702017850_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg');
 
 -- --------------------------------------------------------
 
@@ -804,7 +815,41 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone_number`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Carissa Hart', 'Tita003test@yopmail.com', '8984578410', NULL, '$2y$12$Nf/gYMpQREfNfDy2O/CHAuWVlvFIPZ38/o4ABGrY9XyiC35L7G5Iu', 'images/User/1701333545_user.png', NULL, '2023-11-30 03:09:05', '2023-12-05 06:38:56'),
-(2, 'Stone Sosa', 'Testuser003@yopmail.com', '1374512450', NULL, '$2y$12$wjHQoqySzO9hdmUBwwW4geq.pgIv7zNrcZ/r46G3q8vH4HRZZNLnG', 'images/User/1701852515_contact_img.jpg', NULL, '2023-12-06 03:18:35', '2023-12-06 03:18:35');
+(2, 'Stone Sosa', 'Testuser003@yopmail.com', '1374512450', NULL, '$2y$12$wjHQoqySzO9hdmUBwwW4geq.pgIv7zNrcZ/r46G3q8vH4HRZZNLnG', 'images/User/1701852515_contact_img.jpg', NULL, '2023-12-06 03:18:35', '2023-12-06 03:18:35'),
+(3, 'Basia Whitaker', 'zebev@mailinator.com', '2025478940', NULL, '$2y$12$KISUSWE4y1HEYZKvmuRxSuQpQCBbPW0Q7YhTz1UV4EHRPGj1A5pO6', '', NULL, '2023-12-07 06:27:56', '2023-12-07 06:27:56'),
+(4, 'Germane Cooley', 'cobahil@mailinator.com', '5064784510', NULL, '$2y$12$981JIXrpgxPZeMb3qoH8sunKugd/qpx0Yg3jGtDIzvF3C6.g0SDVe', '', NULL, '2023-12-07 06:29:19', '2023-12-07 06:29:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_details`
+--
+
+CREATE TABLE `user_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `driver_id` text DEFAULT NULL,
+  `proof_of_vehicle` text DEFAULT NULL,
+  `vehicle_type` text DEFAULT NULL,
+  `vehicle_year` text DEFAULT NULL,
+  `vehicle_make` text DEFAULT NULL,
+  `vehicle_model` text DEFAULT NULL,
+  `engine_power` text DEFAULT NULL,
+  `engine_capacity` text DEFAULT NULL,
+  `injection_type` text DEFAULT NULL,
+  `vin_number` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_details`
+--
+
+INSERT INTO `user_details` (`id`, `user_id`, `address`, `driver_id`, `proof_of_vehicle`, `vehicle_type`, `vehicle_year`, `vehicle_make`, `vehicle_model`, `engine_power`, `engine_capacity`, `injection_type`, `vin_number`, `created_at`, `updated_at`) VALUES
+(1, '3', 'Magna ullam ea volup', 'Fugiat molestiae om', NULL, 'SUV', '1977', 'Laboriosam quia num', 'Qui nihil sint odit', 'Corrupti placeat a', 'Ullamco voluptas pra', 'Veniam voluptatem m', '280', '2023-12-07 06:27:56', '2023-12-07 06:27:56'),
+(2, '4', 'Nisi occaecat id ali', 'Omnis sapiente natus', 'images/Vehicle/1701950359_1701333545_user.png', 'Heavy Duty Trucks', '1985', 'Nihil eiusmod non au', 'Laboris voluptate es', 'Accusamus nostrum ex', 'Laboriosam magni la', 'Voluptate a in rerum', '701', '2023-12-07 06:29:19', '2023-12-07 06:29:19');
 
 -- --------------------------------------------------------
 
@@ -834,7 +879,8 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id`, `name`, `year_of_launch`, `range`, `power`, `charging_time`, `seating_capacity`, `distance`, `battery_capacity`, `features`, `vehicle_type`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'rojeda@mailinator.com', '1979', '4', 'sojepete@mailinator.com', '970', '352', '627', '47', NULL, NULL, NULL, '2023-11-29 03:35:51', '2023-11-29 04:21:53');
+(1, 'rojeda@mailinator.com', '1979', '4', 'sojepete@mailinator.com', '970', '352', '627', '47', NULL, NULL, NULL, '2023-11-29 03:35:51', '2023-11-29 04:21:53'),
+(2, 'fapykic@mailinator.com', '2007', '38', 'toluzibihe@mailinator.com', '623', '481', '888', '687', NULL, NULL, NULL, '2023-12-08 04:35:32', '2023-12-08 05:01:35');
 
 -- --------------------------------------------------------
 
@@ -860,7 +906,11 @@ INSERT INTO `vehicle_colors` (`id`, `vehicle_id`, `color`, `created_at`, `update
 (12, '1', '#0000ff', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
 (13, '1', '#0000ff', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
 (14, '1', '#008000', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(15, '1', '#ff0000', '2023-11-29 04:21:53', '2023-11-29 04:21:53');
+(15, '1', '#ff0000', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
+(20, '2', '#80a804', '2023-12-08 05:01:35', '2023-12-08 05:01:35'),
+(21, '2', '#d72828', '2023-12-08 05:01:35', '2023-12-08 05:01:35'),
+(22, '2', '#190101', '2023-12-08 05:01:35', '2023-12-08 05:01:35'),
+(23, '2', '#1e6745', '2023-12-08 05:01:35', '2023-12-08 05:01:35');
 
 -- --------------------------------------------------------
 
@@ -881,7 +931,8 @@ CREATE TABLE `vehicle_features` (
 --
 
 INSERT INTO `vehicle_features` (`id`, `vehicle_id`, `feature`, `created_at`, `updated_at`) VALUES
-(3, '1', 'Repudiandae iste sun', '2023-11-29 04:21:53', '2023-11-29 04:21:53');
+(3, '1', 'Repudiandae iste sun', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
+(5, '2', 'Cum molestias repreh', '2023-12-08 05:01:35', '2023-12-08 05:01:35');
 
 -- --------------------------------------------------------
 
@@ -903,7 +954,8 @@ CREATE TABLE `vehicle_galleries` (
 
 INSERT INTO `vehicle_galleries` (`id`, `vehicle_id`, `img`, `created_at`, `updated_at`) VALUES
 (1, '1', '291120231701248751_131120231699872354_aboutimg.jpg', '2023-11-29 03:35:51', '2023-11-29 03:35:51'),
-(2, '1', '291120231701248751_131120231699872425_car1.png', '2023-11-29 03:35:51', '2023-11-29 03:35:51');
+(2, '1', '291120231701248751_131120231699872425_car1.png', '2023-11-29 03:35:51', '2023-11-29 03:35:51'),
+(3, '2', '081220231702029932_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', '2023-12-08 04:35:32', '2023-12-08 04:35:32');
 
 -- --------------------------------------------------------
 
@@ -1112,6 +1164,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_phone_number_unique` (`phone_number`);
 
 --
+-- Indexes for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vehicles`
 --
 ALTER TABLE `vehicles`
@@ -1209,7 +1267,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `installers`
 --
 ALTER TABLE `installers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `installer_available_locations`
@@ -1227,13 +1285,13 @@ ALTER TABLE `installer_banks`
 -- AUTO_INCREMENT for table `installer_infos`
 --
 ALTER TABLE `installer_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `installer_locations`
 --
 ALTER TABLE `installer_locations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `installer_test_results`
@@ -1251,7 +1309,7 @@ ALTER TABLE `installer_zips`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1275,7 +1333,7 @@ ALTER TABLE `quotes`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `resources`
@@ -1299,31 +1357,37 @@ ALTER TABLE `test_questions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user_details`
+--
+ALTER TABLE `user_details`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vehicle_colors`
 --
 ALTER TABLE `vehicle_colors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `vehicle_features`
 --
 ALTER TABLE `vehicle_features`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `vehicle_galleries`
 --
 ALTER TABLE `vehicle_galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vehicle_types`
