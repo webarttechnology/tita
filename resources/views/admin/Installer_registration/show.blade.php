@@ -104,25 +104,25 @@
             <div class="modal-body">
                 <h5 class="modal-title text-center mb-3" id="exampleModalLabel">Proof Of Concept</h5>
                 <ul class="dataList">
-                    <li><label for="">Company name</label><span id="company_name"></span></li>
-                    <li><label for="">Contact name</label>
-                        <span id="contact_name"></span>
+                    <li><label for="">Inspector Name</label><span id="inspector_id"></span></li>
+                    <li><label for="">Workshop Type</label>
+                        <span id="workshop_type"></span>
                     </li>
-                    <li><label for="">Phone number</label><span id="phone_number"></span></li>
-                    <li><label for="">Email</label><span id="email"></span></li>
-                    <li><label for="">Address</label><span id="address"></span></li>
-                    <li><label for="">Vehicle Type</label><span id="vehical_type"></span></li>
-                    <li><label for="">Make</label><span id="make"></span></li>
-                    <li><label for="">Model</label><span id="model"></span></li>
-                    <li><label for="">Year</label><span id="year"></span></li>
-                    <li><label for="">Street no</label><span id="company_street_no"></span>
+                    <li><label for="">Workshop Size</label><span id="workshop_size"></span></li>
+                    <li><label for="">Risk Management</label><span id="risk_management"></span></li>
+                    <li><label for="">Application Confirmed?</label><span id="application_conformation"></span></li>
+                    <li><label for="">Front Image</label>
+                        <img id="front_image" class="m-3" src="" alt="Image" width="200">
+                        <span id="front_span"></span>
                     </li>
-                    <li><label for="">Block or Plot</label><span id="company_block"></span>
+                    <li><label for="">Work Area</label>
+                        <img id="work_area" class="m-3" src="" alt="Image" width="200">
+                        <span id="work_span"></span>
                     </li>
-                    <li><label for="">Street name</label><span id="company_street_name"></span></li>
-                    <li><label for="">City</label><span id="company_city"></span></li>
-                    <li><label for="">State</label><span id="company_state"></span></li>
-                    <li><label for="">Additional Details</label><span id="additional_details"></span></li>
+                    <li><label for="">Wide Shot from the Street</label>
+                        <img id="wideshot_street" class="m-3" src="" alt="Image" width="200">
+                        <span id="wide_span"></span>
+                    </li>
                 </ul>
             </div>
             <div class="modal-footer">
@@ -249,85 +249,62 @@
                 dataType: 'json',
                 success: function(details) {
                     if (details.reports.length > 0) {
-                        $('#company_name').text(details.reports[0].company_name);
+                        $('#inspector_id').text(details.reports[0].inspector_id);
                     } else {
-                        $('#company_name').text('Not available.');
+                        $('#inspector_id').text('Not available.');
                     }
 
                     if (details.reports.length > 0) {
-                        $('#contact_name').text(details.reports[0].contact_name);
+                        $('#workshop_type').text(details.reports[0].workshop_type);
                     } else {
-                        $('#contact_name').text('Not available.');
+                        $('#workshop_type').text('Not available.');
                     }
 
                     if (details.reports.length > 0) {
-                        $('#phone_number').text(details.reports[0].phone_number);
+                        $('#workshop_size').text(details.reports[0].workshop_size);
                     } else {
-                        $('#phone_number').text('Not available.');
+                        $('#workshop_size').text('Not available.');
                     }
 
                     if (details.reports.length > 0) {
-                        $('#email').text(details.reports[0].email);
+                        $('#risk_management').text(details.reports[0].risk_management);
                     } else {
-                        $('#email').text('Not available.');
+                        $('#risk_management').text('Not available.');
                     }
                     if (details.reports.length > 0) {
-                        $('#address').text(details.reports[0].address);
+                        $('#application_conformation').text(details.reports[0].application_conformation);
                     } else {
-                        $('#address').text('Not available.');
+                        $('#application_conformation').text('Not available.');
                     }
                     if (details.reports.length > 0) {
-                        $('#vehical_type').text(details.reports[0].vehical_type);
+                        $('#front_image').attr("src", '{{ asset("uploads/report_font") }}'+'/'+details.reports[0].front_image);
+                        $('#front_span').hide();
+                        $('#front_image').show();
                     } else {
-                        $('#vehical_type').text('Not available.');
+                        $('#front_image').attr("src", '');
+                        $('#front_span').show();
+                        $('#front_span').text('Not Applicable');
+                        $('#front_image').hide();
                     }
                     if (details.reports.length > 0) {
-                        $('#make').text(details.reports[0].make);
+                        $('#work_area').attr("src", '{{ asset("uploads/report_work_area") }}'+'/'+details.reports[0].work_area);
+                        $('#work_span').hide();
+                        $('#work_area').show();
                     } else {
-                        $('#make').text('Not available.');
+                        $('#work_area').attr("src", '');
+                        $('#work_span').text('Not Applicable');
+                        $('#work_span').show();
+                        $('#work_area').hide();
                     }
                     if (details.reports.length > 0) {
-                        $('#model').text(details.reports[0].model);
+                        $('#wideshot_street').attr("src", '{{ asset("uploads/report_wide_st") }}'+'/'+details.reports[0].wideshot_street);
+                        $('#wide_span').hide();
+                        $('#wideshot_street').show();
                     } else {
-                        $('#model').text('Not available.');
-                    }
-                    if (details.reports.length > 0) {
-                        $('#year').text(details.reports[0].year);
-                    } else {
-                        $('#year').text('Not available.');
-                    }
-                    if (details.reports.length > 0) {
-                        $('#company_street_no').text(details.reports[0].company_street_no);
-                    } else {
-                        $('#company_street_no').text('Not available.');
-                    }
-                    if (details.reports.length > 0) {
-                        $('#company_block').text(details.reports[0].company_block);
-                    } else {
-                        $('#company_block').text('Not available.');
-                    }
-                    if (details.reports.length > 0) {
-                        $('#company_street_name').text(details.reports[0]
-                            .company_street_name);
-                    } else {
-                        $('#company_street_name').text('Not available.');
-                    }
-                    if (details.reports.length > 0) {
-                        $('#company_city').text(details.reports[0].company_city);
-                    } else {
-                        $('#company_city').text('Not available.');
-                    }
-                    if (details.reports.length > 0) {
-                        $('#company_state').text(details.reports[0].company_state);
-                    } else {
-                        $('#company_state').text('Not available.');
-                    }
-
-                    if (details.reports.length > 0) {
-                        $('#additional_details').text(details.reports[0]
-                            .additional_details);
-                    } else {
-                        $('#additional_details').text('Not available.');
+                        $('#wideshot_street').attr("src", '');
+                        $('#wide_span').text('Not Applicable');
+                        $('#wideshot_street').hide();
+                        $('#wide_span').show();
                     }
                 },
                 error: function(error) {

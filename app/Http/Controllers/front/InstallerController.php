@@ -9,6 +9,7 @@ use App\Models\Quote;
 use App\Rules\PhoneNumber;
 use App\Models\Installer_info;
 use App\Models\InstallerLocation;
+use App\Http\Controllers\admin\ImageUploadHelpController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -74,6 +75,10 @@ class InstallerController extends Controller
         } else {
             // If installer doesn't exist, create a new record
             $installer = Installer::create($installerData);
+
+            Installer::whereId($installer->id)->update([
+                  'inst_code' => 'INST_000'.$installer->id,
+            ]);
         }
     
         InstallerLocation::updateOrCreate(
@@ -158,42 +163,30 @@ class InstallerController extends Controller
     {
         $request->validate([
             'installer_id' => 'required',
-            'company_name' => 'required|string|max:255',
-            'contact_name' => 'required',
-            'phone_number' => ['required', new PhoneNumber],
-            'email' => 'required|email',
-            'address' => 'required|string',
-            'vehical_type' => 'required',
-            'make' => 'required',
-            'model' => 'required',
-            'year' => 'required',
-            'company_street_no' => 'required',
-            'company_block' => 'required|string',
-            'company_street_name' => 'required',
-            'company_city' => 'required|string',
-            'company_state' => 'required',
-            'additional_details' => 'required',
-        ], [
-            'name.required' => 'Name is required.',
+            'inspector_id' => 'required',
+            'application_conformation' => 'required',
+            'workshop_type' => 'required',
+            'workshop_size' => 'required',
+            'risk_management' => 'required',
+            'front_image' => 'required|mimes:jpg,jpeg,png|max:4096',
+            'work_area' => 'required|mimes:jpg,jpeg,png|max:4096',
+            'wideshot_street' => 'required|mimes:jpg,jpeg,png|max:4096',
         ]);
+
+        $front_image = ImageUploadHelpController::moveImage('add', $request->front_image, 'report_font');
+        $work_area = ImageUploadHelpController::moveImage('add', $request->work_area, 'report_work_area');
+        $wideshot_street = ImageUploadHelpController::moveImage('add', $request->wideshot_street, 'report_wide_st');
 
         Report::create([
             'installer_id' => $request->installer_id,
-            'company_name' => $request->company_name,
-            'contact_name' => $request->contact_name,
-            'phone_number' => $request->phone_number,
-            'email' => $request->email,
-            'address' => $request->address,
-            'vehical_type' => $request->vehical_type,
-            'make' => $request->make,
-            'model' => $request->model,
-            'year' => $request->year,
-            'company_street_no' => $request->company_street_no,
-            'company_block' => $request->company_block,
-            'company_street_name' => $request->company_street_name,
-            'company_city' => $request->company_city,
-            'company_state' => $request->company_state,
-            'additional_details' => $request->additional_details,
+            'inspector_id' => $request->inspector_id,
+            'workshop_type' => $request->workshop_type,
+            'workshop_size' => $request->workshop_size,
+            'risk_management' => $request->risk_management,
+            'front_image' => $front_image,
+            'application_conformation' => $request->application_conformation,
+            'work_area' => $work_area,
+            'wideshot_street' => $wideshot_street,
         ]);
         
         return redirect()->back()->with('success', 'Your Message Sent Successfully!!!');
@@ -278,4 +271,9 @@ class InstallerController extends Controller
         return redirect()->back()->with('success', 'Mail Send');
     }
 
+
+    public function installerDetailsFetch($id){
+        $installer = Installer::whereId($id)->first();
+        return response()->json($installer);
+    }
 }

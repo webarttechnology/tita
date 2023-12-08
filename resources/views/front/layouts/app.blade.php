@@ -26,6 +26,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
 
 </head>
 
@@ -270,7 +274,7 @@
 
 
         <!-- Optional JavaScript; choose one of the two! -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Include Select2 JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
         <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -290,6 +294,7 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+        
     {{-- Toast --}}
     <script>
         toastr.options = {
@@ -318,9 +323,13 @@
         @endif
 
         @if ($errors->any())
+            var errors = "";
             @foreach ($errors->all() as $error)
-                toastr.error("{{ $error }}");
+                errors += "{{ $error }}"+"<br>";
             @endforeach
+
+            toastr.error(errors);
+            errors = "";
         @endif
     </script>
 
@@ -424,6 +433,29 @@
                 });
             });
         });
+    </script>
+
+    <!-- warning alert -->
+    <script>
+        function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel', denyMsg = 'Your Data is Safe') {
+            Swal.fire({
+                icon: type,
+                title: message,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: confirmBtnText,
+                denyButtonText: denyBtnText,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                        window.location.href = url;
+                } else if (result.isDenied) {
+                    if(denyMsg != ''){
+                        Swal.fire(denyMsg, '', 'info')
+                    }
+                }
+            })
+        }
     </script>
 
     @yield('custom_js')

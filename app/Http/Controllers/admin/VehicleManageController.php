@@ -227,4 +227,9 @@ class VehicleManageController extends Controller
         VehicleFeature::whereId($id)->delete();
         return redirect()->back()->with('success', 'Features Deleted Successfully');      
     }
+
+    public function delete_color($id){
+           VehicleColor::where('id', $id)->delete();
+           return redirect()->back()->with('success', 'Colors Deleted Successfully');
+    }
 }

@@ -216,32 +216,23 @@
                                                 <label class="form-label">Color</label>
                                                 <div class="form-checkbox-box">
 
-                                                    @php
-                                                        $max = 6;
-                                                        $colorSelected = count($detail->color);
-                                                    @endphp
-
                                                     @foreach($detail->color as $key => $color)
-                                                        <div class="form-check form-check-inline">
-                                                            <input checked type="checkbox" 
-                                                                value="{{ $color->color }}" @if(isset(old('colors')[$key]) && (old('colors')[$key] == $color->color)) checked @endif>
+                                                    <div class="row">
+                                                        <div class="col-md-6 form-check form-check-inline">
                                                             <input type="color" name="colors[{{ $key }}]" class="form-control form-control-color"
-                                                                value="{{ $color->color }}"
-                                                                title="Choose your color">
+                                                                value="{{ $color->color }}" title="Choose your color">
                                                         </div>
+                                                        <div class="col-md-3">
+                                                            @if($key == 0)
+                                                               <i class="fa fa-plus btn btn-primary" onclick="addMoreColors()"></i>
+                                                            @endif
+                                                               <a href="javascript:void(0)" 
+                                                               onclick="displayAlert('warning', 'Are You Sure, you want to delete this Color?', '{{ url('admin/vehicle/delete/color', $color->id) }}', 'Delete', 'Cancel', 'NA')"><i class="fa fa-times btn btn-danger"></i></a>
+                                                    </div>
+                                                    </div>
                                                     @endforeach
-                                                    @if($max!=$colorSelected)
-                                                    @for($i = count($detail->color); $i < $max; $i++)
-                                                        <div class="form-check form-check-inline">
-                                                            <input type="checkbox" 
-                                                                value="{{ $colors_to_choose[$i]->color }}" >
-                                                            <input name="colors[{{ $i }}]" type="color" class="form-control form-control-color"
-                                                                value="{{ $colors_to_choose[$i]->color }}"
-                                                                title="Choose your color">
-                                                        </div>
-                                                    @endfor
-                                                    @endif      
 
+                                                    <div id="more_colors"></div>
                                                 </div>
                                             </div>
 
@@ -380,6 +371,33 @@
     }
 
     function removeRow(button) {
+        // Get the parent row and remove it
+        var row = button.closest('.row');
+        row.remove();
+    }
+</script>
+
+<script>
+    function addMoreColors(){
+        var container = document.getElementById('more_colors');
+        var row = document.createElement('div');
+        row.classList.add('row');  
+
+        row.innerHTML = `<div class=" col-md-6 form-check form-check-inline">
+                                <input type="color" class="form-control form-control-color"
+                                    id="color" name="colors[]" value="#000000"
+                                    title="Choose your color">
+                                </div>
+                                <div class="col-md-3">
+                                    <span onclick="removeColorRow(this)">
+                                        <i class="fa fa-trash btn btn-danger"></i>
+                                    </span>
+                            </div>`;
+                
+        container.appendChild(row);
+    }
+
+    function removeColorRow(button) {
         // Get the parent row and remove it
         var row = button.closest('.row');
         row.remove();

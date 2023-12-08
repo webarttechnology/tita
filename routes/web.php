@@ -57,6 +57,7 @@ Route::post('/email-send', [HomeController::class, 'emailSend'])->name('email_Se
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
+Route::get('/installer/details/fetch/{id}', [InstallerController::class, 'installerDetailsFetch']);
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
 Route::get('/quote', [InstallerController::class, 'quote'])->name('quote');
 Route::post('/quote-store', [InstallerController::class, 'quoteStore'])->name('quote_Store');
@@ -127,6 +128,7 @@ Route::prefix('admin')->group(function () {
              Route::get('edit/{id}', 'edit');
              Route::post('edit-action/{id}', 'edit_action');
              Route::get('delete/features/{id}', 'delete_features');
+             Route::get('delete/color/{id}', 'delete_color');
         });
 
         /**

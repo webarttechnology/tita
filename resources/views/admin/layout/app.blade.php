@@ -272,15 +272,19 @@
 		@endif
 
 		@if ($errors->any())
-			@foreach ($errors->all() as $error)
-				toastr.error("{{ $error }}");
-			@endforeach
-		@endif
+            var errors = "";
+            @foreach ($errors->all() as $error)
+                errors += "{{ $error }}"+"<br>";
+            @endforeach
+
+            toastr.error(errors);
+            errors = "";
+        @endif
 	</script>
 
 <!-- warning alert -->
 <script>
-    function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel') {
+    function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel', denyMsg = 'Your Data is Safe') {
         Swal.fire({
             icon: type,
             title: message,
@@ -293,7 +297,9 @@
             if (result.isConfirmed) {
                     window.location.href = url;
             } else if (result.isDenied) {
-                Swal.fire('Your Data is Safe', '', 'info')
+				if(denyMsg != "NA"){
+					Swal.fire(denyMsg, '', 'info')
+				}
             }
         })
     }
