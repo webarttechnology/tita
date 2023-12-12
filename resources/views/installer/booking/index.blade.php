@@ -71,7 +71,7 @@
                                                     </button>
 
                                                     <div class="dropdown-menu dropdown-custom-button">
-                                                            <a class="dropdown-item" onclick="return confirm('Are you sure you want to Approve?')" href="{{ url('installer/booking/status', ['id' => $booking->id, 'status' => 'in_progress']) }}">Approve</a>
+                                                            <a class="dropdown-item" onclick="return confirm('Are you sure you want to Approve?')" href="{{ url('installer/booking/status', ['id' => $booking->id, 'status' => 'approved']) }}">Approve</a>
                                                             <a class="dropdown-item" onclick="return confirm('Are you sure you want to Reject?')" href="{{ url('installer/booking/status', ['id' => $booking->id, 'status' => 'rejected']) }}">Reject</a>                       
                                                     </div>
                                                 </div>

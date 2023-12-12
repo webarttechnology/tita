@@ -147,9 +147,30 @@ class BookingManageController extends Controller
     }
 
     public function installer_booking_status($id, $status){
-        BookingRequest::whereId($id)->update([
-            'status' => $status,
-        ]);
+        if($status == "approved"){
+            $booking = BookingRequest::with('user')->whereId($id)->first();
+            $uniquePayId = Str::random(30);
+
+            Booking::whereId($booking->booking_id)->update([
+                'unique_payment_id' => $uniquePayId,
+                'installer_id' => $booking->request_send_to_installer,
+           ]);
+
+            BookingRequest::whereId($id)->update([
+                'status' => $status,
+            ]);
+            
+            BookingRequest::where('booking_id', $booking->booking_id)
+            ->where('request_send_to_installer', '!=', $booking->request_send_to_installer)->update([
+                    'status' => 'rejected'
+            ]);
+
+            MailManageController::mailSend($booking->user->email, 'Payment Link', 'mail.payment_link', $uniquePayId);
+        }else{
+            BookingRequest::whereId($id)->update([
+                'status' => $status,
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Done');
     }
