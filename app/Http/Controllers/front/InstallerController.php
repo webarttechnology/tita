@@ -55,14 +55,14 @@ class InstallerController extends Controller
         $drivers_license_photo_Path = 'images/Installer/' . time() . '_' . $drivers_license_photo->getClientOriginalName();
         $drivers_license_photo->move('images/Installer', $drivers_license_photo_Path);
     
-        $installerData = [
-            'name' => $request->f_name . ' ' . $request->m_name . ' ' . $request->l_name,
-            'email' => $request->email,
-            'phone_number' => $request->number,
-            'password' => bcrypt($request->password),
-            'status' => "active",
-            'approvel_by_admin' => "inprogress",
-        ];
+            $installerData = [
+                'name' => $request->f_name . ' ' . $request->m_name . ' ' . $request->l_name,
+                'email' => $request->email,
+                'phone_number' => $request->number,
+                'password' => bcrypt($request->password),
+                'status' => "active",
+                'approvel_by_admin' => "inprogress",
+            ];
     
         // Check if installer already exists
         $installer = Installer::where('email', $request->email)->first();
