@@ -18047,11 +18047,11 @@ a.badge-purple:focus, a.badge-purple.focus {
   border-radius: 15px;
 }
 .card-default .card-body p {
-  line-height: 1.5;
+  /* line-height: 1.5; */
   text-align: left;
-  font-weight: bold;
+  /* font-weight: bold;
   color: #000;
-  font-size: 25px;
+  font-size: 25px; */
 }
 
 .modal-body span{

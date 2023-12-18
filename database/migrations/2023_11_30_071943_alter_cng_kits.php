@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::table('installers', function (Blueprint $table) {
-            $table->softDeletes()->after('approvel_by_admin');
+        Schema::table('cng_kits', function (Blueprint $table) {
+            $table->text('price')->after('description');
         });
     }
 

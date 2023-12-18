@@ -11,12 +11,20 @@ use App\Http\Controllers\admin\VehicleManageController;
 use App\Http\Controllers\admin\AdminQuoteController;
 use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\CngController;
 use App\Http\Controllers\front\InstallerController;
+use App\Http\Controllers\front\InstallerTestController;
+use App\Http\Controllers\admin\CngKitManageController;
 
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
 use App\Http\Controllers\installer\InstallerLocationManageController;
+use App\Http\Controllers\installer\OtpManageController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\admin\TestManageController;
+use App\Http\Controllers\front\BookingController;
+use App\Http\Controllers\admin\BookingManageController;
+use App\Http\Controllers\payment\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +37,16 @@ use App\Http\Controllers\QuoteController;
 |
 */
 
+/**
+ * Local User --> email: xojageweja@mailinator.com ||||| pass - Xojageweja@mailinator.com
+ * Installer --> 1) email: vetuq@mailinator.com  |||||||| pass - Vetuq@mailinator.com
+ * 
+ * composer require stripe/stripe-php --> To install stripe
+*/
+
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about_us');
-Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
-Route::get('/cng-kit', [HomeController::class, 'products'])->name('products');
 Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/pdf-download', [HomeController::class, 'pdfDownload'])->name('pdf_download');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
@@ -44,6 +57,7 @@ Route::post('/email-send', [HomeController::class, 'emailSend'])->name('email_Se
 Route::get('/ev-listing', [HomeController::class, 'evlisting'])->name('ev_listing');
 Route::get('/ev-listing/details/{id}', [HomeController::class, 'evlisting_details']);
 Route::get('/installer-report', [InstallerController::class, 'installerReport'])->name('installer_Report');
+Route::get('/installer/details/fetch/{id}', [InstallerController::class, 'installerDetailsFetch']);
 Route::post('/report-store', [InstallerController::class, 'reportStore'])->name('report_Store');
 Route::get('/quote', [InstallerController::class, 'quote'])->name('quote');
 Route::post('/quote-store', [InstallerController::class, 'quoteStore'])->name('quote_Store');
@@ -54,12 +68,35 @@ Route::post('/user/registration/store', [UserController::class, 'userRegistratio
 Route::get('/login', [UserController::class, 'userLogin'])->name('user_Login');
 Route::post('/sing-in', [UserController::class, 'login'])->name('user_Sing_In');
 Route::post('/sing-out', [UserController::class, 'logout'])->name('user_logout');
-Route::get('/user-details', [UserController::class, 'userDetails'])->name('user_Details');
+Route::get('/user-details/{page?}', [UserController::class, 'userDetails'])->name('user_Details');
 Route::put('/user-details/update/{id}', [UserController::class, 'update'])->name('user_Details_Update');
 Route::post('/user-details/change-password', [UserController::class, 'changePassword'])->name('user_change_Password');
+Route::get('exam/{code?}', [InstallerTestController::class, 'exam_page']);
+Route::get('instruction/{code?}', [InstallerTestController::class, 'instruction_page']);
+Route::post('submit/exam', [InstallerTestController::class, 'submitExam']);
+Route::get('exam/success/page/{code?}/{msg?}', [InstallerTestController::class, 'examSuccess']);
+Route::get('exam/fail/page/{code?}/{msg?}/{attempt?}', [InstallerTestController::class, 'examFail']);
 
 
+/**
+ * cng listing
+*/
 
+Route::get('/cng-kit', [CngController::class, 'products'])->name('products');
+Route::get('/cng/details/{slug}', [CngController::class, 'cng_details'])->name('cng.details');
+
+/**
+ * Booking
+*/
+
+Route::get('/booking/{id}/{price}', [HomeController::class, 'booking'])->name('booking');
+Route::get('/booking/action/{date?}/{time?}/{zip?}/{id?}/{price?}', [BookingController::class, 'booking']);
+Route::get('/booking/confirm/pay/{bookPayId}', [BookingController::class, 'booking_payment']);
+Route::get('/booking/history', [BookingController::class, 'bookingHistory']);
+Route::get('/view/installer/details/{installerId}', [BookingController::class, 'installer_details']);
+
+Route::get('/success', [StripePaymentController::class, 'success'])->name('stripe.success');
+Route::get('/cancel', [StripePaymentController::class, 'cancel'])->name('stripe.cancel');
 
 /**Admin Section*/
 
@@ -88,8 +125,53 @@ Route::prefix('admin')->group(function () {
              Route::get('add', 'add');
              Route::post('add-action', 'add_action');
              Route::get('delete/{id}', 'delete');
+             Route::get('edit/{id}', 'edit');
+             Route::post('edit-action/{id}', 'edit_action');
+             Route::get('delete/features/{id}', 'delete_features');
+             Route::get('delete/color/{id}', 'delete_color');
         });
 
+        /**
+         * Cng kit
+        */
+
+        Route::prefix('cng')->controller(CngKitManageController::class)->group(function () {
+            Route::get('list', 'listing');
+            Route::get('add', 'add');
+            Route::post('add/action', 'add_action');
+            Route::get('delete/{id}', 'delete');
+            Route::get('edit/{id}', 'edit');
+            Route::post('edit/action/{id}', 'update');
+            Route::get('delete/features/{id}', 'delete_features');
+       });
+
+        /**
+         * Online test
+        */
+
+        Route::prefix('exam')->controller(TestManageController::class)
+        ->group(function () {
+                Route::get('list', 'list');
+                Route::get('add', 'add');
+                Route::post('add/action', 'store');
+                Route::get('delete/{id}', 'delete');
+                Route::get('edit/{id}', 'edit');
+                Route::post('edit/action/{id}', 'update');
+                Route::get('instruction', 'test_instruction');
+                Route::post('instruction/save', 'instruction_save');
+        });
+
+
+        /**
+         * Booking
+        */
+
+        Route::prefix('booking')->controller(BookingManageController::class)->group(function () {
+            Route::get('list', 'admin_booking');
+            Route::get('details/{booking_id}', 'admin_booking_details');
+            Route::post('assign/installer', 'admin_installer_assign');
+            Route::get('status/{booking_id}/{installer_id}/{status}', 'admin_booking_status_change');
+        });
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
         Route::get('/blog/add', [BlogController::class, 'add'])->name('blog_add');
@@ -120,6 +202,7 @@ Route::prefix('admin')->group(function () {
         Route::get('details/{id}', [InstallerController::class, 'details'])->name('userDetails');
         Route::get('installer/details/{id}', [InstallerController::class, 'installerDetails'])->name('installer_details');
         Route::get('quote/details/{id}', [AdminQuoteController::class, 'quote_details'])->name('quote_details');
+        Route::get('send/exam/link/{email}', [InstallerController::class, 'send_link']);
 
         //Installers Registration 
         Route::get('/user', [AdminUserController::class, 'index'])->name('admin.user');
@@ -165,6 +248,18 @@ Route::prefix('installer')->group(function () {
         Route::controller(InstallerAccountManageController::class)->group(function () {
             Route::post('edit/profile', 'profile_edit');
             Route::post('change/password', 'change_password');
+        });
+
+        Route::controller(BookingManageController::class)->group(function () {
+            Route::get('booking/list', 'installer_booking');
+            Route::get('booking/status/{id}/{status}', 'installer_booking_status');
+            Route::get('booking/finish/{id}', 'installer_booking_finish');
+        });
+
+        Route::prefix('otp')->controller(OtpManageController::class)->group(function () {
+            Route::get('verify/{booking_id}', 'verify_page');
+            Route::post('check/action', 'verify_action');
+            Route::get('resend/{booking_id}', 'otp_resend');
         });
         
         Route::controller(InstallerLocationManageController::class)->group(function () {

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::table('installer_available_locations', function (Blueprint $table) {
-            $table->text('location_id')->nullable()->after('zip');
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->text('installer_id')->nullable()->after('zip');
         });
     }
 

@@ -9,23 +9,18 @@ class Report extends Model
 {
     use HasFactory;
 
+    protected $table = "reports";
+
     protected $fillable = [
         'installer_id' ,
-        'company_name', 
-        'contact_name',
-        'phone_number',
-        'email',
-        'address',
-        'vehical_type',
-        'make',
-        'model',
-        'year',
-        'company_street_no',
-        'company_block',
-        'company_street_name',
-        'company_city',
-        'company_state',
-        'additional_details',
+        'inspector_id',
+        'workshop_type',
+        'workshop_size',
+        'risk_management',
+        'front_image',
+        'application_conformation',
+        'work_area',
+        'wideshot_street',
     ];
 
     public function installer()

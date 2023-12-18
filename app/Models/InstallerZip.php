@@ -12,4 +12,9 @@ class InstallerZip extends Model
         'installer_id',
         'zip',
     ];
+
+    function installer()
+    {
+        return $this->belongsTo(Installer::class);
+    }
 }

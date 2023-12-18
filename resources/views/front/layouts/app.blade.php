@@ -23,6 +23,14 @@
     <!-- Responsive -->
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+
 </head>
 
 <body class="body">
@@ -51,10 +59,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('products')}}">CNG KIT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('booking')}}">Booking</a>
-                        </li>                       
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="">Booking</a>
+                        </li>                        --}}
                        
+                        @if(!Auth::user())
                         <div class="btn-group nav-item">
                             <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                                 Registration
@@ -67,7 +76,10 @@
                                     <a class="dropdown-item nav-link" href="{{route('registration')}}">Installer</a>
                                 </li>                             
                             </ul>
-                          </div>   
+                          </div>  
+                        @endif
+                        
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('installer_Report')}}">Report</a>
                         </li>                  
@@ -81,9 +93,17 @@
                               <li class="nav-item"><a class="dropdown-item nav-link" href="{{route('pdf_download')}}">PDF</a></li>
                             </ul>
                         </div>  
-                        <li class="nav-item">
+
+
+                        @if(Auth::user())                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('booking/history') }}">Booking History</a>
+                            </li>  
+                        @endif
+
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{route('quote')}}">Quote</a>
-                        </li>                      
+                        </li>                       --}}
                     </ul>
                 </nav>
                 <div class="icons">
@@ -92,7 +112,7 @@
                         <i class="bi bi-telephone-fill text-danger me-3"></i>033-0888588025
                     </a> --}}
                    
-                    <a href="{{ route('contactUs') }}" class="btn btn-dark btns2 rounded-0">Let's talk</a>
+                    <a href="{{route('quote')}}" class="btn btn-dark btns2 rounded-0">Request a Quote</a>
                     @if($authLink == 'login')
                       <a href="{{ route('user_Login') }}"><img src="{{ asset('assets/images/login.png') }}" width="30px"></a>
                     @else 
@@ -133,9 +153,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('products')}}">CNG KIT</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('booking')}}">Booking</a>
-                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="">Booking</a>
+                    </li> --}}
                     <div class="btn-group nav-item">
                         <a class="btn dropdown-toggle nav-link" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                             Registration
@@ -167,6 +187,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Support chat link -->
+    <a href="https://wa.me/917003238056" target="_blank" class="float">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
  <!--- header -->
 
   <!--- Main Content -->
@@ -211,7 +236,7 @@
                             <li><a href="{{route('about_us')}}">About Us</a></li>
                             <li><a href="{{route('ev_listing')}}">EV listing</a></li>
                             <li><a href="product.php">CNG KIT</a></li>
-                            <li><a href="{{route('booking')}}">Booking</a></li>
+                            {{-- <li><a href="{{route('booking')}}">Booking</a></li> --}}
                             <li><a href="{{route('installer_Report')}}">Report</a></li>
                         </ul>
                     </div>
@@ -226,7 +251,7 @@
                             <li><a href="{{route('about_us')}}">About Us</a></li>
                             <li><a href="{{route('ev_listing')}}">EV listing</a></li>
                             <li><a href="product.php">CNG KIT</a></li>
-                            <li><a href="{{route('booking')}}">Booking</a></li>
+                            {{-- <li><a href="{{route('booking')}}">Booking</a></li> --}}
                             <li><a href="{{route('installer_Report')}}">Report</a></li>
                         </ul>
                     </div>
@@ -249,8 +274,9 @@
 
 
         <!-- Optional JavaScript; choose one of the two! -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Include Select2 JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -259,8 +285,7 @@
         <!-- custom -->
         <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-        {{-- Toast --}}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+        {{-- Toast --}} 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
@@ -269,6 +294,7 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+        
     {{-- Toast --}}
     <script>
         toastr.options = {
@@ -297,9 +323,13 @@
         @endif
 
         @if ($errors->any())
+            var errors = "";
             @foreach ($errors->all() as $error)
-                toastr.error("{{ $error }}");
+                errors += "{{ $error }}"+"<br>";
             @endforeach
+
+            toastr.error(errors);
+            errors = "";
         @endif
     </script>
 
@@ -378,7 +408,6 @@
         });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Video Popup -->
     <script>
@@ -405,6 +434,31 @@
             });
         });
     </script>
+
+    <!-- warning alert -->
+    <script>
+        function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel', denyMsg = 'Your Data is Safe') {
+            Swal.fire({
+                icon: type,
+                title: message,
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: confirmBtnText,
+                denyButtonText: denyBtnText,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                        window.location.href = url;
+                } else if (result.isDenied) {
+                    if(denyMsg != ''){
+                        Swal.fire(denyMsg, '', 'info')
+                    }
+                }
+            })
+        }
+    </script>
+
+    @yield('custom_js')
 </body>
 
 </html>

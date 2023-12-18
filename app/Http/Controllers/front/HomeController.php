@@ -25,19 +25,14 @@ class HomeController extends Controller
         return view('front.video', compact('videos'));
     }
 
-    public function booking()
+    public function booking($id, $price)
     {
-        return view('front.booking');
+        return view('front.booking', compact('id', 'price'));
     }
 
     public function aboutUs()
     {
         return view('front.about-us');
-    }
-
-    public function products()
-    {
-        return view('front.product');
     }
 
     public function evlisting()

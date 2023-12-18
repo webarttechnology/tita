@@ -55,6 +55,8 @@
 	<!-- font-awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+	<!-- ckeditor -->
+	<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 </head>
 
 <body class="ec-header-fixed ec-sidebar-fixed  ec-header-light" id="body">
@@ -122,40 +124,15 @@
 								<span class="nav-text">Vehicals</span> <b class="caret"></b>
 							</a>
 						</li>
-						<!-- Products -->
+
 						<li class="has-sub">
-							<a class="sidenav-item-link" href="javascript:void(0)">
-								<i class="mdi mdi-palette-advanced"></i>
-								<span class="nav-text">Products</span> 
-								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
-								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-								 </svg>
+							<a class="sidenav-item-link" href="{{ url('admin/cng/list') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">CNG Kit</span> <b class="caret"></b>
 							</a>
-							<div class="collapse">
-								<ul class="sub-menu" id="products" data-parent="#sidebar-menu">
-									<li class="">
-										<a class="sidenav-item-link" href="product-add.html">
-											<span class="nav-text">Add Product</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="product-list.html">
-											<span class="nav-text">List Product</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="product-grid.html">
-											<span class="nav-text">Grid Product</span>
-										</a>
-									</li>
-									<li class="">
-										<a class="sidenav-item-link" href="product-detail.html">
-											<span class="nav-text">Product Detail</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</li>
+						
+						
 						<li class="has-sub">
 							<a class="sidenav-item-link" href="{{ route('admin.registration.installers') }}">
 								<i class="mdi mdi-image-filter-none"></i>
@@ -173,7 +150,22 @@
 								<i class="mdi mdi-image-filter-none"></i>
 								<span class="nav-text">Quote</span> <b class="caret"></b>
 							</a>
-						</li>					
+						</li>
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ url('admin/exam/list') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Exam</span> <b class="caret"></b>
+							</a>
+						</li>
+						
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ url('admin/booking/list') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Booking Request</span> <b class="caret"></b>
+							</a>
+						</li>
+
 					</ul>
 				</div>
 			</div>
@@ -280,28 +272,34 @@
 		@endif
 
 		@if ($errors->any())
-			@foreach ($errors->all() as $error)
-				toastr.error("{{ $error }}");
-			@endforeach
-		@endif
+            var errors = "";
+            @foreach ($errors->all() as $error)
+                errors += "{{ $error }}"+"<br>";
+            @endforeach
+
+            toastr.error(errors);
+            errors = "";
+        @endif
 	</script>
 
 <!-- warning alert -->
 <script>
-    function displayAlert(type, message, url) {
+    function displayAlert(type, message, url, confirmBtnText = 'Delete', denyBtnText = 'Cancel', denyMsg = 'Your Data is Safe') {
         Swal.fire({
             icon: type,
             title: message,
             showDenyButton: true,
             showCancelButton: false,
-            confirmButtonText: 'Delete',
-            denyButtonText: `Cancel`,
+            confirmButtonText: confirmBtnText,
+            denyButtonText: denyBtnText,
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                     window.location.href = url;
             } else if (result.isDenied) {
-                Swal.fire('Your Data is Safe', '', 'info')
+				if(denyMsg != "NA"){
+					Swal.fire(denyMsg, '', 'info')
+				}
             }
         })
     }

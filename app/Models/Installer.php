@@ -12,7 +12,7 @@ class Installer extends Authenticatable
     use HasFactory, SoftDeletes;
 
     protected $table = "installers";
-    protected $fillable = ['name', 'email', 'phone_number', 'password', 'profile_img', 'status', 'approvel_by_admin'];
+    protected $fillable = ['inst_code', 'name', 'email', 'phone_number', 'password', 'profile_img', 'status', 'exam_link_id', 'approvel_by_admin'];
 
     function reports()
     {

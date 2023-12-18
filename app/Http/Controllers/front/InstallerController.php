@@ -9,8 +9,10 @@ use App\Models\Quote;
 use App\Rules\PhoneNumber;
 use App\Models\Installer_info;
 use App\Models\InstallerLocation;
+use App\Http\Controllers\admin\ImageUploadHelpController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Report;
 
 class InstallerController extends Controller
@@ -24,9 +26,9 @@ class InstallerController extends Controller
             'email' => 'required|email|max:255|unique:installers,email,' . ($request->id ?? 'NULL') . ',id',
             'number' => ['required', new PhoneNumber],
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[A-Z])(?=.*[^a-zA-Z0-9])[\S]+$/'],
-            'passport_photo' => 'image|mimes:jpeg,png,jpg',
-            'national_id_card' => 'image|mimes:jpeg,png,jpg',
-            'drivers_license' => 'image|mimes:jpeg,png,jpg',
+            'passport_photo' => 'required|image|mimes:jpeg,png,jpg',
+            'national_id_card' => 'required|image|mimes:jpeg,png,jpg',
+            'drivers_license' => 'required|image|mimes:jpeg,png,jpg',
             'street_no' => 'required|string',
             'plot' => 'required|string',
             'street_name' => 'required|string',
@@ -55,14 +57,14 @@ class InstallerController extends Controller
         $drivers_license_photo_Path = 'images/Installer/' . time() . '_' . $drivers_license_photo->getClientOriginalName();
         $drivers_license_photo->move('images/Installer', $drivers_license_photo_Path);
     
-            $installerData = [
-                'name' => $request->f_name . ' ' . $request->m_name . ' ' . $request->l_name,
-                'email' => $request->email,
-                'phone_number' => $request->number,
-                'password' => bcrypt($request->password),
-                'status' => "active",
-                'approvel_by_admin' => "inprogress",
-            ];
+        $installerData = [
+            'name' => $request->f_name . ' ' . $request->m_name . ' ' . $request->l_name,
+            'email' => $request->email,
+            'phone_number' => $request->number,
+            'password' => bcrypt($request->password),
+            'status' => "active",
+            'approvel_by_admin' => "pending",
+        ];
     
         // Check if installer already exists
         $installer = Installer::where('email', $request->email)->first();
@@ -73,6 +75,10 @@ class InstallerController extends Controller
         } else {
             // If installer doesn't exist, create a new record
             $installer = Installer::create($installerData);
+
+            Installer::whereId($installer->id)->update([
+                  'inst_code' => 'INST_000'.$installer->id,
+            ]);
         }
     
         InstallerLocation::updateOrCreate(
@@ -122,13 +128,12 @@ class InstallerController extends Controller
         $emailMessage = '';
     
         if ($request->action == 'approved') {
-            $installer->approvel_by_admin = 'approve';
+            $installer->approvel_by_admin = 'in_progress';
             $emailSubject = 'Installer Approved';
             $emailMessage = 'Your installer request has been approved.';
         } elseif ($request->action == 'reject') {
             $installer->approvel_by_admin = 'reject';
             $installer_id = Installer::find($request->installer_id);
-            $installer_id->delete();
             $emailSubject = 'Installer Rejected';
             $emailMessage = 'Your installer request has been rejected.';
         } else {
@@ -137,15 +142,15 @@ class InstallerController extends Controller
     
         $installer->save();
     
-        $email = new MyEmail($emailSubject, $emailMessage);
-        Mail::to('teethi.dhar@webart.technology')->send($email);
+        // $email = new MyEmail($emailSubject, $emailMessage);
+        // Mail::to('teethi.dhar@webart.technology')->send($email);
     
         return response()->json(['success' => true, 'status' => $installer->approvel_by_admin, 'message' => 'Email sent successfully!']);      
     }
 
     public function installerReport()
     {
-        $data = Installer::where('approvel_by_admin', 'inprogress')->get();        
+        $data = Installer::where('approvel_by_admin', 'pending')->get();        
         return view('front.report', ['data' => $data]);
     }
 
@@ -158,42 +163,30 @@ class InstallerController extends Controller
     {
         $request->validate([
             'installer_id' => 'required',
-            'company_name' => 'required|string|max:255',
-            'contact_name' => 'required',
-            'phone_number' => ['required', new PhoneNumber],
-            'email' => 'required|email',
-            'address' => 'required|string',
-            'vehical_type' => 'required',
-            'make' => 'required',
-            'model' => 'required',
-            'year' => 'required',
-            'company_street_no' => 'required',
-            'company_block' => 'required|string',
-            'company_street_name' => 'required',
-            'company_city' => 'required|string',
-            'company_state' => 'required',
-            'additional_details' => 'required',
-        ], [
-            'name.required' => 'Name is required.',
+            'inspector_id' => 'required',
+            'application_conformation' => 'required',
+            'workshop_type' => 'required',
+            'workshop_size' => 'required',
+            'risk_management' => 'required',
+            'front_image' => 'required|mimes:jpg,jpeg,png|max:4096',
+            'work_area' => 'required|mimes:jpg,jpeg,png|max:4096',
+            'wideshot_street' => 'required|mimes:jpg,jpeg,png|max:4096',
         ]);
+
+        $front_image = ImageUploadHelpController::moveImage('add', $request->front_image, 'report_font');
+        $work_area = ImageUploadHelpController::moveImage('add', $request->work_area, 'report_work_area');
+        $wideshot_street = ImageUploadHelpController::moveImage('add', $request->wideshot_street, 'report_wide_st');
 
         Report::create([
             'installer_id' => $request->installer_id,
-            'company_name' => $request->company_name,
-            'contact_name' => $request->contact_name,
-            'phone_number' => $request->phone_number,
-            'email' => $request->email,
-            'address' => $request->address,
-            'vehical_type' => $request->vehical_type,
-            'make' => $request->make,
-            'model' => $request->model,
-            'year' => $request->year,
-            'company_street_no' => $request->company_street_no,
-            'company_block' => $request->company_block,
-            'company_street_name' => $request->company_street_name,
-            'company_city' => $request->company_city,
-            'company_state' => $request->company_state,
-            'additional_details' => $request->additional_details,
+            'inspector_id' => $request->inspector_id,
+            'workshop_type' => $request->workshop_type,
+            'workshop_size' => $request->workshop_size,
+            'risk_management' => $request->risk_management,
+            'front_image' => $front_image,
+            'application_conformation' => $request->application_conformation,
+            'work_area' => $work_area,
+            'wideshot_street' => $wideshot_street,
         ]);
         
         return redirect()->back()->with('success', 'Your Message Sent Successfully!!!');
@@ -258,4 +251,29 @@ class InstallerController extends Controller
         return Installer::with('info', 'location')->where('id', $id)->first();
     }
     
+    /**
+     * Send Exam Links 
+    */
+
+    public function send_link($email){
+        $subject = "Exam Link";
+        $link_id = Str::random(40);
+
+        Installer::where('email', $email)->update([
+            'exam_link_id' => $link_id,
+        ]);
+
+        Mail::send('admin.mail.exam_link', ['code' => $link_id], function($message) use ($email, $subject) {
+            $message->to($email)
+                    ->subject($subject);
+        });
+
+        return redirect()->back()->with('success', 'Mail Send');
+    }
+
+
+    public function installerDetailsFetch($id){
+        $installer = Installer::whereId($id)->first();
+        return response()->json($installer);
+    }
 }
