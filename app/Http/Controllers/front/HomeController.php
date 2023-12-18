@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers\front;
 
-use App\Models\PDF;
-use App\Models\Blog;
-use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\ContactEmail;
 use Illuminate\Support\Facades\Mail;
-use App\Models\{Vehicle};
+use App\Models\{HomeBanner, HomeInformation, Vehicle, PDF, Blog, Video, CngKit, HomeBenefit, HomeBrand, HomeCar};
 
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('front.index');
+        $banners = HomeBanner::get();
+        $information = HomeInformation::first();
+        $cngKit = CngKit::get();
+        $benifits = HomeBenefit::get();
+        $features = HomeCar::first();
+        $brands = HomeBrand::get();
+        $blogs = Blog::get();
+        return view('front.index',compact('banners', 'information', 'cngKit', 'benifits', 'features', 'brands', 'blogs'));
     }
 
     public function video()

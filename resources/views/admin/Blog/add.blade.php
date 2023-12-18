@@ -7,7 +7,7 @@
   <div class="content">
     <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
       <div>
-        <h1>Add Product</h1>
+        <h1>Add Blog</h1>
       </div>
       <div>
         <a href="{{route ('blog')}}" class="btn btn-primary"> View All</a>

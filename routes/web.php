@@ -9,21 +9,28 @@ use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AuthManageController;
 use App\Http\Controllers\admin\VehicleManageController;
 use App\Http\Controllers\admin\AdminQuoteController;
+use App\Http\Controllers\admin\HomePageController;
+use App\Http\Controllers\admin\CngKitManageController;
+use App\Http\Controllers\admin\TestManageController;
+use App\Http\Controllers\admin\BookingManageController;
+use App\Http\Controllers\admin\HomeImformationController;
+use App\Http\Controllers\admin\HomeBenefitsController;
+use App\Http\Controllers\admin\HomeElectronicCarController;
+use App\Http\Controllers\admin\HomeBrandController;
+use App\Http\Controllers\admin\AboutController;
+
+
+
 use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\CngController;
 use App\Http\Controllers\front\InstallerController;
 use App\Http\Controllers\front\InstallerTestController;
-use App\Http\Controllers\admin\CngKitManageController;
-
 use App\Http\Controllers\installer\InstallerAuthManageController;
 use App\Http\Controllers\installer\InstallerAccountManageController;
 use App\Http\Controllers\installer\InstallerLocationManageController;
 use App\Http\Controllers\installer\OtpManageController;
-use App\Http\Controllers\QuoteController;
-use App\Http\Controllers\admin\TestManageController;
 use App\Http\Controllers\front\BookingController;
-use App\Http\Controllers\admin\BookingManageController;
 use App\Http\Controllers\payment\StripePaymentController;
 
 /*
@@ -171,6 +178,60 @@ Route::prefix('admin')->group(function () {
             Route::get('details/{booking_id}', 'admin_booking_details');
             Route::post('assign/installer', 'admin_installer_assign');
             Route::get('status/{booking_id}/{installer_id}/{status}', 'admin_booking_status_change');
+        });
+
+        Route::prefix('home')->controller(HomePageController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.home_banner');
+            Route::get('add', 'add')->name('admin.home_banner_add');
+            Route::post('store', 'store')->name('admin.home_banner_store');
+            Route::get('edit/{id}', 'edit')->name('admin.home_banner_edit');
+            Route::put('update/{id}', 'store')->name('admin.home_banner_update');
+            Route::get('delete/{id}', 'delete')->name('admin.home_banner_delete');
+        });
+
+        Route::prefix('information')->controller(HomeImformationController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.home_information');
+            Route::get('add', 'add')->name('admin.information_add');
+            Route::post('store', 'store')->name('admin.information_store');
+            Route::get('edit/{id}', 'edit')->name('admin.information_edit');
+            Route::put('update/{id}', 'store')->name('admin.information_update');
+            Route::get('delete/{id}', 'delete')->name('admin.information_delete');
+        });
+
+        Route::prefix('benefits')->controller(HomeBenefitsController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.home_benifit');
+            Route::get('add', 'add')->name('admin.benifit_add');
+            Route::post('store', 'store')->name('admin.benifit_store');
+            Route::get('edit/{id}', 'edit')->name('admin.benifit_edit');
+            Route::put('update/{id}', 'store')->name('admin.benifit_update');
+            Route::get('delete/{id}', 'delete')->name('admin.benifit_delete');
+        });
+
+        Route::prefix('feature')->controller(HomeElectronicCarController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.home_feature');
+            Route::get('add', 'add')->name('admin.feature_add');
+            Route::post('store', 'store')->name('admin.feature_store');
+            Route::get('edit/{id}', 'edit')->name('admin.feature_edit');
+            Route::put('update/{id}', 'store')->name('admin.feature_update');
+            Route::get('delete/{id}', 'delete')->name('admin.feature_delete');
+        });
+
+        Route::prefix('brand')->controller(HomeBrandController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.home_brand');
+            Route::get('add', 'add')->name('admin.brand_add');
+            Route::post('store', 'store')->name('admin.brand_store');
+            Route::get('edit/{id}', 'edit')->name('admin.brand_edit');
+            Route::put('update/{id}', 'store')->name('admin.brand_update');
+            Route::get('delete/{id}', 'delete')->name('admin.brand_delete');
+        });
+
+        Route::prefix('about-page')->controller(AboutController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.about');
+            Route::get('add', 'add')->name('admin.about_add');
+            Route::post('store', 'store')->name('admin.about_store');
+            Route::get('edit/{id}', 'edit')->name('admin.about_edit');
+            Route::put('update/{id}', 'store')->name('admin.about_update');
+            Route::get('delete/{id}', 'delete')->name('admin.about_delete');
         });
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');

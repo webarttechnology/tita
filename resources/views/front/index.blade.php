@@ -1,163 +1,55 @@
 @extends('front.layouts.app')
 @section('content')
+
     <!-- banners -->
     <div class="banners">
         <!-- Swiper -->
         <div class="swiper mySwiper1">
             <div class="swiper-wrapper">
-                <div class="swiper-slide bg-img1">
+                @foreach ( $banners as $banner )      
+                <div class="swiper-slide bg-img1" style="background-image: url('{{ asset('images/home/banner/'. $banner->image) }}')">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <h6>Ready For Tommorow</h6>
-                                <h2>New Electric Cars<br />
+                                <h2>{{ $banner->heading}}<br/>
                                     <div class="d-flex justify-content-center mt-2"><span class="me-3">Are</span>
                                         <div class="spans">Coming Soon </div>
                                     </div>
                                 </h2>
-                                <div class="d-flex justify-content-center">
-                                    <a href="#" class="btns">
-                                        <img src="assets/images/fast-forward.png">
-                                    </a>
-                                </div>
                             </div>
                         </div>
                         <div class="row bottom-part">
                             <div class="col-lg-4 col-md-6 mt-5">
                                 <div class="cols">
                                     <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/distance.png">
-                                        <h5 class="mb-0 align-self-center">450 ML</h5>
+                                        <img class="me-3" src="{{ asset('images/home/banner/'. $banner->icon) }}" >
+                                        {{-- <h5 class="mb-0 align-self-center">450 ML</h5> --}}
                                     </div>
-                                    <p>Go Anywhere up to 358 mi
-                                        of estimated range on a single charge </p>
+                                    <p>{{ $banner->range}} </p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 mt-5">
                                 <div class="cols">
                                     <div class="d-flex justify-content-center">
                                         <img class="me-3" src="assets/images/time.png">
-                                        <h5 class="mb-0 align-self-center">20 Min</h5>
+                                        {{-- <h5 class="mb-0 align-self-center">20 Min</h5> --}}
                                     </div>
-                                    <p>Recharge Up to 175 mi in 20
-                                        minutes at Supercharger location </p>
+                                    <p>{{ $banner->timing}} </p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 mt-5">
                                 <div class="cols">
                                     <div class="d-flex justify-content-center">
                                         <img class="me-3" src="assets/images/charging-station.png">
-                                        <h5 class="mb-0 align-self-center">25,000+</h5>
+                                        {{-- <h5 class="mb-0 align-self-center">25,000+</h5> --}}
                                     </div>
-                                    <p>Superchargers Placed along well-
-                                        traveled routes around the world </p>
+                                    <p>{{ $banner->battery}} </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide bg-img1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <h6>Ready For Tommorow</h6>
-                                <h2>New Electric Cars<br />
-                                    <div class="d-flex justify-content-center mt-2"><span class="me-3">Are</span>
-                                        <div class="spans">Coming Soon </div>
-                                    </div>
-                                </h2>
-                                <div class="d-flex justify-content-center">
-                                    <a href="#" class="btns">
-                                        <img src="assets/images/fast-forward.png">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row bottom-part">
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="cols">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/distance.png">
-                                        <h5 class="mb-0 align-self-center">450 ML</h5>
-                                    </div>
-                                    <p>Go Anywhere up to 358 mi
-                                        of estimated range on a single charge </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="cols">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/time.png">
-                                        <h5 class="mb-0 align-self-center">20 Min</h5>
-                                    </div>
-                                    <p>Recharge Up to 175 mi in 20
-                                        minutes at Supercharger location </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 mt-5">
-                                <div class="cols">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/charging-station.png">
-                                        <h5 class="mb-0 align-self-center">25,000+</h5>
-                                    </div>
-                                    <p>Superchargers Placed along well-
-                                        traveled routes around the world </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide bg-img1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <h6>Ready For Tommorow</h6>
-                                <h2>New Electric Cars<br />
-                                    <div class="d-flex justify-content-center mt-2"><span class="me-3">Are</span>
-                                        <div class="spans">Coming Soon </div>
-                                    </div>
-                                </h2>
-                                <div class="d-flex justify-content-center">
-                                    <a href="#" class="btns">
-                                        <img src="assets/images/fast-forward.png">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row bottom-part">
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="cols">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/distance.png">
-                                        <h5 class="mb-0 align-self-center">450 ML</h5>
-                                    </div>
-                                    <p>Go Anywhere up to 358 mi
-                                        of estimated range on a single charge </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="cols">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/time.png">
-                                        <h5 class="mb-0 align-self-center">20 Min</h5>
-                                    </div>
-                                    <p>Recharge Up to 175 mi in 20
-                                        minutes at Supercharger location </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 mt-5">
-                                <div class="cols">
-                                    <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/charging-station.png">
-                                        <h5 class="mb-0 align-self-center">25,000+</h5>
-                                    </div>
-                                    <p>Superchargers Placed along well-
-                                        traveled routes around the world </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-pagination mb-4"></div>
         </div>
@@ -170,21 +62,18 @@
             <div class="row">
                 <div class="col-lg-7 mt-5">
                     <h6>Quick And Easy</h6>
-                    <h2>BRINGING ELECTRIC <br />
-                        <div class="d-flex mt-2"><span class="me-3">CAR</span>
+                    <h2>{{ $information->heading}} <br />
+                        {{-- <div class="d-flex mt-2"><span class="me-3">CAR</span>
                             <div class="spans me-2">EXPERIENCES </div> TO
-                        </div> YOU
+                        </div> YOU --}}
                     </h2>
-                    <p>We've teamed up with Turo to offer you rental deals
-                        so you can test the perfect electric car model for you.
-                        We’re on a mission to help our customers reduce their
-                        carbon footprint.</p>
-                    <a href="#" class="btns">
+                    <p>{{ $information->description}}</p>
+                    <a href="{{route('about_us')}}" class="btns">
                         Learn More.
                     </a>
                 </div>
                 <div class="col-lg-5 text-lg-center mt-5">
-                    <img class="imgs" src="assets/images/Ev.png">
+                    <img class="imgs" src="{{ asset('images/home/banner/'. $information->image) }}">
                 </div>
             </div>
         </div>
@@ -197,20 +86,14 @@
             <div class="row">
                 <div class="col-lg-5 align-self-end mt-5">
                     <h6>We Are Also</h6>
-                    <h2>No.1 <br />
-                        CNG KIT <br />
-                        <div class="d-flex mt-2">
-                            <div class="spans me-2">FITTING CENTER </div>
-                        </div>
-                    </h2>
+                    <h2>{{ $information->sub_heading}} <br></h2>
                 </div>
                 <div class="col-lg-7 mt-5">
-                    <img class="w-100" src="assets/images/Cng.png">
+                    <img class="w-100" src="{{ asset('images/home/banner/'. $information->icon) }}">
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- sec3 -->
     <section class="sec3">
@@ -284,19 +167,19 @@
                         For You</h2>
                 </div>
             </div>
+            @foreach ($cngKit as $index => $cngKits)   
+            @if($index/2 == 0)
             <div class="contentbox">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="ctnimg">
-                            <img src="./assets/images/top1.png" alt="">
+                            <img src="{{asset('uploads/cng/'. $cngKits->image)}}" alt="">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="ctntext">
-                            <h4>Tool 1</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                            <h4>{{$cngKits->title}}</h4>
+                            <p>{!! Illuminate\Support\Str::limit($cngKits->description, 150) !!}</p>
                             <div class="btnbox">
                                 <a href="#" class="btn btn-light">Learn More</a>
                             </div>
@@ -304,14 +187,13 @@
                     </div>
                 </div>
             </div>
+            @else
             <div class="contentbox odd">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="ctntext text-lg-end">
-                            <h4>Tool 2</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                            <h4>{{$cngKits->title}}</h4>
+                            <p>{!! Illuminate\Support\Str::limit($cngKits->description, 150) !!}</p>
                             <div class="btnbox">
                                 <a href="#" class="btn btn-light">Learn More</a>
                             </div>
@@ -319,82 +201,36 @@
                     </div>
                     <div class="col-md-6">
                         <div class="ctnimg">
-                            <img src="./assets/images/top1.png" alt="">
+                            <img src="{{asset('uploads/cng/'. $cngKits->image)}}" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="contentbox">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="ctnimg">
-                            <img src="./assets/images/top1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="ctntext">
-                            <h4>Tool 3</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
-                            <div class="btnbox">
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            @endif                
+            @endforeach          
+         </div>
     </section>
     <!-- Kits END  -->
 
     <!-- Benefits -->
     <section class="Benefits">
-        <div class="container-fluid">
+        <div class="container-fluid">       
             <div class="row">
                 <div class="co-md-12">
                     <div class="sec-title text-center">
                         <h2>What Are The Benefits?</h2>
                     </div>
                 </div>
-            </div>
+            </div>          
             <div class="row">
+                @foreach ( $benifits as $benifit )             
                 <div class="col-md-2">
                     <div class="benitem">
-                        <img src="./assets/images/Eco-friendly.png" alt="">
-                        <p>Eco Friendly</p>
+                        <img src="{{ asset('images/home/benifits/'. $benifit->image) }}" alt="">
+                        <p>{{ $benifit->heading}}</p>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="benitem">
-                        <img src="./assets/images/Pocket-Friendly.png" alt="">
-                        <p>Pocket Friendly</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="benitem">
-                        <img src="./assets/images/Safety.png" alt="">
-                        <p>Safety</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="benitem">
-                        <img src="./assets/images/Convinience.png" alt="">
-                        <p>Convinience</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="benitem">
-                        <img src="./assets/images/Economiclly.png" alt="">
-                        <p>Economical</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="benitem">
-                        <img src="./assets/images/Reliable.png" alt="">
-                        <p>Reliable</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -510,24 +346,19 @@
     </section>
     <!-- Coolest Features END -->
     <!-- Appreciate Driving -->
-    <section class="appreciate-driving">
+    <section class="appreciate-driving" >
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <div class="drivtext">
-                        <span>Open Horizons</span>
-                        <h4>Cars for those who
-                            appreciate driving
-                            in style</h4>
+                        <span>{{ $features->small_heading}}</span>
+                        <h4>{{ $features->heading}}</h4>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="view-text">
-                        <span>Adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore
-                            magna aliqua. Ut enim ad minim
-                            veniam.</span>
-                        <div class="btncon"><a href="#" class="btn btn-sec">View Cars</a></div>
+                        <span>{{ $features->sub_heading}}</span>
+                        <div class="btncon"><a href="{{route ('about_us')}}" class="btn btn-sec">View Cars</a></div>
                     </div>
                 </div>
             </div>
@@ -550,48 +381,12 @@
                     <div class="trusted-brandslogos">
                         <div class="swiper mySwiper brandslogos">
                             <div class="swiper-wrapper">
+                                @foreach ( $brands as $brand )
                                 <div class="swiper-slide">
-                                    <img src="./assets/images/hondalogo.png" alt="">
+                                    <img src="{{ asset('images/home/benifits/'. $brand->image) }}" alt="">
                                 </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Tatalogo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Toyota-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Mg-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Jeep-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Mercedez-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/AudiLogo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/hondalogo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Tatalogo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Toyota-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Mg-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Jeep-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/Mercedez-Logo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="./assets/images/AudiLogo.png" alt="">
-                                </div>
+                                @endforeach
+                               
                             </div>
                         </div>
                     </div>
@@ -726,42 +521,20 @@
         </div>
         <div class="container-fluid">
             <div class="row mt-5">
+                @foreach ( $blogs as $blog )            
                 <div class="col-md-4">
                     <div class="blogbx">
-                        <img src="assets/images/Blogs.png" alt="">
+                        <img src="{{ asset('uploads/blog/'. $blog->image) }}" alt="">
                     </div>
                     <div class="content">
-                        <p>December 27, 2021 - 2 Comments - By AP</p>
-                        <h5>Make Listening To Music A New Dark Night Delightful Experience</h5>
+                        <p>{{ $blog->created_at->format('F j, Y') }}</p>
+                        <h5>{{ $blog->title}}</h5>
                     </div>
                     <div class="blogbtn">
                         <a href="#">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="blogbx">
-                        <img src="assets/images/Blogs.png" alt="">
-                    </div>
-                    <div class="content">
-                        <p>December 27, 2021 - 2 Comments - By AP</p>
-                        <h5>Make Listening To Music A New Dark Night Delightful Experience</h5>
-                    </div>
-                    <div class="blogbtn">
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="blogbx">
-                        <img src="assets/images/Blogs.png" alt="">
-                    </div>
-                    <div class="content">
-                        <p>December 27, 2021 - 2 Comments - By AP</p>
-                        <h5>Make Listening To Music A New Dark Night Delightful Experience</h5>
-                    </div>
-                    <div class="blogbtn">
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

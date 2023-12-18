@@ -2315,7 +2315,7 @@ progress {
   color: #8a909d;
   background-color: #fdfdfd;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #000 !important;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -2518,8 +2518,10 @@ progress {
           margin-inline-end: 1rem;
 }
 
+
 textarea.form-control {
   min-height: calc(1.5em + 1.18rem + 2px);
+  border: 2px solid black !important;
 }
 textarea.form-control-sm {
   min-height: calc(1.5em + 0.5rem + 2px);
@@ -11675,7 +11677,7 @@ textarea.form-control-lg {
   margin-bottom: 30px;
   padding: 0 15px;
   border-radius: 0;
-  border: 1px solid #eeeeee !important;
+  border: 1px solid #000 !important;
   background-color: transparent;
   color: #777;
   line-height: 3;
@@ -11686,7 +11688,7 @@ textarea.form-control-lg {
   margin-bottom: 30px;
   padding: 0 15px;
   border-radius: 0;
-  border: 1px solid #eeeeee !important;
+  border: 1px solid #000 !important;
   background-color: transparent;
   color: #777;
   padding: 15px;
@@ -21241,6 +21243,7 @@ div.copied {
   overflow: hidden;
   max-width: 130px;
   color: #fff !important;
+  font-weight: bold;
   font-size: 15px;  
   text-overflow: ellipsis;
   white-space: nowrap;

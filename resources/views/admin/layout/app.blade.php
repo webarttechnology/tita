@@ -85,6 +85,66 @@
 							<hr>
 						</li>
 
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="javascript:void(0)">
+								<i class="mdi mdi-dns-outline"></i>
+								<span class="nav-text">Home Page</span>  
+								  <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+								  <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+								 </svg>
+							</a>
+							<div class="collapse">
+								<ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.home_banner')}}">
+											<span class="nav-text">Banner</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.home_information')}}">
+											<span class="nav-text">About Section</span>
+										</a>
+									</li>
+
+									<li class="">
+										<a class="sidenav-item-link" href="{{ url ('admin/cng/list')}}">
+											<span class="nav-text">CNG Best Kits</span>
+										</a>
+									</li>
+
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.home_benifit')}}">
+											<span class="nav-text">Benefits</span>
+										</a>
+									</li>
+
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.home_feature')}}">
+											<span class="nav-text">Coolest Features</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.home_brand')}}">
+											<span class="nav-text">Brands</span>
+										</a>
+									</li>
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.pdf')}}">
+											<span class="nav-text">Knowledge</span>
+										</a>
+									</li>
+
+									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.pdf')}}">
+											<span class="nav-text">Contact Details</span>
+										</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
+
 						
 						<!-- Users -->
 						<li class="has-sub">
