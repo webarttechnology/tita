@@ -18,9 +18,8 @@ use App\Http\Controllers\admin\HomeBenefitsController;
 use App\Http\Controllers\admin\HomeElectronicCarController;
 use App\Http\Controllers\admin\HomeBrandController;
 use App\Http\Controllers\admin\AboutController;
-
-
-
+use App\Http\Controllers\admin\WhyUsController;
+use App\Http\Controllers\admin\ContactUsController;
 use App\Http\Controllers\front\UserController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\CngController;
@@ -83,7 +82,6 @@ Route::get('instruction/{code?}', [InstallerTestController::class, 'instruction_
 Route::post('submit/exam', [InstallerTestController::class, 'submitExam']);
 Route::get('exam/success/page/{code?}/{msg?}', [InstallerTestController::class, 'examSuccess']);
 Route::get('exam/fail/page/{code?}/{msg?}/{attempt?}', [InstallerTestController::class, 'examFail']);
-
 
 /**
  * cng listing
@@ -230,8 +228,27 @@ Route::prefix('admin')->group(function () {
             Route::get('add', 'add')->name('admin.about_add');
             Route::post('store', 'store')->name('admin.about_store');
             Route::get('edit/{id}', 'edit')->name('admin.about_edit');
-            Route::put('update/{id}', 'store')->name('admin.about_update');
+            Route::put('update/{id}', 'update')->name('admin.about_update');
             Route::get('delete/{id}', 'delete')->name('admin.about_delete');
+        });
+
+        Route::prefix('why-choose-us')->controller(WhyUsController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.whyUs');
+            Route::get('add', 'add')->name('admin.whyUs_add');
+            Route::post('store', 'store')->name('admin.whyUs_store');
+            Route::get('edit/{id}', 'edit')->name('admin.whyUs_edit');
+            Route::put('update/{id}', 'update')->name('admin.whyUs_update');
+            Route::get('delete/{id}', 'delete')->name('admin.whyUs_delete');
+        });
+
+
+        Route::prefix('contact-us')->controller(ContactUsController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.contctUs');
+            Route::get('add', 'add')->name('admin.contctUs_add');
+            Route::post('store', 'store')->name('admin.contctUs_store');
+            Route::get('edit/{id}', 'edit')->name('admin.contctUs_edit');
+            Route::put('update/{id}', 'update')->name('admin.contctUs_update');
+            Route::get('delete/{id}', 'delete')->name('admin.contctUs_delete');
         });
 
         Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');

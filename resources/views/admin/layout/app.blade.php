@@ -130,19 +130,31 @@
 										</a>
 									</li>
 									<li class="">
+										<a class="sidenav-item-link" href="{{ route ('admin.whyUs')}}">
+											<span class="nav-text">why chose us</span>
+										</a>
+									</li>
+									<li class="">
 										<a class="sidenav-item-link" href="{{ route ('admin.pdf')}}">
 											<span class="nav-text">Knowledge</span>
 										</a>
 									</li>
 
 									<li class="">
-										<a class="sidenav-item-link" href="{{ route ('admin.pdf')}}">
+										<a class="sidenav-item-link" href="{{ route ('admin.contctUs')}}">
 											<span class="nav-text">Contact Details</span>
 										</a>
 									</li>
 
 								</ul>
 							</div>
+						</li>
+
+						<li class="has-sub">
+							<a class="sidenav-item-link" href="{{ route('admin.about') }}">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">About</span> <b class="caret"></b>
+							</a>
 						</li>
 
 						

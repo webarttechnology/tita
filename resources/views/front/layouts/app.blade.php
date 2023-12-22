@@ -1,3 +1,7 @@
+@php
+    $contacts = App\Models\ContactUs::first();
+@endphp
+
 <!doctype html>
 <html lang="en">
 
@@ -210,20 +214,18 @@
                     <div class="ftr-address">
                         <ul>
                             <li>
-                                <p>IN Office Address : Matrix Tower <br>Block GP, Sector V, WB, Kol–700091</p>
+                                <p>{{$contacts->address	}}</p>
                             </li>
-                            <li><a href="#">Email : infoShopsee.com</a></li>
-                            <li><a href="tel: 1 888-927-7332">Toll-Free : +1 888-927-7332</a></li>
-                            <li><a href="tel:1 415 800 4429">USA Support : +1 415 800 4429</a>
+                            <li><a href="#">Email : {{$contacts->email}}</a></li>
+                            <li><a href="tel: 1 888-927-7332">Toll-Free :{{$contacts->phone_one}}</a></li>
+                            <li><a href="tel:1 415 800 4429">USA Support :{{$contacts->phone_two}}</a>
                                 <p></p>
                             </li>
                         </ul>
                     </div>
                     <div class="company">
-                        <p>Company Name : Boise</p>
-                        <p>Company Address : Zone Orlytech
-                            Batiment 5161 allee du commandant
-                            Mouchotte ORLY Paris ,91550 , France</p>
+                        <p>Company Name : {{$contacts->company_name}}</p>
+                        <p>Company Address : {{$contacts->company_address}}</p>
                     </div>
                 </div>
                 <div class="col-md-4">

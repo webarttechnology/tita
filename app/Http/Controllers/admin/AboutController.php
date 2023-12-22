@@ -10,56 +10,94 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $brands = About::get();
-        return view ('admin.home_page.brand_show', compact('brands'));
+        $data = About::get();
+        return view ('admin.about.show', compact('data'));
     }
     public function add()
     {
-        return view ('admin.home_page.brand_add');
+        return view ('admin.about.add');
     }
 
     public function edit($id )
     {
         $data = About::findOrFail($id);
-        return view ('admin.home_page.brand_update', compact('data'));
+        return view ('admin.about.update', compact('data'));
     }
 
-    public function store(Request $request, $id = null)
-    {  
-        if ($id === null) 
-        {    
-            // $rules = [
-            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            // ];
+    public function store(Request $request)
+    {   
+        $request->validate([
+            'heading' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'we_are_heading' => 'required|string|max:255',
+            'we_are_description' => 'required|string',
+            'we_are_not_heading' => 'required|string|max:255',
+            'we_are_not_description' => 'required|string',
+            'what_we_do_heading' => 'required|string|max:255',
+            'what_we_do_description' => 'required|string',
+        ]);
     
-            // $request->validate($rules);
+        // Handle file upload
+        $image = $request->image ;
+        $imagename = time() . '_' . $image->getClientOriginalName();
+        $image->move('images/about/', $imagename);
+    
+        $about = new About();
+        $about->heading = $request->input('heading');
+        $about->description = $request->input('description');
+        $about->image = $imagename;
+        $about->we_are_heading = $request->input('we_are_heading');
+        $about->we_are_description = $request->input('we_are_description');
+        $about->we_are_not_heading = $request->input('we_are_not_heading');
+        $about->we_are_not_description = $request->input('we_are_not_description');
+        $about->what_we_do_heading = $request->input('what_we_do_heading');
+        $about->what_we_do_description = $request->input('what_we_do_description');
+        $about->save();
+    
+        return redirect()->route('admin.about')->with('success', 'Data created successfully!');    
 
-            foreach( $request->image as $image_name)
-            {                
-            $imagename = time() . '_' . $image_name->getClientOriginalName();
-            $image_name->move('images/home/benifits/', $imagename);
-                About::create([
-                    'image' => $imagename,
-                    ]); 
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'heading' => 'required|string|max:255',
+            'description' => 'required|string',
+            'we_are_heading' => 'required|string|max:255',
+            'we_are_description' => 'required|string',
+            'we_are_not_heading' => 'required|string|max:255',
+            'we_are_not_description' => 'required|string',
+            'what_we_do_heading' => 'required|string|max:255',
+            'what_we_do_description' => 'required|string',
+        ]);
+
+        $about = About::findOrFail($id);
+
+        if ($request->hasFile('image')) 
+        {
+            $image = $request->file('image');
+            $imagename = time() . '_' . $image->getClientOriginalName();
+            $image->move('images/about/', $imagename);
+
+            if (file_exists(public_path('images/about/' . $about->image))) {
+                unlink(public_path('images/about/' . $about->image));
             }
-          
-            return redirect()->route('admin.home_brand')->with('success', 'Data Added Successfully!!!');
-        } 
-        
-        else {
+            $about->image = $imagename;
+        }
 
-            $About = About::findOrFail($id);
-            
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imagename = time() . '_' . $image->getClientOriginalName();
-                $image->move('images/home/benifits/', $imagename);
-                $About->image = $imagename;
-            }
-            $About->save();
+        $about->heading = $request->input('heading');
+        $about->description = $request->input('description');
+        $about->we_are_heading = $request->input('we_are_heading');
+        $about->we_are_description = $request->input('we_are_description');
+        $about->we_are_not_heading = $request->input('we_are_not_heading');
+        $about->we_are_not_description = $request->input('we_are_not_description');
+        $about->what_we_do_heading = $request->input('what_we_do_heading');
+        $about->what_we_do_description = $request->input('what_we_do_description');
 
-            return redirect()->route('admin.home_brand')->with('success', 'Data Updated Successfully!!!');
-        }       
+        $about->save();
 
+        return redirect()->route('admin.about')->with('success', 'Data updated successfully!');
     }
 }

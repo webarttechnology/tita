@@ -141,7 +141,12 @@ nav .icons .btns2 {
   background-size: cover;
   background-position: center;
   padding-top: 260px;
+  height: 700px;
   position: relative;
+}
+
+.bottom-part p{
+  font-size: 35px;
 }
 
 .banners .bg-img1::before {
@@ -403,8 +408,8 @@ nav .icons .btns2 {
 }
 
 .cngbestkit .contentbox .ctnimg img {
-  margin-top: -50px;
-  width: 70%;
+  /* margin-top: -50px; */
+  width: 90%;
 }
 
 .cngbestkit .ctntext {
@@ -2030,7 +2035,7 @@ text-decoration: none;
 }
 .blogsec .blog-img img {
     width: 100%;
-    height: 200px;
+    height: 260px;
     /* object-fit: cover; */
     padding: 10px;
 }

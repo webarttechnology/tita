@@ -10,7 +10,7 @@
                     <h1>Home Banner</h1>
                 </div>
                 <div>
-                    {{-- <a href="{{ route ('admin.home_banner_add')}}" class="btn btn-primary"> Add Banner</a> --}}
+                    <a href="{{ route ('admin.home_banner_add')}}" class="btn btn-primary"> Add Banner</a>
                 </div>
             </div>
             <div class="row">

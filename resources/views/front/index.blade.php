@@ -22,7 +22,7 @@
                             <div class="col-lg-4 col-md-6 mt-5">
                                 <div class="cols">
                                     <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="{{ asset('images/home/banner/'. $banner->icon) }}" >
+                                        <img class="me-3" src="{{ asset('assets/images/specicon4.png') }}" width="50px">
                                         {{-- <h5 class="mb-0 align-self-center">450 ML</h5> --}}
                                     </div>
                                     <p>{{ $banner->range}} </p>
@@ -31,7 +31,7 @@
                             <div class="col-lg-4 col-md-6 mt-5">
                                 <div class="cols">
                                     <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/time.png">
+                                        <img class="me-3" src="{{ asset('assets/images/time.png') }}" width="50px">
                                         {{-- <h5 class="mb-0 align-self-center">20 Min</h5> --}}
                                     </div>
                                     <p>{{ $banner->timing}} </p>
@@ -40,7 +40,7 @@
                             <div class="col-lg-4 col-md-12 mt-5">
                                 <div class="cols">
                                     <div class="d-flex justify-content-center">
-                                        <img class="me-3" src="assets/images/charging-station.png">
+                                        <img class="me-3" src="{{ asset('assets/images/specicon3.png')}}" width="50px">
                                         {{-- <h5 class="mb-0 align-self-center">25,000+</h5> --}}
                                     </div>
                                     <p>{{ $banner->battery}} </p>
@@ -50,8 +50,7 @@
                     </div>
                 </div>
                 @endforeach
-            </div>
-            <div class="swiper-pagination mb-4"></div>
+            </div>           
         </div>
     </div>
 
@@ -61,11 +60,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mt-5">
-                    <h6>Quick And Easy</h6>
+                    {{-- <h6>Quick And Easy</h6> --}}
                     <h2>{{ $information->heading}} <br />
-                        {{-- <div class="d-flex mt-2"><span class="me-3">CAR</span>
+                        <div class="d-flex mt-2"><span class="me-3">CAR</span>
                             <div class="spans me-2">EXPERIENCES </div> TO
-                        </div> YOU --}}
+                        </div> YOU
                     </h2>
                     <p>{{ $information->description}}</p>
                     <a href="{{route('about_us')}}" class="btns">
@@ -86,7 +85,7 @@
             <div class="row">
                 <div class="col-lg-5 align-self-end mt-5">
                     <h6>We Are Also</h6>
-                    <h2>{{ $information->sub_heading}} <br></h2>
+                    <h2> <div class="spans me-2">{{ $information->sub_heading}} </div> <br></h2>
                 </div>
                 <div class="col-lg-7 mt-5">
                     <img class="w-100" src="{{ asset('images/home/banner/'. $information->icon) }}">
@@ -102,26 +101,14 @@
                 <div class="col-12">
                     <h2>Why Choose Our Service</h2>
                 </div>
+                @foreach ( $whyus as $why_us )          
                 <div class="col-lg-3 col-md-6 mt-5 pt-lg-4">
-                    <img class="" src="assets/images/Happy customer.png">
-                    <h6>Happy Customers</h6>
-                    <h3>5500</h3>
+                    <img class="" src="{{ asset('images/WhyChooseUs/'. $why_us->image) }}">
+                    <h6>{{ $why_us->title}}</h6>
+                    <h3>{{ $why_us->number}}</h3>
                 </div>
-                <div class="col-lg-3 col-md-6 mt-5 pt-lg-4">
-                    <img class="" src="assets/images/Kits Installed.png">
-                    <h6>Kits Installed</h6>
-                    <h3>8500</h3>
-                </div>
-                <div class="col-lg-3 col-md-6 mt-5 pt-lg-4">
-                    <img class="" src="assets/images/Team members.png">
-                    <h6>Team Members</h6>
-                    <h3>150</h3>
-                </div>
-                <div class="col-lg-3 col-md-6 mt-5 pt-lg-4">
-                    <img class="" src="assets/images/Years experiemced.png">
-                    <h6>Years Experienced</h6>
-                    <h3>16+</h3>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </section>
@@ -168,46 +155,41 @@
                 </div>
             </div>
             @foreach ($cngKit as $index => $cngKits)   
-            @if($index/2 == 0)
-            <div class="contentbox">
+            <div class="contentbox {{$index % 2 == 0 ? '' : 'odd'}}">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="ctnimg">
-                            <img src="{{asset('uploads/cng/'. $cngKits->image)}}" alt="">
-                        </div>
+                        @if($index % 2 == 0)
+                            <div class="ctnimg">
+                                <img src="{{asset('uploads/cng/'. $cngKits->image)}}" width="100%">
+                            </div>
+                        @else
+                            <div class="ctntext text-lg-end">
+                                <h4>{{$cngKits->title}}</h4>
+                                <p>{!! Illuminate\Support\Str::limit($cngKits->description, 150) !!}</p>
+                                <div class="btnbox">
+                                    <a href="#" class="btn btn-light">Learn More</a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <div class="col-md-6">
-                        <div class="ctntext">
-                            <h4>{{$cngKits->title}}</h4>
-                            <p>{!! Illuminate\Support\Str::limit($cngKits->description, 150) !!}</p>
-                            <div class="btnbox">
-                                <a href="#" class="btn btn-light">Learn More</a>
+                        @if($index % 2 == 0)
+                            <div class="ctntext">
+                                <h4>{{$cngKits->title}}</h4>
+                                <p>{!! Illuminate\Support\Str::limit($cngKits->description, 150) !!}</p>
+                                <div class="btnbox">
+                                    <a href="#" class="btn btn-light">Learn More</a>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="ctnimg">
+                                <img src="{{asset('uploads/cng/'. $cngKits->image)}}" alt="">
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
-            @else
-            <div class="contentbox odd">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="ctntext text-lg-end">
-                            <h4>{{$cngKits->title}}</h4>
-                            <p>{!! Illuminate\Support\Str::limit($cngKits->description, 150) !!}</p>
-                            <div class="btnbox">
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="ctnimg">
-                            <img src="{{asset('uploads/cng/'. $cngKits->image)}}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif                
-            @endforeach          
+        @endforeach                 
          </div>
     </section>
     <!-- Kits END  -->
@@ -252,12 +234,13 @@
         <div class="cars">
             <div class="container-fluid">
                 <div class="row">
+                    @foreach ($cars as  $car )
                     <div class="col-md-4 d-flex justify-content-center">
                         <div class="car-card">
                             <img src="./assets/images/car1.png" alt="">
                             <div class="car-text">
-                                <span>Cable EV Portable</span>
-                                <h4>Car Model A</h4>
+                                <span>{{$car->name}}</span>
+                                <h4>{{$car->name}}</h4>
                                 <p class="price">$ 40,000.00</p>
                                 <div class="stars">
                                     <i class="bi bi-star-fill"></i>
@@ -269,40 +252,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 d-flex justify-content-center">
-                        <div class="car-card">
-                            <img src="./assets/images/car2.png" alt="">
-                            <div class="car-text">
-                                <span>Charger, EV, Sale</span>
-                                <h4>Car Model B</h4>
-                                <p class="price">$ 40,000.00</p>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 d-flex justify-content-center">
-                        <div class="car-card">
-                            <img src="./assets/images/car3.png" alt="">
-                            <div class="car-text">
-                                <span>Battery, EV, portable</span>
-                                <h4>Car Model C</h4>
-                                <p class="price">$ 40,000.00</p>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach                    
+                
+                    
                 </div>
             </div>
         </div>
@@ -531,7 +483,7 @@
                         <h5>{{ $blog->title}}</h5>
                     </div>
                     <div class="blogbtn">
-                        <a href="#">Read More</a>
+                        <a href="{{route('single_blog',['slug' => $blog->slug])}}">Read More</a>
                     </div>
                 </div>
                 @endforeach
@@ -551,45 +503,65 @@
 
                         <div class="row mt-5">
                             <div class="col-md-9">
+                                <form action="{{ route ('email_Send')}}" method="post">
+                                @csrf
                                 <div class="cform">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="mb-4">
-                                                <input type="text" class="form-control" placeholder="Your Name">
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" placeholder="Name" name="name" value="{{old('name')}}">
+                                                <div class="validation-error">
+                                                    @error('name')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
+                                                </div> 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-12">
-                                            <div class="mb-4">
-                                                <input type="email" class="form-control" placeholder="Email Addtress">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="mb-4">
-                                                <input type="number" class="form-control" placeholder="Phone Number">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="mb-4">
-                                                <textarea name="" id="" class="form-control" placeholder="Send Message"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="mt-3">
-                                                <div class="apntbtn">
-                                                    <a href="#" class="sbmtbtn">Send Message</a>
+                                            <div class="mb-3">
+                                                <input type="email" class="form-control" placeholder="Enter Email" name="email" value="{{old('email')}}">
+                                                <div class="validation-error">
+                                                    @error('email')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-12 justify-content-center align-items-center">
+                                            <div class="mb-3">
+                                                <input type="tel" class="form-control" placeholder="Contact Number" name="number" value="{{old('number')}}">
+                                                <div class="validation-error">
+                                                    @error('number')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3 text">
+                                                <textarea name="message" value="{{old('message')}}" id="" class="form-control area"></textarea>
+                                                <div class="validation-error">
+                                                        @error('message')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
+                                                </div>     
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-center">
+                                            <div class="mt-3">
+                                                <div class="apntbtn">
+                                                    <button type="submit" class="sbmtbtn btn btn-success">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <center>
+                                            @if(Session::has('message'))
+                                                <p style="color: green">{{ Session::get('message') }}</p>
+                                            @endif
+                                        </center>
                                     </div>
                                 </div>
+                            </form>   
                             </div>
                         </div>
                     </div>

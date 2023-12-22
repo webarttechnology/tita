@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HomeBanner;
 
+
+
 class HomePageController extends Controller
 {
     public function index()
@@ -31,8 +33,8 @@ class HomePageController extends Controller
         {    
             $rules = [
                 'heading' => 'required|string',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+                'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 'range' => 'required|string',
                 'timing' => 'required|string',
                 'battery' => 'required|string',
@@ -97,5 +99,12 @@ class HomePageController extends Controller
             return redirect()->route('admin.home_banner')->with('success', 'Data Updated Successfully!!!');
         }       
 
+    }
+
+    public function delete($id)
+    {
+        $data = HomeBanner::findOrFail($id);
+        $data->delete();
+        return redirect()->route('admin.home_banner')->with('success', 'Data Deleted Successfully!!!');
     }
 }

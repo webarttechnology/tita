@@ -34,7 +34,7 @@
                     <div class="col-md-12">
                       <label class="form-label">Image:</label>
                       <input class="form-control" type="file" name="image">
-                      <img src="{{ asset($data->image) }}" alt="Your Image" width="100px">
+                      <img src="{{ asset('uploads/blog/'. $data->image) }}" alt="Your Image" width="100px" class="mb-4">
                     </div>
                     <div class="col-md-12">
                       <label class="form-label">Select Categories</label>

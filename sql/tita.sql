@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 12:13 PM
+-- Generation Time: Dec 22, 2023 at 05:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `tita`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `abouts`
+--
+
+CREATE TABLE `abouts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` text DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `we_are_heading` text DEFAULT NULL,
+  `we_are_description` text DEFAULT NULL,
+  `we_are_not_heading` text DEFAULT NULL,
+  `we_are_not_description` text DEFAULT NULL,
+  `what_we_do_heading` text DEFAULT NULL,
+  `what_we_do_description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `abouts`
+--
+
+INSERT INTO `abouts` (`id`, `heading`, `description`, `image`, `we_are_heading`, `we_are_description`, `we_are_not_heading`, `we_are_not_description`, `what_we_do_heading`, `what_we_do_description`, `created_at`, `updated_at`) VALUES
+(1, 'About TITA us', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus quo consequuntur recusandae laborum, id saepe dolor enim, ex eius minima nemo fuga non ab odit ut facere inventore tempora? Ex minima eaque quis excepturi odit delectus dolore fugiat, facilis dolores, corporis itaque natus, neque consectetur debitis ratione iste explicabo reiciendis consequatur unde? Consectetur sed ab voluptates repellat. Cupiditate, similique sunt.\r\n\r\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Atque quaerat aspernatur laborum perferendis deserunt beatae mollitia, iure libero harum eius!\r\n\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa eveniet recusandae numquam dicta odit vitae ullam dolorem illo beatae? Obcaecati qui nam nulla dignissimos inventore nisi molestiae beatae, deserunt optio unde veniam laborum quas odit ullam dolorum sapiente ducimus asperiores voluptas praesentium! Dolorum neque a quas nemo id itaque enim!', '1702979615_aboutimg.jpg', 'We are', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur id molestias itaque iusto voluptas autem impedit vero quas repellendus ea.', 'We are Not', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur id molestias itaque iusto voluptas autem impedit vero quas repellendus ea.', 'What We Do', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur id molestias itaque iusto voluptas autem impedit vero quas repellendus ea.', '2023-12-19 03:37:54', '2023-12-19 04:23:35');
 
 -- --------------------------------------------------------
 
@@ -64,6 +92,15 @@ CREATE TABLE `blogs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `category`, `title`, `sub_description`, `slug`, `image`, `description`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 'phone', 'Magni omnis porro il', 'Id quis officia nost', 'magni-omnis-porro-il', '181220231702898869_blog1.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Et non consequatur', 'Ad dignissimos excep', '2023-12-18 05:57:49', '2023-12-19 23:15:54'),
+(2, 'laptop', 'Laboriosam sint su', 'Qui delectus volupt', 'laboriosam-sint-su', '181220231702898880_blog2.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Distinctio Sunt co', 'Aliquid architecto e', '2023-12-18 05:58:00', '2023-12-19 23:17:40'),
+(3, 'laptop', 'Qui tempore totam n', 'Omnis minim labore m', 'qui-tempore-totam-n', '181220231702898892_blog3.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Minus sint sint vol', 'Quas similique aut e', '2023-12-18 05:58:12', '2023-12-19 23:18:11');
+
 -- --------------------------------------------------------
 
 --
@@ -103,7 +140,9 @@ INSERT INTO `bookings` (`id`, `user_id`, `cng_kit_id`, `date`, `time`, `zip`, `u
 (9, '1', '4', '2023-12-05', '08:01', '412450', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-05 02:24:27', '2023-12-05 02:24:27'),
 (10, '1', '4', '2023-12-05', '08:01', '412450', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-05 02:24:42', '2023-12-05 02:24:42'),
 (11, '2', '4', '2023-12-06', '21:07', '111111', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-06 03:19:15', '2023-12-06 03:19:15'),
-(12, '2', '3', '2023-12-06', '18:48', '457845', NULL, 'pi_3OKHyUSCgMR7q6bk1qCqAvEq', '{\"id\":\"pi_3OKHyUSCgMR7q6bk1qCqAvEq\",\"object\":\"payment_intent\",\"amount\":100000,\"amount_capturable\":0,\"amount_details\":{\"tip\":[]},\"amount_received\":0,\"application\":null,\"application_fee_amount\":null,\"automatic_payment_methods\":{\"allow_redirects\":\"always\",\"enabled\":true},\"canceled_at\":null,\"cancellation_reason\":null,\"capture_method\":\"automatic\",\"client_secret\":\"pi_3OKHyUSCgMR7q6bk1qCqAvEq_secret_ckmB85JDVvuff8IRmpp7mIphH\",\"confirmation_method\":\"automatic\",\"created\":1701857102,\"currency\":\"usd\",\"customer\":null,\"description\":null,\"invoice\":null,\"last_payment_error\":null,\"latest_charge\":null,\"livemode\":false,\"metadata\":[],\"next_action\":null,\"on_behalf_of\":null,\"payment_method\":null,\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"installments\":null,\"mandate_options\":null,\"network\":null,\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"processing\":null,\"receipt_email\":null,\"review\":null,\"setup_future_usage\":null,\"shipping\":null,\"source\":null,\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"requires_payment_method\",\"transfer_data\":null,\"transfer_group\":null}', NULL, 'completed', '12', '2023-12-06 03:36:16', '2023-12-06 04:47:08');
+(12, '2', '3', '2023-12-06', '18:48', '457845', NULL, 'pi_3OKHyUSCgMR7q6bk1qCqAvEq', '{\"id\":\"pi_3OKHyUSCgMR7q6bk1qCqAvEq\",\"object\":\"payment_intent\",\"amount\":100000,\"amount_capturable\":0,\"amount_details\":{\"tip\":[]},\"amount_received\":0,\"application\":null,\"application_fee_amount\":null,\"automatic_payment_methods\":{\"allow_redirects\":\"always\",\"enabled\":true},\"canceled_at\":null,\"cancellation_reason\":null,\"capture_method\":\"automatic\",\"client_secret\":\"pi_3OKHyUSCgMR7q6bk1qCqAvEq_secret_ckmB85JDVvuff8IRmpp7mIphH\",\"confirmation_method\":\"automatic\",\"created\":1701857102,\"currency\":\"usd\",\"customer\":null,\"description\":null,\"invoice\":null,\"last_payment_error\":null,\"latest_charge\":null,\"livemode\":false,\"metadata\":[],\"next_action\":null,\"on_behalf_of\":null,\"payment_method\":null,\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"installments\":null,\"mandate_options\":null,\"network\":null,\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"processing\":null,\"receipt_email\":null,\"review\":null,\"setup_future_usage\":null,\"shipping\":null,\"source\":null,\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"requires_payment_method\",\"transfer_data\":null,\"transfer_group\":null}', NULL, 'completed', '12', '2023-12-06 03:36:16', '2023-12-06 04:47:08'),
+(13, '2', '3', '2023-12-11', '18:53', '412450', NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-11 06:30:21', '2023-12-11 06:30:21'),
+(14, '2', '4', '2023-12-12', '15:49', '412450', 'LiOQZUblFgTJs3POoJVNwCJ5F4tkvu', NULL, NULL, NULL, 'completed', '17', '2023-12-12 02:49:25', '2023-12-12 03:16:45');
 
 -- --------------------------------------------------------
 
@@ -137,7 +176,10 @@ INSERT INTO `booking_requests` (`id`, `user_id`, `booking_id`, `cng_kit_id`, `cn
 (12, '1', '1', '3', '1000', '2023-12-01', '21:50', '412450', '10', NULL, NULL, 'rejected', NULL, '2023-12-01 03:11:23', '2023-12-04 23:45:36'),
 (13, '1', '1', '3', '1000', '2023-12-01', '21:50', '412450', '9', NULL, NULL, 'completed', NULL, '2023-12-01 03:11:28', '2023-12-04 23:45:36'),
 (14, '1', '10', '4', '2000', '2023-12-05', '08:01', '412450', '11', NULL, NULL, 'pending', NULL, '2023-12-05 02:24:42', '2023-12-05 02:24:42'),
-(15, '2', '12', '3', '1000', '2023-12-06', '18:48', '457845', '12', NULL, NULL, 'completed', NULL, '2023-12-06 03:36:16', '2023-12-06 04:47:08');
+(15, '2', '12', '3', '1000', '2023-12-06', '18:48', '457845', '12', NULL, NULL, 'completed', NULL, '2023-12-06 03:36:16', '2023-12-06 04:47:08'),
+(16, '2', '13', '3', '1000', '2023-12-11', '18:53', '412450', '11', NULL, NULL, 'in_progress', NULL, '2023-12-11 06:30:21', '2023-12-11 06:49:28'),
+(17, '2', '14', '4', '2000', '2023-12-12', '15:49', '412450', '17', NULL, NULL, 'completed', NULL, '2023-12-12 02:49:25', '2023-12-12 03:16:45'),
+(18, '2', '14', '4', '2000', '2023-12-12', '15:49', '412450', '11', NULL, NULL, 'rejected', NULL, '2023-12-12 02:49:28', '2023-12-12 03:04:44');
 
 -- --------------------------------------------------------
 
@@ -192,8 +234,11 @@ CREATE TABLE `cng_kits` (
 --
 
 INSERT INTO `cng_kits` (`id`, `title`, `description`, `price`, `image`, `kit_type`, `vehicle_name`, `application`, `vehicle_type`, `brand`, `slug`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(3, 'Animi ab sed magnam - 002', '<p>Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1000', '301120231701327461_titleimg3.png', 'Atque accusantium si', 'Dorothy Mcgee', 'Ex laborum minima un', 'Diesel', 'Est recusandae Lab', 'animi-ab-sed-magnam-002', NULL, '2023-11-30 00:10:02', '2023-11-30 01:57:00'),
-(4, 'Omnis esse blanditi', '<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>', '2000', '301120231701322814_1700809449_image_2023-10-10_23_01_50.png', 'Maxime a quibusdam i', 'Flynn Mcconnell', 'Dolores do qui moles', 'Diesel', 'Amet elit elit do', 'omnis-esse-blanditi', NULL, '2023-11-30 00:10:14', '2023-11-30 01:57:55');
+(3, 'Animi ab sed magnam - 002', '<p>Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', '1000', '301120231701327461_titleimg3.png', 'Atque accusantium si', 'Dorothy Mcgee', 'Ex laborum minima un', 'Diesel', 'Est recusandae Lab', 'animi-ab-sed-magnam-002', '2023-12-18 23:19:31', '2023-11-30 00:10:02', '2023-12-18 23:19:31'),
+(4, 'Omnis esse blanditi', '<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>', '2000', '301120231701322814_1700809449_image_2023-10-10_23_01_50.png', 'Maxime a quibusdam i', 'Flynn Mcconnell', 'Dolores do qui moles', 'Diesel', 'Amet elit elit do', 'omnis-esse-blanditi', '2023-12-18 23:19:27', '2023-11-30 00:10:14', '2023-12-18 23:19:27'),
+(5, 'Reprehenderit aut e', '<p>gngfnfg</p>', '378', '191220231702961332_car1.png', 'Lorem qui laborum fa', 'Pamela Lawson', 'Et ullamco aspernatu', 'Petrol', 'In ab et corrupti d', 'reprehenderit-aut-e', NULL, '2023-12-18 02:29:47', '2023-12-18 23:18:52'),
+(6, 'Quo dolore id lorem', '<p>demo</p>', '415', '191220231702961164_aboutimg.jpg', 'Harum commodi aliqui', 'Chandler Mccall', 'Labore modi nostrum', 'Petrol', 'Ducimus rerum ratio', 'quo-dolore-id-lorem', NULL, '2023-12-18 23:10:28', '2023-12-18 23:16:04'),
+(7, 'Ipsum veniam aut o', '<p>demo</p>', '539', '191220231702961384_car3.png', 'Eiusmod totam ipsum', 'Kimberley Walker', 'Sed qui nesciunt et', 'Diesel', 'Consequat Consequat', 'ipsum-veniam-aut-o', NULL, '2023-12-18 23:19:44', '2023-12-18 23:19:44');
 
 -- --------------------------------------------------------
 
@@ -243,10 +288,15 @@ INSERT INTO `cng_kit_product_details` (`id`, `cng_kits_id`, `features`, `deleted
 (29, '3', 'Deserunt iure in lab', '2023-11-30 01:57:00', '2023-11-30 01:36:07', '2023-11-30 01:57:00'),
 (30, '3', 'Deserunt iure in lab - 0001', '2023-11-30 01:57:00', '2023-11-30 01:36:07', '2023-11-30 01:57:00'),
 (31, '3', 'Nesciunt non quia m', '2023-11-30 01:57:00', '2023-11-30 01:36:07', '2023-11-30 01:57:00'),
-(32, '3', 'Deserunt iure in lab', NULL, '2023-11-30 01:57:00', '2023-11-30 01:57:00'),
-(33, '3', 'Deserunt iure in lab - 0001', NULL, '2023-11-30 01:57:00', '2023-11-30 01:57:00'),
-(34, '3', 'Nesciunt non quia m', NULL, '2023-11-30 01:57:00', '2023-11-30 01:57:00'),
-(35, '4', 'Qui ut sapiente natu', NULL, '2023-11-30 01:57:55', '2023-11-30 01:57:55');
+(32, '3', 'Deserunt iure in lab', '2023-12-18 23:19:31', '2023-11-30 01:57:00', '2023-12-18 23:19:31'),
+(33, '3', 'Deserunt iure in lab - 0001', '2023-12-18 23:19:31', '2023-11-30 01:57:00', '2023-12-18 23:19:31'),
+(34, '3', 'Nesciunt non quia m', '2023-12-18 23:19:31', '2023-11-30 01:57:00', '2023-12-18 23:19:31'),
+(35, '4', 'Qui ut sapiente natu', '2023-12-18 23:19:27', '2023-11-30 01:57:55', '2023-12-18 23:19:27'),
+(36, '5', 'Omnis aperiam obcaec', '2023-12-18 23:18:52', '2023-12-18 02:29:47', '2023-12-18 23:18:52'),
+(37, '6', 'Facere commodo exerc', '2023-12-18 23:16:04', '2023-12-18 23:10:28', '2023-12-18 23:16:04'),
+(38, '6', 'Facere commodo exerc', NULL, '2023-12-18 23:16:04', '2023-12-18 23:16:04'),
+(39, '5', 'Omnis aperiam obcaec', NULL, '2023-12-18 23:18:52', '2023-12-18 23:18:52'),
+(40, '7', 'Provident in ration', NULL, '2023-12-18 23:19:44', '2023-12-18 23:19:44');
 
 -- --------------------------------------------------------
 
@@ -266,6 +316,13 @@ CREATE TABLE `contact_us` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `address`, `email`, `phone_one`, `phone_two`, `company_name`, `company_address`, `created_at`, `updated_at`) VALUES
+(1, 'Matrix Tower Block GP, Sector V, WB, Kol–700091', 'suba@mailinator.com', '+1 (536) 875-8603', '+1 (838) 529-3056', 'Donovan Dotson Trading', 'Zone Orlytech Batiment 5161 allee du commandant Mouchotte ORLY Paris ,91550 , France', '2023-12-19 06:06:45', '2023-12-19 06:20:28');
+
 -- --------------------------------------------------------
 
 --
@@ -281,6 +338,134 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_banners`
+--
+
+CREATE TABLE `home_banners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `icon` text DEFAULT NULL,
+  `range` text DEFAULT NULL,
+  `timing` text DEFAULT NULL,
+  `battery` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_banners`
+--
+
+INSERT INTO `home_banners` (`id`, `heading`, `image`, `icon`, `range`, `timing`, `battery`, `created_at`, `updated_at`) VALUES
+(1, 'New Electric Cars are Coming Soon', '1702958575_2150998550.jpg', '1702959108_car (1).png', '450 ML Go Anywhere up to 358 mi of estimated range on a single charge', 'Recharge Up to 175 mi in 20 minutes at Supercharger location', 'Superchargers Placed along well-traveled routes around the world', '2023-12-18 00:33:36', '2023-12-18 22:41:48'),
+(2, 'New Electric Cars are Coming Soon', '1702958380_blue-car-speed-motion-stretch-style.jpg', '1702959118_car (1).png', '450 ML Go Anywhere up to 358 mi of estimated range on a single charge', 'Recharge Up to 175 mi in 20 minutes at Supercharger location', 'Superchargers Placed along well-traveled routes around the world', '2023-12-18 01:06:33', '2023-12-18 22:41:58'),
+(6, 'New Electric Cars are Coming Soon', '1702960197_front-wheel-blue-vintage-sedan.jpg', '1702960197_car (1).png', '450 ML Go Anywhere up to 358 mi of estimated range on a single charge', 'Recharge Up to 175 mi in 20 minutes at Supercharger location', 'Superchargers Placed along well-traveled routes around the world', '2023-12-18 22:59:57', '2023-12-18 22:59:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_benefits`
+--
+
+CREATE TABLE `home_benefits` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_benefits`
+--
+
+INSERT INTO `home_benefits` (`id`, `heading`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Eco Friendly', '1702891078_Eco-friendly.png', '2023-12-18 03:47:58', '2023-12-18 03:50:40'),
+(2, 'Pocket Friendly', '1702891094_Pocket-Friendly.png', '2023-12-18 03:48:14', '2023-12-18 03:48:14'),
+(3, 'Safety', '1702891110_Safety.png', '2023-12-18 03:48:30', '2023-12-18 03:48:30'),
+(4, 'Convinience', '1702891124_Convinience.png', '2023-12-18 03:48:44', '2023-12-18 03:48:44'),
+(5, 'Economical', '1702891135_Economiclly.png', '2023-12-18 03:48:55', '2023-12-18 03:48:55'),
+(6, 'Reliable', '1702891149_Reliable.png', '2023-12-18 03:49:09', '2023-12-18 03:49:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_brands`
+--
+
+CREATE TABLE `home_brands` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_brands`
+--
+
+INSERT INTO `home_brands` (`id`, `image`, `created_at`, `updated_at`) VALUES
+(1, '1702897416_Jeep-Logo.png', '2023-12-18 05:13:13', '2023-12-18 05:33:36'),
+(2, '1702897430_Mg-Logo.png', '2023-12-18 05:13:13', '2023-12-18 05:33:50'),
+(3, '1702897443_AudiLogo.png', '2023-12-18 05:29:53', '2023-12-18 05:34:03'),
+(4, '1702897454_hondalogo.png', '2023-12-18 05:29:53', '2023-12-18 05:34:14'),
+(5, '1702897520_Tatalogo.png', '2023-12-18 05:35:20', '2023-12-18 05:35:20'),
+(6, '1702897520_Toyota-Logo.png', '2023-12-18 05:35:20', '2023-12-18 05:35:20'),
+(7, '1702897520_Team members.png', '2023-12-18 05:35:20', '2023-12-18 05:35:20'),
+(8, '1702897520_AudiLogo.png', '2023-12-18 05:35:20', '2023-12-18 05:35:20'),
+(9, '1702897520_I.png', '2023-12-18 05:35:20', '2023-12-18 05:35:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_cars`
+--
+
+CREATE TABLE `home_cars` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` text DEFAULT NULL,
+  `sub_heading` text DEFAULT NULL,
+  `small_heading` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_cars`
+--
+
+INSERT INTO `home_cars` (`id`, `heading`, `sub_heading`, `small_heading`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Cars for those who appreciate driving in style', 'Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.', 'Open Horizons', '1702893865_bg2.png', '2023-12-18 04:28:31', '2023-12-18 04:34:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_information`
+--
+
+CREATE TABLE `home_information` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `heading` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `icon` text DEFAULT NULL,
+  `sub_heading` text DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_information`
+--
+
+INSERT INTO `home_information` (`id`, `heading`, `image`, `icon`, `sub_heading`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'BRINGING ELECTRIC CAR EXPERIENCES TO YOU', '1702885293_Ev.png', '1702884460_Cng.png', 'No.1 CNG KIT FITTING CENTER', 'We\'ve teamed up with Turo to offer you rental deals so you can test the perfect electric car model for you. We’re on a mission to help our customers reduce their carbon footprint.', '2023-12-18 01:57:40', '2023-12-18 02:11:33');
 
 -- --------------------------------------------------------
 
@@ -323,8 +508,9 @@ INSERT INTO `installers` (`id`, `inst_code`, `name`, `email`, `phone_number`, `p
 (12, NULL, 'Heather Amethyst Mclaughlin Crane', 'Testinst001@yopmail.com', '+1 (178) 449-7192', '$2y$12$DdHpJVPzioT1Ky2149GsAeyejI.sENvCFu5qvWcKu9VBCp2J7fy9G', NULL, 'active', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', 'approved', NULL, '2023-12-06 03:05:37', '2023-12-06 03:30:07'),
 (13, NULL, 'Ruth Unity Dean Velazquez', 'Testinst002@yopmail.com', '+1 (154) 106-3754', '$2y$12$fwwmp6eeisQWcnWDOCbz6OxsIPEhMMxuTnHWspMMDvhlDZK7Q2U8u', NULL, 'active', NULL, 'in_progress', NULL, '2023-12-06 03:10:20', '2023-12-06 03:13:46'),
 (14, NULL, 'Reed Octavia Moses Franklin', 'Testinst003@yopmail.com', '+1 (639) 767-4522', '$2y$12$LSvmrxS.a.x0Nilcp57lCuEFlJJI8M.VOTjm08z.oHU91GCGlg0aO', NULL, 'active', 'vSPeIdLdJLk0yitRGeZTj89gTBaYSXFQaooGJcxY', 'in_progress', NULL, '2023-12-06 03:11:26', '2023-12-08 02:42:21'),
-(15, NULL, 'Bert Samuel Stout Fleming', 'Hilysi@mailinator.com', '+1 (857) 188-7941', '$2y$12$pyHzngTuf91u.P3i9bg9x.JoKs8dMdOeyphXHb3RE9lTWVZIgxvWm', NULL, 'active', NULL, 'pending', NULL, '2023-12-07 22:52:00', '2023-12-07 22:52:00'),
-(16, 'INST_00016', 'Briar Perry Spears Forbes', 'xyrydujo@mailinator.com', '+1 (184) 134-3184', '$2y$12$kI0vRdfRkudr1bJXjtvw6O2B4hA4CkiXHEMQ5lhyS5LR/isAocWz6', NULL, 'active', NULL, 'pending', NULL, '2023-12-08 02:40:04', '2023-12-08 02:40:04');
+(15, NULL, 'Bert Samuel Stout Fleming', 'Hilysi@mailinator.com', '+1 (857) 188-7941', '$2y$12$pyHzngTuf91u.P3i9bg9x.JoKs8dMdOeyphXHb3RE9lTWVZIgxvWm', NULL, 'active', NULL, 'in_progress', NULL, '2023-12-07 22:52:00', '2023-12-12 02:43:06'),
+(16, 'INST_00016', 'Briar Perry Spears Forbes', 'xyrydujo@mailinator.com', '+1 (184) 134-3184', '$2y$12$kI0vRdfRkudr1bJXjtvw6O2B4hA4CkiXHEMQ5lhyS5LR/isAocWz6', NULL, 'active', NULL, 'pending', NULL, '2023-12-08 02:40:04', '2023-12-08 02:40:04'),
+(17, 'INST_00017', 'Chadwick Delilah Sutton Vega', 'Testgardap00122@yopmail.com', '+1 (759) 699-3879', '$2y$12$eoVlV4no1UqRW2f3Xef4/.xlMDIQ.fmsFfNurz9awOtVpOIk4x8B.', NULL, 'active', 'L0TZQZu3ks0zFpIpTg0K8wkndM9gdLTZ1W7favG4', 'approved', NULL, '2023-12-12 02:26:30', '2023-12-12 02:46:52');
 
 -- --------------------------------------------------------
 
@@ -401,7 +587,8 @@ INSERT INTO `installer_infos` (`id`, `installer_id`, `national_identification_no
 (13, '13', 'Sunt nisi laboriosa', 'Dolore voluptate per', 'Possimus illum exe', 'images/Installer/1701852020_AudiLogo.png', 'images/Installer/1701852020_bg4.png', 'images/Installer/1701852020_car1.png', 'Crawford and Dixon Trading', 'Aspernatur labore ve', '2023-12-06 03:10:20', '2023-12-06 03:10:20'),
 (14, '14', 'Earum assumenda labo', 'Unde consequatur des', 'Do proident culpa', 'images/Installer/1701852086_blog3.jpg', 'images/Installer/1701852086_car3.png', 'images/Installer/1701852086_blog3.jpg', 'Estes Frank Plc', 'Nam quia fugiat dol', '2023-12-06 03:11:26', '2023-12-06 03:11:26'),
 (15, '15', 'Sunt aute Nam ut ess', 'Qui laborum a non vo', 'Asperiores error ten', 'images/Installer/1702009320_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'images/Installer/1702009320_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702009320_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'House Petty Associates', 'Cum esse id exercit', '2023-12-07 22:52:00', '2023-12-07 22:52:00'),
-(16, '16', 'Quam reiciendis plac', 'Necessitatibus dolor', 'Consequat Beatae iu', 'images/Installer/1702023003_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702023003_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702023003_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'Goodman Contreras Plc', 'Quos doloremque in n', '2023-12-08 02:40:04', '2023-12-08 02:40:04');
+(16, '16', 'Quam reiciendis plac', 'Necessitatibus dolor', 'Consequat Beatae iu', 'images/Installer/1702023003_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702023003_1700809449_image_2023-10-10_23_01_50.png', 'images/Installer/1702023003_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'Goodman Contreras Plc', 'Quos doloremque in n', '2023-12-08 02:40:04', '2023-12-08 02:40:04'),
+(17, '17', 'Ea animi corrupti', 'Sapiente in sit et', 'Incidunt et volupta', 'images/Installer/1702367790_1699347417garda.png', 'images/Installer/1702367790_1699355967product.jpeg', 'images/Installer/1702367790_17022711171700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', 'Chapman Buckner Plc', 'Aliqua Officia ulla', '2023-12-12 02:26:31', '2023-12-12 02:26:31');
 
 -- --------------------------------------------------------
 
@@ -442,7 +629,8 @@ INSERT INTO `installer_locations` (`id`, `installer_id`, `street_no`, `plot`, `s
 (13, '13', 'Earum ea cupidatat n', 'Deserunt possimus v', 'McKenzie Mcleod', 'Explicabo Est minus', 'Enim officia volupta', '80504', '2023-12-06 03:10:20', '2023-12-06 03:10:20'),
 (14, '14', 'Necessitatibus et cu', 'Aliquid nobis cupida', 'Nathaniel Webb', 'Veniam aliqua Est', 'Sit consectetur duc', '76105', '2023-12-06 03:11:26', '2023-12-06 03:11:26'),
 (15, '15', 'Magnam et exercitati', 'Eos quo ab rerum qu', 'Constance Flores', 'Dolore occaecat sapi', 'Facere voluptatem N', '46920', '2023-12-07 22:52:00', '2023-12-07 22:52:00'),
-(16, '16', 'Corporis ullam qui d', 'Rerum omnis voluptat', 'Graiden Frederick', 'Modi nostrum officii', 'Molestiae dolor face', '69940', '2023-12-08 02:40:04', '2023-12-08 02:40:04');
+(16, '16', 'Corporis ullam qui d', 'Rerum omnis voluptat', 'Graiden Frederick', 'Modi nostrum officii', 'Molestiae dolor face', '69940', '2023-12-08 02:40:04', '2023-12-08 02:40:04'),
+(17, '17', 'Nam Nam pariatur Ac', 'Cumque temporibus do', 'Sydnee Carpenter', 'Nihil est consequat', 'Aut voluptas aliquip', '56699', '2023-12-12 02:26:30', '2023-12-12 02:26:30');
 
 -- --------------------------------------------------------
 
@@ -483,7 +671,8 @@ INSERT INTO `installer_test_results` (`id`, `installer_id`, `exam_link_id`, `tot
 (25, '12', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', '5', '1', '20', 'Fail', '2023-12-06 03:26:16', '2023-12-06 03:26:16'),
 (26, '12', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', '5', '3', '60', 'Fail', '2023-12-06 03:26:44', '2023-12-06 03:26:44'),
 (27, '12', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', '5', '0', '0', 'Fail', '2023-12-06 03:28:20', '2023-12-06 03:28:20'),
-(28, '12', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', '5', '5', '100', 'Pass', '2023-12-06 03:30:07', '2023-12-06 03:30:07');
+(28, '12', '8ETzrkD9vVrF5O8Pqr46fkE2VsyAGGO3uc7YaZ5Z', '5', '5', '100', 'Pass', '2023-12-06 03:30:07', '2023-12-06 03:30:07'),
+(29, '17', 'L0TZQZu3ks0zFpIpTg0K8wkndM9gdLTZ1W7favG4', '5', '4', '80', 'Pass', '2023-12-12 02:46:52', '2023-12-12 02:46:52');
 
 -- --------------------------------------------------------
 
@@ -537,7 +726,8 @@ INSERT INTO `installer_zips` (`id`, `installer_id`, `zip`, `created_at`, `update
 (31, '13', '145120', '2023-12-06 03:16:07', '2023-12-06 03:16:07'),
 (32, '13', '124501', '2023-12-06 03:16:07', '2023-12-06 03:16:07'),
 (33, '12', '657894', '2023-12-06 03:17:25', '2023-12-06 03:17:25'),
-(34, '12', '457845', '2023-12-06 03:17:25', '2023-12-06 03:17:25');
+(34, '12', '457845', '2023-12-06 03:17:25', '2023-12-06 03:17:25'),
+(35, '17', '412450', '2023-12-12 02:48:19', '2023-12-12 02:48:19');
 
 -- --------------------------------------------------------
 
@@ -608,7 +798,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (51, '2023_12_07_102711_alter_user_details', 21),
 (53, '2023_11_14_093204_create_reports_table', 22),
 (54, '2023_12_08_050133_alter_reports', 22),
-(55, '2023_12_08_075427_alter_installers', 23);
+(55, '2023_12_08_075427_alter_installers', 23),
+(56, '2023_12_18_054019_create_home_banners_table', 24),
+(57, '2023_12_18_070248_create_home_information_table', 25),
+(58, '2023_12_18_081436_create_home_benefits_table', 26),
+(59, '2023_12_18_092637_create_home_cars_table', 27),
+(60, '2023_12_18_101343_create_home_brands_table', 28),
+(61, '2023_12_18_113257_create_abouts_table', 29),
+(62, '2023_12_19_100638_create_why_choose_us_table', 30);
 
 -- --------------------------------------------------------
 
@@ -879,8 +1076,8 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id`, `name`, `year_of_launch`, `range`, `power`, `charging_time`, `seating_capacity`, `distance`, `battery_capacity`, `features`, `vehicle_type`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'rojeda@mailinator.com', '1979', '4', 'sojepete@mailinator.com', '970', '352', '627', '47', NULL, NULL, NULL, '2023-11-29 03:35:51', '2023-11-29 04:21:53'),
-(2, 'fapykic@mailinator.com', '2007', '38', 'toluzibihe@mailinator.com', '623', '481', '888', '687', NULL, NULL, NULL, '2023-12-08 04:35:32', '2023-12-08 05:01:35');
+(1, 'rojeda@mailinator.com', '1979', '4', 'sojepete@mailinator.com', '970', '352', '627', '47', NULL, NULL, NULL, '2023-11-29 03:35:51', '2023-12-18 23:20:31'),
+(2, 'fapykic@mailinator.com', '2007', '38', 'toluzibihe@mailinator.com', '623', '481', '888', '687', NULL, NULL, NULL, '2023-12-08 04:35:32', '2023-12-18 23:20:18');
 
 -- --------------------------------------------------------
 
@@ -901,16 +1098,16 @@ CREATE TABLE `vehicle_colors` (
 --
 
 INSERT INTO `vehicle_colors` (`id`, `vehicle_id`, `color`, `created_at`, `updated_at`) VALUES
-(10, '1', '#ffffff', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(11, '1', '#facde6', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(12, '1', '#0000ff', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(13, '1', '#0000ff', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(14, '1', '#008000', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(15, '1', '#ff0000', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(20, '2', '#80a804', '2023-12-08 05:01:35', '2023-12-08 05:01:35'),
-(21, '2', '#d72828', '2023-12-08 05:01:35', '2023-12-08 05:01:35'),
-(22, '2', '#190101', '2023-12-08 05:01:35', '2023-12-08 05:01:35'),
-(23, '2', '#1e6745', '2023-12-08 05:01:35', '2023-12-08 05:01:35');
+(27, '2', '#80a804', '2023-12-18 23:20:19', '2023-12-18 23:20:19'),
+(28, '2', '#d72828', '2023-12-18 23:20:19', '2023-12-18 23:20:19'),
+(29, '2', '#190101', '2023-12-18 23:20:20', '2023-12-18 23:20:20'),
+(30, '2', '#1e6745', '2023-12-18 23:20:20', '2023-12-18 23:20:20'),
+(31, '1', '#ffffff', '2023-12-18 23:20:31', '2023-12-18 23:20:31'),
+(32, '1', '#facde6', '2023-12-18 23:20:31', '2023-12-18 23:20:31'),
+(33, '1', '#0000ff', '2023-12-18 23:20:31', '2023-12-18 23:20:31'),
+(34, '1', '#0000ff', '2023-12-18 23:20:31', '2023-12-18 23:20:31'),
+(35, '1', '#008000', '2023-12-18 23:20:31', '2023-12-18 23:20:31'),
+(36, '1', '#ff0000', '2023-12-18 23:20:31', '2023-12-18 23:20:31');
 
 -- --------------------------------------------------------
 
@@ -931,8 +1128,8 @@ CREATE TABLE `vehicle_features` (
 --
 
 INSERT INTO `vehicle_features` (`id`, `vehicle_id`, `feature`, `created_at`, `updated_at`) VALUES
-(3, '1', 'Repudiandae iste sun', '2023-11-29 04:21:53', '2023-11-29 04:21:53'),
-(5, '2', 'Cum molestias repreh', '2023-12-08 05:01:35', '2023-12-08 05:01:35');
+(6, '2', 'Cum molestias repreh', '2023-12-18 23:20:18', '2023-12-18 23:20:18'),
+(7, '1', 'Repudiandae iste sun', '2023-12-18 23:20:31', '2023-12-18 23:20:31');
 
 -- --------------------------------------------------------
 
@@ -953,9 +1150,9 @@ CREATE TABLE `vehicle_galleries` (
 --
 
 INSERT INTO `vehicle_galleries` (`id`, `vehicle_id`, `img`, `created_at`, `updated_at`) VALUES
-(1, '1', '291120231701248751_131120231699872354_aboutimg.jpg', '2023-11-29 03:35:51', '2023-11-29 03:35:51'),
+(1, '1', '191220231702961431_carimg1.png', '2023-11-29 03:35:51', '2023-12-18 23:20:31'),
 (2, '1', '291120231701248751_131120231699872425_car1.png', '2023-11-29 03:35:51', '2023-11-29 03:35:51'),
-(3, '2', '081220231702029932_1700809449_free-vector-graphic-workspace-of-web-developer-with-text-code-on-abstract-blue-background-isometric-design-for-software-preview-110109393.jpg', '2023-12-08 04:35:32', '2023-12-08 04:35:32');
+(3, '2', '191220231702961418_aboutimg.jpg', '2023-12-08 04:35:32', '2023-12-18 23:20:18');
 
 -- --------------------------------------------------------
 
@@ -992,9 +1189,40 @@ CREATE TABLE `videos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `why_choose_us`
+--
+
+CREATE TABLE `why_choose_us` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` text DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `number` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `why_choose_us`
+--
+
+INSERT INTO `why_choose_us` (`id`, `image`, `title`, `number`, `created_at`, `updated_at`) VALUES
+(1, '1702981541_Happy customer.png', 'Happy Customers', '5500', '2023-12-19 04:55:41', '2023-12-19 04:55:41'),
+(2, '1702981731_Kits Installed.png', 'Kits Installed', '8500', '2023-12-19 04:58:51', '2023-12-19 04:58:51'),
+(3, '1702981750_Team members.png', 'Team Members', '150', '2023-12-19 04:59:10', '2023-12-19 04:59:10'),
+(4, '1702981774_Years experiemced.png', 'Years Experienced', '16', '2023-12-19 04:59:34', '2023-12-19 04:59:34');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admins`
@@ -1050,6 +1278,36 @@ ALTER TABLE `contact_us`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `home_banners`
+--
+ALTER TABLE `home_banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_benefits`
+--
+ALTER TABLE `home_benefits`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_brands`
+--
+ALTER TABLE `home_brands`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_cars`
+--
+ALTER TABLE `home_cars`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_information`
+--
+ALTER TABLE `home_information`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `installers`
@@ -1206,8 +1464,20 @@ ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `why_choose_us`
+--
+ALTER TABLE `why_choose_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `abouts`
+--
+ALTER TABLE `abouts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -1219,19 +1489,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `booking_requests`
 --
 ALTER TABLE `booking_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `choose_colors`
@@ -1243,19 +1513,19 @@ ALTER TABLE `choose_colors`
 -- AUTO_INCREMENT for table `cng_kits`
 --
 ALTER TABLE `cng_kits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `cng_kit_product_details`
 --
 ALTER TABLE `cng_kit_product_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1264,10 +1534,40 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `home_banners`
+--
+ALTER TABLE `home_banners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `home_benefits`
+--
+ALTER TABLE `home_benefits`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `home_brands`
+--
+ALTER TABLE `home_brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `home_cars`
+--
+ALTER TABLE `home_cars`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `home_information`
+--
+ALTER TABLE `home_information`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `installers`
 --
 ALTER TABLE `installers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `installer_available_locations`
@@ -1285,31 +1585,31 @@ ALTER TABLE `installer_banks`
 -- AUTO_INCREMENT for table `installer_infos`
 --
 ALTER TABLE `installer_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `installer_locations`
 --
 ALTER TABLE `installer_locations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `installer_test_results`
 --
 ALTER TABLE `installer_test_results`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `installer_zips`
 --
 ALTER TABLE `installer_zips`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1375,13 +1675,13 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `vehicle_colors`
 --
 ALTER TABLE `vehicle_colors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `vehicle_features`
 --
 ALTER TABLE `vehicle_features`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `vehicle_galleries`
@@ -1400,6 +1700,12 @@ ALTER TABLE `vehicle_types`
 --
 ALTER TABLE `videos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `why_choose_us`
+--
+ALTER TABLE `why_choose_us`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

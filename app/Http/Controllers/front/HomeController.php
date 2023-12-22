@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\ContactEmail;
 use Illuminate\Support\Facades\Mail;
-use App\Models\{HomeBanner, HomeInformation, Vehicle, PDF, Blog, Video, CngKit, HomeBenefit, HomeBrand, HomeCar};
+use App\Models\{HomeBanner, HomeInformation, Vehicle, PDF, Blog, Video, CngKit, HomeBenefit, HomeBrand, HomeCar,About, WhyChooseUs};
 
 
 class HomeController extends Controller
@@ -20,7 +20,9 @@ class HomeController extends Controller
         $features = HomeCar::first();
         $brands = HomeBrand::get();
         $blogs = Blog::get();
-        return view('front.index',compact('banners', 'information', 'cngKit', 'benifits', 'features', 'brands', 'blogs'));
+        $cars = Vehicle::get();
+        $whyus = WhyChooseUs::get();
+        return view('front.index',compact('banners', 'information', 'cngKit', 'benifits', 'features', 'brands', 'blogs', 'cars', 'whyus'));
     }
 
     public function video()
@@ -36,7 +38,8 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
-        return view('front.about-us');
+        $about = About::first();
+        return view('front.about-us', compact('about'));
     }
 
     public function evlisting()
